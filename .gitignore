@@ -9,7 +9,7 @@
 /build
 /captures
 .externalNativeBuild
-
+.idea/
 
 
 # Created by https://www.gitignore.io/api/kotlin,android
