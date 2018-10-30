@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DMZing</string>
+    <string name="signUp">회원가입</string>
 </resources>
