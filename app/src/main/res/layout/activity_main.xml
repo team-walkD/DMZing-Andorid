@@ -39,7 +39,7 @@
             />
             
             <EditText
-                    android:id="@+id/"
+                    android:id="@+id/edittext"
                     android:layout_width="285dp"
                       android:layout_height="wrap_content"/>
 
