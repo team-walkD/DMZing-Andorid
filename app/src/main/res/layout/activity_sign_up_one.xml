@@ -36,7 +36,7 @@
                 android:textColor="#1c3748"
                 android:lineSpacingExtra="11sp"
                 android:textStyle="bold"
-                tools:text="DMZing의 \n가족이 되어주세요!"
+                android:text="DMZing의 \n가족이 되어주세요!"
         />
 
         <TextView
@@ -48,7 +48,7 @@
                 android:textSize="14sp"
                 android:textColor="#1c3748"
                 android:lineSpacingExtra="6sp"
-                tools:text="이름과 디엠징에서 사용할 닉네임을 알려주세요."
+                android:text="이름과 디엠징에서 사용할 닉네임을 알려주세요."
         />
 
 
@@ -62,7 +62,7 @@
                 android:textSize="16sp"
                 android:textColor="#1c3748"
                 android:lineSpacingExtra="8sp"
-                tools:text="이름*"
+                android:text="이름*"
         />
 
         <EditText
@@ -85,7 +85,7 @@
                 android:textSize="16sp"
                 android:textColor="#1c3748"
                 android:lineSpacingExtra="8sp"
-                tools:text="닉네임*"
+                android:text="닉네임*"
         />
 
         <EditText
