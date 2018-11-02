@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     fun settingTab(){
         mainViewPager.adapter = DmzingFragmentStatePagerAdapter(supportFragmentManager, 4)
         mainViewPager.offscreenPageLimit = 4
+        mainViewPager.setPagingEnabled(false)
         mainTab.setupWithViewPager(mainViewPager)
         val bottomTabLayout : View = this.layoutInflater.inflate(R.layout.bottom_main_tab, null, false)
 

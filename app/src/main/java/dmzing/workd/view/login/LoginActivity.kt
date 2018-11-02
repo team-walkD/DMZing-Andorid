@@ -8,8 +8,10 @@ import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import android.view.View
 import dmzing.workd.R
+import dmzing.workd.view.MainActivity
 import dmzing.workd.view.signup.SignUpOneActivity
 import kotlinx.android.synthetic.main.activity_login.*
+import org.jetbrains.anko.startActivity
 import kotlin.math.log
 import kotlin.math.sign
 
@@ -17,10 +19,11 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
     override fun onClick(v: View?) {
         when(v!!){
             loginBtn->{
-                startActivity(Intent(this, SignUpOneActivity::class.java))
+                startActivity<MainActivity>()
+                finish()
             }
             loginToSignBtn->{
-
+                startActivity(Intent(this, SignUpOneActivity::class.java))
             }
         }
     }
@@ -38,7 +41,6 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
 
         loginToSignBtn.text = content
         loginToSignBtn.setTypeface(loginToSignBtn.typeface, Typeface.BOLD)
-        loginToSignBtn.text = loginToSignBtn.text.toString()+"하기"
         init()
 
     }

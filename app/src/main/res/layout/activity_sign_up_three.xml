@@ -42,7 +42,7 @@
                 android:textSize="14sp"
                 android:textColor="#1c3748"
                 android:lineSpacingExtra="6sp"
-                tools:text="전화 번호 및 이메일을 입력해주세요.(선택)"
+                android:text="전화 번호 및 이메일을 입력해주세요.(선택)"
         />
 
         <TextView

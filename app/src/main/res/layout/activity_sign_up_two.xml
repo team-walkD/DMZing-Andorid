@@ -42,7 +42,7 @@
                 android:textSize="14sp"
                 android:textColor="#1c3748"
                 android:lineSpacingExtra="6sp"
-                tools:text="사용하실 아이디와 비밀번호를 입력해주세요."
+                android:text="사용하실 아이디와 비밀번호를 입력해주세요."
         />
 
         <TextView
