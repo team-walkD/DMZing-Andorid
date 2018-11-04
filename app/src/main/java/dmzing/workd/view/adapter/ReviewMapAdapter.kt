@@ -1,4 +1,4 @@
-package dmzing.workd.view.review
+package dmzing.workd.view.adapter
 
 import android.content.Context
 import android.graphics.Color
@@ -9,9 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dmzing.workd.R
+import dmzing.workd.model.review.ReviewMapData
 import java.util.ArrayList
 
-class ReviewMapAdapter(var reviewMapItems : ArrayList<ReviewMapModel>,var context : Context) : RecyclerView.Adapter<ReviewMapViewHolder>(){
+class ReviewMapAdapter(var reviewMapItems : ArrayList<ReviewMapData>, var context : Context) : RecyclerView.Adapter<ReviewMapViewHolder>(){
     private lateinit var onItemClick : View.OnClickListener
     var itemClick : Itemclick? = null
 

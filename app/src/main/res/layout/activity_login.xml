@@ -81,7 +81,7 @@
                     android:textSize="14sp"
                     android:textColor="#1c3748"
                     android:lineSpacingExtra="6sp"
-                    tools:text="아직 디엠징의 회원이 아니신가요?"
+                    android:text="아직 디엠징의 회원이 아니신가요?"
             />
 
             <LinearLayout
