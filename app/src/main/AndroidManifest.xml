@@ -32,6 +32,8 @@
         </activity>
         <activity android:name=".view.mypage.MypageReviewActivity">
         </activity>
+        <activity android:name=".view.mypage.MyLetterActivity">
+        </activity>
     </application>
 
 </manifest>

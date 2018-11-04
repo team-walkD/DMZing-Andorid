@@ -1,4 +1,4 @@
-package dmzing.workd.view.review
+package dmzing.workd.view.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

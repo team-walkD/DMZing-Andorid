@@ -1,6 +1,6 @@
-package dmzing.workd.view.review
+package dmzing.workd.model.review
 
-data class ReviewMapModel (
+data class ReviewMapData (
         var mapImage : String? = null,
         var mapTitle : String? = null,
         var mapCount : String? = null
