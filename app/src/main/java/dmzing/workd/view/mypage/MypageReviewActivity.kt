@@ -13,17 +13,6 @@ class MypageReviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage_review)
 
-        setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-
-        collapsToolbar.title = "나의 리뷰"
-
-
-        collapsToolbar.setExpandedTitleColor(ContextCompat.getColor(this, R.color.toolbarColor))
-
-        collapsToolbar.setCollapsedTitleTextColor(ContextCompat.getColor(this, R.color.toolbarColor))
-
 
     }
 }
