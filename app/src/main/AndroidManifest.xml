@@ -18,15 +18,17 @@
         </activity>
         <activity android:name=".view.MainActivity">
         </activity>
-        <activity android:name=".view.login.LoginActivity"
-                  android:windowSoftInputMode="adjustResize"
-        >
+        <activity
+                android:name=".view.login.LoginActivity"
+                android:windowSoftInputMode="adjustResize">
         </activity>
         <activity android:name=".view.signup.SignUpOneActivity">
         </activity>
         <activity android:name=".view.signup.SignUpTwoActivity">
         </activity>
         <activity android:name=".view.signup.SignUpThreeActivity">
+        </activity>
+        <activity android:name=".view.mypage.MyLetterActivity">
         </activity>
     </application>
 
