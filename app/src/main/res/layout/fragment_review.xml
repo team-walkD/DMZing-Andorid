@@ -39,7 +39,8 @@
                         android:textColor="#1c3748"
                         android:lineSpacingExtra="9sp"
                         android:fontFamily="@font/notosanscjkkr_bold"
-                        tools:text="로고"
+                        android:text="로고"
+                        android:includeFontPadding="false"
                         />
 
                     <ImageButton
@@ -47,18 +48,64 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/walk_d_icon"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:layout_toLeftOf="@+id/review_write_button"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="24dp"/>
 
                     <ImageButton
                         android:id="@+id/review_write_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/review_write_icon"
-                        android:layout_gravity="center"
+                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"/>
 
                 </RelativeLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="36dp"
+                    android:layout_marginTop="64dp"
+                    android:textSize="24sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:text="DMZ를 다녀온"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="36dp"
+                    android:textSize="24sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:text="사람들과 만나보세요!"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="36dp"
+                    android:layout_marginTop="35dp"
+                    android:textSize="14sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:text="카테고리를 선택하면"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="36dp"
+                    android:textSize="14sp"
+                    android:textColor="#1c3748"
+                    android:includeFontPadding="false"
+                    android:text="해당 코스의 소셜 리뷰/ 후기를 볼 수 있어요."
+                    />
 
             </LinearLayout>
 
@@ -69,7 +116,14 @@
                 android:orientation="vertical"
                 android:background="#f3f5f7">
 
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/review_recyclerView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="47.1dp"
+                    android:layout_marginLeft="24dp">
 
+                </android.support.v7.widget.RecyclerView>
             </LinearLayout>
 
         </LinearLayout>
