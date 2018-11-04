@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:orientation="vertical">
+
+    <RelativeLayout
+            android:id="@+id/pointLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+    >
+
+        <TextView
+                android:id="@+id/pointTitleItem"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="26dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="8sp"
+                android:text="데이트 맵"
+        />
+
+        <TextView
+                android:id="@+id/pointNumberItem"
+                android:layout_marginRight="4dp"
+                android:layout_toLeftOf="@+id/DPTextItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="3sp"
+                android:gravity="end"
+                android:text="- 1,000"
+        />
+
+        <TextView
+                android:id="@+id/DPTextItem"
+                android:layout_marginRight="23dp"
+                android:layout_alignParentRight="true"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="8sp"
+                android:gravity="center_horizontal"
+                android:text="DP"
+        />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/pointLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <TextView
+                android:id="@+id/pointDateItem"
+                android:layout_marginLeft="26dp"
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="normal"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="6sp"
+                android:text="10.17 (Tue)"
+        />
+
+        <TextView
+                android:id="@+id/pointMethodItem"
+                android:layout_marginRight="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="6sp"
+                android:gravity="end"
+                android:text="차감"
+        />
+    </RelativeLayout>
+
+    <View android:layout_width="match_parent"
+          android:layout_marginTop="10.5dp"
+          android:layout_height="1dp"
+          android:background="#dddddd"/>
+
+
+</LinearLayout>
