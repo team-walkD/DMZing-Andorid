@@ -33,6 +33,8 @@
         <activity android:name=".view.mypage.MypageReviewActivity"
         android:theme="@style/NonStatusBar">
         </activity>
+        <activity android:name=".view.mypage.MyLetterActivity">
+        </activity>
     </application>
 
 </manifest>
