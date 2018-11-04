@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content">
+    
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/review_map_image"
+        android:layout_width="143dp"
+        android:layout_height="143dp"
+        />
+
+    <TextView
+        android:id="@+id/review_map_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:textSize="16sp"
+        android:textColor="#ffffff"
+        android:fontFamily="@font/notosanscjkkr_bold"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="8sp"
+        android:layout_gravity="center"
+        />
+    
+    <TextView
+        android:id="@+id/review_map_count"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="top|right"
+        android:fontFamily="sans-serif"
+        android:text="05"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="2sp"
+        android:layout_marginRight="4dp"
+        android:background="#6da8c7"/>
+
+</FrameLayout>
