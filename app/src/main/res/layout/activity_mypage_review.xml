@@ -15,6 +15,12 @@
             android:layout_width="match_parent"
             android:layout_height="209dp"/>
 
+    <RelativeLayout
+            android:layout_below="@+id/reviewToolbar"
+            android:background="#f4f6f8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
     <ImageView
             android:id="@+id/reviewBackBtn"
             android:layout_width="wrap_content"
@@ -48,6 +54,7 @@
     />
 
     <android.support.v4.widget.NestedScrollView
+            android:id="@+id/reviewNested"
             android:layout_marginTop="13dp"
             android:layout_below="@+id/reviewText"
             android:layout_width="match_parent"
@@ -72,6 +79,7 @@
             />
 
             <android.support.v7.widget.RecyclerView
+                    android:layout_gravity="center_horizontal"
                     android:id="@+id/reviewList"
                     android:layout_marginTop="32dp"
                     android:layout_width="match_parent"
