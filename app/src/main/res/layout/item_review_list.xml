@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:background="@android:color/white">
+
+    <ImageView
+            android:id="@+id/reviewImageItem"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/my_more_right_btn"/>
+
+
+    <LinearLayout
+            android:id="@+id/reviewItemLayout"
+            android:layout_marginLeft="20.5dp"
+            android:layout_toRightOf="@+id/reviewImageItem"
+            android:layout_marginTop="18dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="8sp"
+                android:text="리뷰의 제목쓰는 란"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:includeFontPadding="false"
+        />
+
+        <TextView
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="normal"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="3sp"
+                android:text="2018.03.03"
+        />
+
+
+    </LinearLayout>
+
+
+    <ImageView
+
+            android:layout_marginRight="14.9dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/my_course_review_more_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+    />
+
+</RelativeLayout>

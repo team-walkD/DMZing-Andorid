@@ -28,6 +28,11 @@
         </activity>
         <activity android:name=".view.signup.SignUpThreeActivity">
         </activity>
+        <activity android:name=".view.mypage.point.MypagePointActivity">
+        </activity>
+        <activity android:name=".view.mypage.MypageReviewActivity"
+        android:theme="@style/NonStatusBar">
+        </activity>
         <activity android:name=".view.mypage.MyLetterActivity">
         </activity>
     </application>

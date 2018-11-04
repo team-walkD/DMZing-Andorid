@@ -1,5 +1,7 @@
 package dmzing.workd.util
 
+import android.view.View
+
 /**
  * Created by VictoryWoo
  */
