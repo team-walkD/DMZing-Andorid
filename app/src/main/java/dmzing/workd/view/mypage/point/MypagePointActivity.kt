@@ -28,6 +28,7 @@ class MypagePointActivity : AppCompatActivity(), View.OnClickListener, Utils {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage_point)
+        init()
 
         pointItems = ArrayList()
         for (i in 0..10)

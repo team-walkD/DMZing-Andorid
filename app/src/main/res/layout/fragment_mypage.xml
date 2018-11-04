@@ -26,6 +26,8 @@
                 android:textSize="20sp"
                 android:textColor="#1c3748"
                 android:lineSpacingExtra="9sp"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:includeFontPadding="false"
                 android:text="로고"
         />
 
