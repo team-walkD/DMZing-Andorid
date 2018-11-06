@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import dmzing.workd.R
 import dmzing.workd.util.Utils
 import dmzing.workd.view.mypage.point.MypagePointActivity
+import dmzing.workd.view.mypage.setting.SettingActivity
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import org.jetbrains.anko.support.v4.startActivity
@@ -24,6 +25,7 @@ class MypageFragment : Fragment(), View.OnClickListener, Utils {
         view.mypageCourseBtn.setOnClickListener(this)
         view.mypageReviewBtn.setOnClickListener(this)
         view.mypagePointBtn.setOnClickListener(this)
+        view.mypageSettingBtn.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -31,6 +33,7 @@ class MypageFragment : Fragment(), View.OnClickListener, Utils {
             mypageCourseBtn -> startActivity<MypagePointActivity>()
             mypageReviewBtn -> startActivity<MypageReviewActivity>()
             mypagePointBtn -> startActivity<MypagePointActivity>()
+            mypageSettingBtn -> startActivity<SettingActivity>()
         }
     }
 
