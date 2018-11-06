@@ -9,32 +9,37 @@ import org.jetbrains.anko.startActivity
 
 class ServiceActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
-        when(v!!){
-            serviceDMZingBtn->{
+        when (v!!) {
+            serviceDMZingBtn -> {
                 titleValue = "DMZing 안내"
                 startActivity<ServiceDetailActivity>(DETAIL_TITLE to titleValue)
             }
-            serviceTermsBtn->{
+            serviceTermsBtn -> {
                 titleValue = "이용 약관"
                 startActivity<ServiceDetailActivity>(DETAIL_TITLE to titleValue)
             }
-            servicePolicyBtn->{
+            servicePolicyBtn -> {
                 titleValue = "개인정보 보호 정책"
                 startActivity<ServiceDetailActivity>(DETAIL_TITLE to titleValue)
             }
+            serviceBackBtn -> finish()
+            serviceXBtn -> finish()
         }
     }
 
-    private fun init(){
+    private fun init() {
         servicePolicyBtn.setOnClickListener(this)
         serviceDMZingBtn.setOnClickListener(this)
         serviceTermsBtn.setOnClickListener(this)
-    }
-    companion object {
-        val DETAIL_TITLE : String = "title"
+        serviceXBtn.setOnClickListener(this)
+        serviceBackBtn.setOnClickListener(this)
     }
 
-    lateinit var titleValue : String
+    companion object {
+        val DETAIL_TITLE: String = "title"
+    }
+
+    lateinit var titleValue: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_service)
