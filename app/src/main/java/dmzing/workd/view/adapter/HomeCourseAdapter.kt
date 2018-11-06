@@ -26,6 +26,7 @@ class HomeCourseAdapter(var item_list : ArrayList<HomeCourseData>, private var c
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeCourseViewHolder {
         var view = LayoutInflater.from(parent!!.context).inflate(R.layout.home_course_item_list, parent, false)
+        view.setOnClickListener(onItemClick)
         return HomeCourseViewHolder(view)
     }
 

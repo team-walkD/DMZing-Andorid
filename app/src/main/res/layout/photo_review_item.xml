@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#f4f6f8"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:background="@drawable/course_border"
+        android:layout_width="150dp"
+        android:layout_height="208.2dp"
+        android:orientation="vertical">
+        
+        <ImageView
+            android:id="@+id/photo_review_item_image"
+            android:layout_width="135dp"
+            android:layout_height="138.8dp"
+            android:layout_marginTop="8.3dp"
+            android:layout_marginLeft="7.2dp"
+            android:background="#e3e3e3"/>
+
+        <TextView
+            android:id="@+id/photo_review_item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7.6dp"
+            android:layout_marginTop="11.6dp"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_medium"
+            android:includeFontPadding="false"
+            android:textStyle="normal"
+            android:textColor="#1c3748"
+            android:text="2018.08.01"
+            />
+
+        <TextView
+            android:id="@+id/photo_review_item_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanscjkkr_bold"
+            android:layout_marginLeft="7.6dp"
+            android:layout_marginTop="2.7dp"
+            android:textSize="14sp"
+            android:textColor="#1c3748"
+            android:text="장소 이름"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/photo_review_item_hashtag"
+        android:text="#A코스 #DMZ"
+        android:textSize="14sp"
+        android:textColor="#1c3748"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:layout_marginLeft="7.2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

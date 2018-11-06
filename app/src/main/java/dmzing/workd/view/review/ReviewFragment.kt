@@ -36,7 +36,7 @@ class ReviewFragment : Fragment() {
         mapItemAdapter.setOnItemClickListener(object : ReviewMapAdapter.Itemclick{
             override fun onClick(view: View, position: Int) {
                 Toast.makeText(activity,position.toString(),Toast.LENGTH_LONG).show()
-                startActivity(Intent(activity,MyLetterActivity::class.java))
+                startActivity(Intent(activity,ReviewListActivity::class.java))
             }
 
         })
@@ -45,8 +45,6 @@ class ReviewFragment : Fragment() {
 
         var px = Math.round(convertDpToPixel(28f,activity!!))
         view.review_recyclerView.addItemDecoration(GridItemDecoration(px))
-
-
 
         view.review_walkd_button.setOnClickListener { v: View->
             //챗봇 버튼

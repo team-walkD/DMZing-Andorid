@@ -18,6 +18,7 @@
         <ImageView
                 android:id="@+id/courseImageItem"
                 android:background="@android:color/holo_blue_dark"
+                android:scaleType="fitXY"
                 android:layout_width="336dp"
                 android:layout_height="168dp"/>
 
@@ -70,7 +71,7 @@
 
                 <RelativeLayout
                         android:layout_gravity="center_horizontal"
-                        android:background="@android:color/holo_blue_dark"
+                        android:background="@drawable/blue_circle_line"
                         android:layout_width="60dp"
                         android:layout_height="60dp">
 
@@ -81,6 +82,8 @@
                             android:textSize="16sp"
                             android:textColor="#1c3748"
                             android:lineSpacingExtra="8sp"
+                            android:fontFamily="@font/notosanscjkkr_bold"
+                            android:includeFontPadding="false"
                             android:layout_centerInParent="true"
                             android:text="중"
                     />
@@ -96,6 +99,8 @@
                         android:lineSpacingExtra="6sp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="5dp"
+                        android:fontFamily="@font/notosanscjkkr_regular"
+                        android:includeFontPadding="false"
                         android:text="난이도"
                 />
 
@@ -111,7 +116,7 @@
 
                 <RelativeLayout
                         android:layout_gravity="center_horizontal"
-                        android:background="@android:color/holo_blue_dark"
+                        android:background="@drawable/blue_circle_line"
                         android:layout_width="60dp"
                         android:layout_height="60dp">
 
@@ -123,6 +128,8 @@
                             android:textColor="#1c3748"
                             android:lineSpacingExtra="8sp"
                             android:layout_centerInParent="true"
+                            android:fontFamily="@font/notosanscjkkr_bold"
+                            android:includeFontPadding="false"
                             android:text="중"
                     />
 
@@ -137,6 +144,8 @@
                         android:lineSpacingExtra="6sp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="5dp"
+                        android:fontFamily="@font/notosanscjkkr_regular"
+                        android:includeFontPadding="false"
                         android:text="소요시간"
                 />
 
@@ -151,7 +160,7 @@
 
                 <RelativeLayout
                         android:layout_gravity="center_horizontal"
-                        android:background="@android:color/holo_blue_dark"
+                        android:background="@drawable/blue_circle_line"
                         android:layout_width="60dp"
                         android:layout_height="60dp">
 
@@ -163,6 +172,8 @@
                             android:textColor="#1c3748"
                             android:lineSpacingExtra="8sp"
                             android:layout_centerInParent="true"
+                            android:fontFamily="@font/notosanscjkkr_bold"
+                            android:includeFontPadding="false"
                             android:text="중"
                     />
 
@@ -177,6 +188,8 @@
                         android:lineSpacingExtra="6sp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="5dp"
+                        android:fontFamily="@font/notosanscjkkr_regular"
+                        android:includeFontPadding="false"
                         android:text="참여인원"
                 />
 
@@ -192,12 +205,31 @@
                 android:layout_height="1dp"
                 android:background="@color/viewColor"/>
 
-        <Button
+        <RelativeLayout
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="17.5dp"
-                android:layout_width="252dp"
-                android:layout_height="39dp"
-                android:text="코스 싱세보기"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_round_btn"
+                android:layout_marginBottom="30dp"
+                android:text="코스 싱세보기">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#ffffff"
+                    android:lineSpacingExtra="8sp"
+                    android:gravity="center_horizontal"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:text="코스 상세 보기"
+            />
+
+
+
+        </RelativeLayout>
 
     </LinearLayout>
 
