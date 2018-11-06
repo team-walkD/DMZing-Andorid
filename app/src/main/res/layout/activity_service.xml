@@ -15,6 +15,7 @@
             android:layout_height="54dp">
 
         <RelativeLayout
+                android:id="@+id/serviceBackBtn"
                 android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
@@ -41,7 +42,7 @@
         />
 
         <RelativeLayout
-
+                android:id="@+id/serviceXBtn"
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">

@@ -35,6 +35,8 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        loginBtn.isSelected = true
         var signUpText : String = "회원가입"
         var content : SpannableString = SpannableString(signUpText)
         content.setSpan(UnderlineSpan(), 0,4,0)
