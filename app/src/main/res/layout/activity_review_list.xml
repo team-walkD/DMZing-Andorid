@@ -120,7 +120,8 @@
                 app:tabIndicatorFullWidth="false"
                 app:tabPadding="0dp"
                 app:tabIndicatorHeight="4dp"
-                app:tabMode="fixed">
+                app:tabMode="fixed"
+            app:layout_scrollFlags="scroll|enterAlways">
 
             <android.support.design.widget.TabItem
                     android:text="사진 리뷰"
