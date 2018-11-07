@@ -8,7 +8,7 @@
         android:background="#f4f6f8"
         android:orientation="vertical"
         tools:context=".view.review.ReviewListActivity">
-    
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="231dp">
