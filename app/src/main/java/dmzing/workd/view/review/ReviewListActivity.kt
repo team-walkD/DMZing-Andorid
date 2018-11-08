@@ -30,6 +30,18 @@ class ReviewListActivity : AppCompatActivity() {
 
         settingTab()
 
+        review_list_back_button.setOnClickListener {
+            //뒤로가기 버튼
+        }
+
+        review_list_walkd_button.setOnClickListener {
+            //챗봇 버튼
+        }
+
+        review_list_write_button.setOnClickListener{
+            //리뷰 쓰기 버튼
+        }
+
     }
 
     fun settingTab(){
