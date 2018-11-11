@@ -53,8 +53,8 @@ class DetailReviewListAdpater(var itemList : ArrayList<DetailReviewModel>,var co
         itemClick = click
     }
 
-    fun timeStampToDate(timeStamp : Int) : String{
-        var date : Date = Date(timeStamp.toLong())
+    fun timeStampToDate(timeStamp : Long) : String{
+        var date : Date = Date(timeStamp)
         var dateF : SimpleDateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
         return dateF.format(date)
     }

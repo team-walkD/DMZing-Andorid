@@ -1,48 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="dmzing.workd">
+    package="dmzing.workd">
 
     <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
         <activity android:name=".view.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainActivity">
-        </activity>
+        <activity android:name=".view.MainActivity"></activity>
         <activity
-                android:name=".view.login.LoginActivity"
-                android:windowSoftInputMode="adjustResize">
-        </activity>
-        <activity android:name=".view.signup.SignUpOneActivity">
-        </activity>
-        <activity android:name=".view.signup.SignUpTwoActivity">
-        </activity>
-        <activity android:name=".view.signup.SignUpThreeActivity">
-        </activity>
-        <activity android:name=".view.mypage.point.MypagePointActivity">
-        </activity>
-        <activity android:name=".view.mypage.MypageReviewActivity">
-        </activity>
-        <activity android:name=".view.mypage.MyLetterActivity">
-        </activity>
-        <activity android:name=".view.mypage.setting.SettingActivity">
-        </activity>
-        <activity android:name=".view.mypage.setting.ServiceActivity">
-        </activity>
-        <activity android:name=".view.mypage.setting.ServiceDetailActivity">
-        </activity>
-        <activity android:name=".view.review.ReviewListActivity">
-        </activity>
-        <activity android:name=".view.course.CourseDetailActivity">
+            android:name=".view.login.LoginActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity android:name=".view.signup.SignUpOneActivity"></activity>
+        <activity android:name=".view.signup.SignUpTwoActivity"></activity>
+        <activity android:name=".view.signup.SignUpThreeActivity"></activity>
+        <activity android:name=".view.mypage.point.MypagePointActivity"></activity>
+        <activity android:name=".view.mypage.MypageReviewActivity"></activity>
+        <activity android:name=".view.mypage.MyLetterActivity"></activity>
+        <activity android:name=".view.mypage.setting.SettingActivity"></activity>
+        <activity android:name=".view.mypage.setting.ServiceActivity"></activity>
+        <activity android:name=".view.mypage.setting.ServiceDetailActivity"></activity>
+        <activity android:name=".view.review.ReviewListActivity"></activity>
+        <activity android:name=".view.course.CourseDetailActivity"></activity>
+        <activity
+            android:name=".view.review.PhotoDetailActivity"
+            android:theme="@style/Theme.AppCompat.ActivityTransparent"></activity>
+        <activity android:name=".view.mypage.MypageCourseActivity">
         </activity>
     </application>
 

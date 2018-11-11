@@ -1,6 +1,7 @@
 package dmzing.workd.view.review
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -30,6 +31,13 @@ class PhotoReviewFragment : Fragment() {
         mPhotoReviewItems.add(PhotoReviewModel("",0,"평화전망대","#뭐지 #뭐긴",6))
 
         mPhotoReviewAdpater = PhotoReviewListAdapter(mPhotoReviewItems,activity!!.applicationContext)
+
+        mPhotoReviewAdpater.SetOnItemClickListener(object : PhotoReviewListAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                startActivity(Intent(context,PhotoDetailActivity::class.java))
+            }
+
+        })
 
         mGridLayoutManager = GridLayoutManager(activity,2)
         view.photo_review_recycler.layoutManager = mGridLayoutManager
