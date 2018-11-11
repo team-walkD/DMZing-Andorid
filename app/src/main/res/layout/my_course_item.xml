@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="335.3dp"
+    android:layout_height="99dp">
+    
+    <RelativeLayout
+        android:layout_marginLeft="24dp"
+        android:layout_width="311.3dp"
+        android:layout_height="87dp"
+        android:background="@drawable/course_border">
+
+        <TextView
+            android:id="@+id/myCourse_item_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="18dp"
+            android:text="사진 찍기 좋은 핫스팟"
+            android:textSize="14sp"
+            android:textColor="#1c3748"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"/>
+
+        <TextView
+            android:id="@+id/myCourse_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/myCourse_item_course"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="2dp"
+            android:text="코스의 제목쓰는 란"
+            android:textSize="16sp"
+            android:textColor="#1c3748"
+            android:fontFamily="@font/notosanscjkkr_bold"
+            android:includeFontPadding="false"/>
+
+        <ImageView
+            android:id="@+id/mycourse_item_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="13.2dp"
+            android:background="@drawable/my_course_review_more_icon"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
