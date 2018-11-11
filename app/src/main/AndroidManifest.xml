@@ -33,7 +33,8 @@
         <activity
             android:name=".view.review.PhotoDetailActivity"
             android:theme="@style/Theme.AppCompat.ActivityTransparent"></activity>
-        <activity android:name=".view.mypage.MypageCourseActivity"></activity>
+        <activity android:name=".view.mypage.MypageCourseActivity">
+        </activity>
     </application>
 
 </manifest>

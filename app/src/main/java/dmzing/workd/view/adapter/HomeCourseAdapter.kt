@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import dmzing.workd.R
 import dmzing.workd.model.home.HomeCourseData
+import dmzing.workd.view.course.CourseDetailActivity
 import kotlinx.android.synthetic.main.home_course_item_list.view.*
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 /**
  * Created by VictoryWoo
@@ -37,6 +41,9 @@ class HomeCourseAdapter(var item_list : ArrayList<HomeCourseData>, private var c
         holder.course_level_item.text = item_list[position].course_level
         holder.course_time_item.text = item_list[position].course_time
         holder.course_participants_item.text = item_list[position].course_participants
+        holder.course_detail_btn.setOnClickListener{
+            context.startActivity<CourseDetailActivity>("idx" to item_list[position].course_idx)
+        }
 
     }
 
@@ -45,6 +52,7 @@ class HomeCourseAdapter(var item_list : ArrayList<HomeCourseData>, private var c
         var course_level_item : TextView = itemView.findViewById(R.id.courseLevelText)
         var course_time_item : TextView = itemView.findViewById(R.id.courseTimeText)
         var course_participants_item : TextView = itemView.findViewById(R.id.courseParticipantsText)
+        var course_detail_btn : RelativeLayout = itemView.findViewById(R.id.courseDetailBtn)
 
     }
 }
