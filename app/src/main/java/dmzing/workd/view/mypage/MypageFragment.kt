@@ -30,7 +30,7 @@ class MypageFragment : Fragment(), View.OnClickListener, Utils {
 
     override fun onClick(v: View?) {
         when (v!!) {
-            mypageCourseBtn -> startActivity<MypagePointActivity>()
+            mypageCourseBtn -> startActivity<MypageCourseActivity>()
             mypageReviewBtn -> startActivity<MypageReviewActivity>()
             mypagePointBtn -> startActivity<MypagePointActivity>()
             mypageSettingBtn -> startActivity<SettingActivity>()

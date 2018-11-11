@@ -6,10 +6,10 @@ data class DetailReviewModel (
         var id : Int? = null,
         var title : String? = null,
         var thumbnailUrl : String? = null,
-        var createdAt : Int? = null,
+        var createdAt : Long? = null,
         var courseId : Int? = null,
-        var startAt : Int? = null,
-        var endAt : Int? = null,
+        var startAt : Long? = null,
+        var endAt : Long? = null,
         var like : Boolean? = null,
         var likeCount : Int? = null
 ) : BaseModel()
