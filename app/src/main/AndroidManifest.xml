@@ -30,6 +30,7 @@
         <activity android:name=".view.mypage.setting.ServiceActivity"></activity>
         <activity android:name=".view.mypage.setting.ServiceDetailActivity"></activity>
         <activity android:name=".view.review.ReviewListActivity"></activity>
+        <activity android:name=".view.course.CourseDetailActivity"></activity>
         <activity
             android:name=".view.review.PhotoDetailActivity"
             android:theme="@style/Theme.AppCompat.ActivityTransparent"></activity>
