@@ -27,7 +27,6 @@ class PhotoReviewListAdapter(var itemList : ArrayList<PhotoReviewModel>,var cont
         //Glide.with(context).load(itemList.get(p1).imageUrl).into(p0.photoReviewImage)
         p0.photoReviewPlace.text = itemList.get(p1).placeName
         //p0.photoReviewDate.text = itemList.get(p1).
-        p0.photoReviewHashTag.text = itemList.get(p1).tag
 
         p0.itemView.setOnClickListener { v: View? ->
             if(itemClick != null){
@@ -49,6 +48,5 @@ class PhotoReviewListAdapter(var itemList : ArrayList<PhotoReviewModel>,var cont
         var photoReviewImage : ImageView = itemView.findViewById(R.id.photo_review_item_image)
         var photoReviewDate : TextView = itemView.findViewById(R.id.photo_review_item_date)
         var photoReviewPlace : TextView = itemView.findViewById(R.id.photo_review_item_place)
-        var photoReviewHashTag : TextView = itemView.findViewById(R.id.photo_review_item_hashtag)
     }
 }
