@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dmzing.workd">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainActivity"></activity>
+        <activity android:name=".view.MainActivity" />
         <activity
             android:name=".view.login.LoginActivity"
             android:windowSoftInputMode="adjustResize"></activity>
@@ -33,9 +37,10 @@
         <activity android:name=".view.course.CourseDetailActivity"></activity>
         <activity
             android:name=".view.review.PhotoDetailActivity"
-            android:theme="@style/Theme.AppCompat.ActivityTransparent"></activity>
-        <activity android:name=".view.mypage.MypageCourseActivity">
-        </activity>
+            android:theme="@style/Theme.AppCompat.ActivityTransparent" />
+        <activity android:name=".view.mypage.MypageCourseActivity"></activity>
+        <activity android:name=".view.review.ReviewWriteActivity"></activity>
+        <activity android:name=".view.review.WriteDayActivity"></activity>
     </application>
 
 </manifest>
