@@ -49,10 +49,6 @@ class ReviewFragment : Fragment() {
         view.review_walkd_button.setOnClickListener { v: View->
             //챗봇 버튼
         }
-
-        view.review_write_button.setOnClickListener { v: View ->
-            //리뷰 쓰기 버튼
-        }
         return view
     }
 
