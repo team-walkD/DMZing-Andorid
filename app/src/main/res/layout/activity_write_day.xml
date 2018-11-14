@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.review.WriteDayActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/backgroundColor">
+
+        <ImageView
+            android:id="@+id/write_day_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back_btn"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"/>
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="40">
+
+            <TextView
+                android:id="@+id/write_day_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="22dp"
+                android:text="DAY 1"
+                android:textSize="14sp"
+                android:textColor="#1c3748"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:includeFontPadding="false"/>
+
+            <TextView
+                android:id="@+id/write_day_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="22dp"
+                android:text="2018.08.01"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="#1c3748"
+                android:includeFontPadding="false"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#dddddd"
+            android:layout_weight="1"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="387"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/write_day_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="제목을 입력하세요"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="16dp"
+                android:textSize="18sp"
+                android:textColor="#1c3748"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:includeFontPadding="false"
+                android:background="@null"/>
+
+            <EditText
+                android:id="@+id/write_day_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="38dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="22dp"
+                android:layout_marginBottom="33dp"
+                android:gravity="left"
+                android:background="@null"
+                android:hint="내용을 입력하세요"
+                android:textSize="16sp"
+                android:textColor="#1c3748"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                />
+
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="132"
+            android:background="#f4f6f8">
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginLeft="25dp"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                        android:id="@+id/write_day_add_image"
+                        android:layout_width="107dp"
+                        android:layout_height="107dp"
+                        android:background="#dddddd"
+                        android:layout_marginRight="12dp">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/pic_add_plus_icon"
+                            android:layout_gravity="center"/>
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/write_day_image1"
+                    android:layout_width="107dp"
+                    android:layout_height="107dp"
+                    android:layout_marginRight="12dp"
+                    android:visibility="gone"/>
+
+                <ImageView
+                    android:id="@+id/write_day_image2"
+                    android:layout_width="107dp"
+                    android:layout_height="107dp"
+                    android:layout_marginRight="12dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/write_day_image3"
+                    android:layout_width="107dp"
+                    android:layout_height="107dp"
+                    android:layout_marginRight="12dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/write_day_image4"
+                    android:layout_width="107dp"
+                    android:layout_height="107dp"
+                    android:layout_marginRight="12dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/write_day_image5"
+                    android:layout_width="107dp"
+                    android:layout_height="107dp"
+                    android:background="#dddddd"
+                    android:layout_marginRight="12dp"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/write_day_complete"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.3"
+        android:background="#6da8c7">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanscjkkr_bold"
+            android:includeFontPadding="false"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:gravity="center_horizontal"
+            android:text="완료"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

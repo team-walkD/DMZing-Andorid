@@ -1,6 +1,7 @@
 package dmzing.workd.view.review
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
@@ -16,6 +17,7 @@ import android.os.Build
 import android.widget.LinearLayout
 import java.io.File.separator
 import android.graphics.drawable.GradientDrawable
+import android.widget.Toast
 import dmzing.workd.view.adapter.ReviewListTabAdapter
 import kotlinx.android.synthetic.main.activity_review_list.*
 
@@ -40,6 +42,14 @@ class ReviewListActivity : AppCompatActivity() {
 
         review_list_write_button.setOnClickListener{
             //리뷰 쓰기 버튼
+            when(mTabLayout.selectedTabPosition){
+                0->{
+                    Toast.makeText(this,"사진 리뷰",Toast.LENGTH_LONG).show()
+                }
+                1->{
+                    startActivity(Intent(this,ReviewWriteActivity::class.java))
+                }
+            }
         }
 
     }
