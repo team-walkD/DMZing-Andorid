@@ -44,7 +44,8 @@ class ReviewListActivity : AppCompatActivity() {
             //리뷰 쓰기 버튼
             when(mTabLayout.selectedTabPosition){
                 0->{
-                    Toast.makeText(this,"사진 리뷰",Toast.LENGTH_LONG).show()
+                    var placeSelectDialog = PhotoReviewWriteDialog(1,this)
+                    placeSelectDialog.show()
                 }
                 1->{
                     startActivity(Intent(this,ReviewWriteActivity::class.java))
