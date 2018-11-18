@@ -23,24 +23,25 @@
         <activity android:name=".view.MainActivity" />
         <activity
             android:name=".view.login.LoginActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
-        <activity android:name=".view.signup.SignUpOneActivity"></activity>
-        <activity android:name=".view.signup.SignUpTwoActivity"></activity>
-        <activity android:name=".view.signup.SignUpThreeActivity"></activity>
-        <activity android:name=".view.mypage.point.MypagePointActivity"></activity>
-        <activity android:name=".view.mypage.MypageReviewActivity"></activity>
-        <activity android:name=".view.mypage.MyLetterActivity"></activity>
-        <activity android:name=".view.mypage.setting.SettingActivity"></activity>
-        <activity android:name=".view.mypage.setting.ServiceActivity"></activity>
-        <activity android:name=".view.mypage.setting.ServiceDetailActivity"></activity>
-        <activity android:name=".view.review.ReviewListActivity"></activity>
-        <activity android:name=".view.course.CourseDetailActivity"></activity>
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".view.signup.SignUpOneActivity" />
+        <activity android:name=".view.signup.SignUpTwoActivity" />
+        <activity android:name=".view.signup.SignUpThreeActivity" />
+        <activity android:name=".view.mypage.point.MypagePointActivity" />
+        <activity android:name=".view.mypage.MypageReviewActivity" />
+        <activity android:name=".view.mypage.MyLetterActivity" />
+        <activity android:name=".view.mypage.setting.SettingActivity" />
+        <activity android:name=".view.mypage.setting.ServiceActivity" />
+        <activity android:name=".view.mypage.setting.ServiceDetailActivity" />
+        <activity android:name=".view.review.ReviewListActivity" />
+        <activity android:name=".view.course.CourseDetailActivity" />
         <activity
             android:name=".view.review.PhotoDetailActivity"
             android:theme="@style/Theme.AppCompat.ActivityTransparent" />
-        <activity android:name=".view.mypage.MypageCourseActivity"></activity>
-        <activity android:name=".view.review.ReviewWriteActivity"></activity>
-        <activity android:name=".view.review.WriteDayActivity"></activity>
+        <activity android:name=".view.mypage.MypageCourseActivity" />
+        <activity android:name=".view.review.ReviewWriteActivity" />
+        <activity android:name=".view.review.WriteDayActivity" />
+        <activity android:name=".view.review.ReviewActivity"></activity>
     </application>
 
 </manifest>
