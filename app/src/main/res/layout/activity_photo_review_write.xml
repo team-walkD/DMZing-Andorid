@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.review.PhotoReviewWriteActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@color/backgroundColor">
+
+            <TextView
+                android:id="@+id/photo_review_write_map"
+                android:textSize="20sp"
+                android:textColor="#1c3748"
+                android:text="데이트 맵"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/photo_review_write_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/x_btn"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="26dp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/photo_review_write_date"
+            android:text="2018. 03. 01"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="#1c3748"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <FrameLayout
+            android:id="@+id/photo_review_write_add"
+            android:layout_width="match_parent"
+            android:layout_height="360dp">
+            <ImageView
+                android:id="@+id/photo_review_write_image"
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:background="#dddddd"/>
+
+            <ImageView
+                android:id="@+id/photo_review_write_plus_ic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pic_add_plus_icon"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:text="사진을 업로드하여 사람들과 추억을 공유해보세요!"
+            android:textColor="#9b9b9b"
+            android:textSize="16sp"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/photo_review_write_complete"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#6da8c7"
+        android:layout_alignParentBottom="true"
+        android:text="완료"
+        android:fontFamily="@font/notosanscjkkr_bold"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="18sp"/>
+
+</RelativeLayout>

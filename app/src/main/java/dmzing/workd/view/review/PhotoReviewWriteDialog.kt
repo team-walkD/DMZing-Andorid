@@ -2,6 +2,7 @@ package dmzing.workd.view.review
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import dmzing.workd.R
@@ -56,9 +57,12 @@ class PhotoReviewWriteDialog(courseId : Int,context : Context) : Dialog(context)
                     text = viewholder.placeText.text.toString()
                 }
             }
-
             if(check){
-                Toast.makeText(context,text,Toast.LENGTH_LONG).show()
+                var intent = Intent(context,PhotoReviewWriteActivity::class.java)
+                intent.putExtra("place",text)
+                intent.putExtra("courseId",1)
+                context.startActivity(intent)
+                dismiss()
             } else {
                 Toast.makeText(context,"장소를 선택해주세요!",Toast.LENGTH_LONG).show()
             }

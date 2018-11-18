@@ -41,7 +41,8 @@
         <activity android:name=".view.mypage.MypageCourseActivity" />
         <activity android:name=".view.review.ReviewWriteActivity" />
         <activity android:name=".view.review.WriteDayActivity" />
-        <activity android:name=".view.review.ReviewActivity"></activity>
+        <activity android:name=".view.review.ReviewActivity" />
+        <activity android:name=".view.review.PhotoReviewWriteActivity"></activity>
     </application>
 
 </manifest>
