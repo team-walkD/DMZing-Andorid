@@ -8,11 +8,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import dmzing.workd.R
-import dmzing.workd.model.review.ReviewMapData
+import dmzing.workd.model.review.ReviewCountDto
 import java.util.ArrayList
 
-class ReviewMapAdapter(var reviewMapItems : ArrayList<ReviewMapData>, var context : Context) : RecyclerView.Adapter<ReviewMapViewHolder>(){
+class ReviewMapAdapter(var reviewMapItems : ArrayList<ReviewCountDto>, var context : Context) : RecyclerView.Adapter<ReviewMapViewHolder>(){
     private lateinit var onItemClick : View.OnClickListener
     var itemClick : Itemclick? = null
 
@@ -31,11 +32,29 @@ class ReviewMapAdapter(var reviewMapItems : ArrayList<ReviewMapData>, var contex
     override fun onBindViewHolder(p0: ReviewMapViewHolder, p1: Int) {
         var oval : ShapeDrawable = ShapeDrawable(OvalShape())
         oval.paint.color = Color.parseColor("#6da8c7")
-        p0.mapText.text = reviewMapItems.get(p1).mapTitle
-        p0.mapCount.text = reviewMapItems.get(p1).mapCount
+        when(reviewMapItems.get(p1).courseId){
+            1->{
+                p0.mapText.text = "데이트 맵"
+            }
+            2->{
+                p0.mapText.text = "역사기행 맵"
+            }
+            3->{
+                p0.mapText.text = "탐험 맵"
+            }
+            else->{
+                p0.mapText.text = "COMMING SOON"
+                p0.mapCount.visibility = View.GONE
+            }
+        }
+        p0.mapCount.text = reviewMapItems.get(p1).conut.toString()
         p0.mapCount.background = ShapeDrawable(OvalShape())
         p0.mapCount.background = oval
-        p0.mapImage.setBackgroundResource(R.drawable.bmo)
+        if(reviewMapItems.get(p1).imageUrl == null){
+            p0.mapImage.setBackgroundResource(R.drawable.bmo)
+        } else {
+            Glide.with(context).load(reviewMapItems.get(p1).imageUrl).into(p0.mapImage)
+        }
 
         p0.itemView.setOnClickListener{v : View ->
             val click = itemClick
