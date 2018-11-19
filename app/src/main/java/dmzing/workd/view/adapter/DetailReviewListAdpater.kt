@@ -11,12 +11,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import dmzing.workd.R
-import dmzing.workd.model.review.DetailReviewModel
-import kotlinx.android.synthetic.main.detail_review_item.view.*
+import dmzing.workd.model.review.SimpleReviewDto
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DetailReviewListAdpater(var itemList : ArrayList<DetailReviewModel>,var context : Context) : RecyclerView.Adapter<DetailReviewListAdpater.DetailReviewListViewHolder>() {
+class DetailReviewListAdpater(var itemList : ArrayList<SimpleReviewDto>,var context : Context) : RecyclerView.Adapter<DetailReviewListAdpater.DetailReviewListViewHolder>() {
     lateinit var itemClick : ItemClick
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): DetailReviewListViewHolder {
         val view = LayoutInflater.from(p0.context).inflate(R.layout.detail_review_item,p0,false)
@@ -29,7 +28,7 @@ class DetailReviewListAdpater(var itemList : ArrayList<DetailReviewModel>,var co
     }
 
     override fun onBindViewHolder(p0: DetailReviewListViewHolder, p1: Int) {
-        //Glide.with(context).load(itemList.get(p1).thumbnailUrl).into(p0.detailReviewImage)
+        Glide.with(context).load(itemList.get(p1).thumbnailUrl).into(p0.detailReviewImage)
         p0.detailReviewImage.background.setColorFilter(Color.parseColor("#7f000000"),PorterDuff.Mode.SRC_OVER)
         p0.detailReviewTitle.text = itemList.get(p1).title
         p0.detailReviewStartDate.text = timeStampToDate(itemList.get(p1).startAt!!)
