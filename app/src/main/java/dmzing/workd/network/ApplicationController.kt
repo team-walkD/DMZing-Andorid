@@ -11,7 +11,7 @@ class ApplicationController : Application(){
 
 
     lateinit var networkService : NetworkService
-    private val baseUrl = "http://http://52.79.50.98:8080/"
+    private val baseUrl = "http://52.79.50.98:8080/"
     companion object {
         lateinit var instance : ApplicationController
     }

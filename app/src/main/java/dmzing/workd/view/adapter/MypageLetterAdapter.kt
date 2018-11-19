@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import dmzing.workd.R
-import dmzing.workd.model.review.ReviewMapData
-import kotlinx.android.synthetic.main.my_letter_item_list.view.*
 import java.util.ArrayList
 
 class MypageLetterAdapter(var letterItems : ArrayList<String>, var context : Context) : RecyclerView.Adapter<MypageLetterAdapter.MypageLetterViewHolder>() {
