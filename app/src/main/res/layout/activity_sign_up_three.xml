@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginLeft="36dp">
+    >
 
 
         <ImageView
@@ -24,18 +24,81 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/x_btn"/>
 
-        <TextView
+        <LinearLayout
+                android:id="@+id/signUpOneTextLayout"
+                android:layout_below="@+id/signUpOneXBtn"
                 android:layout_marginTop="30.3dp"
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textColor="#1c3748"
-                android:lineSpacingExtra="11sp"
-                android:text="DMZing의 \n가족이 되어주세요!"
-        />
+                android:layout_marginHorizontal="36dp"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                <TextView
+                        android:id="@+id/signUpIntroduceText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textColor="#1c3748"
+                        android:lineSpacingExtra="11sp"
+                        tools:text="DMZing"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:includeFontPadding="false"
+                />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textColor="#1c3748"
+                        android:lineSpacingExtra="11sp"
+                        tools:text="의"
+                        android:fontFamily="@font/notosanscjkkr_regular"
+                        android:includeFontPadding="false"
+                />
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textColor="#1c3748"
+                        android:lineSpacingExtra="11sp"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:includeFontPadding="false"
+                        tools:text="가족"
+                />
+
+                <TextView
+                        android:fontFamily="@font/notosanscjkkr_regular"
+                        android:includeFontPadding="false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textColor="#1c3748"
+                        android:lineSpacingExtra="11sp"
+                        tools:text="이 되어주세요!"
+                />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
 
         <TextView
+                android:layout_marginHorizontal="36dp"
                 android:layout_marginTop="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,6 +109,7 @@
         />
 
         <TextView
+                android:layout_marginHorizontal="36dp"
                 android:layout_marginTop="42dp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
@@ -57,7 +121,8 @@
         />
 
         <EditText
-                android:layout_width="283.5dp"
+                android:layout_marginHorizontal="36dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:textSize="16sp"
@@ -68,6 +133,7 @@
                 android:hint="휴대폰 번호"
         />
         <TextView
+                android:layout_marginHorizontal="36dp"
                 android:layout_marginTop="39.5dp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
@@ -79,7 +145,8 @@
         />
 
         <EditText
-                android:layout_width="283.5dp"
+                android:layout_marginHorizontal="36dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textColor="#1c3748"
@@ -88,7 +155,6 @@
                 android:inputType="textEmailAddress"
                 android:hint="이메일"
         />
-
 
 
     </LinearLayout>

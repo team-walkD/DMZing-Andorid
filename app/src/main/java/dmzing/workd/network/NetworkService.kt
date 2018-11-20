@@ -1,12 +1,12 @@
 package dmzing.workd.network
 
+import dmzing.workd.base.BaseModel
 import dmzing.workd.model.review.PhotoReviewDto
 import dmzing.workd.model.review.ReviewCountDto
 import dmzing.workd.model.review.SimpleReviewDto
+import dmzing.workd.model.user.UserDTO
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Path
+import retrofit2.http.*
 
 /**
  * Created by VictoryWoo
@@ -41,4 +41,9 @@ interface NetworkService {
         @Path("type") type : String
     ) : Call<ArrayList<SimpleReviewDto>>
 
+    // 유저 생성
+    @POST("api/users")
+    fun postUserCreate(
+        @Body userDTO: UserDTO
+    ) : Call<BaseModel>
 }

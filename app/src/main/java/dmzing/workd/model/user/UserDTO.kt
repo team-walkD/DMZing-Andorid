@@ -1,4 +1,4 @@
-package dmzing.workd.model
+package dmzing.workd.model.user
 
 /**
  * Created by VictoryWoo

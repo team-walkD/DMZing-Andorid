@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid
+            android:color="@android:color/darker_gray" />
+
+    <stroke
+            android:color="#e0e0e0"
+            android:width="1dp"
+    />
+
+
+    <!--여기에 padding을 줌으로써 해당 백그라운드 안에 요소들이 패딩을 가질 수 있음.
+    하지만 dp로 주는 경우에는 크기가 커서 px로 주는 것으로 보이고 dp를 보고 px로 변환해야 함.-->
+    <!--    <padding
+                android:left="120px"
+                android:top="40px"
+                android:right="120px"
+                android:bottom="40px" />-->
+
+    <!--여기에 radius를 줌으로써 양 옆을 둥그런 모양을 만들 수 있다.
+    그리고 여기에 속성이 right, left, top, bottom에 대해서 radius를 줄 수 있는데
+    이렇게 줌으로써 다양한 모양을 만들 수 있는 것으로 보인다. 나중에 더 시도해보기!
+    -->
+    <corners
+            android:radius="70px" />
+</shape>
