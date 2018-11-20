@@ -14,21 +14,23 @@
             android:layout_height="match_parent">
 
         <LinearLayout
-                android:layout_marginLeft="37dp"
-                android:layout_marginRight="37dp"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
 
-            <ImageView
-                    android:layout_marginTop="47dp"
+            <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_marginTop="48dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:background="@android:color/holo_green_light"/>
 
             <TextView
+                    android:layout_marginHorizontal="36dp"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
                     android:layout_marginTop="52dp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
@@ -40,6 +42,7 @@
             />
 
             <EditText
+                    android:layout_marginHorizontal="36dp"
                     android:layout_marginTop="28dp"
                     android:hint="@string/signUp"
                     android:id="@+id/loginId"
@@ -47,6 +50,9 @@
                     android:layout_height="wrap_content"/>
 
             <TextView
+                    android:layout_marginHorizontal="36dp"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
                     android:layout_marginTop="39.5dp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
@@ -58,20 +64,38 @@
             />
 
             <EditText
+                    android:layout_marginHorizontal="36dp"
                     android:layout_marginTop="28dp"
                     android:hint="@string/signUp"
                     android:id="@+id/loginPw"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-            <ImageView
+            <RelativeLayout
+                    android:layout_marginHorizontal="54dp"
                     android:layout_marginTop="47.5dp"
                     android:layout_gravity="center_horizontal"
                     android:id="@+id/loginBtn"
-                    android:src="@drawable/login_btn_selector"
+                    android:background="@drawable/border_blue_button_templete"
                     android:text="로그인 하기"
-                    android:layout_width="252dp"
-                    android:layout_height="wrap_content"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#ffffff"
+                        android:lineSpacingExtra="8sp"
+                        android:gravity="center_horizontal"
+                        android:text="로그인 하기"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:includeFontPadding="false"
+                />
+
+
+            </RelativeLayout>
 
             <TextView
                     android:layout_marginTop="23dp"
