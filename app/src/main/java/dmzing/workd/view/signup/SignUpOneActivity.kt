@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import dmzing.workd.CommonData
 import dmzing.workd.R
 import dmzing.workd.util.Utils
 import kotlinx.android.synthetic.main.activity_sign_up_one.*
@@ -23,8 +24,8 @@ class SignUpOneActivity : AppCompatActivity(), View.OnClickListener, Utils {
                     var name : String = signUpOneName.text.toString()
                     var nickname : String = signUpOneNickname.text.toString()
                     var intent = Intent(this@SignUpOneActivity, SignUpTwoActivity::class.java)
-                    intent.putExtra("name",name)
-                    intent.putExtra("nickname",nickname)
+                    CommonData.user_name = name
+                    CommonData.user_nickname = nickname
                     startActivity(intent)
                 }else{
                     toast("정보를 입력해주세요.")
