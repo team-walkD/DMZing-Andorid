@@ -46,14 +46,4 @@
             />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/photo_review_item_hashtag"
-        android:text="#A코스 #DMZ"
-        android:textSize="14sp"
-        android:textColor="#1c3748"
-        android:fontFamily="@font/notosanscjkkr_regular"
-        android:layout_marginLeft="7.2dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
 </LinearLayout>

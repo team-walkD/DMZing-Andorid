@@ -8,7 +8,7 @@
         tools:context=".view.review.ReviewFragment" android:orientation="vertical">
 
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -49,17 +49,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/walk_d_icon"
                         android:layout_gravity="center"
-                        android:layout_toLeftOf="@+id/review_write_button"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="24dp"/>
-
-                    <ImageButton
-                        android:id="@+id/review_write_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/review_write_icon"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"/>
 
                 </RelativeLayout>
 
@@ -128,6 +119,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

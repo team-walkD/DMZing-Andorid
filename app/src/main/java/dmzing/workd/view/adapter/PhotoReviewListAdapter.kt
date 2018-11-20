@@ -9,9 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import dmzing.workd.R
-import dmzing.workd.model.review.PhotoReviewModel
+import dmzing.workd.model.review.PhotoReviewDto
+import java.text.SimpleDateFormat
+import java.util.*
 
-class PhotoReviewListAdapter(var itemList : ArrayList<PhotoReviewModel>,var context : Context) : RecyclerView.Adapter<PhotoReviewListAdapter.PhotoReviewListViewHolder>() {
+class PhotoReviewListAdapter(var itemList : ArrayList<PhotoReviewDto>, var context : Context) : RecyclerView.Adapter<PhotoReviewListAdapter.PhotoReviewListViewHolder>() {
     var itemClick : ItemClick? = null
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): PhotoReviewListViewHolder {
         val view = LayoutInflater.from(p0.context).inflate(R.layout.photo_review_item,p0,false)
@@ -24,10 +26,9 @@ class PhotoReviewListAdapter(var itemList : ArrayList<PhotoReviewModel>,var cont
     }
 
     override fun onBindViewHolder(p0: PhotoReviewListViewHolder, p1: Int) {
-        //Glide.with(context).load(itemList.get(p1).imageUrl).into(p0.photoReviewImage)
+        Glide.with(context).load(itemList.get(p1).imageUrl).into(p0.photoReviewImage)
         p0.photoReviewPlace.text = itemList.get(p1).placeName
-        //p0.photoReviewDate.text = itemList.get(p1).
-        p0.photoReviewHashTag.text = itemList.get(p1).tag
+        p0.photoReviewDate.text = timeStampToDate(itemList.get(p1).startAt!!)
 
         p0.itemView.setOnClickListener { v: View? ->
             if(itemClick != null){
@@ -41,6 +42,14 @@ class PhotoReviewListAdapter(var itemList : ArrayList<PhotoReviewModel>,var cont
         itemClick = click
     }
 
+    fun timeStampToDate(timeStamp : Long) : String{
+        var date : Date = Date(timeStamp)
+        var calendar = Calendar.getInstance()
+        calendar.time = date
+        var dateF : SimpleDateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
+        return dateF.format(calendar.time)
+    }
+
     interface ItemClick{
         fun onClick(view : View, position : Int)
     }
@@ -49,6 +58,5 @@ class PhotoReviewListAdapter(var itemList : ArrayList<PhotoReviewModel>,var cont
         var photoReviewImage : ImageView = itemView.findViewById(R.id.photo_review_item_image)
         var photoReviewDate : TextView = itemView.findViewById(R.id.photo_review_item_date)
         var photoReviewPlace : TextView = itemView.findViewById(R.id.photo_review_item_place)
-        var photoReviewHashTag : TextView = itemView.findViewById(R.id.photo_review_item_hashtag)
     }
 }

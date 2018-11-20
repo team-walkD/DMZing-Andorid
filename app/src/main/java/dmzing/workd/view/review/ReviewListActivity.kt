@@ -1,6 +1,7 @@
 package dmzing.workd.view.review
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
@@ -16,22 +17,28 @@ import android.os.Build
 import android.widget.LinearLayout
 import java.io.File.separator
 import android.graphics.drawable.GradientDrawable
+import android.util.Log
+import android.widget.Toast
 import dmzing.workd.view.adapter.ReviewListTabAdapter
 import kotlinx.android.synthetic.main.activity_review_list.*
 
 
 class ReviewListActivity : AppCompatActivity() {
 
-
     lateinit var mTabLayout : TabLayout
+    lateinit var typeName : String
+    var courseId : Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review_list)
+
+        settingDefault()
 
         settingTab()
 
         review_list_back_button.setOnClickListener {
             //뒤로가기 버튼
+            finish()
         }
 
         review_list_walkd_button.setOnClickListener {
@@ -40,13 +47,29 @@ class ReviewListActivity : AppCompatActivity() {
 
         review_list_write_button.setOnClickListener{
             //리뷰 쓰기 버튼
+            when(mTabLayout.selectedTabPosition){
+                0->{
+                    var placeSelectDialog = PhotoReviewWriteDialog(1,this)
+                    placeSelectDialog.show()
+                }
+                1->{
+                    startActivity(Intent(this,ReviewWriteActivity::class.java))
+                }
+            }
         }
 
     }
 
+    fun settingDefault(){
+        courseId = intent.getIntExtra("courseId",0)
+        typeName = intent.getStringExtra("typeName")
+
+        review_list_title_text.text = typeName
+    }
+
     fun settingTab(){
         mTabLayout = findViewById(R.id.review_list_tabLayout)
-        review_list_viewpager.adapter = ReviewListTabAdapter(supportFragmentManager,2)
+        review_list_viewpager.adapter = ReviewListTabAdapter(supportFragmentManager,2,courseId)
         mTabLayout.setupWithViewPager(review_list_viewpager)
         mTabLayout.getTabAt(0)!!.setText("사진 리뷰")
         mTabLayout.getTabAt(1)!!.setText("상세 리뷰")
