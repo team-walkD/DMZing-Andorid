@@ -22,7 +22,7 @@ class ReviewPostImageAdapter(var itemList : ArrayList<String>?,var context : Con
     }
 
     override fun onBindViewHolder(p0: ReviewPostImageViewHolder, p1: Int) {
-        //Glide.with(context).load(itemList.get(p1)).into(p0.postImage)
+        Glide.with(context).load(itemList!!.get(p1)).into(p0.postImage)
     }
 
 

@@ -1,5 +1,6 @@
 package dmzing.workd.view.review
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -63,7 +64,9 @@ class DetailReviewListFragment : Fragment() {
                         detailReviewListAdpater = DetailReviewListAdpater(response.body()!!,activity!!.applicationContext)
                         detailReviewListAdpater.setOnItemClickListener(object : DetailReviewListAdpater.ItemClick{
                             override fun onClick(view: View, position: Int) {
-                                Toast.makeText(context,position.toString(),Toast.LENGTH_LONG).show()
+                                var intent = Intent(context,ReviewActivity::class.java)
+                                intent.putExtra("reviewId",response.body()!!.get(position).id)
+                                startActivity(intent)
                             }
 
                         })

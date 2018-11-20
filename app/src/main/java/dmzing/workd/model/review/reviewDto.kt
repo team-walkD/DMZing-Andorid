@@ -6,7 +6,7 @@ data class reviewDto(
         var title : String,
         var thumbnailUrl : String,
         var courseId : Int,
-        var startAt : Int,
-        var endAt : Int,
+        var startAt : Long,
+        var endAt : Long,
         var postDto : ArrayList<PostDto>
 )

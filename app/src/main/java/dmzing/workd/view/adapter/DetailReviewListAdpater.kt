@@ -3,6 +3,7 @@ package dmzing.workd.view.adapter
 import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -28,8 +29,12 @@ class DetailReviewListAdpater(var itemList : ArrayList<SimpleReviewDto>,var cont
     }
 
     override fun onBindViewHolder(p0: DetailReviewListViewHolder, p1: Int) {
-        Glide.with(context).load(itemList.get(p1).thumbnailUrl).into(p0.detailReviewImage)
-        p0.detailReviewImage.background.setColorFilter(Color.parseColor("#7f000000"),PorterDuff.Mode.SRC_OVER)
+        if(itemList.get(p1).thumbnailUrl.equals("")){
+            p0.detailReviewImage.setBackgroundColor(Color.parseColor("#e3e3e3"))
+        } else {
+            Glide.with(context).load(itemList.get(p1).thumbnailUrl).into(p0.detailReviewImage)
+            p0.detailReviewImage.background.setColorFilter(PorterDuffColorFilter(Color.parseColor("#7f000000"),PorterDuff.Mode.SRC_OVER))
+        }
         p0.detailReviewTitle.text = itemList.get(p1).title
         p0.detailReviewStartDate.text = timeStampToDate(itemList.get(p1).startAt!!)
         p0.detailReviewEndDate.text = timeStampToDate(itemList.get(p1).endAt!!)
