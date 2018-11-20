@@ -1,6 +1,7 @@
 package dmzing.workd.network
 
 import dmzing.workd.base.BaseModel
+import dmzing.workd.model.map.CourseMainDto
 import dmzing.workd.model.review.PhotoReviewDto
 import dmzing.workd.model.review.ReviewCountDto
 import dmzing.workd.model.review.SimpleReviewDto
@@ -55,4 +56,11 @@ interface NetworkService {
     fun postUserCreate(
         @Body userDTO: UserDTO
     ) : Call<BaseModel>
+
+    //전체 코스 종류 및 정보 보기
+    //edit by 이민형
+    @GET("api/course")
+    fun getCourseList(
+        @Header("jwt") jwt : String
+    ) : Call<ArrayList<CourseMainDto>>
 }
