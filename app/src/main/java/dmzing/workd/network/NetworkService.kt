@@ -3,6 +3,7 @@ package dmzing.workd.network
 import dmzing.workd.model.review.PhotoReviewDto
 import dmzing.workd.model.review.ReviewCountDto
 import dmzing.workd.model.review.SimpleReviewDto
+import dmzing.workd.model.review.reviewDto
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -40,5 +41,13 @@ interface NetworkService {
         @Path("rid") rid : Int,
         @Path("type") type : String
     ) : Call<ArrayList<SimpleReviewDto>>
+
+    //리뷰 상세보기
+    //edit by 이민형
+    @GET("api/reviews/{rid}")
+    fun getDetailReview(
+        @Header("jwt") jwt : String,
+        @Path("rid") rid : Int
+    ) : Call<reviewDto>
 
 }
