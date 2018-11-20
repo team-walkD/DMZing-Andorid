@@ -14,34 +14,104 @@
             android:layout_above="@+id/signUpOneNextBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="37dp">
+    >
 
-        <ImageView
+        <RelativeLayout
                 android:id="@+id/signUpOneXBtn"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="26dp"
-                android:src="@drawable/x_btn"/>
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="26dp"
+                    android:src="@drawable/x_btn"/>
 
 
-        <TextView
-                android:id="@+id/signUpIntroduceText"
+        </RelativeLayout>
+
+
+        <LinearLayout
+                android:id="@+id/signUpOneTextLayout"
                 android:layout_below="@+id/signUpOneXBtn"
                 android:layout_marginTop="30.3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textColor="#1c3748"
-                android:lineSpacingExtra="11sp"
-                android:textStyle="bold"
-                android:text="DMZing의 \n가족이 되어주세요!"
-        />
+                android:layout_marginHorizontal="36dp"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                <TextView
+                        android:id="@+id/signUpIntroduceText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textColor="#1c3748"
+                        android:lineSpacingExtra="11sp"
+                        tools:text="DMZing"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:includeFontPadding="false"
+                />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textColor="#1c3748"
+                        android:lineSpacingExtra="11sp"
+                        tools:text="의"
+                        android:fontFamily="@font/notosanscjkkr_regular"
+                        android:includeFontPadding="false"
+                />
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textColor="#1c3748"
+                        android:lineSpacingExtra="11sp"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:includeFontPadding="false"
+                        tools:text="가족"
+                />
+
+                <TextView
+                        android:fontFamily="@font/notosanscjkkr_regular"
+                        android:includeFontPadding="false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textColor="#1c3748"
+                        android:lineSpacingExtra="11sp"
+                        tools:text="이 되어주세요!"
+                />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
 
         <TextView
+                android:layout_marginHorizontal="36dp"
                 android:id="@+id/signUpIntroduceNickNameText"
-                android:layout_below="@+id/signUpIntroduceText"
+                android:layout_below="@+id/signUpOneTextLayout"
                 android:layout_marginTop="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,6 +123,7 @@
 
 
         <TextView
+                android:layout_marginHorizontal="36dp"
                 android:id="@+id/signUpOneNameText"
                 android:layout_below="@+id/signUpIntroduceNickNameText"
                 android:layout_marginTop="42dp"
@@ -66,16 +137,19 @@
         />
 
         <EditText
+                android:layout_marginHorizontal="36dp"
                 android:id="@+id/signUpOneName"
                 android:layout_below="@+id/signUpOneNameText"
                 android:layout_marginTop="28dp"
                 android:hint="이름"
+                android:inputType="text"
                 android:textColor="#1c3748"
                 android:textSize="16sp"
-                android:layout_width="284dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
         <TextView
+                android:layout_marginHorizontal="36dp"
                 android:id="@+id/signUpOneNickNameText"
                 android:layout_below="@+id/signUpOneName"
                 android:layout_marginTop="39.5dp"
@@ -89,12 +163,15 @@
         />
 
         <EditText
+                android:layout_marginHorizontal="36dp"
+                android:id="@+id/signUpOneNickname"
                 android:layout_below="@+id/signUpOneNickNameText"
                 android:layout_marginTop="28dp"
                 android:hint="닉네임"
                 android:textColor="#1c3748"
                 android:textSize="16sp"
-                android:layout_width="284dp"
+                android:inputType="text"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
     </RelativeLayout>
