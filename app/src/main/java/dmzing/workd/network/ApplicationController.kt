@@ -1,6 +1,7 @@
 package dmzing.workd.network
 
 import android.app.Application
+import dmzing.workd.util.NullOnEmptyConverterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -27,6 +28,7 @@ class ApplicationController : Application(){
         val builder = Retrofit.Builder()
         val retrofit = builder
             .baseUrl(baseUrl)
+            .addConverterFactory(NullOnEmptyConverterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

@@ -47,25 +47,30 @@ class SignUpThreeActivity : AppCompatActivity(), View.OnClickListener, Utils {
 
     fun postUserCreate() {
         Log.v("woo 1994 :", "woo??")
+        Log.v("woo 413 :", CommonData.user_id)
+        Log.v("woo 413 :", CommonData.user_pw)
+        Log.v("woo 413 :", CommonData.user_nickname)
+        Log.v("woo 413 :", signUpThreePhone.text
+            .toString())
         userDTO = UserDTO(
             CommonData.user_id,
             CommonData.user_pw,
             CommonData.user_nickname,
-            signUpThreePhone.text.toString()
+            "010-4899-0373"
         )
         Log.v("woo 1994 :", "woo??")
         var userCreateResponse = networkService.postUserCreate(userDTO)
-        userCreateResponse.enqueue(object : Callback<BaseModel> {
-            override fun onFailure(call: Call<BaseModel>, t: Throwable) {
-                Log.v("woo 1994 : ",t.message)
+        userCreateResponse!!.enqueue(object : Callback<Any> {
+            override fun onFailure(call: Call<Any>, t: Throwable) {
+                Log.v("woo 1994 fail : ",t.message)
             }
 
-            override fun onResponse(call: Call<BaseModel>, response: Response<BaseModel>) {
-                if (response!!.isSuccessful) {
-                    Log.v("woo 1994 :", response.toString())
-                    Log.v("woo 1994 :", response.code().toString())
+            override fun onResponse(call: Call<Any>, response: Response<Any>) {
+                Log.v("woo success : ", response!!.body().toString())
+                Log.v("woo success : ", response!!.message().toString())
+                Log.v("woo success : ", response!!.code().toString())
                     when (response!!.code()) {
-                        200 -> {
+                        201 -> {
                             Log.v("woo 1994 :", response.headers().toString())
                             Log.v("woo 1994 :", response.message().toString())
                             startActivity(Intent(this@SignUpThreeActivity, MainActivity::class.java))
@@ -79,11 +84,8 @@ class SignUpThreeActivity : AppCompatActivity(), View.OnClickListener, Utils {
                         }
 
                     }
-                }else{
-                    //Log.v("woo 1994 fail:", response.toString())
-                    Log.v("woo 1994 fail:", response.message().toString())
                 }
-            }
+
 
         })
     }

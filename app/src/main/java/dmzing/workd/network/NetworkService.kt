@@ -56,7 +56,7 @@ interface NetworkService {
     @POST("api/users")
     fun postUserCreate(
         @Body userDTO: UserDTO
-    ) : Call<BaseModel>
+    ) : Call<Any>
 
     //전체 코스 종류 및 정보 보기
     //edit by 이민형
