@@ -3,10 +3,12 @@ package dmzing.workd.network
 import dmzing.workd.base.BaseModel
 import dmzing.workd.model.map.CourseDetailDto
 import dmzing.workd.model.map.CourseMainDto
+import dmzing.workd.model.mypage.GetMypageInfomation
 import dmzing.workd.model.review.PhotoReviewDto
 import dmzing.workd.model.review.ReviewCountDto
 import dmzing.workd.model.review.SimpleReviewDto
 import dmzing.workd.model.review.reviewDto
+import dmzing.workd.model.user.LoginUser
 import dmzing.workd.model.user.UserDTO
 import retrofit2.Call
 import retrofit2.http.*
@@ -53,6 +55,7 @@ interface NetworkService {
     ) : Call<reviewDto>
 
     // 유저 생성
+    // edit by 이승우
     @POST("api/users")
     fun postUserCreate(
         @Body userDTO: UserDTO
@@ -73,11 +76,30 @@ interface NetworkService {
             @Path("cid") cid : Int
     ) : Call<CourseDetailDto>
 
+
+    // 유저 생성
+    // edit by 이승우
+    @GET("api/users/info")
+    fun getMypageUserInformation(
+        @Header("jwt") jwt : String
+    ): Call<GetMypageInfomation>
+
+    // 로그인 통신
+    // edit by 이승우
+    @POST("api/users/login")
+    fun postLogin(
+        @Body loginUser: LoginUser
+    ) : Call<Any>
+
     //코스 주문하기
     //edit by 이민형
     @POST("api/order/course/{cid}")
     fun postCourseOrder(
-            @Header("jwt") jwt : String,
-            @Path("cid") cid : Int
+        @Header("jwt") jwt : String,
+        @Path("cid") cid : Int
     ) : Call<CourseDetailDto>
 }
+
+
+
+

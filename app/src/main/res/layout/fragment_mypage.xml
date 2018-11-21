@@ -75,10 +75,12 @@
                         android:layout_gravity="center_vertical">
 
                     <TextView
+                            android:id="@+id/mypageNickname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="18sp"
-                            android:fontFamily="sans-serif"
+                            android:fontFamily="@font/roboto_bold"
+                            android:includeFontPadding="false"
                             android:textStyle="bold"
                             android:textColor="#1c3748"
                             android:lineSpacingExtra="9sp"
@@ -87,8 +89,11 @@
                     />
 
                     <TextView
+                            android:id="@+id/mypageEmail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/notosanscjkkr_regular"
+                            android:includeFontPadding="false"
                             android:textSize="14sp"
                             android:textColor="#1c3748"
                             android:lineSpacingExtra="6sp"
@@ -143,12 +148,14 @@
                     >
 
                         <TextView
+                                android:id="@+id/mypageCourseCount"
                                 android:layout_marginTop="13dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="24sp"
-                                android:fontFamily="sans-serif"
+                                android:fontFamily="@font/roboto_bold"
+                                android:includeFontPadding="false"
                                 android:textStyle="bold"
                                 android:textColor="#1c3748"
                                 android:lineSpacingExtra="5sp"
@@ -163,6 +170,8 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="14sp"
                                 android:textColor="#1c3748"
+                                android:fontFamily="@font/notosanscjkkr_regular"
+                                android:includeFontPadding="false"
                                 android:lineSpacingExtra="6sp"
                                 android:gravity="center_horizontal"
                                 android:text="코스"/>
@@ -183,13 +192,14 @@
                             android:orientation="vertical">
 
                         <TextView
+                                android:id="@+id/mypageReviewCount"
                                 android:layout_marginTop="13dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="24sp"
-                                android:fontFamily="sans-serif"
-                                android:textStyle="bold"
+                                android:fontFamily="@font/roboto_bold"
+                                android:includeFontPadding="false"
                                 android:textColor="#1c3748"
                                 android:lineSpacingExtra="5sp"
                                 android:gravity="center_horizontal"
@@ -202,7 +212,8 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="14sp"
                                 android:textColor="#1c3748"
-                                android:lineSpacingExtra="6sp"
+                                android:lineSpacingExtra="6sp"                                android:fontFamily="@font/notosanscjkkr_regular"
+                                android:includeFontPadding="false"
                                 android:gravity="center_horizontal"
                                 android:text="리뷰"/>
 
@@ -224,13 +235,14 @@
                             android:orientation="vertical">
 
                         <TextView
+                                android:id="@+id/mypageDpPoint"
                                 android:layout_marginTop="13dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="24sp"
-                                android:fontFamily="sans-serif"
-                                android:textStyle="bold"
+                                android:fontFamily="@font/roboto_bold"
+                                android:includeFontPadding="false"
                                 android:textColor="#1c3748"
                                 android:lineSpacingExtra="5sp"
                                 android:gravity="center_horizontal"
@@ -243,7 +255,8 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="14sp"
                                 android:textColor="#1c3748"
-                                android:lineSpacingExtra="6sp"
+                                android:lineSpacingExtra="6sp"                                android:fontFamily="@font/notosanscjkkr_regular"
+                                android:includeFontPadding="false"
                                 android:gravity="center_horizontal"
                                 android:text="DP 포인트"/>
 
@@ -272,6 +285,8 @@
                             android:textSize="14sp"
                             android:textColor="#1c3748"
                             android:lineSpacingExtra="6sp"
+                            android:fontFamily="@font/notosanscjkkr_regular"
+                            android:includeFontPadding="false"
                             android:text="투어와 게임을 동시에!"
                     />
                     <TextView
@@ -282,6 +297,8 @@
                             android:textColor="#1c3748"
                             android:lineSpacingExtra="9sp"
                             android:text="나의 편지함"
+                            android:fontFamily="@font/notosanscjkkr_bold"
+                            android:includeFontPadding="false"
                             android:textStyle="bold"
                             android:layout_marginTop="2dp"
                             android:layout_marginLeft="19dp"
@@ -330,6 +347,8 @@
                         android:textSize="18sp"
                         android:textColor="#1c3748"
                         android:lineSpacingExtra="9sp"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:includeFontPadding="false"
                         android:text="FnQ"
                 />
 
@@ -355,6 +374,8 @@
                         android:textSize="18sp"
                         android:textColor="#1c3748"
                         android:lineSpacingExtra="9sp"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:includeFontPadding="false"
                         android:text="설정 및 관리"
                 />
 
