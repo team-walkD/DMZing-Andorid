@@ -76,6 +76,7 @@ interface NetworkService {
             @Path("cid") cid : Int
     ) : Call<CourseDetailDto>
 
+
     // 유저 생성
     // edit by 이승우
     @GET("api/users/info")
@@ -89,4 +90,16 @@ interface NetworkService {
     fun postLogin(
         @Body loginUser: LoginUser
     ) : Call<Any>
+
+    //코스 주문하기
+    //edit by 이민형
+    @POST("api/order/course/{cid}")
+    fun postCourseOrder(
+        @Header("jwt") jwt : String,
+        @Path("cid") cid : Int
+    ) : Call<CourseDetailDto>
 }
+
+
+
+
