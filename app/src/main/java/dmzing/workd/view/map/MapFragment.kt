@@ -1,5 +1,6 @@
 package dmzing.workd.view.map
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dmzing.workd.R
+import dmzing.workd.model.map.CourseDetailDto
 import dmzing.workd.model.map.CourseMainDto
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
@@ -50,7 +52,6 @@ class MapFragment : Fragment() {
             override fun onFailure(call: Call<ArrayList<CourseMainDto>>, t: Throwable) {
 
             }
-
             override fun onResponse(
                 call: Call<ArrayList<CourseMainDto>>,
                 response: Response<ArrayList<CourseMainDto>>
@@ -65,10 +66,41 @@ class MapFragment : Fragment() {
                             }
 
                         })
+                        courseListAdapter.SetOnMoreClickListener(object : CourseListAdapter.ItemClick{
+                            override fun OnClick(view: View, position: Int) {
+                                //코스 보러 가기
+                                getCourseDetail(courseList.get(position).id,jwt)
+                            }
+
+                        })
                         view.map_recycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
                         view.map_recycler.adapter = courseListAdapter
+                    }
+                    401->{
 
+                    }
+                    500->{
 
+                    }
+                }
+            }
+
+        })
+    }
+
+    fun getCourseDetail(cid : Int,jwt : String){
+        val getCourseDetailResponse  = networkService.getCourseDetail(jwt,cid)
+        getCourseDetailResponse.enqueue(object : Callback<CourseDetailDto>{
+            override fun onFailure(call: Call<CourseDetailDto>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<CourseDetailDto>, response: Response<CourseDetailDto>) {
+                when(response.code()){
+                    200->{
+                        var intent = Intent(context,CourseMainActivity::class.java)
+                        intent.putExtra("courseDetailDto",response.body())
+                        startActivity(intent)
                     }
                     401->{
 
