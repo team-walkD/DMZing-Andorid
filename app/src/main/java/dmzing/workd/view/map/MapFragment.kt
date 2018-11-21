@@ -63,6 +63,8 @@ class MapFragment : Fragment() {
                         courseListAdapter.SetOnLockClickListener(object : CourseListAdapter.ItemClick{
                             override fun OnClick(view: View, position: Int) {
                                 //잠김 코스 해제
+                                var courseOrderDialog = CourseOrderDialog(courseList.get(position).id,courseList.get(position).title,context!!)
+                                courseOrderDialog.show()
                             }
 
                         })
