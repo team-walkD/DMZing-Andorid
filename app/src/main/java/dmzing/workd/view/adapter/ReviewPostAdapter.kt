@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ReviewPostAdapter(var itemList : ArrayList<PostDto>,var startDate : ArrayList<Long>,var context : Context) : RecyclerView.Adapter<ReviewPostAdapter.ReviewPostViewHolder>(){
+class ReviewPostAdapter(var itemList : ArrayList<PostDto>,var startDate : Long,var context : Context) : RecyclerView.Adapter<ReviewPostAdapter.ReviewPostViewHolder>(){
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ReviewPostViewHolder {
         var view = LayoutInflater.from(p0.context).inflate(R.layout.review_post_item,p0,false)
 
@@ -32,7 +32,7 @@ class ReviewPostAdapter(var itemList : ArrayList<PostDto>,var startDate : ArrayL
 
 
         p0.postDay.text = itemList.get(p1).day.toString()
-        p0.postDate.text = timeStampToDate(startDate.get(p1),itemList.get(p1).day)
+        p0.postDate.text = timeStampToDate(startDate,itemList.get(p1).day)
         p0.postTitle.text = itemList.get(p1).title
         p0.postContent.text = itemList.get(p1).content
 
