@@ -1,6 +1,7 @@
 package dmzing.workd.network
 
 import dmzing.workd.base.BaseModel
+import dmzing.workd.model.map.CourseDetailDto
 import dmzing.workd.model.map.CourseMainDto
 import dmzing.workd.model.review.PhotoReviewDto
 import dmzing.workd.model.review.ReviewCountDto
@@ -63,4 +64,12 @@ interface NetworkService {
     fun getCourseList(
         @Header("jwt") jwt : String
     ) : Call<ArrayList<CourseMainDto>>
+
+    //코스 상세 보기
+    //edit by 이민형
+    @GET("api/course/{cid}")
+    fun getCourseDetail(
+            @Header("jwt") jwt : String,
+            @Path("cid") cid : Int
+    ) : Call<CourseDetailDto>
 }
