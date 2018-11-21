@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="335.3dp"
-    android:layout_height="99dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     
     <RelativeLayout
-        android:layout_marginLeft="24dp"
-        android:layout_width="311.3dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_width="match_parent"
         android:layout_height="87dp"
+
         android:background="@drawable/course_border">
 
         <TextView
-            android:id="@+id/myCourse_item_course"
+            android:id="@+id/myCourse_title_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="18dp"
@@ -23,10 +24,10 @@
             android:includeFontPadding="false"/>
 
         <TextView
-            android:id="@+id/myCourse_item_title"
+            android:id="@+id/myCourse_description_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/myCourse_item_course"
+            android:layout_below="@+id/myCourse_title_item"
             android:layout_marginLeft="18dp"
             android:layout_marginTop="2dp"
             android:text="코스의 제목쓰는 란"

@@ -52,6 +52,8 @@ class MypageFragment : Fragment(), View.OnClickListener, Utils {
         var view = inflater.inflate(R.layout.fragment_mypage, container, false)
         init(view)
 
+        getMypageInfo(view)
+
         return view
     }
 
