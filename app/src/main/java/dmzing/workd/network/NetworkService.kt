@@ -72,4 +72,12 @@ interface NetworkService {
             @Header("jwt") jwt : String,
             @Path("cid") cid : Int
     ) : Call<CourseDetailDto>
+
+    //코스 주문하기
+    //edit by 이민형
+    @POST("api/order/course/{cid}")
+    fun postCourseOrder(
+            @Header("jwt") jwt : String,
+            @Path("cid") cid : Int
+    ) : Call<CourseDetailDto>
 }
