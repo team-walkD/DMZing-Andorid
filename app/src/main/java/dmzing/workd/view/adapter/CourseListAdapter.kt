@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.map_course_item.view.*
 
 class CourseListAdapter(var itemList : ArrayList<CourseMainDto>,var context : Context) : RecyclerView.Adapter<CourseListAdapter.CourseListViewHolder>() {
     var itemClick : ItemClick? = null
+    var moreClick : ItemClick? = null
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): CourseListViewHolder {
         var view = LayoutInflater.from(p0.context).inflate(R.layout.map_course_item,p0,false)
 
@@ -37,6 +38,12 @@ class CourseListAdapter(var itemList : ArrayList<CourseMainDto>,var context : Co
                 }
             }
         }
+        p0.courseSee.setOnClickListener {v: View? ->
+            val click = moreClick
+            if(click != null){
+                click.OnClick(p0.itemView,p1)
+            }
+        }
         p0.courseSubDescription.text = itemList.get(p1).subDescription
         p0.courseTitle.text = itemList.get(p1).title
         p0.courseIndicator.text = (p1+1).toString()+"/"+itemList.size
@@ -45,6 +52,10 @@ class CourseListAdapter(var itemList : ArrayList<CourseMainDto>,var context : Co
 
     fun SetOnLockClickListener(click : ItemClick){
         itemClick = click
+    }
+
+    fun SetOnMoreClickListener(click : ItemClick){
+        moreClick = click
     }
 
     interface ItemClick{
