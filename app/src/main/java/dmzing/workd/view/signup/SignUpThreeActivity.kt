@@ -71,6 +71,7 @@ class SignUpThreeActivity : AppCompatActivity(), View.OnClickListener, Utils {
                 Log.v("woo success : ", response!!.code().toString())
                     when (response!!.code()) {
                         201 -> {
+                            SharedPreference.instance!!.setPrefData("jwt",response.headers().toString())
                             Log.v("woo 1994 :", response.headers().toString())
                             Log.v("woo 1994 :", response.message().toString())
                             startActivity(Intent(this@SignUpThreeActivity, MainActivity::class.java))
