@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import dmzing.workd.R
+import dmzing.workd.util.SharedPreference
 import dmzing.workd.view.login.LoginActivity
+import org.jetbrains.anko.startActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -13,10 +15,17 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        SharedPreference.instance!!.load(this)
+
         var handler = Handler()
         handler.postDelayed({
-            startActivity(Intent(this, LoginActivity::class.java))
+            if(SharedPreference.instance!!.getPrefStringData("jwt")!!.isNotEmpty())
+                startActivity(Intent(this, MainActivity::class.java))
+            else
+                startActivity<LoginActivity>()
+
             finish()
+
         },1000)
 
 
