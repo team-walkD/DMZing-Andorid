@@ -1,50 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    
-    <RelativeLayout
-        android:layout_marginHorizontal="24dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="87dp"
+        android:layout_marginTop="12dp"
+        android:layout_height="wrap_content">
 
-        android:background="@drawable/course_border">
+    <RelativeLayout
+            android:layout_marginHorizontal="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:elevation="1dp"
+            android:background="@drawable/course_border">
 
-        <TextView
-            android:id="@+id/myCourse_title_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="18dp"
-            android:text="사진 찍기 좋은 핫스팟"
-            android:textSize="14sp"
-            android:textColor="#1c3748"
-            android:fontFamily="@font/notosanscjkkr_regular"
-            android:includeFontPadding="false"/>
 
-        <TextView
-            android:id="@+id/myCourse_description_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/myCourse_title_item"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="2dp"
-            android:text="코스의 제목쓰는 란"
-            android:textSize="16sp"
-            android:textColor="#1c3748"
-            android:fontFamily="@font/notosanscjkkr_bold"
-            android:includeFontPadding="false"/>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/myCourse_title_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="사진 찍기 좋은 핫스팟"
+                    android:textSize="14sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"/>
+
+            <TextView
+                    android:id="@+id/myCourse_description_item"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/myCourse_title_item"
+                    android:layout_marginTop="2dp"
+                    android:text="코스의 제목쓰는 란"
+                    android:textSize="16sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"/>
+
+        </LinearLayout>
+
 
         <ImageView
-            android:id="@+id/mycourse_item_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="13.2dp"
-            android:background="@drawable/my_course_review_more_icon"
-            />
+                android:id="@+id/mycourse_item_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/my_course_review_more_icon"
+        />
 
     </RelativeLayout>
 

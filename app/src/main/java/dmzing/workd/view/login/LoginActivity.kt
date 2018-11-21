@@ -51,7 +51,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var networkService: NetworkService
     lateinit var loginUser: LoginUser
     companion object {
-        var jwt : String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdHkiOiJVU0VSIiwiaXNzIjoiZG16aW5nIiwiZXhwIjoxNTUxNDQ2NDU0LCJlbWFpbCI6ImxlYWtAbGVhay5jb20ifQ.PdS0L1t2JesL3aMN5e-sbYv2aEyv_v3thwEOGxKdk6o"
+        var jwt : String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdHkiOiJVU0VSIiwiaXNzIjoiZG16aW5nIiwiZXhwIjoxNTUxNDUyNDQxLCJlbWFpbCI6ImV4YW1wbGVAZ21haWwuY29tIn0.FoOgDpTqPMgescMJB09-sC_Detc_dCMBmqqQoahl1Cw "
+        //var jwt : String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdHkiOiJVU0VSIiwiaXNzIjoiZG16aW5nIiwiZXhwIjoxNTUxNDQ2NDU0LCJlbWFpbCI6ImxlYWtAbGVhay5jb20ifQ.PdS0L1t2JesL3aMN5e-sbYv2aEyv_v3thwEOGxKdk6o"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

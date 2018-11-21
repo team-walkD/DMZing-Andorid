@@ -63,7 +63,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
                 android:layout_below="@+id/mypagePointIntro"
                 android:layout_marginTop="32dp"
                 android:layout_marginHorizontal="24dp"
@@ -73,75 +73,51 @@
                 android:orientation="horizontal">
 
 
-            <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="3"
-                    android:layout_height="match_parent">
-
-                <TextView
-                        android:layout_marginLeft="13dp"
-                        android:textStyle="bold"
-                        android:layout_centerVertical="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="#1c3748"
-                        android:lineSpacingExtra="8sp"
-                        android:gravity="center_horizontal"
-                        android:text="DP 포인트"
-                />
-
-                <TextView
-                        android:layout_toLeftOf="@+id/pointDPText"
-                        android:layout_marginRight="4.3dp"
-                        android:layout_centerVertical="true"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="24sp"
-                        android:fontFamily="sans-serif"
-                        android:textStyle="bold"
-                        android:textColor="#1c3748"
-                        android:lineSpacingExtra="5sp"
-                        android:gravity="right"
-                        android:text="500"
-                />
-                <TextView
-                        android:id="@+id/pointDPText"
-                        android:layout_marginRight="17.5dp"
-                        android:textStyle="bold"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textColor="#1c3748"
-                        android:lineSpacingExtra="8sp"
-                        android:gravity="center_horizontal"
-                        android:text="DP"
-                />
-
-
-            </RelativeLayout>
-
-            <View android:layout_width="1dp"
-                  android:background="#dddddd"
-                  android:layout_height="60dp"
-                  android:layout_gravity="center"/>
-
-
             <TextView
-                    android:layout_weight="1"
+                    android:layout_marginLeft="26dp"
+                    android:textStyle="bold"
+                    android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textColor="#1c3748"
                     android:lineSpacingExtra="8sp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
                     android:gravity="center_horizontal"
-                    android:text="충전"
+                    android:text="DP 포인트"
             />
-        </LinearLayout>
+
+            <TextView
+                    android:id="@+id/mypageTotalDp"
+                    android:layout_toLeftOf="@+id/pointDPText"
+                    android:layout_marginRight="4.3dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textColor="#1c3748"
+                    android:lineSpacingExtra="5sp"
+                    android:gravity="right"
+                    android:text="500"
+            />
+            <TextView
+                    android:id="@+id/pointDPText"
+                    android:layout_marginRight="26dp"
+                    android:textStyle="bold"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="#1c3748"
+                    android:lineSpacingExtra="8sp"
+                    android:gravity="center_horizontal"
+                    android:text="DP"
+            />
+
+
+        </RelativeLayout>
 
 
     </RelativeLayout>

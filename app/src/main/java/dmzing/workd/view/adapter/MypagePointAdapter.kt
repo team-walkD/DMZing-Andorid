@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import dmzing.workd.R
+import dmzing.workd.model.mypage.GetMyDpPoint
 import dmzing.workd.model.mypage.MypagePoint
 
 /**
  * Created by VictoryWoo
  */
-class MypagePointAdapter(var items : ArrayList<MypagePoint>, var context : Context)
+class MypagePointAdapter(var items : ArrayList<GetMyDpPoint>, var context : Context)
     : RecyclerView.Adapter<MypagePointAdapter.MypagePointViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MypagePointViewHolder {
         var view = LayoutInflater.from(parent.context!!).inflate(R.layout.item_point_list, parent,false)
@@ -22,10 +23,8 @@ class MypagePointAdapter(var items : ArrayList<MypagePoint>, var context : Conte
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: MypagePointViewHolder, position: Int) {
-        holder.point_title.text = items[position].pointTitle
-        holder.point_number.text = items[position].pointNum
-        holder.point_date.text = items[position].pointDate
-        holder.point_method.text = items[position].pointMethod
+
+        holder.point_title.text = items[position].dpHistoryDtos[position].dpType
 
     }
 
