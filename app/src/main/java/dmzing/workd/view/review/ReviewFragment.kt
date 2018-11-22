@@ -15,6 +15,7 @@ import dmzing.workd.model.review.ReviewCountDto
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.GridItemDecoration
+import dmzing.workd.util.SharedPreference
 import dmzing.workd.view.adapter.ReviewMapAdapter
 import kotlinx.android.synthetic.main.fragment_review.view.*
 import retrofit2.Call
@@ -28,10 +29,12 @@ class ReviewFragment : Fragment() {
 
     lateinit var networkService : NetworkService
 
-    val jwt : String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdHkiOiJVU0VSIiwiaXNzIjoiZG16aW5nIiwiZXhwIjoxNTUxMjQ3Mzk3LCJlbWFpbCI6ImV4YW1wbGVAZ21haWwuY29tIn0.fZ7C8_U9_p02cr6koo_kppY2L_0sIZCUJBu0KW4834c"
+    lateinit var jwt : String
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_review, container,false)
         networkService = ApplicationController.instance!!.networkService
+
+        jwt = SharedPreference.instance!!.getPrefStringData("jwt","")!!
 
         registerReviewCategory(view)
 
