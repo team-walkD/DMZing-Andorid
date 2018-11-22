@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import dmzing.workd.R
 import dmzing.workd.model.mypage.MypageReviewData
+import dmzing.workd.model.mypage.review.GetMypageReviewData
 import kotlinx.android.synthetic.main.item_review_list.view.*
 
 /**
  * Created by VictoryWoo
  */
-class MypageReviewAdapter(var items : ArrayList<MypageReviewData>, var context : Context)
+class MypageReviewAdapter(var items : List<GetMypageReviewData>, var context : Context)
     : RecyclerView.Adapter<MypageReviewAdapter.MypageReviewViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MypageReviewViewHolder {
         var view = LayoutInflater.from(parent.context).inflate(R.layout.item_review_list, parent, false)
@@ -23,8 +24,7 @@ class MypageReviewAdapter(var items : ArrayList<MypageReviewData>, var context :
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: MypageReviewViewHolder, position: Int) {
-        holder.review_title.text = items[position].reviewTitle
-        holder.review_date.text = items[position].reviewDate
+
     }
 
     inner class MypageReviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

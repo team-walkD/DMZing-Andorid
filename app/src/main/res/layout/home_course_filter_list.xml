@@ -6,7 +6,7 @@
         android:layout_height="41dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/filter_background">
+        android:background="@drawable/filter_opacity_background">
     <TextView
             android:id="@+id/filterMapItem"
             android:layout_centerInParent="true"

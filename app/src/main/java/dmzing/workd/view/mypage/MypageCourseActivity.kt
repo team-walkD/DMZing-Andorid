@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import dmzing.workd.R
 import dmzing.workd.model.mypage.CourseDatas
-import dmzing.workd.model.mypage.GetMypageCourse
+
 import dmzing.workd.model.mypage.MypageCourseData
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
