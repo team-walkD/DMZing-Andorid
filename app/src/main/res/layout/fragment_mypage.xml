@@ -43,6 +43,7 @@
     <ScrollView
             android:layout_below="@+id/mypageToolbar"
             android:layout_width="match_parent"
+            android:background="@android:color/white"
             android:layout_height="match_parent">
 
         <LinearLayout
@@ -124,7 +125,7 @@
                     android:layout_marginTop="26dp"
                     android:layout_below="@+id/mypageTopLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="360dp"
+                    android:layout_height="147dp"
                     android:background="@color/backgroundColor">
 
 
@@ -211,7 +212,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="14sp"
                                 android:textColor="#1c3748"
-                                android:lineSpacingExtra="6sp"                                android:fontFamily="@font/notosanscjkkr_regular"
+                                android:lineSpacingExtra="6sp" android:fontFamily="@font/notosanscjkkr_regular"
                                 android:includeFontPadding="false"
                                 android:gravity="center_horizontal"
                                 android:text="리뷰"/>
@@ -254,7 +255,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="14sp"
                                 android:textColor="#1c3748"
-                                android:lineSpacingExtra="6sp"                                android:fontFamily="@font/notosanscjkkr_regular"
+                                android:lineSpacingExtra="6sp" android:fontFamily="@font/notosanscjkkr_regular"
                                 android:includeFontPadding="false"
                                 android:gravity="center_horizontal"
                                 android:text="DP 포인트"/>
@@ -265,7 +266,7 @@
 
                 </LinearLayout>
 
-                <RelativeLayout
+                <!--<RelativeLayout
                         android:layout_below="@+id/mypageItemLayout"
                         android:layout_marginTop="12dp"
                         android:layout_marginHorizontal="24dp"
@@ -319,14 +320,14 @@
                             android:src="@drawable/my_more_right_btn"/>
 
 
-                </RelativeLayout>
+                </RelativeLayout>-->
 
 
             </RelativeLayout>
 
 
             <View android:layout_width="match_parent"
-                  android:background="#dddddd"
+                  android:background="#52707070"
                   android:layout_height="12dp"/>
             
             

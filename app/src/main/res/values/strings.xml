@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DMZing</string>
-    <string name="signUp">회원가입</string>
+    <string name="signUpId">이메일</string>
+    <string name="signUpPw">비밀번호</string>
 </resources>
