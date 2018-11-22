@@ -10,6 +10,7 @@ import dmzing.workd.R
 import dmzing.workd.model.review.reviewDto
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
+import dmzing.workd.util.SharedPreference
 import dmzing.workd.view.adapter.ReviewPostAdapter
 import kotlinx.android.synthetic.main.activity_review.*
 import retrofit2.Call
@@ -22,13 +23,15 @@ class ReviewActivity : AppCompatActivity() {
     lateinit var mReviewDto : reviewDto
     lateinit var networkService: NetworkService
     lateinit var mReviewPostAdapter : ReviewPostAdapter
-    val jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdHkiOiJVU0VSIiwiaXNzIjoiZG16aW5nIiwiZXhwIjoxNTUxMjQ3Mzk3LCJlbWFpbCI6ImV4YW1wbGVAZ21haWwuY29tIn0.fZ7C8_U9_p02cr6koo_kppY2L_0sIZCUJBu0KW4834c"
+    lateinit var jwt : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review)
         var rid = intent.getIntExtra("reviewId",0)
         networkService = ApplicationController.instance!!.networkService
 
+
+        jwt = SharedPreference.instance!!.getPrefStringData("jwt","")!!
 //        review_back_button.setOnClickListener {
 //            finish()
 //        }
