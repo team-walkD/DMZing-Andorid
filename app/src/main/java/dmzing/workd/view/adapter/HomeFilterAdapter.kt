@@ -1,6 +1,7 @@
 package dmzing.workd.view.adapter
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +33,24 @@ class HomeFilterAdapter(var items: ArrayList<HomeFilterData>, var context: Conte
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: HomeFilterViewHolder, position: Int) {
-        holder.fiter_map.text = items[position].filter_map_text
+        when(items[position].id){
+            1->{
+                if(items[position].isPicked)
+                    holder.filter_btn.background = ContextCompat.getDrawable(context, R.drawable.filter_background)
+                holder.fiter_map.text = "데이트 맵"
+            }
+            2->{
+                if(items[position].isPicked)
+                    holder.filter_btn.background = ContextCompat.getDrawable(context, R.drawable.filter_background)
+                holder.fiter_map.text = "역사기행 맵"
+            }
+            3->{
+                if(items[position].isPicked)
+                    holder.filter_btn.background = ContextCompat.getDrawable(context, R.drawable.filter_background)
+                holder.fiter_map.text = "자연탐방 맵"
+            }
+        }
+
     }
 
     inner class HomeFilterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

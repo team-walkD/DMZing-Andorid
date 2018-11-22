@@ -1,12 +1,15 @@
 package dmzing.workd.network
 
 import dmzing.workd.base.BaseModel
+import dmzing.workd.model.home.HomeCourseData
+import dmzing.workd.model.home.HomePostMission
+import dmzing.workd.model.home.Places
 import dmzing.workd.model.map.CourseDetailDto
 import dmzing.workd.model.map.CourseMainDto
 import dmzing.workd.model.mypage.CourseDatas
 import dmzing.workd.model.mypage.GetMyDpPoint
-import dmzing.workd.model.mypage.GetMypageCourse
 import dmzing.workd.model.mypage.GetMypageInfomation
+import dmzing.workd.model.mypage.review.GetMypageReviewData
 import dmzing.workd.model.review.PhotoReviewDto
 import dmzing.workd.model.review.ReviewCountDto
 import dmzing.workd.model.review.SimpleReviewDto
@@ -88,7 +91,9 @@ interface NetworkService {
     /*== 승우 ==*/
     // 유저 생성
     // edit by 이승우
-    @Headers("Content-type: application/json")
+
+    // 여기는 @Headers가 없어야 함..
+    //@Headers("Content-type: application/json")
     @POST("api/users")
     fun postUserCreate(
         @Body userDTO: UserDTO
@@ -96,9 +101,9 @@ interface NetworkService {
 
 
 
-    // 유저 생성
+    //
     // edit by 이승우
-    @Headers("Content-type: application/json")
+    //@Headers("Content-type: application/json")
     @GET("api/users/info")
     fun getMypageUserInformation(
         @Header("jwt") jwt: String
@@ -128,10 +133,10 @@ interface NetworkService {
 
     // 마이페이지 DP 조회
     // edit by 이승우
-    @Headers("Content-type: application/json")
+
     @GET("api/users/dp")
     fun getDpPoint(
-        @Header("jwt ") jwt: String
+        @Header("jwt") jwt: String
     ): Call<GetMyDpPoint>
 
 
@@ -149,7 +154,27 @@ interface NetworkService {
         @Header("jwt") jwt: String
     ) : Call<List<CourseDatas>>
 
+    // 마이페이지 리뷰 조회
+    // edit by 이승우
+    @GET("api/users/reviews")
+    fun getMypageReviews(
+        @Header("jwt") jwt: String
+    ) : Call<List<GetMypageReviewData>>
 
+
+    // 홈 화면에서 데이터 불러오기
+    // edit by 이승우
+    @GET("api/mission")
+    fun getHomeMissions(
+        @Header("jwt") jwt: String
+    ) : Call<HomeCourseData>
+
+
+    @POST("api/mission")
+    fun postMission(
+        @Header("jwt") jwt: String,
+        @Body homePostMission: HomePostMission
+    ) : Call<ArrayList<Places>>
     /*FIXME
     * post로 보낼 때 @Headers에 Content-type : application/json을 명시해주어야 한다.
     * 그렇지 않으면 서버에 값이 제대로 json 형태로 들어가지 않음.

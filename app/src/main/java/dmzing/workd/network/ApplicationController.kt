@@ -25,12 +25,16 @@ class ApplicationController : Application(){
 
     fun buildNetwork(){
 
+
+
         val builder = Retrofit.Builder()
         val retrofit = builder
             .baseUrl(baseUrl)
             .addConverterFactory(NullOnEmptyConverterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
+
 
         networkService = retrofit.create(NetworkService::class.java)
     }

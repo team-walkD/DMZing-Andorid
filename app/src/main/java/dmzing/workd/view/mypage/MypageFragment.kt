@@ -66,6 +66,7 @@ class MypageFragment : Fragment(), View.OnClickListener, Utils {
             }
 
             override fun onResponse(call: Call<GetMypageInfomation>, response: Response<GetMypageInfomation>) {
+                Log.v("1121 woo r:",response.code()!!.toString())
                 when(response!!.code()){
                     200->{
                         view.mypageNickname.text = response.body()!!.nick

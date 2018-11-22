@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import dmzing.workd.R
+import dmzing.workd.model.mypage.DpHistoryData
 import dmzing.workd.model.mypage.GetMyDpPoint
 import dmzing.workd.model.mypage.MypagePoint
 import dmzing.workd.network.ApplicationController
@@ -33,7 +34,7 @@ class MypagePointActivity : AppCompatActivity(), View.OnClickListener, Utils {
     }
 
 
-    lateinit var pointItems: ArrayList<GetMyDpPoint>
+    lateinit var pointItems: ArrayList<DpHistoryData>
     lateinit var mypagePointAdapter: MypagePointAdapter
     lateinit var networkService: NetworkService
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,11 +46,7 @@ class MypagePointActivity : AppCompatActivity(), View.OnClickListener, Utils {
 
         pointItems = ArrayList()
 
-
-        mypagePointAdapter = MypagePointAdapter(pointItems, this)
-
-        pointListRecyclerview.adapter = mypagePointAdapter
-        pointListRecyclerview.layoutManager = LinearLayoutManager(this)
+        pointListRecyclerview.setHasFixedSize(true)
 
 
     }
@@ -66,6 +63,12 @@ class MypagePointActivity : AppCompatActivity(), View.OnClickListener, Utils {
                 when(response!!.code()){
                     200->{
                         mypageTotalDp.text = response.body()!!.totalDp.toString()
+                        pointItems = response.body()!!.dpHistoryDtos
+
+                        mypagePointAdapter = MypagePointAdapter(pointItems, this@MypagePointActivity)
+                        pointListRecyclerview.adapter = mypagePointAdapter
+                        pointListRecyclerview.layoutManager = LinearLayoutManager(this@MypagePointActivity)
+
 
                     }
                     401->{

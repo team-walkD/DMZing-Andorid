@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="336dp" android:layout_height="560dp"
+        android:layout_marginLeft="24dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <ImageView
+                android:id="@+id/letterImageItem"
+                android:background="@android:color/holo_blue_dark"
+                android:scaleType="fitXY"
+                android:layout_width="336dp"
+                android:layout_height="168dp"/>
+
+        <TextView
+                android:id="@+id/letterSubTitleItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="8sp"
+                android:text="사진 찍기 좋은 핫스팟 "
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="13dp"
+        />
+
+        <TextView
+                android:id="@+id/letterTitleItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="12sp"
+                android:layout_marginLeft="19dp"
+                android:textStyle="bold"
+                android:text="데이트하기 좋은 코스"
+        />
+
+        <TextView
+                android:id="@+id/letterHint"
+                android:layout_marginHorizontal="22dp"
+                android:layout_marginTop="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+        />
+
+
+        <View
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="51dp"
+                android:layout_width="265dp"
+                android:layout_height="1dp"
+                android:background="@color/viewColor"/>
+
+        <RelativeLayout
+                android:id="@+id/letterDetailBtn"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="17.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:background="@drawable/blue_round_btn"
+                android:layout_marginBottom="30dp"
+                android:text="코스 싱세보기">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#ffffff"
+                    android:lineSpacingExtra="8sp"
+                    android:gravity="center_horizontal"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:text="편지 찾기"
+            />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>
