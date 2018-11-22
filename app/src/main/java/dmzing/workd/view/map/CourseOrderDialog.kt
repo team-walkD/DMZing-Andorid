@@ -8,6 +8,7 @@ import dmzing.workd.R
 import dmzing.workd.model.map.CourseDetailDto
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
+import dmzing.workd.util.SharedPreference
 import kotlinx.android.synthetic.main.dialog_course_order.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,9 +17,11 @@ import retrofit2.Response
 class CourseOrderDialog(var courseId : Int,var courseTitle : String,context : Context) : Dialog(context){
     lateinit var courseDetailDto: CourseDetailDto
     lateinit var networkService : NetworkService
-    val jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdHkiOiJVU0VSIiwiaXNzIjoiZG16aW5nIiwiZXhwIjoxNTUxMjQ3Mzk3LCJlbWFpbCI6ImV4YW1wbGVAZ21haWwuY29tIn0.fZ7C8_U9_p02cr6koo_kppY2L_0sIZCUJBu0KW4834c"
+    lateinit var jwt : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        jwt = SharedPreference.instance!!.getPrefStringData("jwt","")!!
 
         //뒷 배경 투명
         val lpWindow = WindowManager.LayoutParams()

@@ -14,6 +14,7 @@ import dmzing.workd.model.review.PhotoReviewDto
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.GridItemDecoration
+import dmzing.workd.util.SharedPreference
 import dmzing.workd.view.adapter.PhotoReviewListAdapter
 import kotlinx.android.synthetic.main.fragment_photo_review_list.view.*
 import retrofit2.Call
@@ -25,13 +26,15 @@ class PhotoReviewFragment : Fragment() {
     lateinit var mPhotoReviewItems : ArrayList<PhotoReviewDto>
     lateinit var mPhotoReviewAdpater : PhotoReviewListAdapter
     lateinit var networkService: NetworkService
-    val jwt : String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdHkiOiJVU0VSIiwiaXNzIjoiZG16aW5nIiwiZXhwIjoxNTUxMjQ3Mzk3LCJlbWFpbCI6ImV4YW1wbGVAZ21haWwuY29tIn0.fZ7C8_U9_p02cr6koo_kppY2L_0sIZCUJBu0KW4834c"
+    lateinit var jwt : String
     var pid : Int = 0
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_photo_review_list, container, false)
         var courseId = arguments!!.getInt("courseId")
 
         networkService = ApplicationController.instance!!.networkService
+
+        jwt = SharedPreference.instance!!.getPrefStringData("jwt","")!!
 
         mPhotoReviewItems = ArrayList()
 
