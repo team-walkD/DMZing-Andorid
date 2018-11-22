@@ -46,6 +46,9 @@ class CourseOrderDialog(var courseId : Int,var courseTitle : String,context : Co
                     when(response.code()){
                         201->{
                             courseDetailDto = response.body()!!
+                            var courseOrderResultDialog = CourseOrderResultDialog(courseDetailDto,context)
+                            courseOrderResultDialog.show()
+                            dismiss()
                         }
                         401->{
 

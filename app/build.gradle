@@ -37,4 +37,5 @@ dependencies {
     implementation 'org.jetbrains.anko:anko:0.10.5'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.ryanjeffreybrooks:indefinitepagerindicator:1.0.10'
+    implementation files('libs/com.skt.Tmap_1.56.jar')
 }

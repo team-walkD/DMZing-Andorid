@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import dmzing.workd.R
 import dmzing.workd.model.map.CourseDetailDto
+import dmzing.workd.view.course.CourseDetailActivity
 import dmzing.workd.view.review.ReviewActivity
 import kotlinx.android.synthetic.main.dialog_course_order_result.*
 
@@ -30,9 +31,9 @@ class CourseOrderResultDialog(var courseDetailDto: CourseDetailDto?,context: Con
 
         dialog_course_order_result_close.setOnClickListener {
             if(courseDetailDto != null){
-//                var intent = Intent(context,ReviewActivity::class.java)
-//                intent.putExtra("courseDetailDto",courseDetailDto)
-//                context.startActivity(intent)
+                var intent = Intent(context,CourseDetailActivity::class.java)
+                intent.putExtra("courseDetailDto",courseDetailDto)
+                context.startActivity(intent)
                 dismiss()
             } else {
                 dismiss()
