@@ -1,15 +1,491 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.course.CourseDetailActivity"
+    android:background="#f4f6f8">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.course.CourseDetailActivity">
+        android:orientation="vertical">
 
 
-    <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="mm?"/>
-</LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/course_detail_mainimage"
+                android:layout_width="match_parent"
+                android:layout_height="315dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp">
+
+                <ImageView
+                    android:id="@+id/course_detail_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/x_white_btn"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:id="@+id/course_detail_walk_d"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/walk_d_white_icon"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/course_detail_descript_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="33dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="184dp">
+
+                <TextView
+                    android:id="@+id/course_detail_subdescrip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:text="사진 찍기 좋은 핫스팟"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/course_detail_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/course_detail_subdescrip"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:text="데이트하기 좋은 코스"
+                    android:textColor="#ffffff"
+                    android:textSize="24sp" />
+
+                <RelativeLayout
+                    android:layout_centerVertical="true"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/like_circle">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/heart_filled_icon"
+                        android:layout_centerHorizontal="true"
+                        android:layout_above="@+id/course_detail_like_count"/>
+
+                    <TextView
+                        android:id="@+id/course_detail_like_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="#1c3748"
+                        android:gravity="center_horizontal"
+                        android:fontFamily="@font/notosanscjkkr_regular"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="8dp"
+                        android:text="489"/>
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="306dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_below="@+id/course_detail_descript_layout"
+                android:background="@drawable/mypage_border">
+
+                <TextView
+                    android:id="@+id/course_detail_title_explain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="22dp"
+                    android:textSize="20sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:text="데이트하기 좋은 코스란?"/>
+
+                <TextView
+                    android:id="@+id/course_detail_maindescrip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="39dp"
+                    android:layout_below="@+id/course_detail_title_explain"
+                    android:layout_marginTop="18dp"
+                    android:textSize="16sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:text="연인, 가족, 친구와 함께 가볍게 즐기기 좋은 디엠징 코스입니다."
+                    />
+                
+                <View
+                    android:id="@+id/course_detail_bar_view1"
+                    android:background="#dddddd"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/course_detail_maindescrip"
+                    android:layout_marginTop="24dp"/>
+
+                <RelativeLayout
+                    android:layout_below="@+id/course_detail_bar_view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="29dp"
+                    android:layout_marginRight="29dp"
+                    android:layout_marginTop="39dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/course_detail_level"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/blue_circle_line"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:text="중"
+                            android:textColor="#1c3748"
+                            android:fontFamily="@font/notosanscjkkr_bold"
+                            android:includeFontPadding="false"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="9dp"
+                            android:fontFamily="@font/notosanscjkkr_regular"
+                            android:includeFontPadding="false"
+                            android:textSize="14sp"
+                            android:textColor="#1c3748"
+                            android:layout_gravity="center_horizontal"
+                            android:text="난이도"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_centerHorizontal="true">
+
+                        <TextView
+                            android:id="@+id/course_detail_estimatedTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/blue_circle_line"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:text="3"
+                            android:textColor="#1c3748"
+                            android:fontFamily="@font/roboto_bold"
+                            android:includeFontPadding="false"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="9dp"
+                            android:fontFamily="@font/notosanscjkkr_regular"
+                            android:includeFontPadding="false"
+                            android:textSize="14sp"
+                            android:textColor="#1c3748"
+                            android:layout_gravity="center_horizontal"
+                            android:text="예상소요 시간"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_alignParentRight="true">
+
+                        <TextView
+                            android:id="@+id/course_detail_review_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/blue_circle_line"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:text="50"
+                            android:textColor="#1c3748"
+                            android:fontFamily="@font/roboto_bold"
+                            android:includeFontPadding="false"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="9dp"
+                            android:fontFamily="@font/notosanscjkkr_regular"
+                            android:includeFontPadding="false"
+                            android:textSize="14sp"
+                            android:textColor="#1c3748"
+                            android:layout_gravity="center_horizontal"
+                            android:text="리뷰수"
+                            />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp">
+
+            <RelativeLayout
+                android:id="@+id/course_detail_calendar_simple"
+                android:layout_width="match_parent"
+                android:layout_height="470dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:background="@drawable/mypage_border">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginLeft="18dp"
+                    android:textSize="20sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:text="코스 일정 보기"
+                    />
+
+                <RelativeLayout
+                    android:id="@+id/course_detail_calendar_simple_tmap"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:layout_marginTop="66dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp">
+
+                </RelativeLayout>
+                
+                
+                <RelativeLayout
+                    android:id="@+id/course_detail_blue_line4"
+                    android:layout_below="@+id/course_detail_calendar_simple_tmap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="23dp"
+                    android:layout_marginLeft="42dp"
+                    android:layout_marginRight="42dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#6da8c7"
+                        android:layout_centerVertical="true"
+                        />
+
+
+                    <TextView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:background="@drawable/circle_blue"
+                        android:fontFamily="@font/roboto_bold"
+                        android:includeFontPadding="false"
+                        android:gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#ffffff"
+                        android:text="1"/>
+                    <TextView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginLeft="80dp"
+                        android:background="@drawable/circle_blue"
+                        android:fontFamily="@font/roboto_bold"
+                        android:includeFontPadding="false"
+                        android:gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#ffffff"
+                        android:text="2"/>
+                    <TextView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginRight="80dp"
+                        android:background="@drawable/circle_blue"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="@font/roboto_bold"
+                        android:includeFontPadding="false"
+                        android:gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#ffffff"
+                        android:text="3"/>
+                    <TextView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:background="@drawable/circle_blue"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="@font/roboto_bold"
+                        android:includeFontPadding="false"
+                        android:gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#ffffff"
+                        android:text="4"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/course_detail_blue_line3"
+                    android:visibility="gone"
+                    android:layout_below="@+id/course_detail_calendar_simple_tmap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="23dp"
+                    android:layout_marginLeft="42dp"
+                    android:layout_marginRight="42dp">
+                    
+                    <TextView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:background="@drawable/circle_blue"
+                        android:fontFamily="@font/roboto_bold"
+                        android:includeFontPadding="false"
+                        android:gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#ffffff"
+                        android:text="1"/>
+                    <TextView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:background="@drawable/circle_blue"
+                        android:fontFamily="@font/roboto_bold"
+                        android:layout_centerHorizontal="true"
+                        android:includeFontPadding="false"
+                        android:gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#ffffff"
+                        android:text="2"/>
+                    <TextView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:background="@drawable/circle_blue"
+                        android:layout_alignParentRight="true"
+                        android:fontFamily="@font/roboto_bold"
+                        android:includeFontPadding="false"
+                        android:gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#ffffff"
+                        android:text="3"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#6da8c7"
+                        android:layout_centerVertical="true"
+                        />
+
+                </RelativeLayout>
+
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/course_detail_calendar_simple_recycler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginLeft="21dp"
+                    android:layout_below="@+id/course_detail_calendar_simple_tmap">
+
+                </android.support.v7.widget.RecyclerView>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#dddddd"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@+id/course_detail_calendar_simple_recycler"/>
+
+                <RelativeLayout
+                    android:layout_above="@+id/course_detail_calendar_see_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="21dp"
+                    android:layout_marginBottom="32dp">
+
+                    <!--<ImageView-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:background="@drawable/"/>-->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#1c3748"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:includeFontPadding="false"
+                        android:text="총 소요시간"/>
+
+                    <TextView
+                        android:id="@+id/course_detail_calendar_simple_totalTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textSize="14sp"
+                        android:textColor="#1c3748"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:includeFontPadding="false"
+                        android:text="n.n 시간"/>
+
+                </RelativeLayout>
+                
+                <TextView
+                    android:id="@+id/course_detail_calendar_see_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="42dp"
+                    android:layout_marginRight="42dp"
+                    android:layout_marginBottom="28dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/border_blue_button_templete"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:gravity="center"
+                    android:text="상세 보기"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</android.support.v4.widget.NestedScrollView>
