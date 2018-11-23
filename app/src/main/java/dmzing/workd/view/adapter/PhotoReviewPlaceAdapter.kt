@@ -12,7 +12,8 @@ import android.widget.TextView
 import dmzing.workd.R
 import kotlinx.android.synthetic.main.dialog_photo_review_place_item.view.*
 
-class PhotoReviewPlaceAdapter(var itemList: ArrayList<String>, var context: Context) : RecyclerView.Adapter<PhotoReviewPlaceAdapter.PhotoReviewPlaceViewHolder>() {
+class PhotoReviewPlaceAdapter(var itemList: ArrayList<String>, var context: Context)
+    : RecyclerView.Adapter<PhotoReviewPlaceAdapter.PhotoReviewPlaceViewHolder>() {
     var itemSelect : setPlaceCheck? = null
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): PhotoReviewPlaceViewHolder {
         var view = LayoutInflater.from(context).inflate(R.layout.dialog_photo_review_place_item,p0,false)
