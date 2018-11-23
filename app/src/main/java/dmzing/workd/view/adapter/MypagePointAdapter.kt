@@ -7,13 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import dmzing.workd.R
+import dmzing.workd.model.mypage.DpHistoryData
 import dmzing.workd.model.mypage.GetMyDpPoint
 import dmzing.workd.model.mypage.MypagePoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Created by VictoryWoo
  */
-class MypagePointAdapter(var items : ArrayList<GetMyDpPoint>, var context : Context)
+class MypagePointAdapter(var items : ArrayList<DpHistoryData>, var context : Context)
     : RecyclerView.Adapter<MypagePointAdapter.MypagePointViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MypagePointViewHolder {
         var view = LayoutInflater.from(parent.context!!).inflate(R.layout.item_point_list, parent,false)
@@ -24,8 +27,25 @@ class MypagePointAdapter(var items : ArrayList<GetMyDpPoint>, var context : Cont
 
     override fun onBindViewHolder(holder: MypagePointViewHolder, position: Int) {
 
-        holder.point_title.text = items[position].dpHistoryDtos[position].dpType
+        holder.point_title.text = items[position].dpType
 
+        holder.point_date.text = timeStampToDate(items[position].createdAt)
+        if(items[position].dp>0){
+            holder.point_method.text = "충전"
+            holder.point_number.text = "+ "+items[position].dp.toString()
+        }
+        else{
+            holder.point_method.text = "차감"
+            holder.point_number.text = "- "+items[position].dp.toString()
+        }
+
+
+    }
+
+    fun timeStampToDate(timeStamp : Long) : String{
+        var date : Date = Date(timeStamp)
+        var dateF : SimpleDateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
+        return dateF.format(date)
     }
 
     inner class MypagePointViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -1,34 +1,72 @@
 package dmzing.workd.view.mypage
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import dmzing.workd.R
 import dmzing.workd.model.mypage.MypageReviewData
+import dmzing.workd.model.mypage.review.GetMypageReviewData
+import dmzing.workd.network.ApplicationController
+import dmzing.workd.network.NetworkService
+import dmzing.workd.util.SharedPreference
 import dmzing.workd.view.adapter.MypageReviewAdapter
 import kotlinx.android.synthetic.main.activity_mypage_review.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MypageReviewActivity : AppCompatActivity() {
 
-    lateinit var reviewItems : ArrayList<MypageReviewData>
-    lateinit var mypageReviewAdapter : MypageReviewAdapter
+    lateinit var reviewItems: List<GetMypageReviewData>
+    lateinit var mypageReviewAdapter: MypageReviewAdapter
+    lateinit var networkService: NetworkService
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage_review)
-        reviewItems = ArrayList()
-        for(i in 0..10)
-            reviewItems.add(MypageReviewData("오늘의 장소는~~","2018.03.03"))
+        networkService = ApplicationController.instance.networkService
+        SharedPreference.instance!!.load(this)
 
-
-        reviewNested.scrollTo(0,0)
-        reviewList.setHasFixedSize(true)
-        mypageReviewAdapter = MypageReviewAdapter(reviewItems, this)
-        reviewList.layoutManager = LinearLayoutManager(this)
-        reviewList.adapter = mypageReviewAdapter
+        reviewItems = listOf()
+        getMypageReview()
 
 
 
+
+    }
+
+    fun getMypageReview() {
+        var reviewResponse = networkService
+            .getMypageReviews(SharedPreference.instance!!.getPrefStringData("jwt")!!)
+
+        reviewResponse.enqueue(object : Callback<List<GetMypageReviewData>>{
+            override fun onFailure(call: Call<List<GetMypageReviewData>>, t: Throwable) {
+                Log.v("755 woo f",t.message)
+            }
+
+            override fun onResponse(
+                call: Call<List<GetMypageReviewData>>,
+                response: Response<List<GetMypageReviewData>>) {
+
+                Log.v("755 woo r",response.code().toString())
+                Log.v("755 woo r",response.body().toString())
+                when(response!!.code()){
+                    200->{
+                        reviewNested.scrollTo(0, 0)
+                        reviewList.setHasFixedSize(true)
+                        mypageReviewAdapter = MypageReviewAdapter(reviewItems, this@MypageReviewActivity)
+                        reviewList.layoutManager = LinearLayoutManager(this@MypageReviewActivity)!!
+                        reviewList.adapter = mypageReviewAdapter
+                    }
+                }
+
+
+            }
+
+        })
     }
 }

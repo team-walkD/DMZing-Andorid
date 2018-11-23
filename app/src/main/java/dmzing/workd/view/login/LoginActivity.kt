@@ -28,12 +28,12 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!) {
             loginBtn -> {
-                //postLogin()
+                postLogin()
 
                 // 임시 방편임.
-                SharedPreference.instance!!.setPrefData("jwt", jwt)
+                /*SharedPreference.instance!!.setPrefData("jwt", jwt)
                 startActivity<MainActivity>()
-                finish()
+                finish()*/
             }
             loginToSignBtn -> {
                 startActivity(Intent(this, SignUpOneActivity::class.java))
@@ -72,6 +72,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     fun postLogin() {
         Log.v("1011 woo in:", "ㅇ?")
         loginUser = LoginUser(loginId.text.toString(), loginPw.text.toString())
+        Log.v("1011 woo in:", "${loginId.text.toString()}")
+        Log.v("1011 woo in:", "${loginPw.text.toString()}")
         var loginResponse = networkService.postLogin(loginUser)
         loginResponse.enqueue(object : Callback<Any> {
             override fun onFailure(call: Call<Any>, t: Throwable) {
@@ -80,13 +82,23 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
             override fun onResponse(call: Call<Any>, response: Response<Any>) {
                 Log.v("1011 woo r:", response!!.body().toString())
-                Log.v("1011 woo r:", response!!.code().toString())
+                Log.v("1011 woo r:", response!!.errorBody().toString())
+                Log.v("1011 woo r:", response!!.toString())
                 when (response!!.code()) {
                     200 -> {
                         Log.v("1011 woo s:", response!!.body().toString())
                         Log.v("1011 woo s:", response!!.code().toString())
-                        Log.v("1011 woo s:", response!!.message().toString())
-                        SharedPreference.instance!!.setPrefData("jwt",response!!.headers().toString())
+                        Log.v("1011 woo s:", response!!.headers().toString())
+
+
+                        /*FIXME
+                        * response의 header에 토큰이 담겨서 올 경우 header를 바로 사용할 수 없고,
+                        * header를 보고 그 안에서 jwt를 뽑아내야 한다.
+                        * 지금의 경우에는 0번째 인덱스에 jwt라는 키값이 있는 걸 확인했고
+                        * 그래서 0번째 인덱스의 value를 뽑아내어 jwt 값을 가지고 왔다.
+                        * */
+                        Log.v("1011 woo s:", response!!.headers().value(0))
+                        SharedPreference.instance!!.setPrefData("jwt",response!!.headers().value(0))
                         startActivity<MainActivity>()
                         finish()
                     }
