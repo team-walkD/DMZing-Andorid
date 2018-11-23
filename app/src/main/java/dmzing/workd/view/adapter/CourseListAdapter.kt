@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import dmzing.workd.R
 import dmzing.workd.model.map.CourseMainDto
 import kotlinx.android.synthetic.main.map_course_item.view.*
@@ -47,7 +48,7 @@ class CourseListAdapter(var itemList : ArrayList<CourseMainDto>,var context : Co
         p0.courseSubDescription.text = itemList.get(p1).subDescription
         p0.courseTitle.text = itemList.get(p1).title
         p0.courseIndicator.text = (p1+1).toString()+"/"+itemList.size
-        Glide.with(context).load(itemList.get(p1).imageUrl).into(p0.courseImage)
+        Glide.with(context).load(itemList.get(p1).imageUrl).apply(RequestOptions().centerCrop()).into(p0.courseImage)
     }
 
     fun SetOnLockClickListener(click : ItemClick){

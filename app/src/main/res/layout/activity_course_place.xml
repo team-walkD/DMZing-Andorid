@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.map.CoursePlaceActivity"
+    android:background="#f4f6f8">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <ImageView
+                android:id="@+id/course_place_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:background="@drawable/x_white_btn"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        
+        <ImageView
+            android:id="@+id/course_place_image"
+            android:layout_width="match_parent"
+            android:layout_height="315dp" />
+
+        <TextView
+            android:id="@+id/course_place_sequence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="186dp"
+            android:includeFontPadding="false"
+            android:text="01"
+            />
+
+        <TextView
+            android:id="@+id/course_place_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="209dp"
+            android:textSize="24sp"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/notosanscjkkr_bold"
+            android:includeFontPadding="false"
+            android:text="평화 전망대"
+            />
+
+        <LinearLayout
+            android:id="@+id/course_place_content_card"
+            android:layout_width="match_parent"
+            android:layout_height="395dp"
+            android:background="@drawable/mypage_border"
+            android:layout_marginTop="266dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/course_place_descrip"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:scrollbars="vertical"
+                android:textSize="16sp"
+                android:textColor="#1c3748"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:background="#dddddd"/>
+
+            <RelativeLayout
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/course_place_text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="#1c3748"
+                    android:text="쉬는 날"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    />
+
+                <TextView
+                    android:id="@+id/course_place_rest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:textSize="16sp"
+                    android:textColor="#1c3748"
+                    android:text=""
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/course_place_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="#1c3748"
+                    android:text="주차 시설"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    />
+
+                <TextView
+                    android:id="@+id/course_place_parking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:textSize="16sp"
+                    android:textColor="#1c3748"
+                    android:text=""
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:background="#dddddd"/>
+
+            <RelativeLayout
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/course_place_text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="#1c3748"
+                    android:text="문의 및 안내"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    />
+
+                <TextView
+                    android:id="@+id/course_place_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:textSize="16sp"
+                    android:textColor="#1c3748"
+                    android:text=""
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    />
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+        
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>
