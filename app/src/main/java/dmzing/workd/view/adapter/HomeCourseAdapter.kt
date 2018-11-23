@@ -106,6 +106,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
 
     }
 
+    // 편지 찾기 post 통신
     fun postMission(){
         networkService = ApplicationController.instance.networkService
         SharedPreference.instance!!.load(context)

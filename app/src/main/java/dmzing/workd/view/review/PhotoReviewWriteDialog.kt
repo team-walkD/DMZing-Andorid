@@ -35,7 +35,9 @@ class PhotoReviewWriteDialog(courseId : Int,context : Context) : Dialog(context)
                     holder.isChecked = false
                 } else {
                     for (i in 0 until dilaog_photo_reivew_recycler.childCount){
-                        var viewholder = dilaog_photo_reivew_recycler.findViewHolderForAdapterPosition(i) as PhotoReviewPlaceAdapter.PhotoReviewPlaceViewHolder
+                        var viewholder
+                                = dilaog_photo_reivew_recycler.findViewHolderForAdapterPosition(i)
+                                as PhotoReviewPlaceAdapter.PhotoReviewPlaceViewHolder
                         if(viewholder.isCheck){
                             viewholder.isChecked = false
                         }
