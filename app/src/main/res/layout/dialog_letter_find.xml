@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="280dp" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="282dp" xmlns:tools="http://schemas.android.com/tools"
         android:layout_marginHorizontal="40dp"
         android:background="@drawable/border_dialog_button"
         android:layout_marginTop="20dp"
@@ -34,7 +34,7 @@
                 android:textColor="#1c3748"
                 android:lineSpacingExtra="4sp"
                 android:gravity="center_horizontal"
-                android:text="편지"
+                android:text="숨겨진 편지"
                 android:fontFamily="@font/notosanscjkkr_bold"
                 android:includeFontPadding="false"
         />
@@ -47,7 +47,7 @@
                 android:gravity="center_horizontal"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:includeFontPadding="false"
-                tools:text="가 없어요!"
+                tools:text="를"
         />
 
     </LinearLayout>
@@ -62,11 +62,11 @@
             android:textColor="#1c3748"
             android:lineSpacingExtra="4sp"
             android:gravity="center_horizontal"
-            android:text="다른 위치로 이동하세요"
+            android:text="발견했어요!"
     />
 
     <RelativeLayout
-            android:id="@+id/letterDialogOkayBtn"
+            android:id="@+id/letterFindDialogOkayBtn"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="50dp"
