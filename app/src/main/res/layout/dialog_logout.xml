@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="282dp"
+        android:layout_height="230dp"
+        android:background="@drawable/border_dialog_button">
+
+    <ImageView
+            android:id="@+id/logoutImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
+
+    <LinearLayout
+            android:id="@+id/logoutTextOne"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/logoutImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+        <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="4sp"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:includeFontPadding="false"
+                android:text="로그아웃"
+        />
+
+        <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="4sp"
+                android:gravity="center_horizontal"
+                android:text="을"
+        />
+
+
+    </LinearLayout>
+
+    <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/logoutTextOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#1c3748"
+            android:lineSpacingExtra="4sp"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
+            android:gravity="center_horizontal"
+            android:text="하시겠습니까?"
+    />
+
+</RelativeLayout>

@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.dialog_letter_x.*
 /**
  * Created by VictoryWoo
  */
-class HomeLetterXDialog(context : Context) : Dialog(context), View.OnClickListener {
+class HomeLetterXDialog(context : Context, flag : Int) : Dialog(context), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v!!){
             letterDialogOkayBtn->{
