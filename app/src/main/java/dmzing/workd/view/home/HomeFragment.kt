@@ -104,6 +104,27 @@ class HomeFragment : Fragment(), View.OnClickListener {
         view.homeFilterRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         homeFilterAdapter = HomeFilterAdapter(filterItems, context!!)
         homeFilterAdapter.setItemClickListener(this)
+        homeFilterAdapter.setOnFilterSelectListener(object : HomeFilterAdapter.setFilterSelect{
+            override fun onFilterSelect(holder: HomeFilterAdapter.HomeFilterViewHolder, position: Int) {
+                if(holder.isCheck){
+                    holder.isChecked = false
+                }else{
+                    // recyclerview의 아이템 들 중에 체크가 되어 있는지 for문을 통해서 검사하는 과
+                    for(i in 0 until view.homeFilterRv.childCount){
+                        var viewHolder = view.homeFilterRv.findViewHolderForAdapterPosition(i)
+                                as HomeFilterAdapter.HomeFilterViewHolder
+                        if(viewHolder.isCheck){
+                            viewHolder.isChecked = false
+                        }
+                    }
+                    holder.isChecked = true
+                    //toast("${holder.fiter_map.text}")
+                    toast("${items[position].id}+${holder.fiter_map.text}")
+
+                }
+            }
+
+        })
         view.homeFilterRv.adapter = homeFilterAdapter
 
     }
