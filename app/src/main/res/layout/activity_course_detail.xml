@@ -258,9 +258,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp">
+            android:layout_marginTop="17dp"
+            android:orientation="vertical">
 
             <RelativeLayout
+                android:visibility="gone"
                 android:id="@+id/course_detail_calendar_simple"
                 android:layout_width="match_parent"
                 android:layout_height="470dp"
@@ -482,6 +484,45 @@
                     android:text="상세 보기"/>
 
             </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/course_detail_calendar_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:background="@drawable/mypage_border"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginLeft="18dp"
+                    android:textSize="20sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:text="코스 일정 보기"
+                    />
+                
+                <RelativeLayout
+                    android:id="@+id/course_detail_detail_tmap"
+                    android:layout_width="match_parent"
+                    android:layout_height="205dp"
+                    android:layout_marginTop="20dp">
+
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/course_detail_detail_recycler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp">
+
+                </android.support.v7.widget.RecyclerView>
+
+            </LinearLayout>
 
         </LinearLayout>
 

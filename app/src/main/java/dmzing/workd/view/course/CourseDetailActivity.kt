@@ -3,10 +3,13 @@ package dmzing.workd.view.course
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.icu.util.Measure
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
@@ -39,7 +42,7 @@ class CourseDetailActivity : AppCompatActivity() {
 
         setSimpleCalendar()
 
-        setTmap()
+        setTmap(course_detail_calendar_simple_tmap)
 
 
         course_detail_back.setOnClickListener {
@@ -84,8 +87,9 @@ class CourseDetailActivity : AppCompatActivity() {
 //        }
     }
 
-    fun setTmap(){
+    fun setTmap(tmapContainer : RelativeLayout){
         var placeList = courseDetailDto.places
+        var polyLine = ArrayList<TMapPolyLine>()
         var mTmapView = TMapView(this)
         mTmapView.setSKTMapApiKey(TMAP_KEY)
         mTmapView.setLanguage(TMapView.LANGUAGE_KOREAN)
@@ -93,12 +97,19 @@ class CourseDetailActivity : AppCompatActivity() {
         mTmapView.zoomLevel = 12
 
         for(i in 0 until placeList!!.size){
-//            var marker : TextView = find(R.id.tmap_marker_num)
-//            marker.text = (i+1).toString()
-//            marker.isDrawingCacheEnabled = true
-//            var markerBitmap = Bitmap.createBitmap(marker.drawingCache)
-            var markerBitmap = BitmapFactory.decodeResource(this.resources,R.drawable.heart_filled_icon)
+            //view를 bitmap으로 변환
+            var view = layoutInflater.inflate(R.layout.tmap_marker_item,null)
+            var marker : RelativeLayout = view.findViewById(R.id.tmap_marker)
+            var sequence : TextView = view.findViewById(R.id.tmap_marker_num)
+            sequence.text = (i+1).toString()
+            marker.isDrawingCacheEnabled = true
+            marker.measure(View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED),View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED))
+            marker.layout(0, 0, marker.getMeasuredWidth(), marker.getMeasuredHeight())
+            marker.buildDrawingCache()
+            var markerBitmap = Bitmap.createBitmap(marker.drawingCache)
+            marker.isDrawingCacheEnabled = false
 
+            //마커 및 현재 좌표 설정
             var mapPoint = TMapPoint(placeList.get(i).latitude,placeList.get(i).longitude)
             var tmapMarkerItem = TMapMarkerItem()
             tmapMarkerItem.icon = markerBitmap
@@ -106,6 +117,7 @@ class CourseDetailActivity : AppCompatActivity() {
             tmapMarkerItem.tMapPoint = mapPoint
             mTmapView.addMarkerItem(placeList.get(i).title,tmapMarkerItem)
 
+            //각 지점간 소요 시간
             if(i != placeList!!.size -1){
                 var destPoint = TMapPoint(placeList.get(i+1).latitude,placeList.get(i+1).longitude)
                 var tMapData = TMapData()
@@ -113,29 +125,30 @@ class CourseDetailActivity : AppCompatActivity() {
                     override fun onFindPathDataAll(p0: Document?) {
                         var element = p0!!.documentElement
                         val list = element.getElementsByTagName("tmap:totalTime")
-                        Log.d("aaa", ""+list.getLength())
-                        for (i in 0 until list.getLength()) {
-                            Log.d("aaaa", list.item(i).getTextContent())
-                        }
+                            Log.d("aaaa", list.item(0).getTextContent())
                     }
 
                 })
-//                tMapData.findPathDataWithType(TMapData.TMapPathType.CAR_PATH,mapPoint,destPoint,object : TMapData.FindPathDataListenerCallback{
-//                    override fun onFindPathData(p0: TMapPolyLine?) {
-//                        p0!!.lineColor = Color.parseColor("#6da8c7")
-//                        p0!!.lineWidth = 10f
-//                        mTmapView.addTMapPath(p0)
-//                    }
-//
-//                })
-                var tmapPolyline = tMapData.findPathData(mapPoint,destPoint)
-                tmapPolyline.lineWidth = 2f
-                tmapPolyline.lineColor = Color.BLUE
-                mTmapView.addTMapPolyLine("poly"+placeList.get(i).id,tmapPolyline)
             }
-
         }
-        course_detail_calendar_simple_tmap.addView(mTmapView)
+
+        //경로 그리기
+        for(i in 0 until placeList.size){
+            var mapPoint = TMapPoint(placeList.get(i).latitude,placeList.get(i).longitude)
+            if(i != placeList!!.size - 1){
+                var destPoint = TMapPoint(placeList.get(i+1).latitude,placeList.get(i+1).longitude)
+                var tMapData = TMapData()
+                tMapData.findPathDataWithType(TMapData.TMapPathType.CAR_PATH,mapPoint,destPoint,object : TMapData.FindPathDataListenerCallback{
+                    override fun onFindPathData(p0: TMapPolyLine?) {
+                        p0!!.lineColor = Color.parseColor("#6da8c7")
+                        p0!!.lineWidth = 20f
+                        mTmapView.addTMapPolyLine(placeList.get(i).id.toString(),p0)
+                    }
+
+                })
+            }
+        }
+        tmapContainer.addView(mTmapView)
     }
 
     fun setDetailCalendar(){
