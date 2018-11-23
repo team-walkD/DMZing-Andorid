@@ -1,5 +1,7 @@
 package dmzing.workd.model.home
 
+import java.io.Serializable
+
 /**
  * Created by VictoryWoo
  */
@@ -42,7 +44,7 @@ data class Places(
     var restDate: String,
     var infoCenter: String,
     var peripheries: ArrayList<Peripheries>
-)
+) : Serializable
 
 data class Peripheries(
     var title: String,
