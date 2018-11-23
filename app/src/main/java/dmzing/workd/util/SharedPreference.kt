@@ -120,6 +120,12 @@ class SharedPreference {
 
     }
 
+    fun removeAllData(context: Context){
+        val editor = pref!!.edit()
+        editor.clear()
+        editor.commit()
+    }
+
     companion object {
         // 공유명칭
         private val SHARED_PREFS_CONFIGURATION = "GithubConfiguration"

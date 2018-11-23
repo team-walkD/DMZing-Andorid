@@ -23,6 +23,13 @@
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
         <item name="android:background">#33000000</item>
     </style>
+    
+    <style name="letter_dialog_text">
+        <item name="android:fontFamily">@font/notosanscjkkr_bold</item>
+        <item name="android:textColor">#1c3748</item>
+        <item name="android:textSize">16sp</item>
+
+    </style>
 
 
 </resources>
