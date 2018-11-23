@@ -1,6 +1,8 @@
 package dmzing.workd.view.adapter
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,6 +14,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import dmzing.workd.CommonData
 import dmzing.workd.R
+import dmzing.workd.dialog.HomeLetterXDialog
 import dmzing.workd.model.home.HomePostMission
 import dmzing.workd.model.home.PickCourse
 import dmzing.workd.model.home.Places
@@ -98,7 +101,11 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
             letterCourseViewHolder.letterHint.text = item_list.places[position-1].hint
             letterCourseViewHolder.letterButton.setOnClickListener {
                 context.toast("편지 찾기 버튼!")
-                postMission()
+                //postMission()
+                var dialog = HomeLetterXDialog(context,0)
+                dialog.setCanceledOnTouchOutside(true)
+                dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.show()
             }
 
         }

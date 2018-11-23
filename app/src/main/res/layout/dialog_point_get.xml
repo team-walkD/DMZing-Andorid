@@ -9,7 +9,7 @@
         android:layout_height="230dp">
 
     <ImageView
-            android:id="@+id/letterImage"
+            android:id="@+id/pointGetImage"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="33dp"
             android:background="@android:color/darker_gray"
@@ -18,8 +18,8 @@
 
 
     <LinearLayout
-            android:id="@+id/letterXText"
-            android:layout_below="@+id/letterImage"
+            android:id="@+id/pointGetTextLayout"
+            android:layout_below="@+id/pointGetImage"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
@@ -27,14 +27,14 @@
             android:orientation="horizontal">
 
         <TextView
-                android:id="@+id/letterTextX"
+                android:id="@+id/pointGetText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textColor="#1c3748"
                 android:lineSpacingExtra="4sp"
                 android:gravity="center_horizontal"
-                android:text="편지"
+                android:text="포인트(+400DP)"
                 android:fontFamily="@font/notosanscjkkr_bold"
                 android:includeFontPadding="false"
         />
@@ -47,13 +47,13 @@
                 android:gravity="center_horizontal"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:includeFontPadding="false"
-                tools:text="가 없어요!"
+                tools:text="를"
         />
 
     </LinearLayout>
 
     <TextView
-            android:layout_below="@+id/letterXText"
+            android:layout_below="@+id/pointGetTextLayout"
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
@@ -62,11 +62,11 @@
             android:textColor="#1c3748"
             android:lineSpacingExtra="4sp"
             android:gravity="center_horizontal"
-            android:text="다른 위치로 이동하세요"
+            android:text="획득했어요!"
     />
 
     <RelativeLayout
-            android:id="@+id/letterDialogOkayBtn"
+            android:id="@+id/pointGetDialogOkayBtn"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="50dp"
