@@ -142,15 +142,16 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     fun putCoursePick(cid : Int){
-        var coursePickResponse = networkService.putCoursePick(SharedPreference.instance!!
-            .getPrefStringData("jwt")!!,cid)
+        Log.v("woo 731 put:","또잉")
+        var coursePickResponse = networkService.putCoursePick(cid,SharedPreference.instance!!
+            .getPrefStringData("jwt")!!)
         coursePickResponse.enqueue(object : Callback<PickCourse>{
             override fun onFailure(call: Call<PickCourse>, t: Throwable) {
                 Log.v("woo 731 f:",t.message)
             }
 
             override fun onResponse(call: Call<PickCourse>, response: Response<PickCourse>) {
-                Log.v("woo 731 f:",response.message())
+                Log.v("woo 731 r:",response.message())
                 when(response!!.code()){
                     200->{
 

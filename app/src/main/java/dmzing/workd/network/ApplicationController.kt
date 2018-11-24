@@ -4,6 +4,10 @@ import android.app.Application
 import dmzing.workd.util.NullOnEmptyConverterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.OkHttpClient
+
+
 
 /**
  * Created by VictoryWoo
@@ -32,10 +36,19 @@ class ApplicationController : Application(){
             .baseUrl(baseUrl)
             .addConverterFactory(NullOnEmptyConverterFactory())
             .addConverterFactory(GsonConverterFactory.create())
+            .client(createOkHttpClient())
             .build()
 
 
 
         networkService = retrofit.create(NetworkService::class.java)
+    }
+
+    private fun createOkHttpClient(): OkHttpClient {
+        val builder = OkHttpClient.Builder()
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        builder.addInterceptor(interceptor)
+        return builder.build()
     }
 }
