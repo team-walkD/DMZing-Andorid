@@ -124,7 +124,6 @@ interface NetworkService {
     ): Call<GetMypageInfomation>
 
 
-
     /*FIXME
     * 이 경우 서버에서 통신에 성공했다 하더라도 body를 날려주지 않고
     * header에 jwt 즉 토큰을 담아서 줄 수 있다.
@@ -143,6 +142,8 @@ interface NetworkService {
     * retrofit 객체 생성 시에 헤더를 세팅해주면
     * 밑에 처럼 작성하지 않아도 됨. 리팩토링 할 것!
     * */
+    // 로그인 구현
+    // edit by 이승우
     @Headers("Content-type: application/json")
     @POST("api/users/login")
     fun postLogin(
@@ -165,6 +166,7 @@ interface NetworkService {
     * Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2 path $
     * 이 오류는 객체가 예상되지만 실제 데이터는 배열이라서 받는 형식을 배열로 변경해야 한다.
     * */
+
     // 마이페이지 코스 조회
     // edit by 이승우
     @Headers("Content-type: application/json")
@@ -189,6 +191,7 @@ interface NetworkService {
     ) : Call<HomeCourseData>
 
 
+    // 미션 찾기
     @Headers("Content-type: application/json")
     @POST("api/mission")
     fun postMission(
@@ -200,11 +203,13 @@ interface NetworkService {
     * 그렇지 않으면 서버에 값이 제대로 json 형태로 들어가지 않음.
     * */
 
-
+    // curse pick 하기
+    @Headers("Content-type: application/json")
     @PUT("api/course/pick/{cid}")
     fun putCoursePick(
-        @Header("jwt") jwt : String,
-        @Path("cid") cid : Int
+        @Path("cid") cid : Int,
+        @Header("jwt") jwt : String
+
     ) : Call<PickCourse>
 }
 
