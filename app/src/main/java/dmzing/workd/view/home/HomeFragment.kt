@@ -1,5 +1,7 @@
 package dmzing.workd.view.home
 
+import android.content.Context
+import android.location.LocationListener
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -25,6 +27,10 @@ import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.support.v4.content.ContextCompat.getSystemService
+import android.location.LocationManager
+
+
 
 /**
  * Created by VictoryWoo
@@ -53,6 +59,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         SharedPreference.instance!!.load(context!!)
 
 
+        //getLocation()
 
 
         filterItems = ArrayList()
@@ -73,6 +80,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         return view
     }
+
+
+
+
 
     fun getHomeMission(view: View) {
         var homeResponse = networkService
@@ -119,6 +130,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     }
                     holder.isChecked = true
                     //toast("${holder.fiter_map.text}")
+                    putCoursePick(items[position].id)
                     toast("${items[position].id}+${holder.fiter_map.text}")
 
                 }
@@ -127,6 +139,27 @@ class HomeFragment : Fragment(), View.OnClickListener {
         })
         view.homeFilterRv.adapter = homeFilterAdapter
 
+    }
+
+    fun putCoursePick(cid : Int){
+        var coursePickResponse = networkService.putCoursePick(SharedPreference.instance!!
+            .getPrefStringData("jwt")!!,cid)
+        coursePickResponse.enqueue(object : Callback<PickCourse>{
+            override fun onFailure(call: Call<PickCourse>, t: Throwable) {
+                Log.v("woo 731 f:",t.message)
+            }
+
+            override fun onResponse(call: Call<PickCourse>, response: Response<PickCourse>) {
+                Log.v("woo 731 f:",response.message())
+                when(response!!.code()){
+                    200->{
+
+                    }
+
+                }
+            }
+
+        })
     }
 
     fun settingHomeItems(view: View, items : PickCourse){

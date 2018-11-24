@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="23dp"
+    android:layout_marginRight="21dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        
+        <TextView
+            android:id="@+id/course_detail_detail_sequence"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/circle_blue"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/roboto_bold"
+            android:includeFontPadding="false"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="1"/>
+        <View
+            android:id="@+id/course_detail_detail_blue_line"
+            android:layout_width="2dp"
+            android:layout_height="390dp"
+            android:background="#6da8c7"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="11"
+        android:layout_marginLeft="11dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/course_detail_detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#1c3748"
+                android:text="평화 전망대"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:includeFontPadding="false"
+                />
+
+            <ImageView
+                android:id="@+id/course_detail_detail_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/course_detail_detail_image"
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            android:layout_marginTop="27dp"
+            android:background="@drawable/mypage_border" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="28dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="# "
+                android:textSize="16sp"
+                android:textColor="#1c3748"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이 근처 추천 스팟"
+                android:textSize="16sp"
+                android:textColor="#1c3748"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:includeFontPadding="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="9dp">
+            
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/course_detail_detail_peri_image1"
+                    android:layout_width="75dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/mypage_border"/>
+
+                <TextView
+                    android:id="@+id/course_detail_detail_peri_title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:text="XXX 맛집"
+                    android:maxLength="5"
+                    android:layout_gravity="center_horizontal"
+                    />
+            </LinearLayout>
+            
+            <View
+                android:layout_width="10dp"
+                android:layout_height="2dp"
+                android:background="#dddddd"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="6dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/course_detail_detail_peri_image2"
+                    android:layout_width="75dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/mypage_border"/>
+
+                <TextView
+                    android:id="@+id/course_detail_detail_peri_title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#1c3748"
+                    android:maxLength="5"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:text="XXX 맛집"
+                    android:layout_gravity="center_horizontal"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="2dp"
+                android:background="#dddddd"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="6dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/course_detail_detail_peri_image3"
+                    android:layout_width="75dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/mypage_border"/>
+
+                <TextView
+                    android:id="@+id/course_detail_detail_peri_title3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#1c3748"
+                    android:maxLength="5"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:text="XXX 맛집"
+                    android:layout_gravity="center_horizontal"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="21dp"
+            android:layout_marginTop="28dp">
+
+            <TextView
+                android:id="@+id/course_detail_detail_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#1c3748"
+                android:text="# "
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                />
+
+            <TextView
+                android:layout_toRightOf="@+id/course_detail_detail_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#1c3748"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:includeFontPadding="false"
+                android:text="소요 시간"/>
+
+            <TextView
+                android:id="@+id/course_detail_detail_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textSize="14sp"
+                android:textColor="#1c3748"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

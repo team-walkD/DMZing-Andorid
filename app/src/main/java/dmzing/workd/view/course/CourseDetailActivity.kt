@@ -3,10 +3,13 @@ package dmzing.workd.view.course
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.icu.util.Measure
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
@@ -16,8 +19,10 @@ import com.bumptech.glide.request.RequestOptions
 import com.skt.Tmap.*
 import dmzing.workd.R
 import dmzing.workd.model.map.CourseDetailDto
+import dmzing.workd.view.adapter.CourseDetailPlaceAdapter
 import dmzing.workd.view.adapter.CourseDetailSimplePlaceAdapter
 import kotlinx.android.synthetic.main.activity_course_detail.*
+import kotlinx.android.synthetic.main.course_detail_detail_item.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.toast
 import org.w3c.dom.Document
@@ -26,12 +31,15 @@ import java.lang.Exception
 class CourseDetailActivity : AppCompatActivity() {
 
     lateinit var courseDetailDto : CourseDetailDto
+    lateinit var courseTimeList : ArrayList<Int>
+    var totalTime = 0
     val TMAP_KEY = "90b70b30-07bb-4f12-a57c-a149df078b02"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_course_detail)
 
         courseDetailDto = intent.extras.get("courseDetailDto") as CourseDetailDto
+        courseTimeList = ArrayList()
         var index = intent.getIntExtra("idx",0)
         //toast("${index}")
 
@@ -47,6 +55,11 @@ class CourseDetailActivity : AppCompatActivity() {
         }
         course_detail_walk_d.setOnClickListener {
 
+        }
+
+        course_detail_calendar_see_detail.setOnClickListener {
+            course_detail_calendar_simple.visibility = View.GONE
+            course_detail_calendar_detail.visibility = View.VISIBLE
         }
     }
 
@@ -86,26 +99,42 @@ class CourseDetailActivity : AppCompatActivity() {
 
     fun setTmap(){
         var placeList = courseDetailDto.places
+        var polyLine = ArrayList<TMapPolyLine>()
         var mTmapView = TMapView(this)
+        var detailTmapView = TMapView(this)
         mTmapView.setSKTMapApiKey(TMAP_KEY)
         mTmapView.setLanguage(TMapView.LANGUAGE_KOREAN)
         mTmapView.setCenterPoint(placeList!!.get(0).longitude,placeList!!.get(0).latitude)
         mTmapView.zoomLevel = 12
 
-        for(i in 0 until placeList!!.size){
-//            var marker : TextView = find(R.id.tmap_marker_num)
-//            marker.text = (i+1).toString()
-//            marker.isDrawingCacheEnabled = true
-//            var markerBitmap = Bitmap.createBitmap(marker.drawingCache)
-            var markerBitmap = BitmapFactory.decodeResource(this.resources,R.drawable.heart_filled_icon)
+        detailTmapView.setSKTMapApiKey(TMAP_KEY)
+        detailTmapView.setLanguage(TMapView.LANGUAGE_KOREAN)
+        detailTmapView.setCenterPoint(placeList!!.get(0).longitude,placeList!!.get(0).latitude)
+        detailTmapView.zoomLevel = 12
 
+        for(i in 0 until placeList!!.size){
+            //view를 bitmap으로 변환
+            var view = layoutInflater.inflate(R.layout.tmap_marker_item,null)
+            var marker : RelativeLayout = view.findViewById(R.id.tmap_marker)
+            var sequence : TextView = view.findViewById(R.id.tmap_marker_num)
+            sequence.text = (i+1).toString()
+            marker.isDrawingCacheEnabled = true
+            marker.measure(View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED),View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED))
+            marker.layout(0, 0, marker.getMeasuredWidth(), marker.getMeasuredHeight())
+            marker.buildDrawingCache()
+            var markerBitmap = Bitmap.createBitmap(marker.drawingCache)
+            marker.isDrawingCacheEnabled = false
+
+            //마커 및 현재 좌표 설정
             var mapPoint = TMapPoint(placeList.get(i).latitude,placeList.get(i).longitude)
             var tmapMarkerItem = TMapMarkerItem()
             tmapMarkerItem.icon = markerBitmap
             tmapMarkerItem.setPosition(0.5f,1.0f)
             tmapMarkerItem.tMapPoint = mapPoint
             mTmapView.addMarkerItem(placeList.get(i).title,tmapMarkerItem)
+            detailTmapView.addMarkerItem(placeList.get(i).title,tmapMarkerItem)
 
+            //각 지점간 소요 시간
             if(i != placeList!!.size -1){
                 var destPoint = TMapPoint(placeList.get(i+1).latitude,placeList.get(i+1).longitude)
                 var tMapData = TMapData()
@@ -113,32 +142,46 @@ class CourseDetailActivity : AppCompatActivity() {
                     override fun onFindPathDataAll(p0: Document?) {
                         var element = p0!!.documentElement
                         val list = element.getElementsByTagName("tmap:totalTime")
-                        Log.d("aaa", ""+list.getLength())
-                        for (i in 0 until list.getLength()) {
-                            Log.d("aaaa", list.item(i).getTextContent())
+                            Log.d("aaaa", list.item(0).getTextContent())
+                        courseTimeList.add(list.item(0).textContent.toInt())
+                        if(courseTimeList.size == placeList.size-2){
+                            for(i in 0 until courseTimeList.size){
+                                totalTime+=list.item(0).textContent.toInt()
+                            }
+                            Log.d("aaaaTotal",totalTime.toString())
+                            course_detail_calendar_simple_totalTime.text = (totalTime/60).toString() + "분"
                         }
                     }
 
                 })
-//                tMapData.findPathDataWithType(TMapData.TMapPathType.CAR_PATH,mapPoint,destPoint,object : TMapData.FindPathDataListenerCallback{
-//                    override fun onFindPathData(p0: TMapPolyLine?) {
-//                        p0!!.lineColor = Color.parseColor("#6da8c7")
-//                        p0!!.lineWidth = 10f
-//                        mTmapView.addTMapPath(p0)
-//                    }
-//
-//                })
-                var tmapPolyline = tMapData.findPathData(mapPoint,destPoint)
-                tmapPolyline.lineWidth = 2f
-                tmapPolyline.lineColor = Color.BLUE
-                mTmapView.addTMapPolyLine("poly"+placeList.get(i).id,tmapPolyline)
             }
+        }
+        //경로 그리기
+        for(i in 0 until placeList.size){
+            var mapPoint = TMapPoint(placeList.get(i).latitude,placeList.get(i).longitude)
+            if(i != placeList!!.size - 1){
+                var destPoint = TMapPoint(placeList.get(i+1).latitude,placeList.get(i+1).longitude)
+                var tMapData = TMapData()
+                tMapData.findPathDataWithType(TMapData.TMapPathType.CAR_PATH,mapPoint,destPoint,object : TMapData.FindPathDataListenerCallback{
+                    override fun onFindPathData(p0: TMapPolyLine?) {
+                        p0!!.lineColor = Color.parseColor("#6da8c7")
+                        p0!!.lineWidth = 20f
+                        mTmapView.addTMapPolyLine(placeList.get(i).id.toString(),p0)
+                        detailTmapView.addTMapPolyLine(placeList.get(i).id.toString(),p0)
+                    }
 
+                })
+            }
         }
         course_detail_calendar_simple_tmap.addView(mTmapView)
+        course_detail_detail_tmap.addView(detailTmapView)
+
+        setDetailCalendar()
     }
 
     fun setDetailCalendar(){
-
+        var courseDetailAdapter = CourseDetailPlaceAdapter(courseDetailDto.places!!,courseTimeList,this)
+        course_detail_detail_recycler.layoutManager = LinearLayoutManager(this)
+        course_detail_detail_recycler.adapter = courseDetailAdapter
     }
 }

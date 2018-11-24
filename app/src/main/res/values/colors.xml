@@ -7,4 +7,5 @@
     <color name="viewColor">#dddddd</color>
     <color name="toolbarColor">#1c3748</color>
     <color name="mainColor">#6da8c7</color>
+    <color name="opacity">#66000000</color>
 </resources>

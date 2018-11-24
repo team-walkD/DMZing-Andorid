@@ -181,7 +181,7 @@
             android:id="@+id/signUpOneNextBtn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="#6da8c7"
+            android:background="@color/mainColor"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom">
 
