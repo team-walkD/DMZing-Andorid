@@ -7,27 +7,33 @@
         android:layout_height="match_parent"
         tools:context=".view.signup.SignUpTwoActivity">
 
-    <LinearLayout
-            android:layout_above="@+id/signUpTwoNextBtn"
+    <RelativeLayout
+            android:id="@+id/signUpToolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-    >
-
+            android:layout_height="?attr/actionBarSize">
 
         <ImageView
                 android:id="@+id/signUpTwoXBtn"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="13dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="26dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/x_btn"/>
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+            android:layout_below="@+id/signUpToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
         <LinearLayout
                 android:id="@+id/signUpOneTextLayout"
                 android:layout_below="@+id/signUpOneXBtn"
-                android:layout_marginTop="30.3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="36dp"
@@ -105,7 +111,7 @@
                 android:textSize="14sp"
                 android:textColor="#1c3748"
                 android:lineSpacingExtra="6sp"
-                android:text="전화 번호 및 이메일을 입력해주세요.(선택)"
+                android:text="간단한 절차로 디엠징의 회원이 되어보세요!"
         />
 
         <TextView

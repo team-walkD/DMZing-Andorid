@@ -3,6 +3,7 @@ package dmzing.workd.network
 import dmzing.workd.base.BaseModel
 import dmzing.workd.model.home.HomeCourseData
 import dmzing.workd.model.home.HomePostMission
+import dmzing.workd.model.home.PickCourse
 import dmzing.workd.model.home.Places
 import dmzing.workd.model.map.CourseDetailDto
 import dmzing.workd.model.map.CourseMainDto
@@ -88,6 +89,19 @@ interface NetworkService {
     ): Call<CourseDetailDto>
 
 
+
+
+
+    /*FIXME
+    * 중요한 것!
+    * 우리가 토큰을 헤더에 담아서 보내듯이
+    * @Header가 1개 이상 지정될 수 있다.
+    * 보통 Spring 서버와 통신을 할 때는
+    * Content-type을 지정해서 보내줘야 하는데,
+    * 이 경우 @Header("Content-type") Content-type : String
+    * 하고 @Header("jwt") jwt : String
+    * 해서 보낸다.
+    * */
     /*== 승우 ==*/
     // 유저 생성
     // edit by 이승우
@@ -101,7 +115,7 @@ interface NetworkService {
 
 
 
-    //
+    // 유저 정보
     // edit by 이승우
     //@Headers("Content-type: application/json")
     @GET("api/users/info")
@@ -124,6 +138,11 @@ interface NetworkService {
     * */
     // 로그인 통신
     // edit by 이승우
+
+    /*FIXME
+    * retrofit 객체 생성 시에 헤더를 세팅해주면
+    * 밑에 처럼 작성하지 않아도 됨. 리팩토링 할 것!
+    * */
     @Headers("Content-type: application/json")
     @POST("api/users/login")
     fun postLogin(
@@ -170,6 +189,7 @@ interface NetworkService {
     ) : Call<HomeCourseData>
 
 
+    @Headers("Content-type: application/json")
     @POST("api/mission")
     fun postMission(
         @Header("jwt") jwt: String,
@@ -179,6 +199,13 @@ interface NetworkService {
     * post로 보낼 때 @Headers에 Content-type : application/json을 명시해주어야 한다.
     * 그렇지 않으면 서버에 값이 제대로 json 형태로 들어가지 않음.
     * */
+
+
+    @PUT("api/course/pick/{cid}")
+    fun putCoursePick(
+        @Header("jwt") jwt : String,
+        @Path("cid") cid : Int
+    ) : Call<PickCourse>
 }
 
 
