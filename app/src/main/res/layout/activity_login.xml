@@ -20,18 +20,18 @@
                 android:orientation="vertical">
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_marginTop="48dp"
+            <ImageView
+                    android:layout_marginTop="91dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:background="@android:color/holo_green_light"/>
+                    android:layout_width="92dp"
+                    android:layout_height="74dp"
+                    android:background="@drawable/login_dmzing_logo"/>
 
             <TextView
                     android:layout_marginHorizontal="36dp"
                     android:fontFamily="@font/notosanscjkkr_bold"
                     android:includeFontPadding="false"
-                    android:layout_marginTop="52dp"
+                    android:layout_marginTop="84dp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

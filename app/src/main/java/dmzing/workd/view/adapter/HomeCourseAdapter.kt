@@ -41,6 +41,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
     companion object {
         val LATITUDE = 38.5763238583
         val LONGTITUE = 128.3826570629
+
     }
 
 
@@ -114,7 +115,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
     }
 
     // 편지 찾기 post 통신
-    fun postMission(){
+    fun postMission(lat : Double, lot : Double){
         networkService = ApplicationController.instance.networkService
         SharedPreference.instance!!.load(context)
         homePostMission = HomePostMission(CommonData.coursedId, CommonData.placeId, LATITUDE, LONGTITUE)

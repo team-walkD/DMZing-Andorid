@@ -28,19 +28,17 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="14dp"
                     android:layout_marginRight="22dp">
 
-                    <TextView
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:textColor="#1c3748"
                         android:lineSpacingExtra="9sp"
-                        android:fontFamily="@font/notosanscjkkr_bold"
-                        android:text="로고"
-                        android:includeFontPadding="false"
+                        android:background="@drawable/dmzing_logo_img"
                         />
 
                     <ImageButton

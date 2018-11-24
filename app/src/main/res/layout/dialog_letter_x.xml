@@ -12,9 +12,9 @@
             android:id="@+id/letterImage"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="33dp"
-            android:background="@android:color/darker_gray"
-            android:layout_width="38dp"
-            android:layout_height="48dp"/>
+            android:background="@drawable/no_letter_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
     <LinearLayout
