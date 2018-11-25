@@ -60,7 +60,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_login)
 
         loginBtn.isSelected = true
-        var signUpText: String = "회x원가입"
+        var signUpText: String = "회원가입"
         var content: SpannableString = SpannableString(signUpText)
         content.setSpan(UnderlineSpan(), 0, 4, 0)
 
