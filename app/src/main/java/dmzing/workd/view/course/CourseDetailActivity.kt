@@ -8,12 +8,14 @@ import android.icu.util.Measure
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.skt.Tmap.*
@@ -23,6 +25,7 @@ import dmzing.workd.view.adapter.CourseDetailPlaceAdapter
 import dmzing.workd.view.adapter.CourseDetailSimplePlaceAdapter
 import kotlinx.android.synthetic.main.activity_course_detail.*
 import kotlinx.android.synthetic.main.course_detail_detail_item.*
+import org.jetbrains.anko.act
 import org.jetbrains.anko.find
 import org.jetbrains.anko.toast
 import org.w3c.dom.Document
@@ -32,24 +35,31 @@ class CourseDetailActivity : AppCompatActivity() {
 
     lateinit var courseDetailDto : CourseDetailDto
     lateinit var courseTimeList : ArrayList<Int>
-    var totalTime = 0
+    lateinit var courseTimeTotal : ArrayList<Int>
+    lateinit var arry : IntArray
+
+    lateinit var courseDetailAdapter : CourseDetailPlaceAdapter
+    lateinit var courseSimpleTime : TextView
+    lateinit var courseDetailRecycler : RecyclerView
     val TMAP_KEY = "90b70b30-07bb-4f12-a57c-a149df078b02"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_course_detail)
-
         courseDetailDto = intent.extras.get("courseDetailDto") as CourseDetailDto
         courseTimeList = ArrayList()
+        courseTimeTotal = ArrayList()
+        arry = IntArray(courseDetailDto.places!!.size-1)
+
+        courseSimpleTime = findViewById(R.id.course_detail_calendar_simple_totalTime)
+        courseDetailRecycler = findViewById(R.id.course_detail_detail_recycler)
         var index = intent.getIntExtra("idx",0)
         //toast("${index}")
 
         setViewData()
 
         setSimpleCalendar()
-
-        setTmap()
-
-
+        setSimpleTmap()
+        setRouteTime()
         course_detail_back.setOnClickListener {
             finish()
         }
@@ -87,19 +97,10 @@ class CourseDetailActivity : AppCompatActivity() {
         }
         course_detail_calendar_simple_recycler.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         course_detail_calendar_simple_recycler.adapter = courseDetailSimpleAdapter
-
-//        for(i in 0 until course_detail_calendar_simple_recycler.childCount){
-//            if(i != course_detail_calendar_simple_recycler.childCount-1){
-//                var params = course_detail_calendar_simple_recycler.layoutParams as LinearLayout.LayoutParams
-//                params.rightMargin = 100
-//                course_detail_calendar_simple_recycler.getChildAt(i).layoutParams = params
-//            }
-//        }
     }
 
-    fun setTmap(){
+    fun setSimpleTmap(){
         var placeList = courseDetailDto.places
-        var polyLine = ArrayList<TMapPolyLine>()
         var mTmapView = TMapView(this)
         var detailTmapView = TMapView(this)
         mTmapView.setSKTMapApiKey(TMAP_KEY)
@@ -134,32 +135,104 @@ class CourseDetailActivity : AppCompatActivity() {
             mTmapView.addMarkerItem(placeList.get(i).title,tmapMarkerItem)
             detailTmapView.addMarkerItem(placeList.get(i).title,tmapMarkerItem)
 
+            //var courseTimeList : ArrayList<Int> = ArrayList()
             //각 지점간 소요 시간
-            if(i != placeList!!.size -1){
+
+        }
+        //경로 그리기
+        for(i in 0 until placeList.size){
+            var mapPoint = TMapPoint(placeList.get(i).latitude,placeList.get(i).longitude)
+            if(i < placeList!!.size - 1){
+                var destPoint = TMapPoint(placeList.get(i+1).latitude,placeList.get(i+1).longitude)
+                var tMapData = TMapData()
+                tMapData.findPathDataWithType(TMapData.TMapPathType.CAR_PATH,mapPoint,destPoint,object : TMapData.FindPathDataListenerCallback{
+                    override fun onFindPathData(p0: TMapPolyLine?) {
+                        p0!!.lineColor = Color.parseColor("#6da8c7")
+                        p0!!.lineWidth = 20f
+                        mTmapView.addTMapPolyLine(placeList.get(i).id.toString()+"_simple",p0)
+                        detailTmapView.addTMapPolyLine(placeList.get(i).id.toString()+"_detail",p0)
+                    }
+
+                })
+            }
+        }
+        course_detail_detail_tmap.addView(detailTmapView)
+        course_detail_calendar_simple_tmap.addView(mTmapView)
+    }
+
+    fun setRouteTime(){
+        var placeList = courseDetailDto.places
+        for(i in 0 until placeList!!.size){
+            //현재 좌표 설정
+            var mapPoint = TMapPoint(placeList.get(i).latitude,placeList.get(i).longitude)
+            //각 지점간 소요 시간
+            if(i < placeList!!.size -1){
                 var destPoint = TMapPoint(placeList.get(i+1).latitude,placeList.get(i+1).longitude)
                 var tMapData = TMapData()
                 tMapData.findPathDataAllType(TMapData.TMapPathType.CAR_PATH,mapPoint,destPoint,object : TMapData.FindPathDataAllListenerCallback{
                     override fun onFindPathDataAll(p0: Document?) {
                         var element = p0!!.documentElement
                         val list = element.getElementsByTagName("tmap:totalTime")
-                            Log.d("aaaa", list.item(0).getTextContent())
-                        courseTimeList.add(list.item(0).textContent.toInt())
-                        if(courseTimeList.size == placeList.size-2){
-                            for(i in 0 until courseTimeList.size){
-                                totalTime+=list.item(0).textContent.toInt()
+                        var totalTime = 0
+                        courseTimeTotal.add(list.item(0).textContent.toInt())
+                        arry[i] = list.item(0).textContent.toInt()
+                        Log.d("ffff",i.toString()+"aa"+arry[i].toString())
+                        if(courseTimeTotal.size == placeList.size-1){
+                            for(j in 0 until courseTimeTotal.size){
+                                totalTime+=courseTimeTotal.get(j)
                             }
-                            Log.d("aaaaTotal",totalTime.toString())
-                            course_detail_calendar_simple_totalTime.text = (totalTime/60).toString() + "분"
+                            Log.d("aaaa total","incoming")
+                            //course_detail_calendar_simple_totalTime.text = (totalTime/60).toString()+"분"
+                            courseDetailAdapter = CourseDetailPlaceAdapter(placeList,arry,applicationContext)
+                            courseDetailRecycler.layoutManager = LinearLayoutManager(applicationContext)
+                            courseDetailRecycler.adapter = courseDetailAdapter
+                            //setDetailCalendar(courseTimeTotal)
                         }
                     }
 
                 })
             }
+
+        }
+    }
+
+    fun setDetailTMap(){
+        var placeList = courseDetailDto.places
+        var mTmapView = TMapView(this)
+        mTmapView.setSKTMapApiKey(TMAP_KEY)
+        mTmapView.setLanguage(TMapView.LANGUAGE_KOREAN)
+        mTmapView.setCenterPoint(placeList!!.get(0).longitude,placeList!!.get(0).latitude)
+        mTmapView.zoomLevel = 12
+
+        for(i in 0 until placeList!!.size){
+            //view를 bitmap으로 변환
+            var view = layoutInflater.inflate(R.layout.tmap_marker_item,null)
+            var marker : RelativeLayout = view.findViewById(R.id.tmap_marker)
+            var sequence : TextView = view.findViewById(R.id.tmap_marker_num)
+            sequence.text = (i+1).toString()
+            marker.isDrawingCacheEnabled = true
+            marker.measure(View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED),View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED))
+            marker.layout(0, 0, marker.getMeasuredWidth(), marker.getMeasuredHeight())
+            marker.buildDrawingCache()
+            var markerBitmap = Bitmap.createBitmap(marker.drawingCache)
+            marker.isDrawingCacheEnabled = false
+
+            //마커 및 현재 좌표 설정
+            var mapPoint = TMapPoint(placeList.get(i).latitude,placeList.get(i).longitude)
+            var tmapMarkerItem = TMapMarkerItem()
+            tmapMarkerItem.icon = markerBitmap
+            tmapMarkerItem.setPosition(0.5f,1.0f)
+            tmapMarkerItem.tMapPoint = mapPoint
+            mTmapView.addMarkerItem(placeList.get(i).title,tmapMarkerItem)
+            //detailTmapView.addMarkerItem(placeList.get(i).title,tmapMarkerItem)
+
+            //var courseTimeList : ArrayList<Int> = ArrayList()
+            //각 지점간 소요 시간
         }
         //경로 그리기
         for(i in 0 until placeList.size){
             var mapPoint = TMapPoint(placeList.get(i).latitude,placeList.get(i).longitude)
-            if(i != placeList!!.size - 1){
+            if(i < placeList!!.size - 1){
                 var destPoint = TMapPoint(placeList.get(i+1).latitude,placeList.get(i+1).longitude)
                 var tMapData = TMapData()
                 tMapData.findPathDataWithType(TMapData.TMapPathType.CAR_PATH,mapPoint,destPoint,object : TMapData.FindPathDataListenerCallback{
@@ -167,21 +240,19 @@ class CourseDetailActivity : AppCompatActivity() {
                         p0!!.lineColor = Color.parseColor("#6da8c7")
                         p0!!.lineWidth = 20f
                         mTmapView.addTMapPolyLine(placeList.get(i).id.toString(),p0)
-                        detailTmapView.addTMapPolyLine(placeList.get(i).id.toString(),p0)
                     }
 
                 })
             }
         }
-        course_detail_calendar_simple_tmap.addView(mTmapView)
-        course_detail_detail_tmap.addView(detailTmapView)
 
-        setDetailCalendar()
+        course_detail_detail_tmap.addView(mTmapView)
     }
 
-    fun setDetailCalendar(){
-        var courseDetailAdapter = CourseDetailPlaceAdapter(courseDetailDto.places!!,courseTimeList,this)
-        course_detail_detail_recycler.layoutManager = LinearLayoutManager(this)
-        course_detail_detail_recycler.adapter = courseDetailAdapter
-    }
+//    fun setDetailCalendar(courseTimelist : ArrayList<Int>){
+//        //courseSimpleTime.text = (courseTimelist.get(0)/60).toString()+"분"
+//        var courseDetailAdapter = CourseDetailPlaceAdapter(courseDetailDto.places!!,courseTimelist,this)
+//        course_detail_detail_recycler.layoutManager = LinearLayoutManager(this)
+//        course_detail_detail_recycler.adapter = courseDetailAdapter
+//    }
 }

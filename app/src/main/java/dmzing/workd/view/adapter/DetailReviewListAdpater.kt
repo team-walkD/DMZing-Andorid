@@ -29,7 +29,7 @@ class DetailReviewListAdpater(var itemList : ArrayList<SimpleReviewDto>,var cont
     }
 
     override fun onBindViewHolder(p0: DetailReviewListViewHolder, p1: Int) {
-        if(itemList.get(p1).thumbnailUrl.equals("")){
+        if(itemList.get(p1).thumbnailUrl.equals("") || itemList.get(p1).thumbnailUrl == null){
             p0.detailReviewImage.setBackgroundColor(Color.parseColor("#e3e3e3"))
         } else {
             Glide.with(context).load(itemList.get(p1).thumbnailUrl).into(p0.detailReviewImage)
