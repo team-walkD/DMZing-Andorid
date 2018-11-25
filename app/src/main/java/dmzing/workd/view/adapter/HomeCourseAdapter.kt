@@ -114,7 +114,10 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
 
     }
 
-    // 편지 찾기 post 통신
+    // 편지 찾기 post 통신/
+    /*FIXME
+    * 편지 찾고 아이템 받아서 갱신하는 로직 넣음.
+    * */
     fun postMission(lat : Double, lot : Double){
         networkService = ApplicationController.instance.networkService
         SharedPreference.instance!!.load(context)
@@ -131,6 +134,18 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
                 Log.v("110 woo r:",response.body().toString())
                 when(response.code()){
                     200->{
+                        var tmp = response.body()
+                        var position = item_list.places.size
+                        if (tmp != null) {
+                            item_list.places.addAll(tmp)
+                        }
+                        // 새로 추가된 것에 대한 notify 즉 갱
+                        notifyItemInserted(position)
+                    }
+                    400->{
+
+                    }
+                    else->{
 
                     }
                 }

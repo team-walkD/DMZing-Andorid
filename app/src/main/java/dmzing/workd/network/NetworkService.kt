@@ -204,12 +204,12 @@ interface NetworkService {
     * */
 
     // curse pick 하기
-    @Headers("Content-type: application/json")
+    // edit by 이승우
+    //@Headers("Content-type: application/json")
     @PUT("api/course/pick/{cid}")
     fun putCoursePick(
-        @Path("cid") cid : Int,
-        @Header("jwt") jwt : String
-
+        @Header("jwt") jwt : String,
+        @Path("cid") cid : Int
     ) : Call<PickCourse>
 }
 
