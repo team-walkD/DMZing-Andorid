@@ -14,7 +14,9 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import dmzing.workd.CommonData
 import dmzing.workd.R
+import dmzing.workd.dialog.HomeLetterFindDialog
 import dmzing.workd.dialog.HomeLetterXDialog
+import dmzing.workd.model.Test
 import dmzing.workd.model.home.HomePostMission
 import dmzing.workd.model.home.PickCourse
 import dmzing.workd.model.home.Places
@@ -37,11 +39,25 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
     lateinit var homePostMission: HomePostMission
     private val TYPE_HEADER = 0
     private val TYPE_LETTER = 1
+    private val TYPE_FOOTER = item_list.places.size + 1
+    private var count = 0
 
     companion object {
-        val LATITUDE = 38.5763238583
-        val LONGTITUE = 128.3826570629
+        var index: Int = 0
+        var idx: Int = 0
+        var common_position = 0
+        var footer_flag: Int = 0
+        var location_list = listOf<Test>(
+            Test(37.8895234711, 126.7405308247)
+            , Test(37.8513232698, 126.7905662159)
+            , Test(37.7773633354, 126.684436368)
+            , Test(37.7689256453, 126.6964910575)
+        )
+    }
 
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        notifyItemInserted(item_list.places.size+1)
     }
 
 
@@ -49,32 +65,74 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
         onItemClick = l
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == TYPE_HEADER) {
             var headerView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.home_header_course_item_list, parent, false)
             return HeaderCourseViewHolder(headerView)
-        } else {
+        } else if (viewType == TYPE_LETTER) {
             var letterView = LayoutInflater.from(parent!!.context)
                 .inflate(R.layout.home_letter_item_list, parent, false)
             letterView.setOnClickListener(onItemClick)
             return LetterCourseViewHolder(letterView)
+        } else {
+            var footerView = LayoutInflater.from(parent.context).inflate(R.layout.home_last_item_list, parent, false)
+
+            if (footer_flag == 100) {
+                footerView.setOnClickListener(onItemClick)
+                footerView.visibility = View.VISIBLE
+            } else {
+                footerView.setOnClickListener(onItemClick)
+                footerView.visibility = View.GONE
+            }
+            return FooterCourseViewHolder(footerView)
+
         }
     }
 
     override fun getItemViewType(position: Int): Int {
         if (isPositionHeader(position))
             return TYPE_HEADER
-        else
+        else if (isPostionFooter(position)) {
+            return TYPE_FOOTER
+        } else {
             return TYPE_LETTER
+        }
+
     }
 
     fun isPositionHeader(position: Int): Boolean {
         return position == TYPE_HEADER
     }
 
-    override fun getItemCount(): Int = item_list.places.size + 1
+    fun isPositionLetter(position: Int): Boolean {
+        return position == TYPE_LETTER
+    }
+
+    fun isPostionFooter(position: Int): Boolean {
+        var num: Int = item_list.places.size
+        Log.v("1212 : ", "position : ${position}, num : ${num}")
+        return position == item_list.places.size + 1
+    }
+
+    override fun getItemCount(): Int {
+        Log.v("1252 size ", item_list.places.size.toString())
+        //notifyDataSetChanged()
+        if (footer_flag == 100) {
+            Log.v("1252 if", footer_flag.toString())
+            //notifyDataSetChanged()
+            return item_list.places.size + 2
+            Log.v("12522 if", footer_flag.toString())
+
+
+        } else {
+            Log.v("1252 else", footer_flag.toString())
+            return item_list.places.size + 1
+            notifyDataSetChanged()
+        }
+        //notifyDataSetChanged()
+
+    }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is HeaderCourseViewHolder) {
@@ -85,6 +143,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
             Glide.with(context).load(item_list.imageUrl).into(headerCourseViewHolder.headerCourseImage)
             headerCourseViewHolder.courseLevel.text = item_list.level
             headerCourseViewHolder.courseTime.text = item_list.estimatedTime
+
             // 코스 아이디 저장
             CommonData.coursedId = item_list.id
             headerCourseViewHolder.courseParticipants.text = item_list.reviewCount.toString()
@@ -94,20 +153,26 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
 
         } else if (holder is LetterCourseViewHolder) {
             var letterCourseViewHolder: LetterCourseViewHolder = holder
-            letterCourseViewHolder.letterTitle.text = item_list.places[position-1].title
+            letterCourseViewHolder.letterTitle.text = item_list.places[position - 1].title
             //letterCourseViewHolder.letterSubTitle.text = item_list.places[position-1].description
+
             // 플레이스 아이디 저장
-            CommonData.placeId = item_list.places[position-1].id
-            Glide.with(context).load(item_list.places[position-1].mainImageUrl).into(letterCourseViewHolder.letterImage)
-            letterCourseViewHolder.letterHint.text = item_list.places[position-1].hint
+            CommonData.placeId = item_list.places[position - 1].id
+            Glide.with(context).load(item_list.places[position - 1].mainImageUrl)
+                .into(letterCourseViewHolder.letterImage)
+            letterCourseViewHolder.letterHint.text = item_list.places[position - 1].hint
             letterCourseViewHolder.letterButton.setOnClickListener {
                 context.toast("편지 찾기 버튼!")
-                //postMission()
-                var dialog = HomeLetterXDialog(context,0)
-                dialog.setCanceledOnTouchOutside(true)
-                dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                dialog.show()
+
+                postMission(location_list[idx].lat, location_list[idx].lng)
+                Log.v("557 lat", location_list[idx].lat.toString())
+                Log.v("557 lng", location_list[idx].lng.toString())
+
+
             }
+
+        } else if (holder is FooterCourseViewHolder) {
+            var footerCourseViewHolder: FooterCourseViewHolder = holder
 
         }
 
@@ -118,34 +183,68 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
     /*FIXME
     * 편지 찾고 아이템 받아서 갱신하는 로직 넣음.
     * */
-    fun postMission(lat : Double, lot : Double){
+    fun postMission(lat: Double, lot: Double) {
         networkService = ApplicationController.instance.networkService
         SharedPreference.instance!!.load(context)
-        homePostMission = HomePostMission(CommonData.coursedId, CommonData.placeId, LATITUDE, LONGTITUE)
+        homePostMission = HomePostMission(CommonData.coursedId, CommonData.placeId, lat, lot)
         var jwt = SharedPreference.instance!!.getPrefStringData(CommonData.JWT)
-        var missionResponse = networkService.postMission(jwt!!,homePostMission)
-        missionResponse.enqueue(object : Callback<ArrayList<Places>>{
+        var missionResponse = networkService.postMission(jwt!!, homePostMission)
+        missionResponse.enqueue(object : Callback<ArrayList<Places>> {
             override fun onFailure(call: Call<ArrayList<Places>>, t: Throwable) {
-                Log.v("110 woo f:",t.message)
+                Log.v("110 woo f:", t.message)
             }
 
             override fun onResponse(call: Call<ArrayList<Places>>, response: Response<ArrayList<Places>>) {
-                Log.v("110 woo r:",response.code().toString())
-                Log.v("110 woo r:",response.body().toString())
-                when(response.code()){
-                    200->{
-                        var tmp = response.body()
+                Log.v("110 woo r:", response.code().toString())
+                Log.v("110 woo r:", response.body().toString())
+                when (response.code()) {
+                    200 -> {
+                        var tmp = response.body()!!
+                        var lastObj: ArrayList<Places>
                         var position = item_list.places.size
-                        if (tmp != null) {
-                            item_list.places.addAll(tmp)
+                        var sequence = item_list.places[count].sequence
+
+
+
+
+                        if (tmp[1].sequence == 100 && tmp[1].letterImageUrl != null) {
+                            context.toast("그만 추가하시죠")
+                            Log.v("1244 size:", item_list.places.size.toString())
+                            common_position = item_list.places.size
+                            footer_flag = tmp[1].sequence
+                            Log.v("1244 flag", footer_flag.toString())
+                            notifyItemInserted(item_list.places.size+1)
+                            itemCount
+                        } else {
+                            index = position
+
+                            Log.v("557 count:", count.toString())
+                            Log.v("557 seq:", sequence.toString())
+                            Log.v("557 tmp:", tmp.toString())
+                            //Log.v("557 seq", tmp[sequence].sequence.toString())
+
+                            item_list.places.add(tmp[1])
+                            count += 1
+                            idx += 1
+                            //notifyDataSetChanged()
+                            notifyItemInserted(position + 1)
+
+                            var dialog = HomeLetterFindDialog(context)
+                            dialog.setCanceledOnTouchOutside(true)
+                            dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                            dialog.show()
+
                         }
-                        // 새로 추가된 것에 대한 notify 즉 갱
-                        notifyItemInserted(position)
-                    }
-                    400->{
+
 
                     }
-                    else->{
+                    400 -> {
+                        var dialog = HomeLetterXDialog(context, 0)
+                        dialog.setCanceledOnTouchOutside(true)
+                        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                        dialog.show()
+                    }
+                    else -> {
 
                     }
                 }
@@ -155,7 +254,6 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
         })
     }
 
-
     inner class HeaderCourseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var courseTitle: TextView = itemView.findViewById(R.id.headerCourseTitleItem)
         var courseSubTitle: TextView = itemView.findViewById(R.id.headerCourseSubTitleItem)
@@ -163,11 +261,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
         var courseTime: TextView = itemView.findViewById(R.id.headerCourseTimeText)
         var courseParticipants: TextView = itemView.findViewById(R.id.headerCourseParticipantsText)
         var headerCourseImage: ImageView = itemView.findViewById(R.id.headerCourseImageItem)
-        var headerCourseButton : RelativeLayout = itemView.findViewById(R.id.headerCourseDetailBtn)
-
-
-        //var course_detail_btn: RelativeLayout = itemView.findViewById(R.id.courseDetailBtn)
-
+        var headerCourseButton: RelativeLayout = itemView.findViewById(R.id.headerCourseDetailBtn)
     }
 
     inner class LetterCourseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -176,6 +270,9 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
         var letterHint: TextView = itemView.findViewById(R.id.letterHint)
         var letterButton: RelativeLayout = itemView.findViewById(R.id.letterDetailBtn)
         var letterImage: ImageView = itemView.findViewById(R.id.letterImageItem)
+    }
+
+    inner class FooterCourseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
 }
