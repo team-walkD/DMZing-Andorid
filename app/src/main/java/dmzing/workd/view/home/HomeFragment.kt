@@ -141,10 +141,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     }
 
+    // 코스 픽하기
     fun putCoursePick(cid : Int){
         Log.v("woo 731 put:","또잉")
-        var coursePickResponse = networkService.putCoursePick(cid,SharedPreference.instance!!
-            .getPrefStringData("jwt")!!)
+        var coursePickResponse = networkService.putCoursePick(SharedPreference.instance!!
+            .getPrefStringData("jwt")!!,cid)
+
         coursePickResponse.enqueue(object : Callback<PickCourse>{
             override fun onFailure(call: Call<PickCourse>, t: Throwable) {
                 Log.v("woo 731 f:",t.message)
@@ -173,11 +175,4 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
 
-    fun settingHomeRecyclerview(view: View) {
-        view.courseList.setHasFixedSize(true)
-        view.courseList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        homeCourseAdapter = HomeCourseAdapter(courseItems, context!!)
-        homeCourseAdapter.setOnItemClick(this)
-        view.courseList.adapter = homeCourseAdapter
-    }
 }
