@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
 import dmzing.workd.R
 import dmzing.workd.model.map.CourseDetailDto
@@ -26,7 +27,8 @@ class CourseOrderResultDialog(var courseDetailDto: CourseDetailDto?,context: Con
         if(courseDetailDto != null){
             dialog_course_order_result_title.text = courseDetailDto!!.title
         } else {
-
+            dialog_course_order_result_success.visibility = View.GONE
+            dialog_course_order_result_fail.visibility = View.VISIBLE
         }
 
         dialog_course_order_result_close.setOnClickListener {
