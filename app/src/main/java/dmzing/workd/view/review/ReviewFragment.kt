@@ -30,18 +30,24 @@ class ReviewFragment : Fragment() {
     lateinit var networkService : NetworkService
 
     lateinit var jwt : String
+    lateinit var mView : View
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.fragment_review, container,false)
+        mView = inflater!!.inflate(R.layout.fragment_review, container,false)
         networkService = ApplicationController.instance!!.networkService
 
         jwt = SharedPreference.instance!!.getPrefStringData("jwt","")!!
 
-        registerReviewCategory(view)
+        registerReviewCategory(mView)
 
-        view.review_walkd_button.setOnClickListener { v: View->
+        mView.review_walkd_button.setOnClickListener { v: View->
             //챗봇 버튼
         }
-        return view
+        return mView
+    }
+
+    override fun onResume() {
+        super.onResume()
+        registerReviewCategory(mView)
     }
 
     fun registerReviewCategory(view : View){
@@ -80,8 +86,8 @@ class ReviewFragment : Fragment() {
                         view.review_recyclerView.layoutManager = gridLayoutManager
                         view.review_recyclerView.adapter = mapItemAdapter
 
-                        var px = Math.round(convertDpToPixel(28f,activity!!))
-                        view.review_recyclerView.addItemDecoration(GridItemDecoration(px))
+//                        var px = Math.round(convertDpToPixel(28f,activity!!))
+//                        view.review_recyclerView.addItemDecoration(GridItemDecoration(px))
                     }
                     401->{//권한 없음
                         Log.d("reviewCount",": 401")

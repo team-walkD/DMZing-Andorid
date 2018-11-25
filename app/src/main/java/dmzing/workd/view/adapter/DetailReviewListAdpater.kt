@@ -38,6 +38,7 @@ class DetailReviewListAdpater(var itemList : ArrayList<SimpleReviewDto>,var cont
             Log.d("zxcv","zxcv")
             Glide.with(context).load(itemList.get(p1).thumbnailUrl).apply(RequestOptions().centerCrop()).into(p0.detailReviewImage)
             p0.detailReviewImage.setColorFilter(PorterDuffColorFilter(Color.parseColor("#7f000000"),PorterDuff.Mode.SRC_OVER))
+            p0.detailReviewImage.clipToOutline = true
         }
         p0.detailReviewTitle.text = itemList.get(p1).title
         p0.detailReviewStartDate.text = timeStampToDate(itemList.get(p1).startAt!!)

@@ -58,6 +58,7 @@
         android:layout_height="178dp">
 
         <ImageView
+            android:scaleType="fitXY"
             android:id="@+id/map_course_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -83,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:src="@drawable/map_more_right_btn"/>
+            android:src="@drawable/map_lock_white_icon"/>
 
         <TextView
             android:id="@+id/map_course_text1"

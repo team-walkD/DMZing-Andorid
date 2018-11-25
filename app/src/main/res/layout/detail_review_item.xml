@@ -9,6 +9,7 @@
 
     <ImageView
         android:id="@+id/detail_list_image_item"
+        android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="209.2dp"
         />
