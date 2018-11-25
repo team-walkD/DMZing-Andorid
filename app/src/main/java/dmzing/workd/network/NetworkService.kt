@@ -36,7 +36,15 @@ interface NetworkService {
             @Part data : MultipartBody.Part?
     ) : Call<ImageDto>
 
-    //리뷰 작성
+    //상세 리뷰 작성
+    @Headers("Content-type: application/json")
+    @POST("api/reviews")
+    fun postDetailReview(
+            @Header("jwt") jwt : String,
+            @Body reviewDto : reviewDto
+    ) : Call<Any>
+
+    //사진 리뷰 작성
     @Headers("Content-type: application/json")
     @POST("api/reviews/photo")
     fun postPhotoReview(

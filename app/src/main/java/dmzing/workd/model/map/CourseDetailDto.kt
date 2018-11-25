@@ -12,6 +12,7 @@ data class CourseDetailDto (
         var mainDescription : String? = null,
         var places : ArrayList<PlaceDto>? = null,
         var price : Int,
+        var pickCount : Int,
         var reviewCount : Int,
         var subDescription : String? = null,
         var title : String? = null

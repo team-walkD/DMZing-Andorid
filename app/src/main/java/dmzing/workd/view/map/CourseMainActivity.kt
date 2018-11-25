@@ -31,7 +31,7 @@ class CourseMainActivity : AppCompatActivity() {
         course_main_subDescrip.text = courseDetailDto.subDescription
         course_main_title.text = courseDetailDto.title
 
-        course_main_pick_count.text = courseDetailDto.reviewCount.toString()+"명이 PICK한 그 곳"
+        course_main_pick_count.text = courseDetailDto.pickCount.toString()+"명이 PICK한 그 곳"
 
         course_main_more.setOnClickListener {//보러가기
             var intent = Intent(this,CourseDetailActivity::class.java)
