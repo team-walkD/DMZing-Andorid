@@ -59,23 +59,27 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <ScrollView android:layout_width="match_parent"
-                android:layout_height="match_parent"
-    android:background="#29707070">
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#29707070">
 
 
+        <RelativeLayout
+                android:layout_marginTop="18dp"
+                android:layout_marginLeft="24.4dp"
+                android:layout_marginRight="24.4dp"
+                android:layout_width="match_parent"
+                android:background="@android:color/white"
+                android:layout_height="match_parent">
 
-            <RelativeLayout
-                    android:layout_marginTop="18dp"
-                    android:layout_marginLeft="24.4dp"
-                    android:layout_marginRight="24.4dp"
+            <TextView
+                    android:id="@+id/serviceText"
                     android:layout_width="match_parent"
-                    android:background="@android:color/white"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"/>
 
 
-            </RelativeLayout>
-
+        </RelativeLayout>
 
 
     </ScrollView>
