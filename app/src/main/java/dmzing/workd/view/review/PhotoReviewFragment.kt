@@ -38,13 +38,6 @@ class PhotoReviewFragment : Fragment() {
 
         mPhotoReviewItems = ArrayList()
 
-//        mPhotoReviewItems.add(PhotoReviewDto(1,0,"평화전망대","#뭐지 #뭐긴",1))
-//        mPhotoReviewItems.add(PhotoReviewDto(2,0,"평화전망대","#뭐지 #뭐긴",1))
-//        mPhotoReviewItems.add(PhotoReviewDto(3,0,"평화전망대","#뭐지 #뭐긴",1))
-//        mPhotoReviewItems.add(PhotoReviewDto(4,0,"평화전망대","#뭐지 #뭐긴",1))
-//        mPhotoReviewItems.add(PhotoReviewDto(5,0,"평화전망대","#뭐지 #뭐긴",1))
-//        mPhotoReviewItems.add(PhotoReviewDto(6,0,"평화전망대","#뭐지 #뭐긴",1))
-
         loadPhotoReviewList(view,courseId)
 
         return view
@@ -80,7 +73,9 @@ class PhotoReviewFragment : Fragment() {
 
                         mPhotoReviewAdpater.SetOnItemClickListener(object : PhotoReviewListAdapter.ItemClick{
                             override fun onClick(view: View, position: Int) {
-                                startActivity(Intent(context,PhotoDetailActivity::class.java))
+                                var intent = Intent(context,PhotoDetailActivity::class.java)
+                                intent.putExtra("photo",response.body()!!.get(position).imageUrl)
+                                startActivity(intent)
                             }
 
                         })

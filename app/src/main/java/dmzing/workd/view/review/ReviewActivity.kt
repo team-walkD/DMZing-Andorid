@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import dmzing.workd.R
 import dmzing.workd.model.review.reviewDto
 import dmzing.workd.network.ApplicationController
@@ -32,9 +33,9 @@ class ReviewActivity : AppCompatActivity() {
 
 
         jwt = SharedPreference.instance!!.getPrefStringData("jwt","")!!
-//        review_back_button.setOnClickListener {
-//            finish()
-//        }
+        review_back_button.setOnClickListener {
+            finish()
+        }
 
         getReview(rid)
     }
@@ -55,7 +56,7 @@ class ReviewActivity : AppCompatActivity() {
                             //review_thumbnail.setBackgroundColor(Color.parseColor("#e3e3e3"))
                             //review_thumbnail.setColorFilter(Color.parseColor("#7f000000"), PorterDuff.Mode.SRC_OVER)
                         } else {
-                            Glide.with(this@ReviewActivity).load(mReviewDto.thumbnailUrl).into(review_thumbnail)
+                            Glide.with(this@ReviewActivity).load(mReviewDto.thumbnailUrl).apply(RequestOptions().centerCrop()).into(review_thumbnail)
                             review_thumbnail.setColorFilter(Color.parseColor("#7f000000"), PorterDuff.Mode.SRC_OVER)
                         }
                         //타이틀
