@@ -12,6 +12,7 @@ import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.SharedPreference
 import dmzing.workd.util.Utils
+import dmzing.workd.view.mypage.faq.FAQActivity
 import dmzing.workd.view.mypage.point.MypagePointActivity
 import dmzing.workd.view.mypage.setting.SettingActivity
 import kotlinx.android.synthetic.main.fragment_mypage.*
@@ -24,30 +25,28 @@ import retrofit2.Response
 /**
  * Created by VictoryWoo
  */
-class MypageFragment : Fragment(), View.OnClickListener, Utils {
-    override fun init() {
-
-    }
-
-    fun init(view : View){
-        view.mypageCourseBtn.setOnClickListener(this)
-        view.mypageReviewBtn.setOnClickListener(this)
-        view.mypagePointBtn.setOnClickListener(this)
-        view.mypageSettingBtn.setOnClickListener(this)
-        networkService = ApplicationController.instance.networkService
-        SharedPreference.instance!!.load(context!!)
-    }
-
+class MypageFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!) {
             mypageCourseBtn -> startActivity<MypageCourseActivity>()
             mypageReviewBtn -> startActivity<MypageReviewActivity>()
             mypagePointBtn -> startActivity<MypagePointActivity>()
             mypageSettingBtn -> startActivity<SettingActivity>()
+            mypageFnQBtn -> startActivity<FAQActivity>()
         }
     }
 
-    lateinit var networkService : NetworkService
+    fun init(view: View) {
+        view.mypageCourseBtn.setOnClickListener(this)
+        view.mypageReviewBtn.setOnClickListener(this)
+        view.mypagePointBtn.setOnClickListener(this)
+        view.mypageSettingBtn.setOnClickListener(this)
+        view.mypageFnQBtn.setOnClickListener(this)
+        networkService = ApplicationController.instance.networkService
+        SharedPreference.instance!!.load(context!!)
+    }
+
+    lateinit var networkService: NetworkService
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_mypage, container, false)
         init(view)
@@ -57,28 +56,28 @@ class MypageFragment : Fragment(), View.OnClickListener, Utils {
         return view
     }
 
-    fun getMypageInfo(view : View){
-        var jwt : String = SharedPreference.instance!!.getPrefStringData("jwt")!!
+    fun getMypageInfo(view: View) {
+        var jwt: String = SharedPreference.instance!!.getPrefStringData("jwt")!!
         var getMypageInfoResponse = networkService.getMypageUserInformation(jwt)
-        getMypageInfoResponse.enqueue(object : Callback<GetMypageInfomation>{
+        getMypageInfoResponse.enqueue(object : Callback<GetMypageInfomation> {
             override fun onFailure(call: Call<GetMypageInfomation>, t: Throwable) {
-                Log.v("1121 woo fail:",t.message)
+                Log.v("1121 woo fail:", t.message)
             }
 
             override fun onResponse(call: Call<GetMypageInfomation>, response: Response<GetMypageInfomation>) {
-                Log.v("1121 woo r:",response.code()!!.toString())
-                when(response!!.code()){
-                    200->{
+                Log.v("1121 woo r:", response.code()!!.toString())
+                when (response!!.code()) {
+                    200 -> {
                         view.mypageNickname.text = response.body()!!.nick
                         view.mypageEmail.text = response.body()!!.email
                         view.mypageCourseCount.text = response.body()!!.courseCount.toString()
                         view.mypageReviewCount.text = response.body()!!.reviewCount.toString()
                         view.mypageDpPoint.text = response.body()!!.dp.toString()
                     }
-                    401->{
+                    401 -> {
 
                     }
-                    500->{
+                    500 -> {
 
                     }
 

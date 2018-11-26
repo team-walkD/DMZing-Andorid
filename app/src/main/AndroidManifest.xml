@@ -7,9 +7,8 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
-
-    <!--GPS setting-->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- GPS setting -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
@@ -53,6 +52,8 @@
         <activity android:name=".view.map.CourseMainActivity"/>
         <activity android:name=".view.map.CoursePlaceActivity"/>
         <activity android:name=".view.signup.SignUpActivity">
+        </activity>
+        <activity android:name=".view.mypage.faq.FAQActivity">
         </activity>
     </application>
 
