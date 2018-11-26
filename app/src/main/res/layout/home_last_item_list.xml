@@ -11,65 +11,89 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
 
         <ImageView
                 android:id="@+id/letterImageItem"
-                android:background="@android:color/holo_blue_dark"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/letter_complete_img"
                 android:scaleType="fitXY"
-                android:layout_width="336dp"
-                android:layout_height="168dp"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         <TextView
-                android:id="@+id/letterSubTitleItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textColor="#1c3748"
                 android:lineSpacingExtra="8sp"
-                android:text="사진 찍기 좋은 핫스팟 "
-                android:layout_marginLeft="19dp"
-                android:layout_marginTop="13dp"
-        />
-
-        <TextView
-                android:id="@+id/letterTitleItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textColor="#1c3748"
-                android:lineSpacingExtra="12sp"
-                android:layout_marginLeft="19dp"
-                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:layout_marginTop="20dp"
                 android:text="데이트하기 좋은 코스"
         />
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:textColor="#1c3748"
-                android:lineSpacingExtra="8sp"
-                android:text="미션 정보"
-                android:layout_marginLeft="19dp"
-                android:layout_marginTop="27dp"
-                android:visibility="invisible"
+                android:lineSpacingExtra="12sp"
+                android:text="편지 미션 성공!"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:includeFontPadding="false"
         />
 
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="6sp"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:text="미션을 모두 성공했어요!"
+                android:layout_marginTop="42dp"
+                android:layout_gravity="center_horizontal"
+        />
 
         <TextView
-                android:id="@+id/letterHint"
-                android:layout_marginHorizontal="22dp"
-                android:layout_marginTop="6dp"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="6sp"
+                android:layout_marginTop="13dp"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:text="하단의 버튼을 통해"
+                android:layout_gravity="center_horizontal"
+        />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:layout_marginTop="3dp"
+                android:includeFontPadding="false"
+                android:textSize="14sp"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="6sp"
+                android:gravity="center_horizontal"
+                android:text="더 다양한 미션을 만나보세요!"
         />
 
 
         <View
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="22.5dp"
+                android:layout_marginTop="40dp"
                 android:layout_width="265dp"
                 android:layout_height="1dp"
                 android:background="@color/viewColor"/>
@@ -94,7 +118,7 @@
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/notosanscjkkr_bold"
                     android:includeFontPadding="false"
-                    android:text="편지 찾기"
+                    android:text="다른 미션 찾기"
             />
 
 

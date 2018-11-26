@@ -30,8 +30,9 @@ class MainActivity : AppCompatActivity() {
             toast("\'뒤로가기\' 버튼을 한번 더 누르시면 종료됩니다.")
             return
         }
-        if (System.currentTimeMillis() <= backPressedTime + 2000)
+        if (System.currentTimeMillis() <= backPressedTime + 2000){
             this.finish()
+        }
 
     }
 
