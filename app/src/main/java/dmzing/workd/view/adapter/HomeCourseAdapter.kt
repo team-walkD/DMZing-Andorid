@@ -55,6 +55,8 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
         )
     }
 
+    // 리사이클러뷰 생명주기
+    // 붙을 때 아이템이 추가된것을 알려줌.
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         notifyItemInserted(item_list.places.size+1)
