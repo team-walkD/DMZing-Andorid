@@ -30,6 +30,13 @@ interface NetworkService {
 
     /*== 민형 ==*/
 
+    //리뷰 신고
+    @POST("api/report")
+    fun postReportReview(
+            @Header("jwt") jwt : String,
+            @Body reportDto: ReportDto
+    ) : Call<Any>
+
     //리뷰 이미지 등록(코루틴)
     @Multipart
     @POST("api/reviews/images")

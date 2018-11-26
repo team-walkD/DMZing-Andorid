@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import dmzing.workd.R
+import dmzing.workd.dialog.ReviewReportDialog
+import dmzing.workd.model.review.ReportDto
 import dmzing.workd.model.review.reviewDto
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
@@ -35,6 +37,15 @@ class ReviewActivity : AppCompatActivity() {
         jwt = SharedPreference.instance!!.getPrefStringData("jwt","")!!
         review_back_button.setOnClickListener {
             finish()
+        }
+
+        review_siren_button.setOnClickListener {
+            var dialog = ReviewReportDialog(rid,"DETAIL",this)
+            dialog.show()
+        }
+
+        review_like_button.setOnClickListener{
+
         }
 
         getReview(rid)
@@ -82,7 +93,6 @@ class ReviewActivity : AppCompatActivity() {
 
         })
     }
-
     fun timeStampToDate(timeStamp : Long) : String{
         var date : Date = Date(timeStamp)
         var dateF : SimpleDateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
