@@ -48,6 +48,8 @@
                     android:id="@+id/loginId"
                     android:inputType="textEmailAddress"
                     android:layout_width="match_parent"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
                     android:layout_height="wrap_content"/>
 
             <TextView
@@ -68,6 +70,8 @@
                     android:layout_marginHorizontal="36dp"
                     android:layout_marginTop="28dp"
                     android:hint="@string/signUpPw"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
                     android:id="@+id/loginPw"
                     android:inputType="textPassword"
                     android:layout_width="match_parent"
@@ -81,7 +85,7 @@
                     android:background="@drawable/border_blue_button_templete"
                     android:text="로그인 하기"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp">
+                    android:layout_height="48dp">
 
                 <TextView
                         android:layout_width="wrap_content"
@@ -107,6 +111,8 @@
                     android:textSize="14sp"
                     android:textColor="#1c3748"
                     android:lineSpacingExtra="6sp"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
                     android:text="아직 디엠징의 회원이 아니신가요?"
             />
 
@@ -118,7 +124,8 @@
 
                 <TextView
                         android:id="@+id/loginToSignBtn"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:includeFontPadding="false"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -131,6 +138,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
+                        android:fontFamily="@font/notosanscjkkr_regular"
+                        android:includeFontPadding="false"
                         android:textColor="#1c3748"
                         android:lineSpacingExtra="6sp"
                         android:text="  하기"

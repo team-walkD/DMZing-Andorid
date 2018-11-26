@@ -12,9 +12,9 @@
             android:id="@+id/reviewImageItem"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/my_more_right_btn"/>
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/liked_myreview_icon"/>
 
 
     <LinearLayout

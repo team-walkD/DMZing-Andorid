@@ -15,6 +15,7 @@ import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.SharedPreference
 import dmzing.workd.view.MainActivity
+import dmzing.workd.view.signup.SignUpActivity
 import dmzing.workd.view.signup.SignUpOneActivity
 import dmzing.workd.view.signup.SignUpThreeActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -37,7 +38,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 finish()*/
             }
             loginToSignBtn -> {
-                startActivity(Intent(this, SignUpOneActivity::class.java))
+                startActivity(Intent(this,SignUpActivity::class.java))
             }
         }
     }

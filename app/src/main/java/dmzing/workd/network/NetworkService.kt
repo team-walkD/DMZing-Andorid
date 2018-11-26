@@ -223,7 +223,7 @@ interface NetworkService {
     @GET("api/users/reviews")
     fun getMypageReviews(
         @Header("jwt") jwt: String
-    ) : Call<List<GetMypageReviewData>>
+    ) : Call<ArrayList<GetMypageReviewData>>
 
 
     // 홈 화면에서 데이터 불러오기
@@ -254,6 +254,8 @@ interface NetworkService {
         @Header("jwt") jwt : String,
         @Path("cid") cid : Int
     ) : Call<PickCourse>
+
+
 }
 
 

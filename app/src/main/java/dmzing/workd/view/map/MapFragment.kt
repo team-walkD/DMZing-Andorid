@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PagerSnapHelper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,10 +30,14 @@ class MapFragment : Fragment() {
     lateinit var courseListAdapter : CourseListAdapter
     lateinit var fragmentView : View
     lateinit var jwt : String
+    lateinit var imageList : ArrayList<String>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         fragmentView = inflater.inflate(R.layout.fragment_map, container, false)
         networkService = ApplicationController.instance!!.networkService
         jwt = SharedPreference.instance!!.getPrefStringData("jwt","")!!
+
+        imageList = ArrayList()
+
 
         settingCourseList(fragmentView)
 
@@ -61,6 +66,11 @@ class MapFragment : Fragment() {
                 when(response.code()){
                     200->{
                         courseList = response.body()!!
+                        Log.v("1221 WOO image",response.body()!!.size.toString())
+                        for(i in 0..response.body()!!.size-1)
+                            imageList.add(response.body()!![i].lineImageUrl)
+
+                        Log.v("1221 WOO image",imageList.toString())
                         courseListAdapter = CourseListAdapter(courseList,context!!)
                         courseListAdapter.SetOnLockClickListener(object : CourseListAdapter.ItemClick{
                             override fun OnClick(view: View, position: Int) {
@@ -77,7 +87,13 @@ class MapFragment : Fragment() {
                             }
 
                         })
-                        view.map_recycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+                        var lm = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+                        view.map_recycler.layoutManager = lm
+
+
+                     /*   var rvPosition = lm.findFirstCompletelyVisibleItemPosition()
+                        Log.v("1230 rvPosition",rvPosition.toString())*/
+                        
                         view.map_recycler.adapter = courseListAdapter
                     }
                     401->{
