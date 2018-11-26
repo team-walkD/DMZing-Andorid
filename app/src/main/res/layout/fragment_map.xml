@@ -1,91 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#f3f5f7">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f3f5f7">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:background="@color/backgroundColor"/>
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:background="@color/backgroundColor"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:id="@+id/mapToolbar"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="22dp"
-            android:layout_marginTop="14dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <RelativeLayout
+                android:id="@+id/mapToolbar"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="22dp"
+                android:layout_marginTop="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="118dp"
-                android:layout_height="26dp"
-                android:textSize="20sp"
-                android:textColor="#1c3748"
-                android:lineSpacingExtra="9sp"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/notosanscjkkr_bold"
-                android:includeFontPadding="false"
-                android:background="@drawable/dmzing_logo_img"
-                />
+                    android:layout_width="118dp"
+                    android:layout_height="26dp"
+                    android:textSize="20sp"
+                    android:textColor="#1c3748"
+                    android:lineSpacingExtra="9sp"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:background="@drawable/dmzing_logo_img"
+            />
 
             <ImageView
-                android:layout_marginRight="2dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/walk_d_icon"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"/>
+                    android:layout_marginRight="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/walk_d_icon"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/text1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="36dp"
-                android:textSize="24sp"
-                android:textColor="#1c3748"
-                android:fontFamily="@font/notosanscjkkr_bold"
-                android:includeFontPadding="false"
-                android:text="다양한 코스"
-                />
+                android:layout_height="wrap_content">
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/text1"
-                android:textSize="24sp"
-                android:textColor="#1c3748"
-                android:fontFamily="@font/notosanscjkkr_regular"
-                android:includeFontPadding="false"
-                android:text="로"
-                />
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="36dp"
+                    android:textSize="24sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:text="다양한 코스"
+            />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/text1"
+                    android:textSize="24sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:text="로"
+            />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textColor="#1c3748"
-                android:fontFamily="@font/notosanscjkkr_regular"
-                android:includeFontPadding="false"
-                android:layout_below="@+id/text1"
-                android:layout_alignLeft="@+id/text1"
-                android:text="DMZ를 만나보세요"
-                />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:layout_below="@+id/text1"
+                    android:layout_alignLeft="@+id/text1"
+                    android:text="DMZ를 만나보세요"
+            />
 
         </RelativeLayout>
-        
+
         <ImageView
-            android:layout_width="313dp"
-            android:layout_height="179dp"
-            android:layout_gravity="center_horizontal"/>
+                android:id="@+id/courseLineImage"
+                android:layout_width="313dp"
+                android:layout_height="179dp"
+                android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 

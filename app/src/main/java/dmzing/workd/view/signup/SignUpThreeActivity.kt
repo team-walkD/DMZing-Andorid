@@ -24,7 +24,7 @@ class SignUpThreeActivity : AppCompatActivity(), View.OnClickListener, Utils {
         when (v!!) {
             signUpThreeNextBtn -> {
                 if (signUpThreePhone.text.length > 0) {
-                    postUserCreate()
+                    //postUserCreate()
                 }
 
             }
@@ -44,7 +44,7 @@ class SignUpThreeActivity : AppCompatActivity(), View.OnClickListener, Utils {
         setContentView(R.layout.activity_sign_up_three)
         init()
     }
-
+/*
     fun postUserCreate() {
         Log.v("woo 1994 :", "woo??")
         Log.v("woo 413 :", CommonData.user_id)
@@ -89,5 +89,5 @@ class SignUpThreeActivity : AppCompatActivity(), View.OnClickListener, Utils {
 
 
         })
-    }
+    }*/
 }
