@@ -14,8 +14,10 @@ import dmzing.workd.model.mypage.review.GetMypageReviewData
 import dmzing.workd.model.review.*
 import dmzing.workd.model.user.LoginUser
 import dmzing.workd.model.user.UserDTO
+import kotlinx.coroutines.Deferred
 import okhttp3.MultipartBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 /**
@@ -27,6 +29,14 @@ interface NetworkService {
     * */
 
     /*== 민형 ==*/
+
+    //리뷰 이미지 등록(코루틴)
+    @Multipart
+    @POST("api/reviews/images")
+    fun postTestImage(
+        @Header("jwt") jwt : String,
+        @Part data : MultipartBody.Part?
+    ) : Deferred<Response<ImageDto>>
 
     //리뷰 이미지 등록
     @Multipart

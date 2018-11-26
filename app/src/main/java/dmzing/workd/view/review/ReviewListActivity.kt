@@ -53,7 +53,9 @@ class ReviewListActivity : AppCompatActivity() {
                     placeSelectDialog.show()
                 }
                 1->{
-                    startActivity(Intent(this,ReviewWriteActivity::class.java))
+                    var intent = Intent(this,ReviewWriteActivity::class.java)
+                    intent.putExtra("courseId",courseId)
+                    startActivity(intent)
                 }
             }
         }
