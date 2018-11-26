@@ -14,7 +14,8 @@ import dmzing.workd.model.mypage.review.GetMypageReviewData
 import dmzing.workd.model.review.*
 import dmzing.workd.model.user.LoginUser
 import dmzing.workd.model.user.UserDTO
-import kotlinx.coroutines.Deferred
+
+
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Response
@@ -37,14 +38,14 @@ interface NetworkService {
             @Body reportDto: ReportDto
     ) : Call<Any>
 
-    //리뷰 이미지 등록(코루틴)
+  /*  //리뷰 이미지 등록(코루틴)
     @Multipart
     @POST("api/reviews/images")
     fun postTestImage(
         @Header("jwt") jwt : String,
         @Part data : MultipartBody.Part?
     ) : Deferred<Response<ImageDto>>
-
+*/
     //리뷰 이미지 등록
     @Multipart
     @POST("api/reviews/images")
@@ -141,6 +142,9 @@ interface NetworkService {
     * 하고 @Header("jwt") jwt : String
     * 해서 보낸다.
     * */
+
+
+
     /*== 승우 ==*/
     // 유저 생성
     // edit by 이승우
@@ -245,7 +249,7 @@ interface NetworkService {
     // curse pick 하기
     // edit by 이승우
     //@Headers("Content-type: application/json")
-    @PUT("api/course/pick/{cid}")
+    @PUT("api/course/pick/{cid}/")
     fun putCoursePick(
         @Header("jwt") jwt : String,
         @Path("cid") cid : Int

@@ -85,6 +85,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
 
+    // 홈 편지 미션 통신
     fun getHomeMission(view: View) {
         var homeResponse = networkService
             .getHomeMissions(SharedPreference.instance!!.getPrefStringData(CommonData.JWT)!!)
@@ -109,6 +110,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     }
 
+    // 필터 아이템 통신
     fun settingFilterItems(view: View, items: ArrayList<HomeFilterData>) {
         filterItems = items
         view.homeFilterRv.setHasFixedSize(true)
@@ -130,7 +132,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     }
                     holder.isChecked = true
                     //toast("${holder.fiter_map.text}")
-                    putCoursePick(items[position].id)
+                    putCoursePick(view, items[position].id)
                     toast("${items[position].id}+${holder.fiter_map.text}")
 
                 }
@@ -142,10 +144,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     // 코스 픽하기
-    fun putCoursePick(cid : Int){
+    fun putCoursePick(view :View, cid : Int){
         Log.v("woo 731 put:","또잉")
         var coursePickResponse = networkService.putCoursePick(SharedPreference.instance!!
             .getPrefStringData("jwt")!!,cid)
+        Log.v("woo 7311 put:","또잉1")
 
         coursePickResponse.enqueue(object : Callback<PickCourse>{
             override fun onFailure(call: Call<PickCourse>, t: Throwable) {
@@ -154,9 +157,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
             override fun onResponse(call: Call<PickCourse>, response: Response<PickCourse>) {
                 Log.v("woo 731 r:",response.message())
+                Log.v("woo 731 r:",response.code().toString())
                 when(response!!.code()){
                     200->{
-
+                        settingHomeItems(view, response.body()!!)
+                        homeCourseAdapter.notifyDataSetChanged()
                     }
 
                 }
