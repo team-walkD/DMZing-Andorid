@@ -21,7 +21,7 @@ import retrofit2.Response
 
 class MypageReviewActivity : AppCompatActivity() {
 
-    lateinit var reviewItems: List<GetMypageReviewData>
+    lateinit var reviewItems: ArrayList<GetMypageReviewData>
     lateinit var mypageReviewAdapter: MypageReviewAdapter
     lateinit var networkService: NetworkService
 
@@ -31,7 +31,7 @@ class MypageReviewActivity : AppCompatActivity() {
         networkService = ApplicationController.instance.networkService
         SharedPreference.instance!!.load(this)
 
-        reviewItems = listOf()
+        reviewItems = ArrayList()
         getMypageReview()
 
 
@@ -43,14 +43,14 @@ class MypageReviewActivity : AppCompatActivity() {
         var reviewResponse = networkService
             .getMypageReviews(SharedPreference.instance!!.getPrefStringData("jwt")!!)
 
-        reviewResponse.enqueue(object : Callback<List<GetMypageReviewData>>{
-            override fun onFailure(call: Call<List<GetMypageReviewData>>, t: Throwable) {
+        reviewResponse.enqueue(object : Callback<ArrayList<GetMypageReviewData>>{
+            override fun onFailure(call: Call<ArrayList<GetMypageReviewData>>, t: Throwable) {
                 Log.v("755 woo f",t.message)
             }
 
             override fun onResponse(
-                call: Call<List<GetMypageReviewData>>,
-                response: Response<List<GetMypageReviewData>>) {
+                call: Call<ArrayList<GetMypageReviewData>>,
+                response: Response<ArrayList<GetMypageReviewData>>) {
 
                 Log.v("755 woo r",response.code().toString())
                 Log.v("755 woo r",response.body().toString())
@@ -58,6 +58,7 @@ class MypageReviewActivity : AppCompatActivity() {
                     200->{
                         reviewNested.scrollTo(0, 0)
                         reviewList.setHasFixedSize(true)
+                        reviewItems = response.body()!!
                         mypageReviewAdapter = MypageReviewAdapter(reviewItems, this@MypageReviewActivity)
                         reviewList.layoutManager = LinearLayoutManager(this@MypageReviewActivity)!!
                         reviewList.adapter = mypageReviewAdapter
