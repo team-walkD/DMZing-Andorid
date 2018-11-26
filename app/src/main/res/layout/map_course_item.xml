@@ -1,123 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="297dp" android:layout_height="267dp"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="297dp"
+    android:layout_height="267dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="24dp"
     android:background="@drawable/mypage_border"
     android:orientation="vertical"
-    >
+    app:cardCornerRadius="10dp"
+    app:cardElevation="3dp">
 
     <RelativeLayout
-        android:id="@+id/map_course_rela"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="21dp"
-        android:layout_marginRight="21dp"
-        android:layout_marginTop="22dp">
-
-        <TextView
-            android:id="@+id/map_course_subDescrip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanscjkkr_regular"
-            android:includeFontPadding="false"
-            android:textSize="14sp"
-            android:textColor="#1c3748"
-            android:text="사진 찍기 좋은 핫스팟"/>
-
-        <TextView
-            android:id="@+id/map_course_indicator"
-            android:fontFamily="@font/roboto_regular"
-            android:includeFontPadding="false"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:textSize="15sp"
-            android:textColor="#1c3748"
-            android:text="1/3"
-            />
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/map_course_title"
-        android:fontFamily="@font/notosanscjkkr_bold"
-        android:includeFontPadding="false"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="6dp"
-        android:layout_below="@+id/map_course_rela"
-        android:textSize="20sp"
-        android:textColor="#1c3748"
-        android:text="데이트하기 좋은 코스"
-        />
-
-    <FrameLayout
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="178dp">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/map_course_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <ImageView
-            android:id="@+id/map_course_see_course"
+        <RelativeLayout
+            android:id="@+id/map_course_rela"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:src="@drawable/map_more_right_btn" />
-    </FrameLayout>
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginTop="22dp">
 
-    <RelativeLayout
-        android:id="@+id/map_course_lock_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#7f000000"
-        android:visibility="gone">
+            <TextView
+                android:id="@+id/map_course_subDescrip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:textSize="14sp"
+                android:textColor="#1c3748"
+                android:text="사진 찍기 좋은 핫스팟"/>
 
-        <ImageView
-            android:id="@+id/map_course_lock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/map_more_right_btn"/>
+            <TextView
+                android:id="@+id/map_course_indicator"
+                android:fontFamily="@font/roboto_regular"
+                android:includeFontPadding="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textSize="15sp"
+                android:textColor="#1c3748"
+                android:text="1/3"
+                />
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/map_course_text1"
-            android:text="잠금을 풀려면"
-            android:textSize="14sp"
-            android:textColor="#BEBEBE"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/map_course_text2"
-            android:layout_toLeftOf="@+id/map_course_lock"
-          />
-
-        <TextView
-            android:id="@+id/map_course_price"
-            android:text="400DP"
-            android:textSize="14sp"
-            android:textColor="#BEBEBE"
+            android:id="@+id/map_course_title"
             android:fontFamily="@font/notosanscjkkr_bold"
             android:includeFontPadding="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/map_course_text2"
-            android:layout_toLeftOf="@+id/map_course_text2"/>
-        <TextView
-            android:id="@+id/map_course_text2"
-            android:text="가 필요해요"
-            android:textSize="14sp"
-            android:textColor="#BEBEBE"
-            android:fontFamily="@font/notosanscjkkr_regular"
-            android:includeFontPadding="false"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="6dp"
+            android:layout_below="@+id/map_course_rela"
+            android:textSize="20sp"
+            android:textColor="#1c3748"
+            android:text="데이트하기 좋은 코스"
+            />
+
+        <FrameLayout
             android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/map_course_lock"/>
+            android:layout_width="match_parent"
+            android:layout_height="178dp">
+
+            <ImageView
+                android:scaleType="fitXY"
+                android:id="@+id/map_course_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/map_course_see_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:src="@drawable/map_more_right_btn" />
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/map_course_lock_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#7f000000"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/map_course_lock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/map_lock_white_icon"/>
+
+            <TextView
+                android:id="@+id/map_course_text1"
+                android:text="잠금을 풀려면"
+                android:textSize="14sp"
+                android:textColor="#BEBEBE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/map_course_text2"
+                android:layout_toLeftOf="@+id/map_course_lock"
+                />
+
+            <TextView
+                android:id="@+id/map_course_price"
+                android:text="400DP"
+                android:textSize="14sp"
+                android:textColor="#BEBEBE"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:includeFontPadding="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/map_course_text2"
+                android:layout_toLeftOf="@+id/map_course_text2"/>
+            <TextView
+                android:id="@+id/map_course_text2"
+                android:text="가 필요해요"
+                android:textSize="14sp"
+                android:textColor="#BEBEBE"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@+id/map_course_lock"/>
+
+        </RelativeLayout>
 
     </RelativeLayout>
-</RelativeLayout>
+</android.support.v7.widget.CardView>

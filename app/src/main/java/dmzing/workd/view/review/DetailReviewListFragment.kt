@@ -53,7 +53,7 @@ class DetailReviewListFragment : Fragment() {
         val simpleReviewList = networkService.getSimpleReviews(jwt,rid,type!!)
         simpleReviewList.enqueue(object : Callback<ArrayList<SimpleReviewDto>>{
             override fun onFailure(call: Call<ArrayList<SimpleReviewDto>>, t: Throwable) {
-
+                Log.d("getSimpleReviewList","fail")
             }
 
             override fun onResponse(
@@ -79,10 +79,10 @@ class DetailReviewListFragment : Fragment() {
 
                     }
                     401->{
-
+                        Log.d("getSimpleReviewList",response.code().toString())
                     }
                     500->{
-
+                        Log.d("getSimpleReviewList",response.code().toString())
                     }
                 }
             }

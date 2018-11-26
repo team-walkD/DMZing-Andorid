@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import dmzing.workd.R
 import dmzing.workd.model.review.ReviewCountDto
 import java.util.ArrayList
@@ -53,9 +54,8 @@ class ReviewMapAdapter(var reviewMapItems : ArrayList<ReviewCountDto>, var conte
         if(reviewMapItems.get(p1).imageUrl == null){
             p0.mapImage.setBackgroundResource(R.drawable.bmo)
         } else {
-            Glide.with(context).load(reviewMapItems.get(p1).imageUrl).into(p0.mapImage)
+            Glide.with(context).load(reviewMapItems.get(p1).imageUrl).apply(RequestOptions().centerCrop()).into(p0.mapImage)
         }
-
         p0.itemView.setOnClickListener{v : View ->
             val click = itemClick
             if(click != null){

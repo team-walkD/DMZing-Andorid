@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import dmzing.workd.R
 import dmzing.workd.model.review.PhotoReviewDto
 import java.text.SimpleDateFormat
@@ -26,7 +27,7 @@ class PhotoReviewListAdapter(var itemList : ArrayList<PhotoReviewDto>, var conte
     }
 
     override fun onBindViewHolder(p0: PhotoReviewListViewHolder, p1: Int) {
-        Glide.with(context).load(itemList.get(p1).imageUrl).into(p0.photoReviewImage)
+        Glide.with(context).load(itemList.get(p1).imageUrl).apply(RequestOptions().centerCrop()).into(p0.photoReviewImage)
         p0.photoReviewPlace.text = itemList.get(p1).placeName
         p0.photoReviewDate.text = timeStampToDate(itemList.get(p1).startAt!!)
 

@@ -27,10 +27,12 @@ class PhotoReviewFragment : Fragment() {
     lateinit var mPhotoReviewAdpater : PhotoReviewListAdapter
     lateinit var networkService: NetworkService
     lateinit var jwt : String
+    lateinit var mView : View
     var pid : Int = 0
+    var courseId = 0
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater.inflate(R.layout.fragment_photo_review_list, container, false)
-        var courseId = arguments!!.getInt("courseId")
+        mView = inflater.inflate(R.layout.fragment_photo_review_list, container, false)
+        courseId = arguments!!.getInt("courseId")
 
         networkService = ApplicationController.instance!!.networkService
 
@@ -38,16 +40,14 @@ class PhotoReviewFragment : Fragment() {
 
         mPhotoReviewItems = ArrayList()
 
-//        mPhotoReviewItems.add(PhotoReviewDto(1,0,"평화전망대","#뭐지 #뭐긴",1))
-//        mPhotoReviewItems.add(PhotoReviewDto(2,0,"평화전망대","#뭐지 #뭐긴",1))
-//        mPhotoReviewItems.add(PhotoReviewDto(3,0,"평화전망대","#뭐지 #뭐긴",1))
-//        mPhotoReviewItems.add(PhotoReviewDto(4,0,"평화전망대","#뭐지 #뭐긴",1))
-//        mPhotoReviewItems.add(PhotoReviewDto(5,0,"평화전망대","#뭐지 #뭐긴",1))
-//        mPhotoReviewItems.add(PhotoReviewDto(6,0,"평화전망대","#뭐지 #뭐긴",1))
+        loadPhotoReviewList(mView,courseId)
 
-        loadPhotoReviewList(view,courseId)
+        return mView
+    }
 
-        return view
+    override fun onResume() {
+        super.onResume()
+        loadPhotoReviewList(mView,courseId)
     }
 
     fun loadPhotoReviewList(view : View,courseId : Int){
@@ -76,11 +76,14 @@ class PhotoReviewFragment : Fragment() {
                 when(response.code()){
                     200->{
                         Log.d("getPhotoReviewList",":"+response.code())
-                        mPhotoReviewAdpater = PhotoReviewListAdapter(response.body()!!,activity!!.applicationContext)
+                        Log.d("getPhotoReviewList",":"+response.body()!!.get(0).placeName)
+                        mPhotoReviewAdpater = PhotoReviewListAdapter(response.body()!!,context!!)
 
                         mPhotoReviewAdpater.SetOnItemClickListener(object : PhotoReviewListAdapter.ItemClick{
                             override fun onClick(view: View, position: Int) {
-                                startActivity(Intent(context,PhotoDetailActivity::class.java))
+                                var intent = Intent(context,PhotoDetailActivity::class.java)
+                                intent.putExtra("photo",response.body()!!.get(position).imageUrl)
+                                startActivity(intent)
                             }
 
                         })

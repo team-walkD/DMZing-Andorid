@@ -6,12 +6,14 @@ import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import dmzing.workd.R
 import dmzing.workd.model.review.SimpleReviewDto
 import java.text.SimpleDateFormat
@@ -30,11 +32,13 @@ class DetailReviewListAdpater(var itemList : ArrayList<SimpleReviewDto>,var cont
     }
 
     override fun onBindViewHolder(p0: DetailReviewListViewHolder, p1: Int) {
-        if(itemList.get(p1).thumbnailUrl.equals("")){
+        if(itemList.get(p1).thumbnailUrl.equals("") || itemList.get(p1).thumbnailUrl == null){
             p0.detailReviewImage.setBackgroundColor(Color.parseColor("#e3e3e3"))
         } else {
-            Glide.with(context).load(itemList.get(p1).thumbnailUrl).into(p0.detailReviewImage)
-            p0.detailReviewImage.background.setColorFilter(PorterDuffColorFilter(Color.parseColor("#7f000000"),PorterDuff.Mode.SRC_OVER))
+            Log.d("zxcv","zxcv")
+            Glide.with(context).load(itemList.get(p1).thumbnailUrl).apply(RequestOptions().centerCrop()).into(p0.detailReviewImage)
+            p0.detailReviewImage.setColorFilter(PorterDuffColorFilter(Color.parseColor("#7f000000"),PorterDuff.Mode.SRC_OVER))
+            p0.detailReviewImage.clipToOutline = true
         }
         p0.detailReviewTitle.text = itemList.get(p1).title
         p0.detailReviewStartDate.text = timeStampToDate(itemList.get(p1).startAt!!)
