@@ -12,7 +12,7 @@ import dmzing.workd.view.adapter.PhotoReviewPlaceAdapter
 import kotlinx.android.synthetic.main.dialog_photo_review_write.*
 
 
-class PhotoReviewWriteDialog(courseId : Int,context : Context) : Dialog(context) {
+class PhotoReviewWriteDialog(var courseId : Int,context : Context) : Dialog(context) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,11 +23,23 @@ class PhotoReviewWriteDialog(courseId : Int,context : Context) : Dialog(context)
 
         setContentView(R.layout.dialog_photo_review_write)
         var placeList = ArrayList<String>()
-        placeList.add("통일전망대")
-        placeList.add("제 3땅굴")
-        placeList.add("판문점")
-        placeList.add("도라산 전망대")
-        placeList.add("도라산역")
+        when(courseId){
+            1->{
+                placeList.add("파주 임진각")
+                placeList.add("통일공원(파주)")
+                placeList.add("파주 카트랜드")
+            }
+            2->{
+                placeList.add("고성 DMZ박물관")
+                placeList.add("통일전망대(고성)")
+                placeList.add("이승만별장(고성)")
+            }
+            3->{
+                placeList.add("화천 하늘빛호수마을")
+                placeList.add("화천 카트레일카")
+                placeList.add("파로호(화천)")
+            }
+        }
         var photoReviewPlaceAdpater = PhotoReviewPlaceAdapter(placeList,context)
         photoReviewPlaceAdpater.setOnItemSelectListener(object : PhotoReviewPlaceAdapter.setPlaceCheck{
             override fun onItemSelect(holder: PhotoReviewPlaceAdapter.PhotoReviewPlaceViewHolder, position: Int) {
@@ -62,7 +74,7 @@ class PhotoReviewWriteDialog(courseId : Int,context : Context) : Dialog(context)
             if(check){
                 var intent = Intent(context,PhotoReviewWriteActivity::class.java)
                 intent.putExtra("place",text)
-                intent.putExtra("courseId",1)
+                intent.putExtra("courseId",courseId)
                 context.startActivity(intent)
                 dismiss()
             } else {

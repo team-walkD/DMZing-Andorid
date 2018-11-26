@@ -11,13 +11,13 @@ import dmzing.workd.model.mypage.CourseDatas
 import dmzing.workd.model.mypage.GetMyDpPoint
 import dmzing.workd.model.mypage.GetMypageInfomation
 import dmzing.workd.model.mypage.review.GetMypageReviewData
-import dmzing.workd.model.review.PhotoReviewDto
-import dmzing.workd.model.review.ReviewCountDto
-import dmzing.workd.model.review.SimpleReviewDto
-import dmzing.workd.model.review.reviewDto
+import dmzing.workd.model.review.*
 import dmzing.workd.model.user.LoginUser
 import dmzing.workd.model.user.UserDTO
+import kotlinx.coroutines.Deferred
+import okhttp3.MultipartBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 /**
@@ -29,6 +29,45 @@ interface NetworkService {
     * */
 
     /*== 민형 ==*/
+
+    //리뷰 신고
+    @POST("api/report")
+    fun postReportReview(
+            @Header("jwt") jwt : String,
+            @Body reportDto: ReportDto
+    ) : Call<Any>
+
+    //리뷰 이미지 등록(코루틴)
+    @Multipart
+    @POST("api/reviews/images")
+    fun postTestImage(
+        @Header("jwt") jwt : String,
+        @Part data : MultipartBody.Part?
+    ) : Deferred<Response<ImageDto>>
+
+    //리뷰 이미지 등록
+    @Multipart
+    @POST("api/reviews/images")
+    fun postRegistImage(
+            @Header("jwt") jwt : String,
+            @Part data : MultipartBody.Part?
+    ) : Call<ImageDto>
+
+    //상세 리뷰 작성
+    @Headers("Content-type: application/json")
+    @POST("api/reviews")
+    fun postDetailReview(
+            @Header("jwt") jwt : String,
+            @Body reviewDto : reviewDto
+    ) : Call<Any>
+
+    //사진 리뷰 작성
+    @Headers("Content-type: application/json")
+    @POST("api/reviews/photo")
+    fun postPhotoReview(
+            @Header("jwt") jwt : String,
+            @Body writePhotoReviewDto: WritePhotoReviewDto
+    ) : Call<Any>
 
     //리뷰 수 보기
     //edit by 이민형

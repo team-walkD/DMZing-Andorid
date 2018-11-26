@@ -49,11 +49,13 @@ class ReviewListActivity : AppCompatActivity() {
             //리뷰 쓰기 버튼
             when(mTabLayout.selectedTabPosition){
                 0->{
-                    var placeSelectDialog = PhotoReviewWriteDialog(1,this)
+                    var placeSelectDialog = PhotoReviewWriteDialog(courseId,this)
                     placeSelectDialog.show()
                 }
                 1->{
-                    startActivity(Intent(this,ReviewWriteActivity::class.java))
+                    var intent = Intent(this,ReviewWriteActivity::class.java)
+                    intent.putExtra("courseId",courseId)
+                    startActivity(intent)
                 }
             }
         }

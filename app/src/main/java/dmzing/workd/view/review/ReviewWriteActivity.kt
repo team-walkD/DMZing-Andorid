@@ -21,9 +21,24 @@ import android.graphics.drawable.BitmapDrawable
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import dmzing.workd.model.review.ImageDto
 import dmzing.workd.model.review.PostDto
 import dmzing.workd.model.review.reviewDto
+import dmzing.workd.network.ApplicationController
+import dmzing.workd.network.NetworkService
+import dmzing.workd.util.SharedPreference
 import dmzing.workd.view.adapter.ReviewWriteDayAdapter
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.ByteArrayOutputStream
+import java.io.File
 import java.io.InputStream
 import java.lang.Exception
 import java.text.SimpleDateFormat
@@ -41,9 +56,16 @@ class ReviewWriteActivity : AppCompatActivity() {
     lateinit var dayPost : ArrayList<PostDto>
     lateinit var reviewWrite : reviewDto
     lateinit var reviewWriteDayAdapter : ReviewWriteDayAdapter
+    lateinit var networkService : NetworkService
+    lateinit var jwt : String
+
+    lateinit var thumbnailImageUrl : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review_write)
+
+        networkService = ApplicationController.instance!!.networkService
+        jwt = SharedPreference.instance!!.getPrefStringData("jwt")!!
 
         if(checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
                 checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
@@ -70,11 +92,43 @@ class ReviewWriteActivity : AppCompatActivity() {
         }
 
         review_complete_button.setOnClickListener {
-            dayPost.sortWith(compareBy({it.day}))
+            if(dayPost.size == 0 || review_write_title.text == null || review_write_start_date.text.equals("START DATE") || review_write_end_date.text.equals("END DATE")){
+                Toast.makeText(this,"리뷰를 모두 작성해주세요",Toast.LENGTH_LONG).show()
+            } else {
+                dayPost.sortWith(compareBy({it.day}))
 
-            val title = review_write_title.text.toString()
-            //val thumbnail =
-            //val courseId =
+                val title = review_write_title.text.toString()
+                val courseId = intent.getIntExtra("courseId",0)
+                var dateFormat = SimpleDateFormat("yyyy.mm.dd")
+                val startDate = dateFormat.parse(review_write_start_date.text.toString())
+                val endDate = dateFormat.parse(review_write_end_date.text.toString())
+
+                reviewWrite = reviewDto(title,thumbnailImageUrl,courseId,startDate.time,endDate.time,dayPost)
+
+                val postDetailReviewResponse = networkService.postDetailReview(jwt,reviewWrite)
+                postDetailReviewResponse.enqueue(object : Callback<Any>{
+                    override fun onFailure(call: Call<Any>, t: Throwable) {
+                        Log.d("reviewWrite:","Fail")
+                    }
+
+                    override fun onResponse(call: Call<Any>, response: Response<Any>) {
+                        when(response.code()){
+                            201->{
+                                Log.d("reviewWrite:","Success")
+                                Toast.makeText(this@ReviewWriteActivity,"작성 완료 하였습니다.",Toast.LENGTH_LONG).show()
+                                finish()
+                            }
+                            401->{
+                                Log.d("reviewWrite:","401")
+                            }
+                            500->{
+                                Log.d("reviewWrite:","500")
+                            }
+                        }
+                    }
+
+                })
+            }
         }
     }
 
@@ -177,11 +231,44 @@ class ReviewWriteActivity : AppCompatActivity() {
             GALLERY_CODE -> {
                 if(resultCode == Activity.RESULT_OK){
                     try {
+                        var image : MultipartBody.Part?=null
+                        var options = BitmapFactory.Options()
                         var inStream : InputStream = contentResolver.openInputStream(data!!.data)
                         var img : Bitmap = BitmapFactory.decodeStream(inStream)
                         inStream.close()
-                        review_write_thumbnail.background = BitmapDrawable(img)
+
+                        val baos = ByteArrayOutputStream()
+                        img.compress(Bitmap.CompressFormat.JPEG, 20, baos)
+                        val photoBody = RequestBody.create(MediaType.parse("image/jpg"),baos.toByteArray())
+                        val photo = File(data.toString())
+                        image = MultipartBody.Part.createFormData("data",photo.name,photoBody)
+
+                        //review_write_thumbnail.background = BitmapDrawable(img)
                         //이미지 통신
+                        val postRegistImageResponse = networkService.postRegistImage(jwt,image)
+                        postRegistImageResponse.enqueue(object : Callback<ImageDto> {
+                            override fun onFailure(call: Call<ImageDto>, t: Throwable) {
+
+                            }
+
+                            override fun onResponse(call: Call<ImageDto>, response: Response<ImageDto>) {
+                                when(response.code()){
+                                    201->{
+                                        Glide.with(this@ReviewWriteActivity).load(response.body()!!.image).apply(
+                                            RequestOptions().centerCrop()
+                                        ).into(review_write_thumbnail)
+                                        thumbnailImageUrl = response.body()!!.image
+                                    }
+                                    401->{
+
+                                    }
+                                    501->{
+
+                                    }
+                                }
+                            }
+
+                        })
                     } catch (e : Exception){
                         e.printStackTrace()
                     }
