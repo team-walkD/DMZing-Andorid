@@ -9,6 +9,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import dmzing.workd.R
 import dmzing.workd.dialog.ReviewReportDialog
+import dmzing.workd.model.review.DetailReviewDto
+import dmzing.workd.model.review.LikeDto
 import dmzing.workd.model.review.ReportDto
 import dmzing.workd.model.review.reviewDto
 import dmzing.workd.network.ApplicationController
@@ -23,14 +25,15 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ReviewActivity : AppCompatActivity() {
-    lateinit var mReviewDto : reviewDto
+    lateinit var mReviewDto : DetailReviewDto
     lateinit var networkService: NetworkService
     lateinit var mReviewPostAdapter : ReviewPostAdapter
     lateinit var jwt : String
+    var rid = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review)
-        var rid = intent.getIntExtra("reviewId",0)
+        rid = intent.getIntExtra("reviewId",0)
         networkService = ApplicationController.instance!!.networkService
 
 
@@ -45,20 +48,46 @@ class ReviewActivity : AppCompatActivity() {
         }
 
         review_like_button.setOnClickListener{
+            val postReviewLikeResponse = networkService.postReviewLike(jwt,rid)
+            postReviewLikeResponse.enqueue(object : Callback<LikeDto>{
+                override fun onFailure(call: Call<LikeDto>, t: Throwable) {
 
+                }
+
+                override fun onResponse(call: Call<LikeDto>, response: Response<LikeDto>) {
+                    when(response.code()){
+                        201->{
+                            onResume()
+                        }
+                        401->{
+
+                        }
+                        500->{
+
+                        }
+                    }
+                }
+
+            })
         }
+
+        getReview(rid)
+    }
+
+    override fun onResume() {
+        super.onResume()
 
         getReview(rid)
     }
 
     fun getReview(rid : Int){
         val getReviewDetailResponse = networkService.getDetailReview(jwt,rid)
-        getReviewDetailResponse.enqueue(object : Callback<reviewDto> {
-            override fun onFailure(call: Call<reviewDto>, t: Throwable) {
+        getReviewDetailResponse.enqueue(object : Callback<DetailReviewDto> {
+            override fun onFailure(call: Call<DetailReviewDto>, t: Throwable) {
 
             }
 
-            override fun onResponse(call: Call<reviewDto>, response: Response<reviewDto>) {
+            override fun onResponse(call: Call<DetailReviewDto>, response: Response<DetailReviewDto>) {
                 when(response.code()){
                     200->{
                         mReviewDto = response.body()!!
@@ -75,6 +104,14 @@ class ReviewActivity : AppCompatActivity() {
                         //날짜
                         review_start_date.text = timeStampToDate(mReviewDto.startAt)
                         review_end_date.text = timeStampToDate(mReviewDto.endAt)
+
+                        //좋아요
+                        if(mReviewDto.like){
+                            review_like_heart.setImageDrawable(getDrawable(R.drawable.heart_filled_icon))
+                        } else {
+                            review_like_heart.setImageDrawable(getDrawable(R.drawable.heart_icon))
+                        }
+                        review_like_count.text = mReviewDto.likeCount.toString()
 
                         mReviewPostAdapter = ReviewPostAdapter(mReviewDto.postDto,mReviewDto.startAt,this@ReviewActivity)
 

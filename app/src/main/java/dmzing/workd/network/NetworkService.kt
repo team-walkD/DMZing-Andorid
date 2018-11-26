@@ -29,6 +29,12 @@ interface NetworkService {
     * */
 
     /*== 민형 ==*/
+    //리뷰 좋아요
+    @POST("api/reviews/like/{rid}")
+    fun postReviewLike(
+            @Header("jwt") jwt : String,
+            @Path("rid") rid : Int
+    ) : Call<LikeDto>
 
     //리뷰 신고
     @POST("api/report")
@@ -100,7 +106,7 @@ interface NetworkService {
     fun getDetailReview(
         @Header("jwt") jwt: String,
         @Path("rid") rid: Int
-    ): Call<reviewDto>
+    ): Call<DetailReviewDto>
 
 
     //전체 코스 종류 및 정보 보기
