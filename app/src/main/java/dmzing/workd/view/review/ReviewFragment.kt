@@ -2,6 +2,7 @@ package dmzing.workd.view.review
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Point
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -9,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import dmzing.workd.R
 import dmzing.workd.model.review.ReviewCountDto
@@ -86,8 +88,12 @@ class ReviewFragment : Fragment() {
                         view.review_recyclerView.layoutManager = gridLayoutManager
                         view.review_recyclerView.adapter = mapItemAdapter
 
-//                        var px = Math.round(convertDpToPixel(28f,activity!!))
-//                        view.review_recyclerView.addItemDecoration(GridItemDecoration(px))
+//                        var px = Math.round(convertDpToPixel(14f,activity!!))
+//                        val wm = context!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+//                        val display = wm.defaultDisplay
+//                        val size = Point()
+//                        display.getSize(size)
+//                        view.review_recyclerView.addItemDecoration(GridItemDecoration(size.x/25))
                     }
                     401->{//권한 없음
                         Log.d("reviewCount",": 401")
