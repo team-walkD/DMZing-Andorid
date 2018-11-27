@@ -1,6 +1,7 @@
 package dmzing.workd.view.adapter
 
 import android.content.Context
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -29,9 +30,12 @@ class MypageLetterAdapter(var letterItems: ArrayList<MypageLetterDto>, var conte
 
     override fun onBindViewHolder(holder: MypageLetterViewHolder, position: Int) {
 
-      /*  var requestOptions = RequestOptions()
-        requestOptions.placeholder(R.drawable.my_myreview_icon)
-        requestOptions.override(1000)*/
+        /*  var requestOptions = RequestOptions()
+          requestOptions.placeholder(R.drawable.my_myreview_icon)
+          requestOptions.override(1000)*/
+
+        //var dr = RoundedBitmapDrawableFactory.create()
+        holder.letterImage.clipToOutline = true
 
         Glide.with(context)
             .load(letterItems[position].letterImageUrl)
