@@ -85,49 +85,58 @@
             android:background="#7f000000"
             android:visibility="gone">
 
-            <ImageView
-                android:id="@+id/map_course_lock"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:src="@drawable/map_lock_white_icon"/>
+                android:layout_marginBottom="21dp">
+                <ImageView
+                    android:id="@+id/map_course_lock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="21dp"
+                    android:src="@drawable/map_lock_white_icon"/>
 
-            <TextView
-                android:id="@+id/map_course_text1"
-                android:text="잠금을 풀려면"
-                android:textSize="14sp"
-                android:textColor="#BEBEBE"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/map_course_text2"
-                android:layout_toLeftOf="@+id/map_course_lock"
-                />
+                <TextView
+                    android:id="@+id/map_course_text1"
+                    android:text="잠금을 풀려면"
+                    android:textSize="14sp"
+                    android:textColor="#BEBEBE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/map_course_text2"
+                    android:layout_toLeftOf="@+id/map_course_lock"
+                    android:layout_marginRight="14dp"
+                    />
 
-            <TextView
-                android:id="@+id/map_course_price"
-                android:text="400DP"
-                android:textSize="14sp"
-                android:textColor="#BEBEBE"
-                android:fontFamily="@font/notosanscjkkr_bold"
-                android:includeFontPadding="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/map_course_text2"
-                android:layout_toLeftOf="@+id/map_course_text2"/>
-            <TextView
-                android:id="@+id/map_course_text2"
-                android:text="가 필요해요"
-                android:textSize="14sp"
-                android:textColor="#BEBEBE"
-                android:fontFamily="@font/notosanscjkkr_regular"
-                android:includeFontPadding="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_toLeftOf="@+id/map_course_lock"/>
+                <TextView
+                    android:id="@+id/map_course_price"
+                    android:text="400DP"
+                    android:textSize="14sp"
+                    android:textColor="#BEBEBE"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/map_course_text2"
+                    android:layout_toLeftOf="@+id/map_course_text2"/>
+                <TextView
+                    android:id="@+id/map_course_text2"
+                    android:text="가 필요해요"
+                    android:textSize="14sp"
+                    android:textColor="#BEBEBE"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="14dp"
+                    android:layout_toLeftOf="@+id/map_course_lock"
+                    />
 
-        </RelativeLayout>
+            </RelativeLayout>
+            </RelativeLayout>
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

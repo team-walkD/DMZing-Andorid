@@ -10,10 +10,10 @@
         android:textSize="18sp"
         android:textColor="#1C3748"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
-        android:visibility="gone"/>
+        />
 
     <RelativeLayout
         android:id="@+id/dialog_course_order_result_success"
