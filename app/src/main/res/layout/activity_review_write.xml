@@ -132,7 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="39dp"
-                    android:layout_marginLeft="23dp"
+                    android:layout_gravity="center_horizontal"
                     android:textSize="14sp"
                     android:textColor="#1c3748"
                     android:fontFamily="@font/notosanscjkkr_regular"
@@ -142,7 +142,8 @@
                     android:id="@+id/review_write_day_recycler"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp">
+                    android:layout_marginTop="24dp"
+                    android:layout_gravity="center_horizontal">
 
                 </android.support.v7.widget.RecyclerView>
             </LinearLayout>
@@ -169,13 +170,14 @@
         android:id="@+id/review_complete_button"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#6da8c7">
+        android:background="#dddddd">
 
         <TextView
+            android:id="@+id/review_complete_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:textColor="#ffffff"
+            android:textColor="#707070"
             android:fontFamily="@font/notosanscjkkr_bold"
             android:includeFontPadding="false"
             android:text="완료"

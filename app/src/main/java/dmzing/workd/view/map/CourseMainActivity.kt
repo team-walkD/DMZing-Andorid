@@ -5,7 +5,9 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import dmzing.workd.R
 import dmzing.workd.model.map.CourseDetailDto
@@ -20,10 +22,11 @@ class CourseMainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_course_main)
 
         courseDetailDto = intent.extras.get("courseDetailDto") as CourseDetailDto
+        //Log.d("courseMain",courseDetailDto.backgroundGifurl.toString())
 
         Glide.with(this)
-                .load(courseDetailDto.imageUrl)
-                //.apply(RequestOptions().override(resources.displayMetrics.widthPixels,resources.displayMetrics.heightPixels).centerCrop())
+                .asGif()
+                .load(courseDetailDto.backgroundGifUrl)
                 .apply(RequestOptions().centerCrop())
                 .into(course_main_background_image)
         course_main_background_image.setColorFilter(Color.parseColor("#7f000000"), PorterDuff.Mode.SRC_OVER)
