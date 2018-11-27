@@ -5,6 +5,7 @@ import java.io.Serializable
 data class CourseDetailDto (
         var backgroundImageUrl : String? = null,
         var estimatedTime : Double,
+        var backgroundGifUrl : String,
         var id : Int,
         var imageUrl : String? = null,
         var level : String? = null,

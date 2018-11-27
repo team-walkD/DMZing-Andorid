@@ -72,6 +72,7 @@ class ReviewListActivity : AppCompatActivity() {
     fun settingTab(){
         mTabLayout = findViewById(R.id.review_list_tabLayout)
         review_list_viewpager.adapter = ReviewListTabAdapter(supportFragmentManager,2,courseId)
+        review_list_viewpager.offscreenPageLimit = 2
         mTabLayout.setupWithViewPager(review_list_viewpager)
         mTabLayout.getTabAt(0)!!.setText("사진 리뷰")
         mTabLayout.getTabAt(1)!!.setText("상세 리뷰")

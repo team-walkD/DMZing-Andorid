@@ -25,16 +25,23 @@ class DetailReviewListFragment : Fragment() {
     lateinit var networkService : NetworkService
 
     lateinit var jwt : String
+    lateinit var mView : View
     var rid : Int = 0
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_detail_review_list, container,false)
+        mView = inflater.inflate(R.layout.fragment_detail_review_list, container,false)
         var courseId = arguments!!.getInt("courseId")
         networkService = ApplicationController.instance!!.networkService
         jwt = SharedPreference.instance!!.getPrefStringData("jwt","")!!
 
-        getSimpleReviewList(view,courseId)
+        getSimpleReviewList(mView,courseId)
 
-        return view
+        return mView
+    }
+
+    override fun onResume() {
+        super.onResume()
+        var courseId = arguments!!.getInt("courseId")
+        getSimpleReviewList(mView,courseId)
     }
 
     fun getSimpleReviewList(view : View,courseId : Int){

@@ -2,6 +2,7 @@ package dmzing.workd.view.review
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Point
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -20,6 +21,13 @@ import kotlinx.android.synthetic.main.fragment_photo_review_list.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.view.Display
+import android.support.v4.content.ContextCompat.getSystemService
+import android.view.WindowManager
+
+
+
+
 
 class PhotoReviewFragment : Fragment() {
     lateinit var mGridLayoutManager: GridLayoutManager
@@ -92,7 +100,11 @@ class PhotoReviewFragment : Fragment() {
                         view.photo_review_recycler.layoutManager = mGridLayoutManager
                         view.photo_review_recycler.adapter = mPhotoReviewAdpater
 
-                        var px = Math.round(convertDpToPixel(10.2f,activity!!))
+                        var px = Math.round(convertDpToPixel(6f,activity!!))
+                        val wm = context!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+                        val display = wm.defaultDisplay
+                        val size = Point()
+                        display.getSize(size)
                         view.photo_review_recycler.addItemDecoration(GridItemDecoration(px))
                     }
                     401->{

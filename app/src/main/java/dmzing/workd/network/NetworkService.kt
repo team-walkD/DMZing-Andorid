@@ -1,10 +1,10 @@
 package dmzing.workd.network
 
-import dmzing.workd.base.BaseModel
 import dmzing.workd.model.home.HomeCourseData
 import dmzing.workd.model.home.HomePostMission
 import dmzing.workd.model.home.PickCourse
 import dmzing.workd.model.home.Places
+import dmzing.workd.model.letter.MypageLetterDto
 import dmzing.workd.model.map.CourseDetailDto
 import dmzing.workd.model.map.CourseMainDto
 import dmzing.workd.model.mypage.CourseDatas
@@ -18,7 +18,6 @@ import dmzing.workd.model.user.UserDTO
 
 import okhttp3.MultipartBody
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.*
 
 /**
@@ -30,6 +29,12 @@ interface NetworkService {
     * */
 
     /*== 민형 ==*/
+    //리뷰 좋아요
+    @POST("api/reviews/like/{rid}")
+    fun postReviewLike(
+            @Header("jwt") jwt : String,
+            @Path("rid") rid : Int
+    ) : Call<LikeDto>
 
     //리뷰 신고
     @POST("api/report")
@@ -101,7 +106,7 @@ interface NetworkService {
     fun getDetailReview(
         @Header("jwt") jwt: String,
         @Path("rid") rid: Int
-    ): Call<reviewDto>
+    ): Call<DetailReviewDto>
 
 
     //전체 코스 종류 및 정보 보기
@@ -235,6 +240,7 @@ interface NetworkService {
 
 
     // 미션 찾기
+    // edit by 이승우
     @Headers("Content-type: application/json")
     @POST("api/mission")
     fun postMission(
@@ -254,6 +260,14 @@ interface NetworkService {
         @Header("jwt") jwt : String,
         @Path("cid") cid : Int
     ) : Call<PickCourse>
+
+    // edit by 이승우
+    // 마이페이지 편지함 보기 통신
+    @GET("api/users/{cid}/mail")
+    fun getMypageLetter(
+        @Header("jwt") jwt: String,
+        @Path("cid") cid : Int
+    ) : Call<ArrayList<MypageLetterDto>>
 
 
 }

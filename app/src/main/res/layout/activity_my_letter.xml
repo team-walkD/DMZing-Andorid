@@ -77,8 +77,9 @@
                 android:id="@+id/letter_recycler"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_below="@+id/letter_additional_Text"
-                android:layout_marginLeft="24dp"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="33dp">
 
             </android.support.v7.widget.RecyclerView>

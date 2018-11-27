@@ -67,6 +67,7 @@ class ReviewWriteActivity : AppCompatActivity() {
         networkService = ApplicationController.instance!!.networkService
         jwt = SharedPreference.instance!!.getPrefStringData("jwt")!!
 
+        review_complete_button.isEnabled = false
         if(checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
                 checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
         {
@@ -179,7 +180,22 @@ class ReviewWriteActivity : AppCompatActivity() {
 
     fun checkDate(){
         if(!review_write_start_date.text.equals("START DATE") && !review_write_end_date.text.equals("END DATE")){
-            setDaySelector(review_write_start_date.text.toString(),review_write_end_date.text.toString())
+            var dateFormat : SimpleDateFormat = SimpleDateFormat("yyyy.MM.dd")
+            var startDate = review_write_start_date.text.toString()
+            var endDate = review_write_end_date.text.toString()
+            var start = dateFormat.parse(startDate)
+            var end = dateFormat.parse(endDate)
+            var dayCount = (end.time - start.time) / (24*60*60*1000)
+            if(dayCount < 0){
+                Toast.makeText(this,"날짜를 다시 설정해주세요.",Toast.LENGTH_LONG).show()
+                review_write_start_date.text = "START DATE"
+                review_write_end_date.text = "END DATE"
+                review_write_choose_day_text.visibility = View.VISIBLE
+                review_write_day_layout.visibility = View.GONE
+            } else {
+                dayCount = Math.abs(dayCount)
+                setDaySelector(startDate,dayCount)
+            }
         }
     }
 
@@ -189,14 +205,9 @@ class ReviewWriteActivity : AppCompatActivity() {
         startActivityForResult(intent,GALLERY_CODE)
     }
 
-    fun setDaySelector(startDate : String, endDate : String){
-        var dateFormat : SimpleDateFormat = SimpleDateFormat("yyyy.MM.dd")
-        var start = dateFormat.parse(startDate)
-        var end = dateFormat.parse(endDate)
+    fun setDaySelector(startDate : String,dayCount : Long){
         var dayList : ArrayList<String> = ArrayList()
 
-        var dayCount = (end.time - start.time) / (24*60*60*1000)
-        dayCount = Math.abs(dayCount)
         for(i in 1 .. dayCount+1){
             dayList.add("day "+i)
             Log.d("day","day"+i)
@@ -285,6 +296,9 @@ class ReviewWriteActivity : AppCompatActivity() {
                     } else {
                         dayPost.set(writed,data!!.extras.get("PostDto") as PostDto)
                     }
+                    review_complete_button.setBackgroundColor(Color.parseColor("#6da8c7"))
+                    review_complete_button.isEnabled = true
+                    review_complete_text.setTextColor(Color.parseColor("#ffffff"))
                 } else if(resultCode == Activity.RESULT_CANCELED){
 
                 }
