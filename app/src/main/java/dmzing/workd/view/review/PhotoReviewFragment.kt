@@ -24,9 +24,7 @@ import retrofit2.Response
 import android.view.Display
 import android.support.v4.content.ContextCompat.getSystemService
 import android.view.WindowManager
-
-
-
+import dmzing.workd.util.CourseType
 
 
 class PhotoReviewFragment : Fragment() {
@@ -59,18 +57,23 @@ class PhotoReviewFragment : Fragment() {
     }
 
     fun loadPhotoReviewList(view : View,courseId : Int){
+        var courseTypeList = CourseType.values()
         var type : String? = null
-        when(courseId){
-            1->{
-                type = "DATE"
-            }
-            2->{
-                type = "HISTORY"
-            }
-            3->{
-                type = "ADVENTURE"
-            }
-        }
+        type = courseTypeList.get(courseId-1).name
+//        when(courseId){
+//            1->{
+//                type = "DATE"
+//            }
+//            2->{
+//                type = "HISTORY"
+//            }
+//            3->{
+//                type = "ADVENTURE"
+//            }
+//            4->{
+//
+//            }
+//        }
         val getPhotoReviewList = networkService.getPhotoReviews(jwt,pid,type!!)
         getPhotoReviewList.enqueue(object : Callback<ArrayList<PhotoReviewDto>>{
             override fun onFailure(call: Call<ArrayList<PhotoReviewDto>>, t: Throwable) {
@@ -83,8 +86,6 @@ class PhotoReviewFragment : Fragment() {
             ) {
                 when(response.code()){
                     200->{
-                        Log.d("getPhotoReviewList",":"+response.code())
-                        Log.d("getPhotoReviewList",":"+response.body()!!.get(0).placeName)
                         mPhotoReviewAdpater = PhotoReviewListAdapter(response.body()!!,context!!)
 
                         mPhotoReviewAdpater.SetOnItemClickListener(object : PhotoReviewListAdapter.ItemClick{
