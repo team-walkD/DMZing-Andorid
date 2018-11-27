@@ -1,7 +1,9 @@
 package dmzing.workd.view.adapter
 
 import android.content.Context
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +30,7 @@ class CourseListAdapter(var itemList : ArrayList<CourseMainDto>,var context : Co
     }
 
     override fun onBindViewHolder(p0: CourseListViewHolder, p1: Int) {
+
         if(!itemList.get(p1).isPurchased){ //구매 X
             p0.courseLockLayout.visibility = View.VISIBLE
             p0.coursePrice.text = itemList.get(p1).price.toString() + "DP"
@@ -72,5 +75,15 @@ class CourseListAdapter(var itemList : ArrayList<CourseMainDto>,var context : Co
         var courseLockLayout : RelativeLayout = itemView.findViewById(R.id.map_course_lock_layout)
         var courseLock : ImageView = itemView.findViewById(R.id.map_course_lock)
         var coursePrice : TextView = itemView.findViewById(R.id.map_course_price)
+    }
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        var position = recyclerView.layoutManager as LinearLayoutManager
+        var cp1 = position.findLastVisibleItemPosition()
+        var cp2 = position.findFirstVisibleItemPosition()
+        Log.v("711 woo",cp1.toString())
+        Log.v("711 woo",cp2.toString())
+
     }
 }
