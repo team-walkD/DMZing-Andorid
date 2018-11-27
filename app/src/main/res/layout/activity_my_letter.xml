@@ -7,80 +7,83 @@
         android:layout_height="match_parent"
         tools:context=".view.mypage.MyLetterActivity">
 
-        <RelativeLayout
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="276dp"
             android:orientation="vertical"
             android:background="@color/backgroundColor"/>
 
-            <RelativeLayout
-                android:id="@+id/myletterToolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginRight="23.3dp"
-                app:layout_collapseMode="pin">
-
-                <ImageView
-                    android:id="@+id/myletter_back_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/back_btn" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="2dp"
-                    android:src="@drawable/walk_d_icon" />
+    <RelativeLayout
+            android:id="@+id/myletter_back_button"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
 
-            </RelativeLayout>
-
-            <TextView
-                android:layout_below="@+id/myletterToolbar"
+        <ImageView
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginBottom="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="37dp"
-                android:layout_marginTop="31.8dp"
-                android:fontFamily="@font/notosanscjkkr_bold"
-                android:includeFontPadding="false"
-                android:text="나의 편지함"
-                android:textColor="#1c3748"
-                android:textSize="24sp" />
+                android:background="@drawable/back_btn"/>
+
+    </RelativeLayout>
+
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/walk_d_icon"/>
+
+
+    <TextView
+            android:id="@+id/my_letter_layout"
+            android:layout_below="@+id/myletter_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="37dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/notosanscjkkr_bold"
+            android:includeFontPadding="false"
+            android:text="나의 편지함"
+            android:textColor="#1c3748"
+            android:textSize="24sp"/>
 
     <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/myletterToolbar"
-        android:layout_marginTop="80dp">
-
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_below="@+id/my_letter_layout"
+            android:layout_marginTop="16dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
             <TextView
-                android:id="@+id/letter_additional_Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="#1c3748"
-                android:fontFamily="@font/notosanscjkkr_regular"
-                android:includeFontPadding="false"
-                android:layout_marginLeft="37dp"
-                android:text="가장 최근에 받은 편지 기준으로 보여집니다."
-                android:layout_gravity="bottom"
-                />
+                    android:id="@+id/letter_additional_Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#1c3748"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:layout_marginLeft="37dp"
+                    android:text="가장 최근에 받은 편지 기준으로 보여집니다."
+                    android:layout_gravity="bottom"
+            />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/letter_recycler"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_below="@+id/letter_additional_Text"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="33dp">
+                    android:id="@+id/letter_recycler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_below="@+id/letter_additional_Text"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="33dp">
 
             </android.support.v7.widget.RecyclerView>
 

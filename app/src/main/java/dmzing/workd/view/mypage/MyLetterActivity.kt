@@ -20,12 +20,15 @@ import retrofit2.Response
 
 class MyLetterActivity : AppCompatActivity(), View.OnClickListener, Utils {
     override fun onClick(v: View?) {
-        when(v!!){
+        when (v!!) {
+            myletter_back_button -> finish()
 
         }
     }
 
     override fun init() {
+
+        myletter_back_button.setOnClickListener(this)
         networkService = ApplicationController.instance.networkService
         SharedPreference.instance!!.load(this@MyLetterActivity)
         imageList = ArrayList()
@@ -33,15 +36,15 @@ class MyLetterActivity : AppCompatActivity(), View.OnClickListener, Utils {
         getData()
     }
 
-    fun getData(){
-        id = intent.getIntExtra("cid",0)
+    fun getData() {
+        id = intent.getIntExtra("cid", 0)
         toast("$id")
     }
 
     lateinit var letterAdapter: MypageLetterAdapter
     lateinit var networkService: NetworkService
-    lateinit var imageList : ArrayList<MypageLetterDto>
-    var id : Int = 0
+    lateinit var imageList: ArrayList<MypageLetterDto>
+    var id: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_letter)
@@ -50,30 +53,32 @@ class MyLetterActivity : AppCompatActivity(), View.OnClickListener, Utils {
 
         getLetter()
     }
-    fun getLetter(){
+
+    fun getLetter() {
         var jwt = SharedPreference.instance!!.getPrefStringData("jwt")!!
         var letterResponse = networkService.getMypageLetter(jwt, id)
-        letterResponse.enqueue(object : Callback<ArrayList<MypageLetterDto>>{
+        letterResponse.enqueue(object : Callback<ArrayList<MypageLetterDto>> {
             override fun onFailure(call: Call<ArrayList<MypageLetterDto>>, t: Throwable) {
-                Log.v("500 fail",t.message)
+                Log.v("500 fail", t.message)
             }
 
             override fun onResponse(
                 call: Call<ArrayList<MypageLetterDto>>,
-                response: Response<ArrayList<MypageLetterDto>>) {
-                Log.v("500 success",response.code().toString())
-                when(response.code()){
-                    200->{
+                response: Response<ArrayList<MypageLetterDto>>
+            ) {
+                Log.v("500 success", response.code().toString())
+                when (response.code()) {
+                    200 -> {
                         imageList = response.body()!!
-                        letterAdapter = MypageLetterAdapter(imageList,this@MyLetterActivity)
+                        letterAdapter = MypageLetterAdapter(imageList, this@MyLetterActivity)
 
                         letter_recycler.layoutManager = LinearLayoutManager(this@MyLetterActivity)
                         letter_recycler.adapter = letterAdapter
                     }
-                    401->{
+                    401 -> {
 
                     }
-                    500->{
+                    500 -> {
 
                     }
                 }
