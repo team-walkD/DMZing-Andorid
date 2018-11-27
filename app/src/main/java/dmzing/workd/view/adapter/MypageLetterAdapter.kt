@@ -1,17 +1,25 @@
 package dmzing.workd.view.adapter
 
 import android.content.Context
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import dmzing.workd.R
+import dmzing.workd.model.letter.MypageLetterDto
+import kotlinx.android.synthetic.main.my_letter_item_list.view.*
 import java.util.ArrayList
 
-class MypageLetterAdapter(var letterItems : ArrayList<String>, var context : Context) : RecyclerView.Adapter<MypageLetterAdapter.MypageLetterViewHolder>() {
+class MypageLetterAdapter(var letterItems: ArrayList<MypageLetterDto>, var context: Context) :
+    RecyclerView.Adapter<MypageLetterAdapter.MypageLetterViewHolder>() {
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MypageLetterViewHolder {
-        val view = LayoutInflater.from(p0.context).inflate(R.layout.my_letter_item_list,p0,false)
+        val view = LayoutInflater.from(p0.context).inflate(R.layout.my_letter_item_list, p0, false)
 
         return MypageLetterViewHolder(view)
     }
@@ -20,12 +28,22 @@ class MypageLetterAdapter(var letterItems : ArrayList<String>, var context : Con
         return letterItems.size
     }
 
-    override fun onBindViewHolder(p0: MypageLetterViewHolder, p1: Int) {
-        p0.testText.text = letterItems.get(p1)
+    override fun onBindViewHolder(holder: MypageLetterViewHolder, position: Int) {
+
+        /*  var requestOptions = RequestOptions()
+          requestOptions.placeholder(R.drawable.my_myreview_icon)
+          requestOptions.override(1000)*/
+
+        //var dr = RoundedBitmapDrawableFactory.create()
+        holder.letterImage.clipToOutline = true
+
+        Glide.with(context)
+            .load(letterItems[position].letterImageUrl)
+            .into(holder.letterImage)
     }
 
 
-    class MypageLetterViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        var testText : TextView = itemView.findViewById(R.id.letter_test)
+    class MypageLetterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var letterImage: ImageView = itemView.mypageLetterImageItem
     }
 }

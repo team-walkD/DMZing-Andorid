@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="312.7dp"
-    android:layout_height="363dp"
-    android:background="@drawable/course_border">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="24dp"
+        android:layout_height="350dp"
+        android:layout_marginBottom="17dp"
+        android:background="@drawable/course_border">
 
-    <TextView
-        android:id="@+id/letter_test"
-        android:textSize="20sp"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ImageView
+            android:background="@drawable/round_outline"
+            android:id="@+id/mypageLetterImageItem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
 </RelativeLayout>
