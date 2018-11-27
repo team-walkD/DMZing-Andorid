@@ -3,6 +3,7 @@ package dmzing.workd.view.adapter
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -57,13 +58,16 @@ class PhotoReviewPlaceAdapter(var itemList: ArrayList<String>, var context: Cont
         }
 
         override fun setChecked(checked: Boolean) {
+            var cardView = itemView as CardView
             if(checked){
                 isCheck = checked
-                itemView.background = context.getDrawable(R.drawable.place_selected_border)
+                //itemView.background = context.getDrawable(R.drawable.place_selected_border)
+                cardView.setCardBackgroundColor(Color.parseColor("#6da8c7"))
                 placeText.setTextColor(Color.parseColor("#ffffff"))
             } else {
                 isCheck = checked
-                itemView.background = context.getDrawable(R.drawable.mypage_border)
+                //itemView.background = context.getDrawable(R.drawable.mypage_border)
+                cardView.setCardBackgroundColor(Color.parseColor("#ffffff"))
                 placeText.setTextColor(Color.parseColor("#1C3748"))
             }
         }
