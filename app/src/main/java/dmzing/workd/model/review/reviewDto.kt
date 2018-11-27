@@ -4,7 +4,7 @@ import dmzing.workd.base.BaseModel
 
 data class reviewDto(
         var title : String,
-        var thumbnailUrl : String,
+        var thumbnailUrl : String? = null,
         var courseId : Int,
         var startAt : Long,
         var endAt : Long,

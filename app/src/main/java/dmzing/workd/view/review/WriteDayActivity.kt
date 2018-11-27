@@ -185,7 +185,7 @@ class WriteDayActivity : AppCompatActivity(), View.OnClickListener {
                                 when(response.code()){
                                     201->{
                                         imageUrlList.set(0,response.body()!!.image)
-                                        Glide.with(this@WriteDayActivity).load(response.body()!!.image).into(write_day_image1)
+                                        Glide.with(this@WriteDayActivity).load(response.body()!!.image).apply(RequestOptions().centerCrop()).into(write_day_image1)
                                     }
                                     401->{
 
@@ -222,7 +222,7 @@ class WriteDayActivity : AppCompatActivity(), View.OnClickListener {
                                 when(response.code()){
                                     201->{
                                         imageUrlList.set(1,response.body()!!.image)
-                                        Glide.with(this@WriteDayActivity).load(response.body()!!.image).into(write_day_image2)
+                                        Glide.with(this@WriteDayActivity).load(response.body()!!.image).apply(RequestOptions().centerCrop()).into(write_day_image2)
                                     }
                                     401->{
 
@@ -259,7 +259,7 @@ class WriteDayActivity : AppCompatActivity(), View.OnClickListener {
                                 when(response.code()){
                                     201->{
                                         imageUrlList.set(2,response.body()!!.image)
-                                        Glide.with(this@WriteDayActivity).load(response.body()!!.image).into(write_day_image3)
+                                        Glide.with(this@WriteDayActivity).load(response.body()!!.image).apply(RequestOptions().centerCrop()).into(write_day_image3)
                                     }
                                     401->{
 
@@ -295,7 +295,7 @@ class WriteDayActivity : AppCompatActivity(), View.OnClickListener {
                                 when(response.code()){
                                     201->{
                                         imageUrlList.set(3,response.body()!!.image)
-                                        Glide.with(this@WriteDayActivity).load(response.body()!!.image).into(write_day_image4)
+                                        Glide.with(this@WriteDayActivity).load(response.body()!!.image).apply(RequestOptions().centerCrop()).into(write_day_image4)
                                     }
                                     401->{
 
@@ -333,7 +333,7 @@ class WriteDayActivity : AppCompatActivity(), View.OnClickListener {
                                 when(response.code()){
                                     201->{
                                         imageUrlList.set(4,response.body()!!.image)
-                                        Glide.with(this@WriteDayActivity).load(response.body()!!.image).into(write_day_image5)
+                                        Glide.with(this@WriteDayActivity).load(response.body()!!.image).apply(RequestOptions().centerCrop()).into(write_day_image5)
                                     }
                                     401->{
 
@@ -376,7 +376,7 @@ class WriteDayActivity : AppCompatActivity(), View.OnClickListener {
                                         201->{
                                             imageUrlList.add(response.body()!!.image)
                                             Log.d("reviewWrite :",imageUrlList.size.toString())
-                                            Glide.with(this@WriteDayActivity).load(response.body()!!.image).into(imageList.get(imageCount))
+                                            Glide.with(this@WriteDayActivity).load(response.body()!!.image).apply(RequestOptions().centerCrop()).into(imageList.get(imageCount))
                                             imageList.get(imageCount).visibility = View.VISIBLE
                                             imageCount += 1
                                             if(imageCount == 5){
