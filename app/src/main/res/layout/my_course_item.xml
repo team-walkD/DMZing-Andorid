@@ -6,6 +6,7 @@
         android:layout_height="wrap_content">
 
     <RelativeLayout
+            android:id="@+id/myCourseLayout"
             android:layout_marginHorizontal="24dp"
             android:layout_width="match_parent"
             android:layout_height="90dp"
