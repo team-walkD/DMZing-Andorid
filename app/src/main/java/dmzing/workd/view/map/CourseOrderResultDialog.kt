@@ -33,7 +33,7 @@ class CourseOrderResultDialog(var courseDetailDto: CourseDetailDto?,context: Con
 
         dialog_course_order_result_close.setOnClickListener {
             if(courseDetailDto != null){
-                var intent = Intent(context,CourseDetailActivity::class.java)
+                var intent = Intent(context,CourseMainActivity::class.java)
                 intent.putExtra("courseDetailDto",courseDetailDto)
                 context.startActivity(intent)
                 dismiss()

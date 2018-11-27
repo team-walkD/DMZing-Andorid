@@ -3,6 +3,7 @@ package dmzing.workd.view.map
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import dmzing.workd.R
 import dmzing.workd.model.map.CourseDetailDto
@@ -47,6 +48,11 @@ class CourseOrderDialog(var courseId : Int,var courseTitle : String,context : Co
                         201->{
                             courseDetailDto = response.body()!!
                             var courseOrderResultDialog = CourseOrderResultDialog(courseDetailDto,context)
+                            courseOrderResultDialog.show()
+                            dismiss()
+                        }
+                        400->{
+                            var courseOrderResultDialog = CourseOrderResultDialog(null,context)
                             courseOrderResultDialog.show()
                             dismiss()
                         }
