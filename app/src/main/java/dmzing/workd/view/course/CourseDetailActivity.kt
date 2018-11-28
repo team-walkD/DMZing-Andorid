@@ -195,7 +195,7 @@ class CourseDetailActivity : AppCompatActivity() {
                 courseDetailAdapter = CourseDetailPlaceAdapter(placeList,arry,applicationContext)
                 courseDetailRecycler.layoutManager = LinearLayoutManager(applicationContext)
                 courseDetailRecycler.adapter = courseDetailAdapter
-                course_detail_calendar_simple_totalTime.text = courseDetailDto.estimatedTime.toString()
+                course_detail_calendar_simple_totalTime.text = courseDetailDto.estimatedTime.toString()+"시간"
             }
         }
     }

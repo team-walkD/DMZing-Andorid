@@ -13,6 +13,7 @@ import dmzing.workd.R
 import dmzing.workd.model.review.SimpleReviewDto
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
+import dmzing.workd.util.CourseType
 import dmzing.workd.util.SharedPreference
 import dmzing.workd.view.adapter.DetailReviewListAdpater
 import kotlinx.android.synthetic.main.fragment_detail_review_list.view.*
@@ -45,18 +46,20 @@ class DetailReviewListFragment : Fragment() {
     }
 
     fun getSimpleReviewList(view : View,courseId : Int){
+        var courseTypeList = CourseType.values()
         var type : String? = null
-        when(courseId){
-            1->{
-                type = "DATE"
-            }
-            2->{
-                type = "HISTORY"
-            }
-            3->{
-                type = "ADVENTURE"
-            }
-        }
+        type = courseTypeList.get(courseId-1).name
+//        when(courseId){
+//            1->{
+//                type = "DATE"
+//            }
+//            2->{
+//                type = "HISTORY"
+//            }
+//            3->{
+//                type = "ADVENTURE"
+//            }
+//        }
         val simpleReviewList = networkService.getSimpleReviews(jwt,rid,type!!)
         simpleReviewList.enqueue(object : Callback<ArrayList<SimpleReviewDto>>{
             override fun onFailure(call: Call<ArrayList<SimpleReviewDto>>, t: Throwable) {
