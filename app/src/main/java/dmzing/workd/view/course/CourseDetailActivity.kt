@@ -1,8 +1,10 @@
 package dmzing.workd.view.course
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.Point
 import android.graphics.drawable.BitmapDrawable
 import android.icu.util.Measure
 import android.support.v7.app.AppCompatActivity
@@ -12,6 +14,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -21,6 +24,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.skt.Tmap.*
 import dmzing.workd.R
 import dmzing.workd.model.map.CourseDetailDto
+import dmzing.workd.util.SpaceItemDecoration
 import dmzing.workd.view.adapter.CourseDetailPlaceAdapter
 import dmzing.workd.view.adapter.CourseDetailSimplePlaceAdapter
 import kotlinx.android.synthetic.main.activity_course_detail.*
@@ -96,9 +100,33 @@ class CourseDetailActivity : AppCompatActivity() {
         } else if(placesList.size == 4){
             course_detail_blue_line3.visibility = View.GONE
             course_detail_blue_line4.visibility = View.VISIBLE
+
+            val wm = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val display = wm.defaultDisplay
+            val size = Point()
+            display.getSize(size)
+
+            var param = course_detail_blue_line4.layoutParams as RelativeLayout.LayoutParams
+            param.setMargins(size.x/8,size.y/46,size.x/8,0)
+            course_detail_blue_line4.layoutParams = param
+
+            var param1 = course_detail_marker3.layoutParams as RelativeLayout.LayoutParams
+            param1.setMargins(0,0,size.x/6,0)
+            course_detail_marker3.layoutParams = param1
+
+            var param2 = course_detail_marker2.layoutParams as RelativeLayout.LayoutParams
+            param2.setMargins(size.x/6,0,0,0)
+            course_detail_marker2.layoutParams = param2
         }
+        val wm = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val display = wm.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        course_detail_calendar_simple_recycler.addItemDecoration(SpaceItemDecoration(size.x/45,size.x/17))
+
         course_detail_calendar_simple_recycler.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         course_detail_calendar_simple_recycler.adapter = courseDetailSimpleAdapter
+
     }
 
     fun setSimpleTmap(){

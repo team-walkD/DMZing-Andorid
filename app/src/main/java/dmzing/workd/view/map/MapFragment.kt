@@ -46,6 +46,12 @@ class MapFragment : Fragment() {
 
         imageList = ArrayList()
 
+        val wm = context!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val display = wm.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+
+        fragmentView.map_recycler.addItemDecoration(SpaceItemDecoration(size.x/45,size.x/15))
 
         settingCourseList(fragmentView)
 
@@ -144,12 +150,7 @@ class MapFragment : Fragment() {
                         view.map_recycler.layoutManager = lm
                         view.map_recycler.adapter = courseListAdapter
 
-                        val wm = context!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-                        val display = wm.defaultDisplay
-                        val size = Point()
-                        display.getSize(size)
 
-                        view.map_recycler.addItemDecoration(SpaceItemDecoration(size.x/45,size.x/15))
                     }
                     401 -> {
 
