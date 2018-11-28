@@ -34,13 +34,13 @@ class ReviewMapAdapter(var reviewMapItems : ArrayList<ReviewCountDto>, var conte
         var oval : ShapeDrawable = ShapeDrawable(OvalShape())
         oval.paint.color = Color.parseColor("#6da8c7")
         when(reviewMapItems.get(p1).courseId){
-            4->{
+            2->{
                 p0.mapText.text = "데이트 맵"
             }
-            2->{
+            3->{
                 p0.mapText.text = "역사기행 맵"
             }
-            3->{
+            4->{
                 p0.mapText.text = "자연탐방 맵"
             }
             1->{
