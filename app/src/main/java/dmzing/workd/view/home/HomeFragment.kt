@@ -1,5 +1,6 @@
 package dmzing.workd.view.home
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
@@ -61,6 +62,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     lateinit var mainActivity: MainActivity
     lateinit var hView: View
     val MY_LOCATION_REQUEST_CODE = 100
+    val MIN_DISTANCE_CHANGE_FOR_UPDATES: Long = 10
+    val MIN_TIME_BW_UPDATES: Float = 1F
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -134,45 +137,84 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 )
             }
         } else {
+            Log.v("859 lat", "ㅇㅇㅇㅇㅇ else")
             getLocation()
         }
     }
 
+
     fun getLocation() {
         context!!.toast("testing")
+        Log.v("859 lat", "ㅇㅇㅇㅇㅇ get")
 
-        /*val locationManager = context!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        // gps
-        var isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-        // 와이파이.
-        var isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
 
-        Log.v("855 woo",isGPSEnabled.toString())
-        Log.v("855 woo",isNetworkEnabled.toString())
+        val locationManager = context!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-        var locationListener = object : LocationListener {
-            override fun onLocationChanged(location: Location?) {
-                var lat : Double = location!!.latitude
-                var lng : Double = location!!.longitude
+// Define a listener that responds to location updates
+        val locationListener = object : LocationListener {
 
-                Log.v("859 lat",lat.toString())
-                Log.v("859 lng",lng.toString())
+            override fun onLocationChanged(location: Location) {
+                // Called when a new location is found by the network location provider.
+                context!!.toast("testing2222")
+                var lat: Double = location!!.latitude
+                var lng: Double = location!!.longitude
+
+                Log.v("859 lat", lat.toString())
+                Log.v("859 lng", lng.toString())
             }
 
-            override fun onStatusChanged(p0: String?, p1: Int, p2: Bundle?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
             }
 
-            override fun onProviderEnabled(p0: String?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            override fun onProviderEnabled(provider: String) {
             }
 
-            override fun onProviderDisabled(p0: String?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            override fun onProviderDisabled(provider: String) {
             }
         }
 
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0 as Long,0 as Float,locationListener)*/
+// Register the listener with the Location Manager to receive location updates
+        try {
+            Log.v("859 lat", "ㅇㅇㅇㅇㅇ try")
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0f, locationListener)
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0f, locationListener)
+        } catch (e: SecurityException) {
+            e.printStackTrace()
+            Log.v("859 lat", "ㅇㅇㅇㅇㅇ catch")
+            context!!.toast("error")
+        }
+        /*  val locationManager = context!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+          // gps
+          var isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+          // 와이파이.
+          var isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+
+          Log.v("855 woo",isGPSEnabled.toString())
+          Log.v("855 woo",isNetworkEnabled.toString())
+
+          var locationListener = object : LocationListener {
+              override fun onLocationChanged(location: Location?) {
+                  var lat : Double = location!!.latitude
+                  var lng : Double = location!!.longitude
+
+                  Log.v("859 lat",lat.toString())
+                  Log.v("859 lng",lng.toString())
+              }
+
+              override fun onStatusChanged(p0: String?, p1: Int, p2: Bundle?) {
+                  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+              }
+
+              override fun onProviderEnabled(p0: String?) {
+                  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+              }
+
+              override fun onProviderDisabled(p0: String?) {
+                  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+              }
+          }
+
+          locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,MIN_DISTANCE_CHANGE_FOR_UPDATES,MIN_TIME_BW_UPDATES,locationListener)*/
 
     }
 
@@ -181,6 +223,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             0 -> {
                 for (i in 0 until grantResults.size - 1) {
                     if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                        getLocation()
                         activity!!.finish()
                     }
                 }
@@ -222,7 +265,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         view.homeFilterRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         homeFilterAdapter = HomeFilterAdapter(filterItems, context!!)
         homeFilterAdapter.setItemClickListener(this)
-        homeFilterAdapter.setOnFilterSelectListener(object : HomeFilterAdapter.setFilterSelect {
+        /*homeFilterAdapter.setOnFilterSelectListener(object : HomeFilterAdapter.setFilterSelect {
             override fun onFilterSelect(holder: HomeFilterAdapter.HomeFilterViewHolder, position: Int) {
                 if (holder.isCheck) {
                     holder.isChecked = false
@@ -231,20 +274,19 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     Log.v("142 woo size", view.homeFilterRv.childCount.toString())
                     Log.v("142 woo item size", items.size.toString())
                     Log.v("142 woo item size2", view.homeFilterRv.adapter!!.itemCount.toString())
+                    Log.v("142 woo item id?", homeFilterAdapter.getItemId(1).toString())
 
-                    for (i in 0 until view.homeFilterRv.adapter!!.itemCount-1) {
+                    for (i in 0 until view.homeFilterRv.adapter!!.itemCount - 1) {
                         Log.v("142 woo i", i.toString())
-                        if(view.homeFilterRv.findViewHolderForAdapterPosition(i) as HomeFilterAdapter.HomeFilterViewHolder !=null){
-                            var viewHolder = view.homeFilterRv.findViewHolderForAdapterPosition(i)!!
-                                    as HomeFilterAdapter.HomeFilterViewHolder
 
-                            Log.v("142 woo viewholder", viewHolder.itemId.toString())
-                            if (viewHolder.isCheck) {
-                                viewHolder.isChecked = false
-                            }
+
+                        var viewHolder = view.homeFilterRv.findViewHolderForLayoutPosition(i)!!
+                                as HomeFilterAdapter.HomeFilterViewHolder
+                        Log.v("142 woo holder position", viewHolder.adapterPosition.toString())
+                        Log.v("142 woo viewholder", viewHolder.itemId.toString())
+                        if (viewHolder.isCheck) {
+                            viewHolder.isChecked = false
                         }
-
-
                     }
                     holder.isChecked = true
                     //toast("${holder.fiter_map.text}")
@@ -254,7 +296,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 }
             }
 
-        })
+        })*/
         view.homeFilterRv.adapter = homeFilterAdapter
 
     }
