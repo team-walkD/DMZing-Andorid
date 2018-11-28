@@ -1,28 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_marginRight="28dp">
 
     <TextView
         android:id="@+id/course_detail_simple_place_title"
-        android:layout_width="wrap_content"
+        android:layout_width="54dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
         android:textSize="14sp"
         android:textColor="#1c3748"
         android:text="평화 전망대"
-        android:maxLength="5"
         android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:layout_gravity="center_horizontal"/>
-
-    <ImageView
-        android:id="@+id/course_detail_simple_place_image"
+    <android.support.v7.widget.CardView
         android:layout_width="60dp"
         android:layout_height="64dp"
-        android:background="@drawable/mypage_border"
-        android:layout_gravity="center_horizontal"/>
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="#78707070"
+        android:layout_gravity="center_horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/course_detail_simple_place_image"
+                android:layout_centerInParent="true"
+                android:layout_width="36dp"
+                android:layout_height="43dp"
+                android:layout_gravity="center_horizontal" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
 
 </LinearLayout>

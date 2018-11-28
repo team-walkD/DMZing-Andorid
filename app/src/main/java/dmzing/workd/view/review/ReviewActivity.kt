@@ -4,7 +4,10 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.AppBarLayout
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
+import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import dmzing.workd.R
@@ -15,6 +18,7 @@ import dmzing.workd.model.review.ReportDto
 import dmzing.workd.model.review.reviewDto
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
+import dmzing.workd.util.AppBarStateChangeListener
 import dmzing.workd.util.SharedPreference
 import dmzing.workd.view.adapter.ReviewPostAdapter
 import kotlinx.android.synthetic.main.activity_review.*
@@ -38,6 +42,21 @@ class ReviewActivity : AppCompatActivity() {
 
 
         jwt = SharedPreference.instance!!.getPrefStringData("jwt","")!!
+
+        review_appbarlayout.addOnOffsetChangedListener(object : AppBarStateChangeListener(){
+            override fun onStateChanged(appBarLayout: AppBarLayout?, state: State?) {
+                when(state){
+                    AppBarStateChangeListener.State.EXPANDED->{
+                        review_like_button.visibility = View.VISIBLE
+                    }
+                    else->{
+                        review_like_button.visibility = View.GONE
+                    }
+                }
+            }
+
+        })
+
         review_back_button.setOnClickListener {
             finish()
         }

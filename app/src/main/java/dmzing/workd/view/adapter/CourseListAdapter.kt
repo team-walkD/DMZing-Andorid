@@ -35,6 +35,7 @@ class CourseListAdapter(var itemList : ArrayList<CourseMainDto>,var context : Co
             p0.courseLockLayout.visibility = View.VISIBLE
             p0.coursePrice.text = itemList.get(p1).price.toString() + "DP"
             p0.courseSee.isClickable = false
+            p0.courseSee.visibility = View.GONE
             p0.courseLock.setOnClickListener { v: View? ->
                 val click = itemClick
                 if(click != null){
