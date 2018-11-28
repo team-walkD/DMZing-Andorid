@@ -49,13 +49,13 @@ class PhotoReviewWriteActivity : AppCompatActivity() {
         var courseId = intent.getIntExtra("courseId",0)
 
         when(courseId){
-            4->{
+            2->{
                 photo_review_write_map.text = "데이트 맵"
             }
-            2->{
+            3->{
                 photo_review_write_map.text = "역사기행 맵"
             }
-            3->{
+            4->{
                 photo_review_write_map.text = "자연탐방 맵"
             }
             1->{
