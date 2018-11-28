@@ -151,7 +151,7 @@ class ReviewActivity : AppCompatActivity() {
     }
     fun timeStampToDate(timeStamp : Long) : String{
         var date : Date = Date(timeStamp)
-        var dateF : SimpleDateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
+        var dateF : SimpleDateFormat = SimpleDateFormat("yyyy.mm.dd", Locale.getDefault())
         return dateF.format(date)
     }
 }
