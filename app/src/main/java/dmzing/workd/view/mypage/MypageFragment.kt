@@ -46,6 +46,11 @@ class MypageFragment : Fragment(), View.OnClickListener {
         SharedPreference.instance!!.load(context!!)
     }
 
+    override fun onResume() {
+        super.onResume()
+        getMypageInfo(view!!)
+    }
+
     lateinit var networkService: NetworkService
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_mypage, container, false)
