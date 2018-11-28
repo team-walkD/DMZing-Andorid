@@ -121,13 +121,17 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     mainActivity,
                     arrayOf(
                         android.Manifest.permission.ACCESS_FINE_LOCATION,
-                        android.Manifest.permission.ACCESS_COARSE_LOCATION), MY_LOCATION_REQUEST_CODE)
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION
+                    ), MY_LOCATION_REQUEST_CODE
+                )
             else {
                 ActivityCompat.requestPermissions(
                     mainActivity,
                     arrayOf(
                         android.Manifest.permission.ACCESS_FINE_LOCATION,
-                        android.Manifest.permission.ACCESS_COARSE_LOCATION), MY_LOCATION_REQUEST_CODE)
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION
+                    ), MY_LOCATION_REQUEST_CODE
+                )
             }
         } else {
             getLocation()
@@ -197,6 +201,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             override fun onResponse(call: Call<HomeCourseData>, response: Response<HomeCourseData>) {
                 Log.v("853 woo r:", response.code().toString())
                 Log.v("853 woo r:", response.body().toString())
+                Log.v("853 woo size:", response.body()!!.purchaseList.size.toString())
                 when (response.code()!!) {
                     200 -> {
                         settingFilterItems(view, response.body()!!.purchaseList)
@@ -222,13 +227,24 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 if (holder.isCheck) {
                     holder.isChecked = false
                 } else {
-                    // recyclerview의 아이템 들 중에 체크가 되어 있는지 for문을 통해서 검사하는 과
-                    for (i in 0 until view.homeFilterRv.childCount) {
-                        var viewHolder = view.homeFilterRv.findViewHolderForAdapterPosition(i)
-                                as HomeFilterAdapter.HomeFilterViewHolder
-                        if (viewHolder.isCheck) {
-                            viewHolder.isChecked = false
+                    // recyclerview의 아이템 들 중에 체크가 되어 있는지 for문을 통해서 검사하는 과정
+                    Log.v("142 woo size", view.homeFilterRv.childCount.toString())
+                    Log.v("142 woo item size", items.size.toString())
+                    Log.v("142 woo item size2", view.homeFilterRv.adapter!!.itemCount.toString())
+
+                    for (i in 0 until view.homeFilterRv.adapter!!.itemCount-1) {
+                        Log.v("142 woo i", i.toString())
+                        if(view.homeFilterRv.findViewHolderForAdapterPosition(i) as HomeFilterAdapter.HomeFilterViewHolder !=null){
+                            var viewHolder = view.homeFilterRv.findViewHolderForAdapterPosition(i)!!
+                                    as HomeFilterAdapter.HomeFilterViewHolder
+
+                            Log.v("142 woo viewholder", viewHolder.itemId.toString())
+                            if (viewHolder.isCheck) {
+                                viewHolder.isChecked = false
+                            }
                         }
+
+
                     }
                     holder.isChecked = true
                     //toast("${holder.fiter_map.text}")
