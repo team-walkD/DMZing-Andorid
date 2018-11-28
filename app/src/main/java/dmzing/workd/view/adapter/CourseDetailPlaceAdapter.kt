@@ -47,14 +47,17 @@ class CourseDetailPlaceAdapter(var itemList : ArrayList<PlaceDto>,var courseTime
                 0->{
                     Glide.with(context).load(itemList.get(p1).peripheries!!.get(i).firstimage).apply(RequestOptions().centerCrop()).into(p0.courseDetailPlacePeriOneImage)
                     p0.courseDetailPlacePeriOneText.text = itemList.get(p1).peripheries!!.get(i).title
+                    p0.courseDetailPlacePeriOneText.isSelected = true
                 }
                 1->{
                     Glide.with(context).load(itemList.get(p1).peripheries!!.get(i).firstimage).apply(RequestOptions().centerCrop()).into(p0.courseDetailPlacePeriTwoImage)
                     p0.courseDetailPlacePeriTwoText.text = itemList.get(p1).peripheries!!.get(i).title
+                    p0.courseDetailPlacePeriTwoText.isSelected = true
                 }
                 2->{
                     Glide.with(context).load(itemList.get(p1).peripheries!!.get(i).firstimage).apply(RequestOptions().centerCrop()).into(p0.courseDetailPlacePeriThreeImage)
                     p0.courseDetailPlacePeriThreeText.text = itemList.get(p1).peripheries!!.get(i).title
+                    p0.courseDetailPlacePeriThreeText.isSelected = true
                 }
             }
         }
@@ -63,6 +66,8 @@ class CourseDetailPlaceAdapter(var itemList : ArrayList<PlaceDto>,var courseTime
             p0.courseDetailPlaceTime.text = "차 "+(courseTimeList.get(p1)/60).toString()+"분"
         } else {
             p0.courseDetailBlueLine.visibility = View.INVISIBLE
+            p0.courseDetailText1.visibility = View.INVISIBLE
+            p0.courseDetailText2.visibility = View.INVISIBLE
         }
     }
 
@@ -92,5 +97,8 @@ class CourseDetailPlaceAdapter(var itemList : ArrayList<PlaceDto>,var courseTime
         var courseDetailPlacePeriThreeText : TextView = itemView.findViewById(R.id.course_detail_detail_peri_title3)
         var courseDetailPlaceTime : TextView = itemView.findViewById(R.id.course_detail_detail_time)
         var courseDetailBlueLine : View = itemView.findViewById(R.id.course_detail_detail_blue_line)
+
+        var courseDetailText1 : TextView = itemView.findViewById(R.id.course_detail_detail_text1)
+        var courseDetailText2 : TextView = itemView.findViewById(R.id.course_detail_detail_text2)
     }
 }

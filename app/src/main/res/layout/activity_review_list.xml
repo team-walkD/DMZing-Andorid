@@ -16,55 +16,29 @@
         <android.support.design.widget.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:contentScrim="@color/backgroundColor"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/backgroundColor"
+                app:layout_collapseParallaxMultiplier="1.0"/>
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="231dp"
                     android:orientation="vertical"
-                    android:background="@color/backgroundColor"
-                    app:layout_collapseMode="parallax">
-
-                <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="22dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="22dp">
-
-                    <ImageView
-                            android:id="@+id/review_list_back_button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/back_btn"
-                            android:layout_centerVertical="true"
-                    />
-
-                    <ImageButton
-                            android:id="@+id/review_list_walkd_button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/walk_d_icon"
-                            android:layout_gravity="center"
-                            android:layout_toLeftOf="@+id/review_list_write_button"
-                            android:layout_centerVertical="true"
-                            android:layout_marginRight="24dp"/>
-
-                    <ImageButton
-                            android:id="@+id/review_list_write_button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/review_write_icon"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentRight="true"/>
-
-                </RelativeLayout>
+                    >
 
                 <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="38dp"
-                        android:layout_marginTop="80.8dp">
+                        android:layout_marginTop="80.8dp"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.7"
+                    >
 
                     <TextView
                             android:id="@+id/review_list_title_text"
@@ -74,7 +48,7 @@
                             android:fontFamily="@font/notosanscjkkr_bold"
                             android:includeFontPadding="false"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content" />
 
                     <TextView
                             android:text="의"
@@ -84,10 +58,13 @@
                             android:includeFontPadding="false"
                             android:layout_toRightOf="@+id/review_list_title_text"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+/>
                 </RelativeLayout>
 
                 <TextView
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.7"
                         android:text="이야기를 들어볼까요?"
                         android:textSize="24sp"
                         android:textColor="#1c3748"
@@ -96,10 +73,54 @@
                         android:layout_toRightOf="@+id/review_list_title_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="38dp"/>
+                        android:layout_marginLeft="38dp"
+                    />
 
 
             </LinearLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                android:background="@null">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="22dp">
+
+                    <ImageView
+                        android:id="@+id/review_list_back_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/back_btn"
+                        android:layout_centerVertical="true"
+                        />
+
+                    <ImageButton
+                        android:id="@+id/review_list_walkd_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/walk_d_icon"
+                        android:layout_gravity="center"
+                        android:layout_toLeftOf="@+id/review_list_write_button"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="24dp"/>
+
+                    <ImageButton
+                        android:id="@+id/review_list_write_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/review_write_icon"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"/>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>

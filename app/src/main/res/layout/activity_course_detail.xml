@@ -75,34 +75,7 @@
                     android:textColor="#ffffff"
                     android:textSize="24sp" />
 
-                <RelativeLayout
-                    android:layout_centerVertical="true"
-                    android:layout_width="53dp"
-                    android:layout_height="53dp"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/like_circle">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/heart_filled_icon"
-                        android:layout_centerHorizontal="true"
-                        android:layout_above="@+id/course_detail_like_count"/>
-
-                    <TextView
-                        android:id="@+id/course_detail_like_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:textColor="#1c3748"
-                        android:gravity="center_horizontal"
-                        android:fontFamily="@font/notosanscjkkr_regular"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="8dp"
-                        android:text="489"/>
-
-                </RelativeLayout>
             </RelativeLayout>
 
             <RelativeLayout

@@ -20,19 +20,30 @@
             android:layout_marginLeft="7.2dp"
             android:background="#e3e3e3"/>
 
-        <TextView
-            android:id="@+id/photo_review_item_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="7.6dp"
-            android:layout_marginTop="11.6dp"
-            android:textSize="12sp"
-            android:fontFamily="@font/roboto_medium"
-            android:includeFontPadding="false"
-            android:textStyle="normal"
-            android:textColor="#1c3748"
-            android:text="2018.08.01"
-            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/photo_review_item_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7.6dp"
+                android:layout_marginTop="11.6dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto_medium"
+                android:includeFontPadding="false"
+                android:textStyle="normal"
+                android:textColor="#1c3748"
+                android:text="2018.08.01"
+                />
+
+            <ImageView
+                android:id="@+id/photo_review_item_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/photo_review_item_place"

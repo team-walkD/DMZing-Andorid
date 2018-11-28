@@ -68,25 +68,22 @@ class ReviewFragment : Fragment() {
             {
                 when(response.code()){
                     200->{//성공
-                        response.body()!!.add(ReviewCountDto("Comming Soon",0,null,null))
-
                         gridLayoutManager = GridLayoutManager(activity,2)
                         mapItemAdapter = ReviewMapAdapter(response.body()!!, activity!!.applicationContext)
                         mapItemAdapter.setOnItemClickListener(object : ReviewMapAdapter.Itemclick{
                             override fun onClick(view: View, position: Int) {
-                                if(position == 3){
-                                    Toast.makeText(context,"준비중입니다!",Toast.LENGTH_LONG).show()
-                                } else {
-                                    var intent = Intent(activity,ReviewListActivity::class.java)
-                                    intent.putExtra("courseId",response.body()!!.get(position).courseId)
-                                    intent.putExtra("typeName",response.body()!!.get(position).typeName)
-                                    startActivity(intent)
-                                }
+                                var intent = Intent(activity,ReviewListActivity::class.java)
+                                intent.putExtra("courseId",response.body()!!.get(position).courseId)
+                                intent.putExtra("typeName",response.body()!!.get(position).typeName)
+                                startActivity(intent)
                             }
 
                         })
                         view.review_recyclerView.layoutManager = gridLayoutManager
+                        view.review_recyclerView.isNestedScrollingEnabled = false
+                        view.review_recyclerView.setHasFixedSize(false)
                         view.review_recyclerView.adapter = mapItemAdapter
+
 
 //                        var px = Math.round(convertDpToPixel(14f,activity!!))
 //                        val wm = context!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
