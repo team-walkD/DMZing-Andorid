@@ -25,6 +25,7 @@ import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.SharedPreference
 import dmzing.workd.view.mypage.MypageFragment
+import kotlinx.android.synthetic.main.home_letter_item_list.view.*
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -49,6 +50,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
         var idx: Int = 0
         var common_position = 0
         var footer_flag: Int = 0
+        var letterFlag : Int = 0
         var location_list = listOf<Test>(
             Test(37.8895234711, 126.7405308247)
             , Test(37.8513232698, 126.7905662159)
@@ -166,12 +168,28 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
                 .into(letterCourseViewHolder.letterImage)
             letterCourseViewHolder.letterHint.movementMethod = ScrollingMovementMethod.getInstance()
             letterCourseViewHolder.letterHint.text = item_list.places[position - 1].hint
+            if(item_list.places[position-1].letterImageUrl !=null){
+                letterCourseViewHolder.letterDetailText.text = "편지 보기"
+                letterFlag = 1
+            }else{
+                letterCourseViewHolder.letterDetailText.text = "편지 찾기"
+                letterFlag = 2
+            }
             letterCourseViewHolder.letterButton.setOnClickListener {
-                context.toast("편지 찾기 버튼!")
+                when(letterFlag){
+                    1->{
+                        context.toast("편지 보기 버튼!")
+                    }
+                    2->{
+                        context.toast("편지 찾기 버튼!")
 
-                postMission(location_list[idx].lat, location_list[idx].lng)
-                Log.v("557 lat", location_list[idx].lat.toString())
-                Log.v("557 lng", location_list[idx].lng.toString())
+                        postMission(location_list[idx].lat, location_list[idx].lng)
+                        Log.v("557 lat", location_list[idx].lat.toString())
+                        Log.v("557 lng", location_list[idx].lng.toString())
+                    }
+                }
+
+
 
 
             }
@@ -276,6 +294,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
         var letterHint: TextView = itemView.findViewById(R.id.letterHint)
         var letterButton: RelativeLayout = itemView.findViewById(R.id.letterDetailBtn)
         var letterImage: ImageView = itemView.findViewById(R.id.letterImageItem)
+        var letterDetailText : TextView = itemView.letterDetailBtnText
     }
 
     inner class FooterCourseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

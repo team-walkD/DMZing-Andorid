@@ -33,6 +33,7 @@ import retrofit2.Response
 import android.support.v4.content.ContextCompat.getSystemService
 import android.location.LocationManager
 import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v4.content.ContextCompat.getSystemService
 import android.support.v4.content.PermissionChecker.checkSelfPermission
 import dmzing.workd.view.MainActivity
@@ -47,9 +48,66 @@ import java.util.jar.Manifest
 class HomeFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!) {
-            v -> {
+         /*   v -> {
                 var index = courseList.getChildAdapterPosition(v!!)
                 toast("${index}")
+            }*/
+            v!!.filterDMZingBtn -> {
+                if (filterDMZingBtn.isSelected){
+                    filterDMZingBtn.isSelected = false
+                    filterDateBtn.isSelected = false
+                    filterHistoryBtn.isSelected = false
+                    filterNaturalBtn.isSelected = false
+
+                    putCoursePick(view!!, filterItems[0].id)
+                    filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+                }else{
+                    filterDMZingBtn.isSelected = true
+                    filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                }
+
+            }
+            v!!.filterDateBtn -> {
+                if (filterDateBtn.isSelected){
+                    filterDateBtn.isSelected = false
+                    filterDMZingBtn.isSelected = false
+                    filterHistoryBtn.isSelected = false
+                    filterNaturalBtn.isSelected = false
+
+                    putCoursePick(view!!, filterItems[1].id)
+                    filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+                }else{
+                    filterDateBtn.isSelected = true
+                    filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                }
+            }
+            v!!.filterHistoryBtn -> {
+                if (filterHistoryBtn.isSelected){
+                    filterHistoryBtn.isSelected = false
+                    filterDateBtn.isSelected = false
+                    filterDMZingBtn.isSelected = false
+                    filterNaturalBtn.isSelected = false
+
+                    putCoursePick(view!!, filterItems[2].id)
+                    filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+                }else{
+                    filterHistoryBtn.isSelected = true
+                    filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+                }
+            }
+            v!!.filterNaturalBtn -> {
+                if (filterNaturalBtn.isSelected){
+                    filterNaturalBtn.isSelected = false
+                    filterHistoryBtn.isSelected = false
+                    filterDateBtn.isSelected = false
+                    filterDMZingBtn.isSelected = false
+
+                    putCoursePick(view!!, filterItems[3].id)
+                    filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+                }else{
+                    filterNaturalBtn.isSelected = true
+                    filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+                }
             }
         }
     }
@@ -65,6 +123,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     val MIN_DISTANCE_CHANGE_FOR_UPDATES: Long = 10
     val MIN_TIME_BW_UPDATES: Float = 1F
 
+
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         mainActivity = this@HomeFragment.activity!! as MainActivity
@@ -75,14 +134,27 @@ class HomeFragment : Fragment(), View.OnClickListener {
         getHomeMission(view!!)
     }
 
+    fun init(view : View) {
+        view.filterDMZingBtn.setOnClickListener(this)
+        view.filterDateBtn.setOnClickListener(this)
+        view.filterHistoryBtn.setOnClickListener(this)
+        view.filterNaturalBtn.setOnClickListener(this)
+
+      /*  view.filterDMZingBtn.isSelected = true
+        view.filterDateBtn.isSelected = true
+        view.filterHistoryBtn.isSelected = true
+        view.filterNaturalBtn.isSelected = true*/
+
+        networkService = ApplicationController.instance.networkService
+        SharedPreference.instance!!.load(context!!)
+    }
 
     lateinit var networkService: NetworkService
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_home, container, false)
 
         hView = view
-        networkService = ApplicationController.instance.networkService
-        SharedPreference.instance!!.load(context!!)
+        init(view)
 
 
         getLocation()
@@ -247,7 +319,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 Log.v("853 woo size:", response.body()!!.purchaseList.size.toString())
                 when (response.code()!!) {
                     200 -> {
-                        settingFilterItems(view, response.body()!!.purchaseList)
+                        //settingFilterItems(view, response.body()!!.purchaseList)
+                        filterItems = response.body()!!.purchaseList
                         settingHomeItems(view, response.body()!!.pickCourse)
                     }
                 }
@@ -261,8 +334,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     // 필터 아이템 통신
     fun settingFilterItems(view: View, items: ArrayList<HomeFilterData>) {
         filterItems = items
-        view.homeFilterRv.setHasFixedSize(true)
-        view.homeFilterRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        //view.homeFilterRv.setHasFixedSize(true)
+        //view.homeFilterRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         homeFilterAdapter = HomeFilterAdapter(filterItems, context!!)
         homeFilterAdapter.setItemClickListener(this)
         /*homeFilterAdapter.setOnFilterSelectListener(object : HomeFilterAdapter.setFilterSelect {
@@ -297,7 +370,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
 
         })*/
-        view.homeFilterRv.adapter = homeFilterAdapter
+        //view.homeFilterRv.adapter = homeFilterAdapter
 
     }
 
