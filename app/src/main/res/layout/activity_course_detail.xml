@@ -270,9 +270,7 @@
                     android:layout_below="@+id/course_detail_calendar_simple_tmap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="23dp"
-                    android:layout_marginLeft="42dp"
-                    android:layout_marginRight="42dp">
+                    android:layout_marginTop="23dp">
 
                     <View
                         android:layout_width="match_parent"
@@ -283,6 +281,7 @@
 
 
                     <TextView
+                            android:id="@+id/course_detail_marker1"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:background="@drawable/circle_blue"
@@ -293,9 +292,9 @@
                         android:textColor="#ffffff"
                         android:text="1"/>
                     <TextView
+                            android:id="@+id/course_detail_marker2"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:layout_marginLeft="80dp"
                         android:background="@drawable/circle_blue"
                         android:fontFamily="@font/roboto_bold"
                         android:includeFontPadding="false"
@@ -304,9 +303,9 @@
                         android:textColor="#ffffff"
                         android:text="2"/>
                     <TextView
+                            android:id="@+id/course_detail_marker3"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:layout_marginRight="80dp"
                         android:background="@drawable/circle_blue"
                         android:layout_alignParentRight="true"
                         android:fontFamily="@font/roboto_bold"
@@ -316,6 +315,7 @@
                         android:textColor="#ffffff"
                         android:text="3"/>
                     <TextView
+                            android:id="@+id/course_detail_marker4"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:background="@drawable/circle_blue"
@@ -388,7 +388,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
-                    android:layout_marginLeft="21dp"
+                    android:overScrollMode="never"
                     android:layout_below="@+id/course_detail_calendar_simple_tmap">
 
                 </android.support.v7.widget.RecyclerView>
