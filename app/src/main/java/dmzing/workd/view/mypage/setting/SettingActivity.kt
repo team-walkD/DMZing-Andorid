@@ -21,6 +21,7 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
                 dialog.show()
             }
             settingBackBtn -> finish()
+            settingXBtn -> finish()
 
         }
     }
@@ -35,6 +36,7 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
         settingBackBtn.setOnClickListener(this)
         settingServiceBtn.setOnClickListener(this)
         settingLogoutBtn.setOnClickListener(this)
+        settingXBtn.setOnClickListener(this)
 
     }
 }
