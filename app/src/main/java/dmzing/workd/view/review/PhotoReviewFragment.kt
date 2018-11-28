@@ -84,7 +84,7 @@ class PhotoReviewFragment : Fragment() {
                 when(response.code()){
                     200->{
                         Log.d("getPhotoReviewList",":"+response.code())
-                        Log.d("getPhotoReviewList",":"+response.body()!!.get(0).placeName)
+                        //Log.d("getPhotoReviewList",":"+response.body()!!.get(0).placeName)
                         mPhotoReviewAdpater = PhotoReviewListAdapter(response.body()!!,context!!)
 
                         mPhotoReviewAdpater.SetOnItemClickListener(object : PhotoReviewListAdapter.ItemClick{
