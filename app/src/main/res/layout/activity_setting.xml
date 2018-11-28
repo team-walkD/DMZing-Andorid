@@ -15,6 +15,7 @@
             android:background="@color/backgroundColor">
 
         <RelativeLayout
+                android:id="@+id/settingBackBtn"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
@@ -23,6 +24,7 @@
 
             <ImageView
                     android:layout_marginLeft="25dp"
+                    android:layout_marginRight="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/back_btn"/>
@@ -41,7 +43,7 @@
         />
 
         <RelativeLayout
-                android:layout_marginRight="26dp"
+                android:id="@+id/settingXBtn"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
@@ -49,7 +51,7 @@
                 android:gravity="center_vertical">
 
             <ImageView
-
+                    android:layout_marginRight="25dp"
                     android:layout_marginLeft="25dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -182,7 +184,7 @@
                     android:textSize="13sp"
                     android:textColor="#9b9b9b"
                     android:lineSpacingExtra="6sp"
-                    android:text="디엠징을 탈퇴하려면 여기를 눌러주세요."
+                    tools:text="디엠징을 탈퇴하려면 여기를 눌러주세요."
             />
         </LinearLayout>
         
