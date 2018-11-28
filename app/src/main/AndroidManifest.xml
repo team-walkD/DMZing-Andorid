@@ -55,6 +55,8 @@
         </activity>
         <activity android:name=".view.mypage.faq.FAQActivity">
         </activity>
+        <activity android:name=".view.ChatbotActivity">
+        </activity>
     </application>
 
 </manifest>

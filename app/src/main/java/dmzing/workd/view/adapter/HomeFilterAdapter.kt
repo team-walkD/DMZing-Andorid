@@ -13,6 +13,7 @@ import android.widget.TextView
 import dmzing.workd.R
 import dmzing.workd.model.home.HomeFilterData
 import kotlinx.android.synthetic.main.home_course_filter_list.view.*
+import org.jetbrains.anko.toast
 
 /**
  * Created by VictoryWoo
@@ -23,6 +24,7 @@ class HomeFilterAdapter(var items: ArrayList<HomeFilterData>, var context: Conte
     var itemSelect : setFilterSelect? = null
 
     lateinit var onItemClick :View.OnClickListener
+    lateinit var holderArr : ArrayList<HomeFilterViewHolder>
 
     fun setItemClickListener(l : View.OnClickListener){
         onItemClick = l
@@ -99,10 +101,75 @@ class HomeFilterAdapter(var items: ArrayList<HomeFilterData>, var context: Conte
         * 이렇게 매개변수를 holder, position을 전달할 수 있기 때문에
         * recyclerview에 접근하는 것이 자유롭다.
         * */
+        holder.filter_btn.isSelected = true
+
+
+
+
         holder.itemView.setOnClickListener{
-            var selector = itemSelect
+/*            var selector = itemSelect
             if(selector !=null)
-                selector!!.onFilterSelect(holder,position)
+                selector!!.onFilterSelect(holder,position)*/
+            Log.v("847 holder id ",holder.itemView.id.toString())
+            holder.itemView
+            context!!.toast("${position} 번쨰 클릭.")
+            Log.v("825 aPosition:",holder.adapterPosition.toString())
+
+            when(position){
+                0->{
+                    if(holder.filter_btn.isSelected){
+                        Log.v("1128 woo","Selected")
+                        holder.filter_btn.isSelected = false
+                        holder.filter_btn.background = ContextCompat.getDrawable(context, R.drawable.filter_background)
+                        if(holder.adapterPosition == 1){
+
+                            holder.filter_btn.isSelected =false
+                        }
+                    }else{
+                        Log.v("1128 woo","UnSelected")
+                        holder.filter_btn.isSelected = true
+                        holder.filter_btn.background = ContextCompat.getDrawable(context, R.drawable.filter_opacity_background)
+
+                    }
+
+                }
+                1->{
+                    if(holder.filter_btn.isSelected){
+                        Log.v("1128 woo","Selected")
+                        holder.filter_btn.isSelected = false
+                        holder.filter_btn.background = ContextCompat.getDrawable(context, R.drawable.filter_background)
+                    }else{
+                        Log.v("1128 woo","UnSelected")
+                        holder.filter_btn.isSelected = true
+                        holder.filter_btn.background = ContextCompat.getDrawable(context, R.drawable.filter_opacity_background)
+
+                    }
+                }
+                2->{
+                    if(holder.filter_btn.isSelected){
+                        Log.v("1128 woo","Selected")
+                        holder.filter_btn.isSelected = false
+                        holder.filter_btn.background = ContextCompat.getDrawable(context, R.drawable.filter_background)
+                    }else{
+                        Log.v("1128 woo","UnSelected")
+                        holder.filter_btn.isSelected = true
+                        holder.filter_btn.background = ContextCompat.getDrawable(context, R.drawable.filter_opacity_background)
+
+                    }
+                }
+                3->{
+                    if(holder.filter_btn.isSelected){
+                        Log.v("1128 woo","Selected")
+                        holder.filter_btn.isSelected = false
+                        holder.filter_btn.background = ContextCompat.getDrawable(context, R.drawable.filter_background)
+                    }else{
+                        Log.v("1128 woo","UnSelected")
+                        holder.filter_btn.isSelected = true
+                        holder.filter_btn.background = ContextCompat.getDrawable(context, R.drawable.filter_opacity_background)
+
+                    }
+                }
+            }
         }
 
     }
