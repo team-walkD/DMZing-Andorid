@@ -1,6 +1,8 @@
 package dmzing.workd.view.map
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.Point
 import android.net.LinkAddress
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -11,6 +13,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import dmzing.workd.R
@@ -19,6 +22,7 @@ import dmzing.workd.model.map.CourseMainDto
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.SharedPreference
+import dmzing.workd.util.SpaceItemDecoration
 import dmzing.workd.view.adapter.CourseListAdapter
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.android.synthetic.main.fragment_map.view.*
@@ -134,11 +138,14 @@ class MapFragment : Fragment() {
                         })
                         var lm = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                         view.map_recycler.layoutManager = lm
-
-
-
-
                         view.map_recycler.adapter = courseListAdapter
+
+                        val wm = context!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+                        val display = wm.defaultDisplay
+                        val size = Point()
+                        display.getSize(size)
+
+                        view.map_recycler.addItemDecoration(SpaceItemDecoration(size.x/45,size.x/15))
                     }
                     401 -> {
 
