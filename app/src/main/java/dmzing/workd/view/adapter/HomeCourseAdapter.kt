@@ -23,6 +23,7 @@ import dmzing.workd.model.home.Places
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.SharedPreference
+import dmzing.workd.view.mypage.MypageFragment
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -230,6 +231,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
                             idx += 1
                             //notifyDataSetChanged()
                             notifyItemInserted(position + 1)
+
 
                             var dialog = HomeLetterFindDialog(context)
                             dialog.setCanceledOnTouchOutside(true)

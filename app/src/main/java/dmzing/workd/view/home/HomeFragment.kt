@@ -1,6 +1,8 @@
 package dmzing.workd.view.home
 
 import android.content.Context
+import android.content.pm.PackageManager
+import android.location.Location
 import android.location.LocationListener
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -29,7 +31,13 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.support.v4.content.ContextCompat.getSystemService
 import android.location.LocationManager
-
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat.getSystemService
+import android.support.v4.content.PermissionChecker.checkSelfPermission
+import dmzing.workd.view.MainActivity
+import org.jetbrains.anko.toast
+import java.security.Permission
+import java.util.jar.Manifest
 
 
 /**
@@ -50,16 +58,32 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     lateinit var homeFilterAdapter: HomeFilterAdapter
     lateinit var filterItems: ArrayList<HomeFilterData>
+    lateinit var mainActivity: MainActivity
+    lateinit var hView: View
+    val MY_LOCATION_REQUEST_CODE = 100
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        mainActivity = this@HomeFragment.activity!! as MainActivity
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getHomeMission(view!!)
+    }
+
 
     lateinit var networkService: NetworkService
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        hView = view
         networkService = ApplicationController.instance.networkService
         SharedPreference.instance!!.load(context!!)
 
 
-        //getLocation()
+        getLocation()
+        requestLocationPermission()
 
 
         filterItems = ArrayList()
@@ -81,8 +105,84 @@ class HomeFragment : Fragment(), View.OnClickListener {
         return view
     }
 
+    fun requestLocationPermission() {
+        if (context!!.checkSelfPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+            context!!.checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+        ) {
 
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    activity!!, android.Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+                || ActivityCompat.shouldShowRequestPermissionRationale(
+                    activity!!, android.Manifest.permission.ACCESS_FINE_LOCATION
+                )
+            )
+                ActivityCompat.requestPermissions(
+                    mainActivity,
+                    arrayOf(
+                        android.Manifest.permission.ACCESS_FINE_LOCATION,
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION), MY_LOCATION_REQUEST_CODE)
+            else {
+                ActivityCompat.requestPermissions(
+                    mainActivity,
+                    arrayOf(
+                        android.Manifest.permission.ACCESS_FINE_LOCATION,
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION), MY_LOCATION_REQUEST_CODE)
+            }
+        } else {
+            getLocation()
+        }
+    }
 
+    fun getLocation() {
+        context!!.toast("testing")
+
+        /*val locationManager = context!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        // gps
+        var isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+        // 와이파이.
+        var isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+
+        Log.v("855 woo",isGPSEnabled.toString())
+        Log.v("855 woo",isNetworkEnabled.toString())
+
+        var locationListener = object : LocationListener {
+            override fun onLocationChanged(location: Location?) {
+                var lat : Double = location!!.latitude
+                var lng : Double = location!!.longitude
+
+                Log.v("859 lat",lat.toString())
+                Log.v("859 lng",lng.toString())
+            }
+
+            override fun onStatusChanged(p0: String?, p1: Int, p2: Bundle?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onProviderEnabled(p0: String?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onProviderDisabled(p0: String?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        }
+
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0 as Long,0 as Float,locationListener)*/
+
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            0 -> {
+                for (i in 0 until grantResults.size - 1) {
+                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                        activity!!.finish()
+                    }
+                }
+            }
+        }
+    }
 
 
     // 홈 편지 미션 통신
@@ -117,16 +217,16 @@ class HomeFragment : Fragment(), View.OnClickListener {
         view.homeFilterRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         homeFilterAdapter = HomeFilterAdapter(filterItems, context!!)
         homeFilterAdapter.setItemClickListener(this)
-        homeFilterAdapter.setOnFilterSelectListener(object : HomeFilterAdapter.setFilterSelect{
+        homeFilterAdapter.setOnFilterSelectListener(object : HomeFilterAdapter.setFilterSelect {
             override fun onFilterSelect(holder: HomeFilterAdapter.HomeFilterViewHolder, position: Int) {
-                if(holder.isCheck){
+                if (holder.isCheck) {
                     holder.isChecked = false
-                }else{
+                } else {
                     // recyclerview의 아이템 들 중에 체크가 되어 있는지 for문을 통해서 검사하는 과
-                    for(i in 0 until view.homeFilterRv.childCount){
+                    for (i in 0 until view.homeFilterRv.childCount) {
                         var viewHolder = view.homeFilterRv.findViewHolderForAdapterPosition(i)
                                 as HomeFilterAdapter.HomeFilterViewHolder
-                        if(viewHolder.isCheck){
+                        if (viewHolder.isCheck) {
                             viewHolder.isChecked = false
                         }
                     }
@@ -144,22 +244,24 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     // 코스 픽하기
-    fun putCoursePick(view :View, cid : Int){
-        Log.v("woo 731 put:","또잉")
-        var coursePickResponse = networkService.putCoursePick(SharedPreference.instance!!
-            .getPrefStringData("jwt")!!,cid)
-        Log.v("woo 7311 put:","또잉1")
+    fun putCoursePick(view: View, cid: Int) {
+        Log.v("woo 731 put:", "또잉")
+        var coursePickResponse = networkService.putCoursePick(
+            SharedPreference.instance!!
+                .getPrefStringData("jwt")!!, cid
+        )
+        Log.v("woo 7311 put:", "또잉1")
 
-        coursePickResponse.enqueue(object : Callback<PickCourse>{
+        coursePickResponse.enqueue(object : Callback<PickCourse> {
             override fun onFailure(call: Call<PickCourse>, t: Throwable) {
-                Log.v("woo 731 f:",t.message)
+                Log.v("woo 731 f:", t.message)
             }
 
             override fun onResponse(call: Call<PickCourse>, response: Response<PickCourse>) {
-                Log.v("woo 731 r:",response.message())
-                Log.v("woo 731 r:",response.code().toString())
-                when(response!!.code()){
-                    200->{
+                Log.v("woo 731 r:", response.message())
+                Log.v("woo 731 r:", response.code().toString())
+                when (response!!.code()) {
+                    200 -> {
                         settingHomeItems(view, response.body()!!)
                         homeCourseAdapter.notifyDataSetChanged()
                     }
@@ -170,7 +272,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         })
     }
 
-    fun settingHomeItems(view: View, items : PickCourse){
+    fun settingHomeItems(view: View, items: PickCourse) {
         courseItems = items
         view.courseList.setHasFixedSize(true)
         view.courseList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

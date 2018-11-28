@@ -49,6 +49,8 @@ class MapFragment : Fragment() {
         snapHelper.attachToRecyclerView(fragmentView!!.map_recycler)
 
 
+        var requestOptions=RequestOptions()
+        requestOptions.placeholder(R.drawable.map_image)
 
 
 
@@ -62,7 +64,11 @@ class MapFragment : Fragment() {
                 Log.v("720 woo dy ",dy.toString())
                 when(rvPosition){
                     0->{
-                        Glide.with(context!!).load(imageList[0]).apply(RequestOptions().centerCrop()).into(courseLineImage)
+                        Glide.with(context!!)
+                            .setDefaultRequestOptions(requestOptions)
+                            .load(imageList[0])
+                            .apply(RequestOptions().centerCrop())
+                            .into(courseLineImage)
                     }
                     1->{
                         Glide.with(context!!).load(imageList[1]).apply(RequestOptions().centerCrop()).into(courseLineImage)
