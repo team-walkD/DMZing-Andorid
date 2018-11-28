@@ -3,114 +3,118 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent" android:layout_height="wrap_content"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_marginBottom="20dp"
+              android:layout_marginBottom="28dp"
               android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="143dp"
-        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="28dp"
-            android:textSize="14sp"
-            android:textColor="#1c3748"
-            android:text="DAY"
-            android:fontFamily="@font/notosanscjkkr_regular"
-            android:includeFontPadding="false"/>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="143dp"
+                    android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/review_post_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textSize="40sp"
-            android:fontFamily="@font/roboto_bold"
-            android:includeFontPadding="false"
-            android:textStyle="bold"
-            android:textColor="#1c3748"
-            android:text="1"
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="28dp"
+                        android:textSize="14sp"
+                        android:textColor="#1c3748"
+                        android:text="DAY"
+                        android:fontFamily="@font/notosanscjkkr_regular"
+                        android:includeFontPadding="false"/>
+
+                <TextView
+                        android:id="@+id/review_post_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="40sp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:includeFontPadding="false"
+                        android:textStyle="bold"
+                        android:textColor="#1c3748"
+                        android:text="1"
+                />
+
+                <TextView
+                        android:id="@+id/review_post_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textStyle="normal"
+                        android:textColor="#1c3748"
+                        android:text="2018 .03 .01"
+                />
+
+
+            </LinearLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#dddddd"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
             />
 
-        <TextView
-            android:id="@+id/review_post_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/roboto_regular"
-            android:textStyle="normal"
-            android:textColor="#1c3748"
-            android:text="2018 .03 .01"
-            />
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
+                <TextView
+                        android:id="@+id/review_post_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#1c3748"
+                        android:text="첫 날 여행 제목"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:layout_marginTop="44dp"
+                        android:layout_marginLeft="38dp"
+                />
 
-    </LinearLayout>
+                <TextView
+                        android:id="@+id/review_post_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="23dp"
+                        android:layout_marginLeft="38dp"
+                        android:layout_marginRight="38dp"
+                        android:textSize="16sp"
+                        android:textColor="#1c3748"
+                        android:lineSpacingExtra="4sp"
+                        android:text="오늘은 처음으로 DMZ에 가보았다"
+                />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#dddddd"
-        android:layout_marginLeft="22dp"
-        android:layout_marginRight="22dp"
-        />
+                <android.support.v7.widget.RecyclerView
+                        android:id="@+id/review_post_image_recycler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:overScrollMode="never"
+                        android:layout_marginTop="24dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+                </android.support.v7.widget.RecyclerView>
 
-        <TextView
-            android:id="@+id/review_post_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="#1c3748"
-            android:text="첫 날 여행 제목"
-            android:fontFamily="@font/notosanscjkkr_bold"
-            android:layout_marginTop="44dp"
-            android:layout_marginLeft="38dp"
-            />
+                <com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
+                        android:id="@+id/review_post_image_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_gravity="center_horizontal"
+                        app:dotRadius="7dp"
+                        app:selectedDotRadius="7dp"
+                        app:dotColor="#e7e7e7"
+                        app:selectedDotColor="#6da8c7"
+                        app:fadingDotCount="0"
+                        app:supportRTL="true"
+                        app:dotCount="7"
+                />
 
-        <TextView
-            android:id="@+id/review_post_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:layout_marginLeft="38dp"
-            android:layout_marginRight="38dp"
-            android:textSize="16sp"
-            android:textColor="#1c3748"
-            android:lineSpacingExtra="4sp"
-            android:text="오늘은 처음으로 DMZ에 가보았다"
-            />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/review_post_image_recycler"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="38dp">
-
-        </android.support.v7.widget.RecyclerView>
-
-        <com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
-                android:id="@+id/review_post_image_indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center_horizontal"
-                app:dotRadius="7dp"
-                app:dotColor="#e7e7e7"
-                app:selectedDotColor="#6da8c7"
-        />
-
-    </LinearLayout>
-
-
-
+            </LinearLayout>
 
 </LinearLayout>

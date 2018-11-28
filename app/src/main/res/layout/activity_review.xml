@@ -167,7 +167,7 @@
             android:includeFontPadding="false"
             android:textStyle="normal"
             android:textColor="#1c3748"
-            android:text="489"
+            android:text=""
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/review_like_heart"
             android:layout_marginTop="3dp"

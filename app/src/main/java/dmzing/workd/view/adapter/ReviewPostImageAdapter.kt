@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import dmzing.workd.R
 import kotlinx.android.synthetic.main.reivew_post_image_item.view.*
 
@@ -22,7 +23,7 @@ class ReviewPostImageAdapter(var itemList : ArrayList<String>?,var context : Con
     }
 
     override fun onBindViewHolder(p0: ReviewPostImageViewHolder, p1: Int) {
-        Glide.with(context).load(itemList!!.get(p1)).into(p0.postImage)
+        Glide.with(context).load(itemList!!.get(p1)).apply(RequestOptions().centerCrop()).into(p0.postImage)
     }
 
 
