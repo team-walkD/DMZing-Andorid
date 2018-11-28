@@ -15,6 +15,7 @@
             android:background="@color/backgroundColor">
 
         <RelativeLayout
+                android:id="@+id/settingBackBtn"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
@@ -23,6 +24,7 @@
 
             <ImageView
                     android:layout_marginLeft="25dp"
+                    android:layout_marginRight="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/back_btn"/>
