@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.support.v7.widget.RecyclerView
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -163,6 +164,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
             CommonData.placeId = item_list.places[position - 1].id
             Glide.with(context).load(item_list.places[position - 1].mainImageUrl)
                 .into(letterCourseViewHolder.letterImage)
+            letterCourseViewHolder.letterHint.movementMethod = ScrollingMovementMethod.getInstance()
             letterCourseViewHolder.letterHint.text = item_list.places[position - 1].hint
             letterCourseViewHolder.letterButton.setOnClickListener {
                 context.toast("편지 찾기 버튼!")

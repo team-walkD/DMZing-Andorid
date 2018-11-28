@@ -114,11 +114,7 @@ class HomeFilterAdapter(var items: ArrayList<HomeFilterData>, var context: Conte
             holder.itemView
             context!!.toast("${position} 번쨰 클릭.")
             Log.v("825 aPosition:",holder.adapterPosition.toString())
-            when(holder.adapterPosition){
-                0->{
 
-                }
-            }
             when(position){
                 0->{
                     if(holder.filter_btn.isSelected){
