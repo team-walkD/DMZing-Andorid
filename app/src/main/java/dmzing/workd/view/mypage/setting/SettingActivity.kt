@@ -32,6 +32,7 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun init() {
+        settingBackBtn.setOnClickListener(this)
         settingServiceBtn.setOnClickListener(this)
         settingLogoutBtn.setOnClickListener(this)
 
