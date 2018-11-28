@@ -3,7 +3,7 @@
         android:id="@+id/filterBtn"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
-        android:layout_height="41dp"
+        android:layout_height="42dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/filter_opacity_background">
@@ -14,7 +14,7 @@
             android:includeFontPadding="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textColor="#1c3748"
             android:lineSpacingExtra="6sp"
             android:text="데이트 맵"
