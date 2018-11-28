@@ -38,6 +38,8 @@
                     android:layout_below="@+id/myCourse_title_item"
                     android:layout_marginTop="2dp"
                     android:text="코스의 제목쓰는 란"
+                    android:singleLine="true"
+                    android:ellipsize="end"
                     android:textSize="16sp"
                     android:textColor="#1c3748"
                     android:fontFamily="@font/notosanscjkkr_bold"

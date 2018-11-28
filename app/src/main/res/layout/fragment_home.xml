@@ -58,12 +58,110 @@
                 android:layout_height="wrap_content"
         />
 
-        <android.support.v7.widget.RecyclerView
-                android:layout_marginLeft="15dp"
-                android:id="@+id/homeFilterRv"
-                android:orientation="horizontal"
+        <!-- <android.support.v7.widget.RecyclerView
+                 android:layout_marginLeft="15dp"
+                 android:id="@+id/homeFilterRv"
+                 android:orientation="horizontal"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"/>-->
+
+        <HorizontalScrollView
+                android:scrollbars="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent">
+
+            <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="match_parent"
+                          android:orientation="horizontal">
+
+                <RelativeLayout
+                        android:id="@+id/filterDMZingBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="42dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/filter_opacity_background">
+                    <TextView
+                            android:id="@+id/filterDMZingMapItem"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/notosanscjkkr_bold"
+                            android:includeFontPadding="false"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="#1c3748"
+                            android:lineSpacingExtra="6sp"
+                            android:text="DMZing탐방 맵"
+                    />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/filterDateBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="42dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/filter_opacity_background">
+                    <TextView
+                            android:id="@+id/filterDateMapItem"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/notosanscjkkr_bold"
+                            android:includeFontPadding="false"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="#1c3748"
+                            android:lineSpacingExtra="6sp"
+                            android:text="데이트 맵"
+                    />
+
+                </RelativeLayout>
+                <RelativeLayout
+                        android:id="@+id/filterHistoryBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="42dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/filter_opacity_background">
+                    <TextView
+                            android:id="@+id/filterHistoryMapItem"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/notosanscjkkr_bold"
+                            android:includeFontPadding="false"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="#1c3748"
+                            android:lineSpacingExtra="6sp"
+                            android:text="역사기행 맵"
+                    />
+
+                </RelativeLayout>
+                <RelativeLayout
+                        android:id="@+id/filterNaturalBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="42dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/filter_opacity_background">
+                    <TextView
+                            android:id="@+id/filterNaturlMapItem"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/notosanscjkkr_bold"
+                            android:includeFontPadding="false"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="#1c3748"
+                            android:lineSpacingExtra="6sp"
+                            android:text="자연탐방 맵"
+                    />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
 
     </LinearLayout>
 
@@ -89,5 +187,5 @@
             android:layout_below="@+id/homeMissionText"
             android:id="@+id/courseList"
             android:layout_width="match_parent"
-            android:layout_height="563dp"/>
+            android:layout_height="wrap_content"/>
 </RelativeLayout>
