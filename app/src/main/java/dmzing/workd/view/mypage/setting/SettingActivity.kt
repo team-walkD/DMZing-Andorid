@@ -14,12 +14,14 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!) {
             settingServiceBtn -> startActivity<ServiceActivity>()
-            settingLogoutBtn->{
+            settingLogoutBtn -> {
                 var dialog = LogoutDialog(this@SettingActivity)
                 dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 dialog.setCanceledOnTouchOutside(true)
                 dialog.show()
             }
+            settingBackBtn -> finish()
+            settingXBtn -> finish()
 
         }
     }
@@ -31,8 +33,10 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun init() {
+        settingBackBtn.setOnClickListener(this)
         settingServiceBtn.setOnClickListener(this)
         settingLogoutBtn.setOnClickListener(this)
+        settingXBtn.setOnClickListener(this)
 
     }
 }

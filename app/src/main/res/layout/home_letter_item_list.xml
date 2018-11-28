@@ -19,10 +19,12 @@
                 android:background="@android:color/holo_blue_dark"
                 android:scaleType="fitXY"
                 android:layout_width="336dp"
-                android:layout_height="168dp"/>
+                android:layout_height="190dp"/>
 
         <TextView
                 android:id="@+id/letterSubTitleItem"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -35,7 +37,9 @@
 
         <TextView
                 android:id="@+id/letterTitleItem"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:includeFontPadding="false"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:textColor="#1c3748"
@@ -79,7 +83,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="17.5dp"
                 android:layout_width="wrap_content"
-                android:layout_height="43dp"
+                android:layout_height="45dp"
                 android:background="@drawable/blue_round_btn"
                 android:layout_marginBottom="30dp"
                 android:text="코스 싱세보기">

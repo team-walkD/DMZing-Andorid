@@ -76,6 +76,10 @@ class MapFragment : Fragment() {
                     2->{
                         Glide.with(context!!).load(imageList[2]).apply(RequestOptions().centerCrop()).into(courseLineImage)
                     }
+                    3->{
+                        Glide.with(context!!).load(imageList[3]).apply(RequestOptions().centerCrop()).into(courseLineImage)
+                    }
+
                 }
             }
 
