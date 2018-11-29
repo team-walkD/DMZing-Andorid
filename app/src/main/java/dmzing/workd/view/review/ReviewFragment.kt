@@ -39,6 +39,12 @@ class ReviewFragment : Fragment() {
 
         jwt = SharedPreference.instance!!.getPrefStringData("jwt","")!!
 
+        val wm = context!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val display = wm.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        mView.review_recyclerView.addItemDecoration(GridItemDecoration(size.x/26))
+
         registerReviewCategory(mView)
 
         mView.review_walkd_button.setOnClickListener { v: View->
@@ -86,11 +92,6 @@ class ReviewFragment : Fragment() {
 
 
 //                        var px = Math.round(convertDpToPixel(14f,activity!!))
-//                        val wm = context!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-//                        val display = wm.defaultDisplay
-//                        val size = Point()
-//                        display.getSize(size)
-//                        view.review_recyclerView.addItemDecoration(GridItemDecoration(size.x/25))
                     }
                     401->{//권한 없음
                         Log.d("reviewCount",": 401")
