@@ -3,8 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_marginRight="28dp">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/course_detail_simple_place_title"
@@ -20,15 +19,10 @@
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:layout_gravity="center_horizontal"/>
-    <android.support.v7.widget.CardView
-        android:layout_width="60dp"
-        android:layout_height="64dp"
-        app:cardCornerRadius="5dp"
-        app:cardBackgroundColor="#78707070"
-        android:layout_gravity="center_horizontal">
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                android:background="@drawable/stamp"
+                android:layout_width="60dp"
+                android:layout_height="64dp">
             <ImageView
                 android:id="@+id/course_detail_simple_place_image"
                 android:layout_centerInParent="true"
@@ -37,7 +31,6 @@
                 android:layout_gravity="center_horizontal" />
 
         </RelativeLayout>
-    </android.support.v7.widget.CardView>
 
 
 </LinearLayout>

@@ -116,15 +116,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_marginLeft="25dp"
                 android:orientation="horizontal">
 
                 <FrameLayout
                         android:id="@+id/write_day_add_image"
                         android:layout_width="107dp"
                         android:layout_height="107dp"
-                        android:background="#dddddd"
-                        android:layout_marginRight="12dp">
+                        android:layout_marginLeft="12dp"
+                        android:background="#dddddd">
 
                     <ImageView
                             android:layout_width="wrap_content"
@@ -137,29 +136,34 @@
                     android:id="@+id/write_day_image1"
                     android:layout_width="107dp"
                     android:layout_height="107dp"
+                    android:layout_marginLeft="12dp"
                     android:layout_marginRight="12dp"
-                    android:visibility="gone"/>
+                    android:visibility="gone"
+                    />
 
                 <ImageView
-                    android:id="@+id/write_day_image2"
-                    android:layout_width="107dp"
-                    android:layout_height="107dp"
-                    android:layout_marginRight="12dp"
-                    android:visibility="gone" />
+                        android:id="@+id/write_day_image2"
+                        android:layout_width="107dp"
+                        android:layout_height="107dp"
+                        android:layout_marginRight="12dp"
+                        android:visibility="gone"
+                />
 
                 <ImageView
                     android:id="@+id/write_day_image3"
                     android:layout_width="107dp"
                     android:layout_height="107dp"
                     android:layout_marginRight="12dp"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                     />
 
                 <ImageView
                     android:id="@+id/write_day_image4"
                     android:layout_width="107dp"
                     android:layout_height="107dp"
                     android:layout_marginRight="12dp"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                     />
 
                 <ImageView
                     android:id="@+id/write_day_image5"
@@ -167,7 +171,8 @@
                     android:layout_height="107dp"
                     android:background="#dddddd"
                     android:layout_marginRight="12dp"
-                    android:visibility="gone"/>
+                    android:visibility="gone"
+                    />
             </LinearLayout>
 
         </HorizontalScrollView>

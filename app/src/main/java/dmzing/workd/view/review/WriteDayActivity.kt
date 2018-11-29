@@ -73,22 +73,22 @@ class WriteDayActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v){
             write_day_image1 -> {
-                selectImage(false)
+                selectImage(false,GALLERY_CODE_ONE)
             }
             write_day_image2 -> {
-                selectImage(false)
+                selectImage(false,GALLERY_CODE_TWO)
             }
             write_day_image3 -> {
-                selectImage(false)
+                selectImage(false,GALLERY_CODE_THREE)
             }
             write_day_image4 -> {
-                selectImage(false)
+                selectImage(false,GALLERY_CODE_FOUR)
             }
             write_day_image5 -> {
-                selectImage(false)
+                selectImage(false,GALLERY_CODE_FIVE)
             }
             write_day_add_image -> {
-                selectImage(true)
+                selectImage(true,GALLERY_CODE_MULT)
             }
             write_day_complete -> {
                 var returnIntent : Intent = Intent()
@@ -111,6 +111,7 @@ class WriteDayActivity : AppCompatActivity(), View.OnClickListener {
         write_day_title.setText(writed!!.title)
         write_day_text.setText(writed!!.content)
         for(i in 0 until writed!!.postImgUrl!!.size){
+            imageCount+=1
             imageUrlList.add(writed!!.postImgUrl!!.get(i))
             imageList.get(i).visibility = View.VISIBLE
             Glide.with(this).load(writed!!.postImgUrl!!.get(i)).apply(RequestOptions().centerCrop()).into(imageList.get(i))
@@ -152,14 +153,14 @@ class WriteDayActivity : AppCompatActivity(), View.OnClickListener {
         imageList.add(image)
     }
 
-    fun selectImage(mult : Boolean){
+    fun selectImage(mult : Boolean,galleryCode : Int){
         var intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.setType("image/*")
         if(mult){
-            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+            //intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
             startActivityForResult(intent,GALLERY_CODE_MULT)
         } else {
-            startActivityForResult(intent,GALLERY_CODE_ONE)
+            startActivityForResult(intent,galleryCode)
         }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -59,7 +59,7 @@ class ReviewWriteActivity : AppCompatActivity() {
     lateinit var networkService : NetworkService
     lateinit var jwt : String
 
-    lateinit var thumbnailImageUrl : String
+    var thumbnailImageUrl : String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review_write)
@@ -93,7 +93,7 @@ class ReviewWriteActivity : AppCompatActivity() {
         }
 
         review_complete_button.setOnClickListener {
-            if(dayPost.size == 0 || review_write_title.text == null || review_write_start_date.text.equals("START DATE") || review_write_end_date.text.equals("END DATE")){
+            if(dayPost.size == 0 || review_write_title.text.toString().length == 0|| thumbnailImageUrl == null || review_write_start_date.text.equals("START DATE") || review_write_end_date.text.equals("END DATE")){
                 Toast.makeText(this,"리뷰를 모두 작성해주세요",Toast.LENGTH_LONG).show()
             } else {
                 dayPost.sortWith(compareBy({it.day}))

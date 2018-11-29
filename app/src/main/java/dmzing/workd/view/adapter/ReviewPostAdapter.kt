@@ -1,6 +1,7 @@
 package dmzing.workd.view.adapter
 
 import android.content.Context
+import android.graphics.Point
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
@@ -8,10 +9,12 @@ import android.support.v7.widget.SnapHelper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.TextView
 import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
 import dmzing.workd.R
 import dmzing.workd.model.review.PostDto
+import dmzing.workd.util.SpaceItemDecoration
 import kotlinx.android.synthetic.main.review_post_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -36,6 +39,12 @@ class ReviewPostAdapter(var itemList : ArrayList<PostDto>,var startDate : Long,v
         p0.postTitle.text = itemList.get(p1).title
         p0.postContent.text = itemList.get(p1).content
 
+        val wm = context!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val display = wm.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+
+        p0.postImageRecycler.addItemDecoration(SpaceItemDecoration(size.x/60,size.x/10))
 
         if(itemList.get(p1).postImgUrl!!.size != 0){
             var imageAdapter = ReviewPostImageAdapter(itemList.get(p1).postImgUrl,context)
