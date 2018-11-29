@@ -53,7 +53,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 toast("${index}")
             }*/
             v!!.filterDMZingBtn -> {
-                if (filterDMZingBtn.isSelected){
+                if (!filterDMZingBtn.isSelected){
 
                     filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
 
@@ -61,23 +61,23 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
                     filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
 
-                    filterDMZingBtn.isSelected = false
+                    filterDMZingBtn.isSelected = true
                     filterDateBtn.isSelected = false
                     filterHistoryBtn.isSelected = false
                     filterNaturalBtn.isSelected = false
 
 
                     putCoursePick(view!!, filterItems[0].id)
-                }else{
-                    filterDMZingBtn.isSelected = true
+                }/*else{
+                    filterDMZingBtn.isSelected = false
                     filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                }
+                }*/
 
             }
             v!!.filterDateBtn -> {
-                if (filterDateBtn.isSelected){
+                if (!filterDateBtn.isSelected){
                     filterDMZingBtn.isSelected = false
-                    filterDateBtn.isSelected = false
+                    filterDateBtn.isSelected = true
                     filterHistoryBtn.isSelected = false
                     filterNaturalBtn.isSelected = false
 
@@ -88,17 +88,15 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
 
 
-
-
                     putCoursePick(view!!, filterItems[1].id)
-                }else{
+                }/*else{
                     filterDateBtn.isSelected = true
                     filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                }
+                }*/
             }
             v!!.filterHistoryBtn -> {
-                if (filterHistoryBtn.isSelected){
-                    filterHistoryBtn.isSelected = false
+                if (!filterHistoryBtn.isSelected){
+                    filterHistoryBtn.isSelected = true
                     filterDateBtn.isSelected = false
                     filterDMZingBtn.isSelected = false
                     filterNaturalBtn.isSelected = false
@@ -114,20 +112,20 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
                     putCoursePick(view!!, filterItems[2].id)
-                }else{
+                }/*else{
                     filterHistoryBtn.isSelected = true
                     filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                }
+                }*/
             }
             v!!.filterNaturalBtn -> {
-                if (filterNaturalBtn.isSelected){
+                if (!filterNaturalBtn.isSelected){
                     filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
 
                     filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
                     filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
                     filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
 
-                    filterNaturalBtn.isSelected = false
+                    filterNaturalBtn.isSelected = true
                     filterHistoryBtn.isSelected = false
                     filterDateBtn.isSelected = false
                     filterDMZingBtn.isSelected = false
@@ -135,10 +133,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
                     putCoursePick(view!!, filterItems[3].id)
 
-                }else{
+                }/*else{
                     filterNaturalBtn.isSelected = true
                     filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                }
+                }*/
             }
         }
     }
@@ -171,10 +169,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
         view.filterHistoryBtn.setOnClickListener(this)
         view.filterNaturalBtn.setOnClickListener(this)
 
-        view.filterDMZingBtn.isSelected = true
-        view.filterDateBtn.isSelected = true
-        view.filterHistoryBtn.isSelected = true
-        view.filterNaturalBtn.isSelected = true
+        view.filterDMZingBtn.isSelected = false
+        view.filterDateBtn.isSelected = false
+        view.filterHistoryBtn.isSelected = false
+        view.filterNaturalBtn.isSelected = false
 
         networkService = ApplicationController.instance.networkService
         SharedPreference.instance!!.load(context!!)
