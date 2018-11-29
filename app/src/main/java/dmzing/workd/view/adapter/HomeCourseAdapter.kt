@@ -24,8 +24,10 @@ import dmzing.workd.model.home.Places
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.SharedPreference
+import dmzing.workd.view.home.HomeLetterActivity
 import dmzing.workd.view.mypage.MypageFragment
 import kotlinx.android.synthetic.main.home_letter_item_list.view.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -179,6 +181,8 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
                 when(letterFlag){
                     1->{
                         context.toast("편지 보기 버튼!")
+                        var image : String = item_list.places[position-1].letterImageUrl!!
+                        context!!.startActivity<HomeLetterActivity>("letter" to image)
                     }
                     2->{
                         context.toast("편지 찾기 버튼!")
