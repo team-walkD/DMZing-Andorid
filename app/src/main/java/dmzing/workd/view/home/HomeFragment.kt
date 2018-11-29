@@ -36,7 +36,9 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.ContextCompat.getSystemService
 import android.support.v4.content.PermissionChecker.checkSelfPermission
+import dmzing.workd.view.ChatbotActivity
 import dmzing.workd.view.MainActivity
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import java.security.Permission
 import java.util.jar.Manifest
@@ -138,6 +140,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
                 }*/
             }
+            v!!.chatbotBtn->{
+                context!!.startActivity<ChatbotActivity>()
+            }
         }
     }
 
@@ -168,6 +173,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         view.filterDateBtn.setOnClickListener(this)
         view.filterHistoryBtn.setOnClickListener(this)
         view.filterNaturalBtn.setOnClickListener(this)
+        view.chatbotBtn.setOnClickListener(this)
 
         view.filterDMZingBtn.isSelected = false
         view.filterDateBtn.isSelected = false
