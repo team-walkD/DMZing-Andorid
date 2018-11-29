@@ -21,14 +21,6 @@
                 android:layout_marginTop="18dp"
                 android:layout_marginLeft="25dp"/>
 
-        <ImageView
-                android:layout_marginTop="14.7dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="23.3dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/walk_d_icon"/>
-
         <LinearLayout
                 android:id="@+id/mypagePointIntro"
                 android:layout_below="@+id/pointBackBtn"

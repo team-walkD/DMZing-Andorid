@@ -45,10 +45,5 @@ class CourseMainActivity : AppCompatActivity() {
         course_main_back.setOnClickListener {
             finish()
         }
-
-        course_main_walk_d.setOnClickListener {//챗봇
-
-        }
-
     }
 }

@@ -36,14 +36,6 @@
                     android:src="@drawable/x_white_btn"
                     android:layout_centerVertical="true"/>
 
-                <ImageView
-                    android:id="@+id/course_detail_walk_d"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/walk_d_white_icon"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
-
             </RelativeLayout>
 
             <RelativeLayout

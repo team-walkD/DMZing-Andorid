@@ -9,12 +9,13 @@ class SpaceItemDecoration(var space : Int,var side : Int) : RecyclerView.ItemDec
         super.getItemOffsets(outRect, view, parent, state)
         val position = parent.getChildAdapterPosition(view)
         val isLast = position == state.itemCount - 1
-        if (position == state.itemCount - 1) {
-            outRect.right = side //don't forget about recycling...
-            outRect.left = space
-        } else if (position == 0) {
+        if (position == 0) {
             outRect.right = space //don't forget about recycling...
             outRect.left = side
+
+        } else if (position == state.itemCount - 1) {
+            outRect.right = side //don't forget about recycling...
+            outRect.left = space
         } else {
             outRect.left = space
             outRect.right = space
