@@ -160,10 +160,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
         mainActivity = this@HomeFragment.activity!! as MainActivity
     }
 
-    override fun onResume() {
+/*    override fun onResume() {
         super.onResume()
         getHomeMission(view!!)
-    }
+    }*/
 
     fun init(view : View) {
         view.filterDMZingBtn.setOnClickListener(this)

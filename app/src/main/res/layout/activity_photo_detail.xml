@@ -8,19 +8,19 @@
         tools:context=".view.review.PhotoDetailActivity">
 
     <ImageView
-        android:id="@+id/photo_detail_image"
-        android:layout_width="315dp"
-        android:layout_height="315dp"
-        android:background="#ffffff"
-        android:layout_centerInParent="true"/>
+            android:id="@+id/photo_detail_image"
+            android:layout_width="315dp"
+            android:layout_height="315dp"
+            android:background="#ffffff"
+            android:layout_centerInParent="true"/>
 
     <ImageView
-        android:id="@+id/photo_detail_close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15.3dp"
-        android:background="@drawable/x_white_btn"
-        android:layout_above="@+id/photo_detail_image"
-        android:layout_alignRight="@+id/photo_detail_image"/>
+            android:id="@+id/photo_detail_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15.3dp"
+            android:background="@drawable/x_white_btn"
+            android:layout_above="@+id/photo_detail_image"
+            android:layout_alignRight="@+id/photo_detail_image"/>
 
 </RelativeLayout>
