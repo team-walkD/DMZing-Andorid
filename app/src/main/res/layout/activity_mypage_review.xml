@@ -38,22 +38,12 @@
 
     </RelativeLayout>
 
-
-    <ImageView
-            android:id="@+id/reviewIcon"
-            android:layout_marginTop="14.7dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="23.3dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/walk_d_icon"/>
-
     <TextView
             android:id="@+id/reviewText"
-            android:layout_marginTop="29.3dp"
+            android:layout_marginTop="11.3dp"
             android:fontFamily="@font/notosanscjkkr_bold"
             android:includeFontPadding="false"
-            android:layout_below="@+id/reviewIcon"
+            android:layout_below="@+id/reviewBackBtn"
             android:layout_marginLeft="37dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

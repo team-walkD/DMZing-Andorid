@@ -16,7 +16,9 @@ class ApplicationController : Application(){
 
 
     lateinit var networkService : NetworkService
+    lateinit var networkService2 : NetworkService
     private val baseUrl = "http://52.79.50.98:8080/"
+    private val chatUrl = "http://52.79.252.44:3001/"
     companion object {
         lateinit var instance : ApplicationController
     }
@@ -25,6 +27,18 @@ class ApplicationController : Application(){
         super.onCreate()
         instance = this
         buildNetwork()
+        buildChatNetwork()
+    }
+
+    fun buildChatNetwork(){
+        val builder = Retrofit.Builder()
+        var retrofit = builder
+            .baseUrl(chatUrl)
+            .addConverterFactory(NullOnEmptyConverterFactory())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        networkService2 = retrofit.create(NetworkService::class.java)
     }
 
     fun buildNetwork(){

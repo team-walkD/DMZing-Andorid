@@ -65,18 +65,26 @@
             android:layout_marginRight="24dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/course_place_descrip"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
+            <android.support.v4.widget.NestedScrollView
                 android:layout_marginTop="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                android:scrollbars="vertical"
-                android:textSize="16sp"
-                android:textColor="#1c3748"
-                android:fontFamily="@font/notosanscjkkr_regular"
-                android:includeFontPadding="false"/>
+                android:layout_width="match_parent"
+                android:layout_height="160dp">
+
+                <TextView
+                    android:id="@+id/course_place_descrip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="#1c3748"
+                    android:scrollbars="vertical"
+                    android:scrollbarStyle="insideOverlay"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"/>
+
+
+            </android.support.v4.widget.NestedScrollView>
 
             <View
                 android:layout_width="match_parent"

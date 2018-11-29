@@ -1,5 +1,8 @@
 package dmzing.workd.network
 
+import dmzing.workd.model.chat.ChatBTypeData
+import dmzing.workd.model.chat.ChatMData
+import dmzing.workd.model.chat.ChataMTypeData
 import dmzing.workd.model.home.HomeCourseData
 import dmzing.workd.model.home.HomePostMission
 import dmzing.workd.model.home.PickCourse
@@ -269,6 +272,16 @@ interface NetworkService {
         @Path("cid") cid : Int
     ) : Call<ArrayList<MypageLetterDto>>
 
+
+    // chat type 통신
+    // edit by 이승우
+    @GET("chat")
+    fun getChatInfo() : Call<ChataMTypeData>
+
+    @GET("chat/division/{id}")
+    fun getChatMInfo(
+        @Path("id") id : Int
+    ) : Call<ChataMTypeData>
 
 }
 

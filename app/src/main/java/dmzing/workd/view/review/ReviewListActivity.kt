@@ -40,11 +40,6 @@ class ReviewListActivity : AppCompatActivity() {
             //뒤로가기 버튼
             finish()
         }
-
-        review_list_walkd_button.setOnClickListener {
-            //챗봇 버튼
-        }
-
         review_list_write_button.setOnClickListener{
             //리뷰 쓰기 버튼
             when(mTabLayout.selectedTabPosition){
@@ -78,7 +73,17 @@ class ReviewListActivity : AppCompatActivity() {
         mTabLayout.getTabAt(1)!!.setText("상세 리뷰")
 
 
-        setCustomFont()
+        val currentapiVersion = android.os.Build.VERSION.SDK_INT   //SDK의 레벨을 받아온다.
+        if (currentapiVersion >= 26) {
+            // 현재 디바이스의 버전이 롤리팝 이상일 경우.
+            setCustomFont()
+        } else {
+            // 현재 디바이스의 버전이 롤리팝 미만일 경우.
+        }
+
+
+
+
         setDivider()
     }
 

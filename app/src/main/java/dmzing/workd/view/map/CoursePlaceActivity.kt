@@ -29,7 +29,7 @@ class CoursePlaceActivity : AppCompatActivity() {
         }
         course_place_title.text = placeDto.title
         course_place_descrip.text = Html.fromHtml(placeDto.description).toString()
-        course_place_descrip.movementMethod = ScrollingMovementMethod()
+        course_place_descrip.setMovementMethod(ScrollingMovementMethod())
         course_place_rest.text = placeDto.restDate
         course_place_parking.text = placeDto.parking
         course_place_info.text = Html.fromHtml(placeDto.infoCenter).toString()

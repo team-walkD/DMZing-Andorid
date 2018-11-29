@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/chatWalkImage"
+                android:src="@drawable/walk_d_profile_img"
+                android:layout_width="60dp"
+                android:layout_height="60dp"/>
+
+        <TextView
+                android:id="@+id/chatWalkId"
+                android:layout_marginLeft="9dp"
+                android:layout_toRightOf="@+id/chatWalkImage"
+                android:layout_marginTop="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#1c3748"
+                android:lineSpacingExtra="6sp"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:includeFontPadding="false"
+                android:text="워크디"
+        />
+
+        <TextView
+                android:id="@+id/chatWalMessage"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="7dp"
+                android:layout_below="@+id/chatWalkId"
+                android:layout_toRightOf="@+id/chatWalkImage"
+                android:background="@android:color/white"
+                android:layout_width="200dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="60dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>
