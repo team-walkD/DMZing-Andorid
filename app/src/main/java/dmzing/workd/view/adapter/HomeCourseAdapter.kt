@@ -1,8 +1,10 @@
 package dmzing.workd.view.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
@@ -21,11 +23,16 @@ import dmzing.workd.model.Test
 import dmzing.workd.model.home.HomePostMission
 import dmzing.workd.model.home.PickCourse
 import dmzing.workd.model.home.Places
+import dmzing.workd.model.map.CourseDetailDto
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.SharedPreference
+import dmzing.workd.view.home.HomeLetterActivity
+import dmzing.workd.view.map.CourseMainActivity
+import dmzing.workd.view.map.MapFragment
 import dmzing.workd.view.mypage.MypageFragment
 import kotlinx.android.synthetic.main.home_letter_item_list.view.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -154,7 +161,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
             CommonData.coursedId = item_list.id
             headerCourseViewHolder.courseParticipants.text = item_list.reviewCount.toString()
             headerCourseViewHolder.headerCourseButton.setOnClickListener {
-                context.toast("코스 상세 보기 버튼!")
+                getCourseDetail(item_list.id,SharedPreference.instance!!.getPrefStringData("jwt")!!)
             }
 
         } else if (holder is LetterCourseViewHolder) {
@@ -179,6 +186,8 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
                 when(letterFlag){
                     1->{
                         context.toast("편지 보기 버튼!")
+                        var image : String = item_list.places[position-1].letterImageUrl!!
+                        context!!.startActivity<HomeLetterActivity>("letter" to image)
                     }
                     2->{
                         context.toast("편지 찾기 버튼!")
@@ -200,6 +209,33 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
         }
 
 
+    }
+
+    fun getCourseDetail(cid: Int, jwt: String) {
+        networkService = ApplicationController.instance.networkService
+        val getCourseDetailResponse = networkService.getCourseDetail(jwt, cid)
+        getCourseDetailResponse.enqueue(object : Callback<CourseDetailDto> {
+            override fun onFailure(call: Call<CourseDetailDto>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<CourseDetailDto>, response: Response<CourseDetailDto>) {
+                when (response.code()) {
+                    200 -> {
+                        var intent = Intent(context, CourseMainActivity::class.java)
+                        intent.putExtra("courseDetailDto", response.body())
+                        context!!.startActivity(intent)
+                    }
+                    401 -> {
+
+                    }
+                    500 -> {
+
+                    }
+                }
+            }
+
+        })
     }
 
     // 편지 찾기 post 통신/
