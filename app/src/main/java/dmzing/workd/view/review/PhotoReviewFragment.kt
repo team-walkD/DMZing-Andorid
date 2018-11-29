@@ -38,6 +38,14 @@ class PhotoReviewFragment : Fragment() {
     var courseId = 0
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.fragment_photo_review_list, container, false)
+
+        var px = Math.round(convertDpToPixel(6f,activity!!))
+        val wm = context!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val display = wm.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        mView.photo_review_recycler.addItemDecoration(GridItemDecoration(px))
+
         courseId = arguments!!.getInt("courseId")
 
         networkService = ApplicationController.instance!!.networkService
@@ -104,13 +112,6 @@ class PhotoReviewFragment : Fragment() {
                         mGridLayoutManager = GridLayoutManager(activity,2)
                         view.photo_review_recycler.layoutManager = mGridLayoutManager
                         view.photo_review_recycler.adapter = mPhotoReviewAdpater
-
-                        var px = Math.round(convertDpToPixel(6f,activity!!))
-                        val wm = context!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-                        val display = wm.defaultDisplay
-                        val size = Point()
-                        display.getSize(size)
-                        view.photo_review_recycler.addItemDecoration(GridItemDecoration(px))
                     }
                     401->{
 

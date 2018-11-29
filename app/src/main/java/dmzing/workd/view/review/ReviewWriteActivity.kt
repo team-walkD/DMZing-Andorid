@@ -146,6 +146,8 @@ class ReviewWriteActivity : AppCompatActivity() {
     }
 
     override fun onCreateDialog(id: Int): Dialog {
+        //var date = System.currentTimeMillis()
+        var calendar = Calendar.getInstance(Locale.KOREA)
         var datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
             when(id){
                 START_DATE ->{
@@ -165,7 +167,7 @@ class ReviewWriteActivity : AppCompatActivity() {
                     checkDate()
                 }
             }
-        },2018,10,1)
+        },calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH))
         return datePickerDialog
     }
 

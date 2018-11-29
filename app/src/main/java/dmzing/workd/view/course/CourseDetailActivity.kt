@@ -69,10 +69,6 @@ class CourseDetailActivity : AppCompatActivity() {
         course_detail_back.setOnClickListener {
             finish()
         }
-        course_detail_walk_d.setOnClickListener {
-
-        }
-
         course_detail_calendar_see_detail.setOnClickListener {
             course_detail_calendar_simple.visibility = View.GONE
             course_detail_calendar_detail.visibility = View.VISIBLE

@@ -10,6 +10,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import dmzing.workd.R
+import dmzing.workd.dialog.ReviewReportDialog
 import dmzing.workd.model.review.PhotoReviewDto
 import java.text.SimpleDateFormat
 import java.util.*
@@ -37,6 +38,10 @@ class PhotoReviewListAdapter(var itemList : ArrayList<PhotoReviewDto>, var conte
                 click!!.onClick(v!!,p1)
             }
         }
+        p0.photoReviewReport.setOnClickListener {
+            var dialog = ReviewReportDialog(itemList.get(p1).id!!,"DETAIL",context)
+            dialog.show()
+        }
     }
 
     fun SetOnItemClickListener(click : ItemClick){
@@ -59,5 +64,6 @@ class PhotoReviewListAdapter(var itemList : ArrayList<PhotoReviewDto>, var conte
         var photoReviewImage : ImageView = itemView.findViewById(R.id.photo_review_item_image)
         var photoReviewDate : TextView = itemView.findViewById(R.id.photo_review_item_date)
         var photoReviewPlace : TextView = itemView.findViewById(R.id.photo_review_item_place)
+        var photoReviewReport : ImageView = itemView.findViewById(R.id.photo_review_item_report)
     }
 }
