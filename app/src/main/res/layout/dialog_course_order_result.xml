@@ -13,6 +13,7 @@
         android:layout_marginTop="50dp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
+        android:visibility="gone"
         />
 
     <RelativeLayout
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/dialog_course_order_result_title"
             android:layout_above="@+id/dialog_course_order_result_text"
-            android:text="를"
+            android:text="을"
             android:textSize="18sp"
             android:textColor="#1C3748"
             android:fontFamily="@font/notosanscjkkr_regular"
