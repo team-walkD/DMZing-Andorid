@@ -1,5 +1,6 @@
 package dmzing.workd
 
+import dmzing.workd.model.chat.ChatMData
 import dmzing.workd.model.chat.ChatMessageData
 
 object CommonData {
@@ -11,4 +12,6 @@ object CommonData {
     var coursedId : Int = 0
     var placeId : Int = 0
     var common_list = ArrayList<ChatMessageData>()
+    var last_list = ArrayList<ChatMData>()
+    var chat_type : String = ""
 }

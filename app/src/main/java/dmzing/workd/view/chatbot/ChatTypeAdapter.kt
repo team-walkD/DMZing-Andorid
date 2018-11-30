@@ -28,9 +28,10 @@ class ChatTypeAdapter(var items: ArrayList<ChatMData>, var context: Context) :
 
     lateinit var onItemClick: View.OnClickListener
     lateinit var networkService: NetworkService
-    lateinit var mItems : ArrayList<ChatMData>
-    lateinit var chatting : ArrayList<ChatMessageData>
+    lateinit var mItems: ArrayList<ChatMData>
+    lateinit var chatting: ArrayList<ChatMessageData>
     lateinit var chatMessageAdapter: ChatMessageAdapter
+    lateinit var cView: View
     fun onItemClickListener(l: View.OnClickListener) {
         onItemClick = l
     }
@@ -38,6 +39,7 @@ class ChatTypeAdapter(var items: ArrayList<ChatMData>, var context: Context) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatTypeViewHolder {
         var view = LayoutInflater.from(parent.context).inflate(R.layout.item_chat_type_list, parent, false)
         view.setOnClickListener(onItemClick)
+        cView = view
         return ChatTypeViewHolder(view)
 
     }
@@ -47,35 +49,159 @@ class ChatTypeAdapter(var items: ArrayList<ChatMData>, var context: Context) :
     override fun onBindViewHolder(holder: ChatTypeViewHolder, position: Int) {
         holder.chatText.text = items[position].description
         holder.chatButton.setOnClickListener {
-            when (items[position].groups) {
-                1 -> getChatMInfo(items[position].groups,items[position].description)
-                2 -> getChatMInfo(items[position].groups,items[position].description)
-                3 -> getChatMInfo(items[position].groups,items[position].description)
+            if (items[position].id == null) {
+                context!!.toast("getChatMInfo")
+                when (items[position].groups) {
+                    1 -> getChatMInfo(items[position].groups, items[position].description)
+                    2 -> getChatMInfo(items[position].groups, items[position].description)
+                    3 -> getChatMInfo(items[position].groups, items[position].description)
 
+                }
+            } else {
+                context!!.toast("getChatSInfo")
+                when (items[position].id) {
+                    4 -> getChatSInfo(items[position].id!!, items[position].description, position)
+                    5 -> getChatSInfo(items[position].id!!, items[position].description, position)
+                    6 -> getChatSInfo(items[position].id!!, items[position].description, position)
+                    7 -> getChatSInfo(items[position].id!!, items[position].description, position)
+                    8 -> getChatSInfo(items[position].id!!, items[position].description, position)
+                    9 -> getChatSInfo(items[position].id!!, items[position].description, position)
+                    10 -> getChatSInfo(items[position].id!!, items[position].description, position)
+                    11 -> getChatSInfo(items[position].id!!, items[position].description, position)
+                    12 -> getChatSInfo(items[position].id!!, items[position].description, position)
+
+                }
             }
+
         }
     }
 
-    fun getChatMInfo(id: Int,des : String) {
+    // 소분류
+    fun getChatSInfo(id: Int, des: String, pos: Int) {
+        Log.v("1255 woo getS", id.toString())
+        networkService = ApplicationController.instance.networkService2
+        var chatSResponse = networkService.getChatSInfo(id)
+        chatSResponse.enqueue(object : Callback<ChataMTypeData> {
+            override fun onFailure(call: Call<ChataMTypeData>, t: Throwable) {
+                Log.v("1255 woo f", t.message)
+            }
+
+            override fun onResponse(call: Call<ChataMTypeData>, response: Response<ChataMTypeData>) {
+                if (response!!.isSuccessful) {
+                    Log.v("1255 woo", response.body()!!.result.toString())
+                    CommonData.last_list = response.body()!!.result
+                    when (id) {
+                        4 -> { // 파주
+                            Log.v("1255 id", id.toString())
+                            CommonData.common_list.add(ChatMessageData(0, "${des} 관련 장소에 대해 알려줘."))
+                            CommonData.common_list.add(ChatMessageData(1, "${des} 관련 장소들이야! 필요할 땐 언제든 워크디를 찾아줘 :D"))
+                            CommonData.common_list.add(ChatMessageData(2, "$des"))
+                            CommonData.chat_type = "#위치별 #파주"
+                        }
+                        5 -> { // 고성
+                            Log.v("1255 id", id.toString())
+                            CommonData.common_list.add(ChatMessageData(0, "${des} 관련 장소에 대해 알려줘."))
+                            CommonData.common_list.add(ChatMessageData(1, "${des} 관련 장소들이야! 필요할 땐 언제든 워크디를 찾아줘 :D"))
+                            CommonData.common_list.add(ChatMessageData(2, "??"))
+                            CommonData.chat_type = "#위치별 #고성"
+                        }
+                        6 -> { // 화천
+                            Log.v("1255 id", id.toString())
+                            CommonData.common_list.add(ChatMessageData(0, "${des} 관련 장소에 대해 알려줘."))
+                            CommonData.common_list.add(ChatMessageData(1, "${des} 관련 장소들이야! 필요할 땐 언제든 워크디를 찾아줘 :D"))
+                            CommonData.common_list.add(ChatMessageData(2, "??"))
+                            CommonData.chat_type = "#위치별 #화천"
+                        }
+                        7 -> { // 데이트
+                            Log.v("1255 id", id.toString())
+                            CommonData.common_list.add(ChatMessageData(0, "${des} 관련 장소에 대해 알려줘."))
+                            CommonData.common_list.add(ChatMessageData(1, "${des} 관련 장소들이야! 필요할 땐 언제든 워크디를 찾아줘 :D"))
+                            CommonData.common_list.add(ChatMessageData(2, "??"))
+                            CommonData.chat_type = "#테마별 #데이트"
+                        }
+                        8 -> { // 역사
+                            Log.v("1255 id", id.toString())
+                            CommonData.common_list.add(ChatMessageData(0, "${des} 관련 장소에 대해 알려줘."))
+                            CommonData.common_list.add(ChatMessageData(1, "${des} 관련 장소들이야! 필요할 땐 언제든 워크디를 찾아줘 :D"))
+                            CommonData.common_list.add(ChatMessageData(2, "??"))
+                            CommonData.chat_type = "#테마별 #역사"
+                        }
+                        9 -> { // 자연
+                            Log.v("1255 id", id.toString())
+                            CommonData.common_list.add(ChatMessageData(0, "${des} 관련 장소에 대해 알려줘."))
+                            CommonData.common_list.add(ChatMessageData(1, "${des} 관련 장소들이야! 필요할 땐 언제든 워크디를 찾아줘 :D"))
+                            CommonData.common_list.add(ChatMessageData(2, "??"))
+                            CommonData.chat_type = "#테마별 #자연"
+                        }
+                        10 -> { // 10대
+                            Log.v("1255 id", id.toString())
+                            CommonData.common_list.add(ChatMessageData(0, "${des} 관련 장소에 대해 알려줘."))
+                            CommonData.common_list.add(ChatMessageData(1, "${des} 관련 장소들이야! 필요할 땐 언제든 워크디를 찾아줘 :D"))
+                            CommonData.common_list.add(ChatMessageData(2, "??"))
+                            CommonData.chat_type = "#나이별 #10대"
+                        }
+                        11 -> { // 20,30대
+                            Log.v("1255 id", id.toString())
+                            CommonData.common_list.add(ChatMessageData(0, "${des} 관련 장소에 대해 알려줘."))
+                            CommonData.common_list.add(ChatMessageData(1, "${des} 관련 장소들이야! 필요할 땐 언제든 워크디를 찾아줘 :D"))
+                            CommonData.common_list.add(ChatMessageData(2, "??"))
+                            CommonData.chat_type = "#나이별 #20,30대"
+                        }
+                        12 -> { // 40대
+                            Log.v("1255 id", id.toString())
+                            CommonData.common_list.add(ChatMessageData(0, "${des} 관련 장소에 대해 알려줘."))
+                            CommonData.common_list.add(ChatMessageData(1, "${des} 관련 장소들이야! 필요할 땐 언제든 워크디를 찾아줘 :D"))
+                            CommonData.common_list.add(ChatMessageData(2, "??"))
+                            CommonData.chat_type = "#나이별 #40대"
+                        }
+                    }
+                    //CommonData.common_list.add(ChatMessageData(0, des))
+                    items.clear()
+                    cView.visibility = View.GONE
+                    notifyDataSetChanged()
+                } else {
+                    Log.v("1255 woo el", response.body()!!.message)
+                }
+            }
+
+        })
+    }
+
+    // 중분류
+    fun getChatMInfo(id: Int, des: String) {
         chatting = ArrayList()
 
         networkService = ApplicationController.instance.networkService2
         var chatMResponse = networkService.getChatMInfo(id)
-        chatMResponse.enqueue(object : Callback<ChataMTypeData>{
+        chatMResponse.enqueue(object : Callback<ChataMTypeData> {
             override fun onFailure(call: Call<ChataMTypeData>, t: Throwable) {
 
             }
 
             override fun onResponse(call: Call<ChataMTypeData>, response: Response<ChataMTypeData>) {
-                if(response!!.isSuccessful){
-                    Log.v("900 woo r",response.message())
-                    Log.v("900 woo r",response.body()!!.toString())
+                if (response!!.isSuccessful) {
+                    Log.v("900 woo r", response.message())
+                    Log.v("900 woo r", response.body()!!.toString())
                     //mItems = ArrayList()
 
-                   // chatMessageAdapter.getData(des)
+                    // chatMessageAdapter.getData(des)
 
                     items = response.body()!!.result
-                    CommonData.common_list.add(ChatMessageData(0,des))
+                    when (des) {
+                        "위치별 DMZing" -> {
+                            CommonData.common_list.add(ChatMessageData(0, des)) //
+                            CommonData.common_list.add(ChatMessageData(1, "${des} 대해 알려줄게! 어떤 정보를 알려줄까?"))
+                        }
+                        "테마별 DMZing" -> {
+                            CommonData.common_list.add(ChatMessageData(0, des))
+                            CommonData.common_list.add(ChatMessageData(1, "${des} 대해 알려줄게! 어떤 정보를 알려줄까?"))
+                        }
+                        "나이별 DMZing" -> {
+                            CommonData.common_list.add(ChatMessageData(0, des))
+                            CommonData.common_list.add(ChatMessageData(1, "${des} 대해 알려줄게! 어떤 정보를 알려줄까?"))
+                        }
+                    }
+
                     notifyDataSetChanged()
 
 
