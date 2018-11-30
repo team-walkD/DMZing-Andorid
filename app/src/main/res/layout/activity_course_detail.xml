@@ -26,15 +26,18 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp">
 
-                <ImageView
-                    android:id="@+id/course_detail_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/x_white_btn"
-                    android:layout_centerVertical="true"/>
+
+                <RelativeLayout android:layout_width="?attr/actionBarSize" android:layout_height="?attr/actionBarSize"
+                                android:id="@+id/course_detail_back">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/x_white_btn"
+                            android:layout_centerInParent="true"/>
+                </RelativeLayout>
 
             </RelativeLayout>
 
