@@ -114,7 +114,7 @@ class HomeFilterAdapter(var items: ArrayList<HomeFilterData>, var context: Conte
                 selector!!.onFilterSelect(holder,position)*/
             Log.v("847 holder id ",holder.itemView.id.toString())
             holder.itemView
-            context!!.toast("${position} 번쨰 클릭.")
+            //context!!.toast("${position} 번쨰 클릭.")
             Log.v("825 aPosition:",holder.adapterPosition.toString())
 
             when(position){

@@ -159,7 +159,7 @@ interface NetworkService {
     // edit by 이승우
 
     // 여기는 @Headers가 없어야 함..
-    //@Headers("Content-type: application/json")
+    @Headers("Content-type: application/json")
     @POST("api/users")
     fun postUserCreate(
         @Body userDTO: UserDTO
