@@ -1,7 +1,6 @@
 package dmzing.workd.view.login
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -16,16 +15,12 @@ import dmzing.workd.network.NetworkService
 import dmzing.workd.util.SharedPreference
 import dmzing.workd.view.MainActivity
 import dmzing.workd.view.signup.SignUpActivity
-import dmzing.workd.view.signup.SignUpOneActivity
-import dmzing.workd.view.signup.SignUpThreeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.math.log
-import kotlin.math.sign
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
