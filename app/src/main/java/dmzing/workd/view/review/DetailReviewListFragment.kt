@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,7 @@ import retrofit2.Response
 class DetailReviewListFragment : Fragment() {
     lateinit var detailReviewListAdpater: DetailReviewListAdpater
     lateinit var networkService : NetworkService
+    lateinit var detailReviewItems : ArrayList<SimpleReviewDto>
 
     lateinit var jwt : String
     lateinit var mView : View
@@ -33,6 +35,57 @@ class DetailReviewListFragment : Fragment() {
         var courseId = arguments!!.getInt("courseId")
         networkService = ApplicationController.instance!!.networkService
         jwt = SharedPreference.instance!!.getPrefStringData("jwt","")!!
+        detailReviewItems = ArrayList()
+
+//        mView.review_list_detail_recycler.setOnScrollListener(object : RecyclerView.OnScrollListener(){
+//            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+//                super.onScrollStateChanged(recyclerView, newState)
+//                if(!mView.review_list_detail_recycler.canScrollVertically(1)){
+//                    Log.d("MMMIINN","scrollbottom Detail")
+//                    var courseTypeList = CourseType.values()
+//                    var type : String? = null
+//                    type = courseTypeList.get(courseId-1).name
+//                    var oldSize = detailReviewItems.size
+//
+//                    val simpleReviewList = networkService.getSimpleReviews(jwt,oldSize-1,type!!)
+//                    simpleReviewList.enqueue(object : Callback<ArrayList<SimpleReviewDto>>{
+//                        override fun onFailure(call: Call<ArrayList<SimpleReviewDto>>, t: Throwable) {
+//
+//                        }
+//
+//                        override fun onResponse(call: Call<ArrayList<SimpleReviewDto>>, response: Response<ArrayList<SimpleReviewDto>>) {
+//                            when(response.code()!!){
+//                                200->{
+//                                    Log.d("MMMIINN","load success")
+//                                    detailReviewItems.addAll(response.body()!!)
+//
+//                                    detailReviewListAdpater = DetailReviewListAdpater(detailReviewItems,context!!)
+//                                    detailReviewListAdpater.setOnItemClickListener(object : DetailReviewListAdpater.ItemClick{
+//                                        override fun onClick(view: View, position: Int) {
+//                                            var intent = Intent(context,ReviewActivity::class.java)
+//                                            intent.putExtra("reviewId",response.body()!!.get(position).id)
+//                                            startActivity(intent)
+//                                        }
+//
+//                                    })
+//
+//                                    detailReviewListAdpater.notifyItemRangeInserted(oldSize,response.body()!!.size)
+//
+//                                }
+//                                401->{
+//
+//                                }
+//                                500->{
+//
+//                                }
+//                            }
+//                        }
+//
+//                    })
+//                }
+//            }
+//
+//        })
 
         getSimpleReviewList(mView,courseId)
 
@@ -73,7 +126,8 @@ class DetailReviewListFragment : Fragment() {
                 when(response.code()){
                     200->{
                         Log.d("getSimpleReviewList",response.code().toString())
-                        detailReviewListAdpater = DetailReviewListAdpater(response.body()!!,activity!!.applicationContext)
+                        detailReviewItems = response.body()!!
+                        detailReviewListAdpater = DetailReviewListAdpater(detailReviewItems,context!!)
                         detailReviewListAdpater.setOnItemClickListener(object : DetailReviewListAdpater.ItemClick{
                             override fun onClick(view: View, position: Int) {
                                 var intent = Intent(context,ReviewActivity::class.java)
