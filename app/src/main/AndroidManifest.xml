@@ -30,9 +30,7 @@
         <activity
                 android:name=".view.login.LoginActivity"
                 android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".view.signup.SignUpOneActivity"/>
-        <activity android:name=".view.signup.SignUpTwoActivity"/>
-        <activity android:name=".view.signup.SignUpThreeActivity"/>
+
         <activity android:name=".view.mypage.point.MypagePointActivity"/>
         <activity android:name=".view.mypage.MypageReviewActivity"/>
         <activity android:name=".view.mypage.MyLetterActivity"/>
