@@ -14,4 +14,6 @@ object CommonData {
     var common_list = ArrayList<ChatMessageData>()
     var last_list = ArrayList<ChatMData>()
     var chat_type : String = ""
+    var commonLatitude : Double? = 0.0
+    var commonLongitude : Double? = 0.0
 }

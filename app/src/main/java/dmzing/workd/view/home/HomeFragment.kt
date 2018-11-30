@@ -68,12 +68,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     filterHistoryBtn.isSelected = false
                     filterNaturalBtn.isSelected = false
 
-
                     putCoursePick(view!!, filterItems[0].id)
-                }/*else{
+                }else{
                     filterDMZingBtn.isSelected = false
                     filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                }*/
+                }
 
             }
             v!!.filterDateBtn -> {
@@ -91,10 +90,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
                     putCoursePick(view!!, filterItems[1].id)
-                }/*else{
+                }else{
                     filterDateBtn.isSelected = true
                     filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                }*/
+                }
             }
             v!!.filterHistoryBtn -> {
                 if (!filterHistoryBtn.isSelected){
@@ -114,10 +113,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
                     putCoursePick(view!!, filterItems[2].id)
-                }/*else{
+                }else{
                     filterHistoryBtn.isSelected = true
                     filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                }*/
+                }
             }
             v!!.filterNaturalBtn -> {
                 if (!filterNaturalBtn.isSelected){
@@ -135,10 +134,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
                     putCoursePick(view!!, filterItems[3].id)
 
-                }/*else{
+                }else{
                     filterNaturalBtn.isSelected = true
                     filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                }*/
+                }
             }
             v!!.chatbotBtn->{
                 context!!.startActivity<ChatbotActivity>()
@@ -163,8 +162,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
         mainActivity = this@HomeFragment.activity!! as MainActivity
     }
 
-/*    override fun onResume() {
+    override fun onResume() {
         super.onResume()
+        getHomeMission(view!!)
+    }
+
+  /*  override fun onPause() {
+        super.onPause()
         getHomeMission(view!!)
     }*/
 
@@ -251,7 +255,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
     fun getLocation() {
-        context!!.toast("testing")
+        //context!!.toast("testing")
         Log.v("859 lat", "ㅇㅇㅇㅇㅇ get")
 
 
@@ -262,9 +266,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
             override fun onLocationChanged(location: Location) {
                 // Called when a new location is found by the network location provider.
-                context!!.toast("testing2222")
-                var lat: Double = location!!.latitude
-                var lng: Double = location!!.longitude
+                //context!!.toast("testing2222")
+                var lat: Double? = location.latitude
+                var lng: Double? = location.longitude
+                CommonData.commonLatitude = lat
+                CommonData.commonLongitude = lng
+
 
                 Log.v("859 lat", lat.toString())
                 Log.v("859 lng", lng.toString())
@@ -288,7 +295,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         } catch (e: SecurityException) {
             e.printStackTrace()
             Log.v("859 lat", "ㅇㅇㅇㅇㅇ catch")
-            context!!.toast("error")
+            context!!.toast("위치를 잡을 수 없습니다.")
         }
         /*  val locationManager = context!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
           // gps
@@ -356,6 +363,32 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     200 -> {
                         //settingFilterItems(view, response.body()!!.purchaseList)
                         filterItems = response.body()!!.purchaseList
+                      /*  for(i in 0..filterItems.size-1){
+                            when(i){
+                                1->{
+                                    if(filterItems[i].isPicked)
+                                        view!!.filterDMZingBtn.visibility = View.VISIBLE
+                                }
+                                2->{
+                                    if(filterItems[i].isPicked)
+                                        view!!.filterDateBtn.visibility = View.VISIBLE
+                                    else
+                                        view!!.filterDateBtn.visibility = View.GONE
+                                }
+                                3->{
+                                    if(filterItems[i].isPicked)
+                                        view!!.filterHistoryBtn.visibility = View.VISIBLE
+                                    else
+                                        view!!.filterHistoryBtn.visibility = View.GONE
+                                }
+                                4->{
+                                    if(filterItems[i].isPicked)
+                                        view!!.filterNaturalBtn.visibility = View.VISIBLE
+                                    else
+                                        view!!.filterNaturalBtn.visibility = View.GONE
+                                }
+                            }
+                        }*/
                         settingHomeItems(view, response.body()!!.pickCourse)
                     }
                 }
@@ -367,13 +400,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     // 필터 아이템 통신
-    fun settingFilterItems(view: View, items: ArrayList<HomeFilterData>) {
+/*    fun settingFilterItems(view: View, items: ArrayList<HomeFilterData>) {
         filterItems = items
-        //view.homeFilterRv.setHasFixedSize(true)
-        //view.homeFilterRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        view.homeFilterRv.setHasFixedSize(true)
+        view.homeFilterRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         homeFilterAdapter = HomeFilterAdapter(filterItems, context!!)
         homeFilterAdapter.setItemClickListener(this)
-        /*homeFilterAdapter.setOnFilterSelectListener(object : HomeFilterAdapter.setFilterSelect {
+        homeFilterAdapter.setOnFilterSelectListener(object : HomeFilterAdapter.setFilterSelect {
             override fun onFilterSelect(holder: HomeFilterAdapter.HomeFilterViewHolder, position: Int) {
                 if (holder.isCheck) {
                     holder.isChecked = false
@@ -404,10 +437,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 }
             }
 
-        })*/
-        //view.homeFilterRv.adapter = homeFilterAdapter
+        })
+        view.homeFilterRv.adapter = homeFilterAdapter
 
-    }
+    }*/
 
     // 코스 픽하기
     fun putCoursePick(view: View, cid: Int) {
