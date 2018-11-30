@@ -18,25 +18,26 @@ import retrofit2.Response
 
 class ChatbotActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
-        when(v!!){
-
+        when (v!!) {
+            chatbotXBtn -> finish()
         }
     }
 
     lateinit var networkService: NetworkService
     lateinit var chatItems: ArrayList<ChatMData>
     lateinit var chatAdapter: ChatTypeAdapter
-    lateinit var chatting : ArrayList<ChatMessageData>
+    lateinit var chatting: ArrayList<ChatMessageData>
     lateinit var chatMessageAdapter: ChatMessageAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chatbot)
         networkService = ApplicationController.instance.networkService2
+        chatbotXBtn.setOnClickListener(this)
         chatItems = ArrayList()
         chatting = ArrayList()
 
-        chatting.add(ChatMessageData(0,"워크디에게 뭐든 물어봐! 뭐가 궁금해?!"))
-        chatMessageAdapter = ChatMessageAdapter(chatting,this)
+        chatting.add(ChatMessageData(0, "워크디에게 뭐든 물어봐! 뭐가 궁금해?!"))
+        chatMessageAdapter = ChatMessageAdapter(chatting, this)
         chatMessageRv.setHasFixedSize(true)
         chatMessageRv.adapter = chatMessageAdapter
         chatMessageRv.layoutManager = LinearLayoutManager(this)
@@ -45,6 +46,7 @@ class ChatbotActivity : AppCompatActivity(), View.OnClickListener {
         getChat()
     }
 
+    // 대분류 불러오기.
     fun getChat() {
         var chatTypeResponse = networkService.getChatInfo()
         chatTypeResponse.enqueue(object : Callback<ChataMTypeData> {
@@ -54,10 +56,10 @@ class ChatbotActivity : AppCompatActivity(), View.OnClickListener {
 
             override fun onResponse(call: Call<ChataMTypeData>, response: Response<ChataMTypeData>) {
                 if (response!!.isSuccessful) {
-                    Log.v("845 woo",response.message())
-                    Log.v("845 woo",response.body().toString())
+                    Log.v("845 woo", response.message())
+                    Log.v("845 woo", response.body().toString())
                     chatItems = response!!.body()!!.result
-                    chatAdapter = ChatTypeAdapter(chatItems,this@ChatbotActivity)
+                    chatAdapter = ChatTypeAdapter(chatItems, this@ChatbotActivity)
                     chatAdapter.onItemClickListener(this@ChatbotActivity)
                     chatTypeRv.setHasFixedSize(true)
                     chatTypeRv.adapter = chatAdapter

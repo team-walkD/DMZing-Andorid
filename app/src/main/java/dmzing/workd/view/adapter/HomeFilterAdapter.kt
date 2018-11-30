@@ -101,7 +101,9 @@ class HomeFilterAdapter(var items: ArrayList<HomeFilterData>, var context: Conte
         * 이렇게 매개변수를 holder, position을 전달할 수 있기 때문에
         * recyclerview에 접근하는 것이 자유롭다.
         * */
-        holder.filter_btn.isSelected = true
+
+
+        //holder.filter_btn.isSelected = true
 
 
 
@@ -117,17 +119,17 @@ class HomeFilterAdapter(var items: ArrayList<HomeFilterData>, var context: Conte
 
             when(position){
                 0->{
-                    if(holder.filter_btn.isSelected){
+                    if(!holder.filter_btn.isSelected){
                         Log.v("1128 woo","Selected")
-                        holder.filter_btn.isSelected = false
+                        holder.filter_btn.isSelected = true
                         holder.filter_btn.background = ContextCompat.getDrawable(context, R.drawable.filter_background)
-                        if(holder.adapterPosition == 1){
+                      /*  if(holder.adapterPosition == 1){
 
                             holder.filter_btn.isSelected =false
-                        }
+                        }*/
                     }else{
                         Log.v("1128 woo","UnSelected")
-                        holder.filter_btn.isSelected = true
+                        holder.filter_btn.isSelected = false
                         holder.filter_btn.background = ContextCompat.getDrawable(context, R.drawable.filter_opacity_background)
 
                     }

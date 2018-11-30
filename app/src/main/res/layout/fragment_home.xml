@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
         />
 
-        <!-- <android.support.v7.widget.RecyclerView
+     <!--    <android.support.v7.widget.RecyclerView
                  android:layout_marginLeft="15dp"
                  android:id="@+id/homeFilterRv"
                  android:orientation="horizontal"

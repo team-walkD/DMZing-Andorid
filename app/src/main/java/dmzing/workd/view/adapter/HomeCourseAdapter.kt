@@ -192,6 +192,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
                     2->{
                         context.toast("편지 찾기 버튼!")
 
+                        postMission(CommonData.commonLatitude,CommonData.commonLongitude)
                         postMission(location_list[idx].lat, location_list[idx].lng)
                         Log.v("557 lat", location_list[idx].lat.toString())
                         Log.v("557 lng", location_list[idx].lng.toString())
@@ -242,7 +243,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
     /*FIXME
     * 편지 찾고 아이템 받아서 갱신하는 로직 넣음.
     * */
-    fun postMission(lat: Double, lot: Double) {
+    fun postMission(lat: Double?, lot: Double?) {
         networkService = ApplicationController.instance.networkService
         SharedPreference.instance!!.load(context)
         homePostMission = HomePostMission(CommonData.coursedId, CommonData.placeId, lat, lot)

@@ -10,7 +10,9 @@ data class ChataMTypeData (
 )
 
 data class ChatMData(
-    var id : Int,
+    var id : Int?,
     var groups : Int,
+    var title : String?,
+    var img_url : String?,
     var description :String
 )

@@ -2,6 +2,7 @@ package dmzing.workd.network
 
 import dmzing.workd.model.chat.ChatBTypeData
 import dmzing.workd.model.chat.ChatMData
+import dmzing.workd.model.chat.ChatSTypeData
 import dmzing.workd.model.chat.ChataMTypeData
 import dmzing.workd.model.home.HomeCourseData
 import dmzing.workd.model.home.HomePostMission
@@ -280,6 +281,11 @@ interface NetworkService {
 
     @GET("chat/division/{id}")
     fun getChatMInfo(
+        @Path("id") id : Int
+    ) : Call<ChataMTypeData>
+
+    @GET("chat/section/{id}")
+    fun getChatSInfo(
         @Path("id") id : Int
     ) : Call<ChataMTypeData>
 
