@@ -38,7 +38,7 @@ class MyLetterActivity : AppCompatActivity(), View.OnClickListener, Utils {
 
     fun getData() {
         id = intent.getIntExtra("cid", 0)
-        toast("$id")
+        //toast("$id")
     }
 
     lateinit var letterAdapter: MypageLetterAdapter

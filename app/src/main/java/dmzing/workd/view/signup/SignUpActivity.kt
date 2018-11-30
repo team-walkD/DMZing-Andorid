@@ -95,7 +95,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 
     fun postUserCreate(userEmail: String, userPw: String, userPhone: String, userNickname: String) {
         Log.v("woo phone",userPhone.toString())
-        userDTO = UserDTO(userEmail, userPw, userPhone, userNickname)
+        userDTO = UserDTO(userEmail, userPw, userNickname,userPhone)
         Log.v("woo 1994 :", "woo??")
         var userCreateResponse = networkService.postUserCreate(userDTO)
         userCreateResponse!!.enqueue(object : Callback<Any> {
