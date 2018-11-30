@@ -14,5 +14,6 @@ data class ChatMData(
     var groups : Int,
     var title : String?,
     var img_url : String?,
+    var web_url : String?,
     var description :String
 )

@@ -54,7 +54,7 @@
 
         <ImageView
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/walk_d_icon"
+                android:src="@drawable/home_map_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
         />
@@ -81,6 +81,7 @@
                         android:layout_height="42dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:visibility="gone"
                         android:background="@drawable/filter_opacity_background">
                     <TextView
                             android:id="@+id/filterDMZingMapItem"
@@ -98,6 +99,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                        android:visibility="gone"
                         android:id="@+id/filterDateBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="42dp"
@@ -119,6 +121,7 @@
 
                 </RelativeLayout>
                 <RelativeLayout
+                        android:visibility="gone"
                         android:id="@+id/filterHistoryBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="42dp"
@@ -140,6 +143,7 @@
 
                 </RelativeLayout>
                 <RelativeLayout
+                        android:visibility="gone"
                         android:id="@+id/filterNaturalBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="42dp"
