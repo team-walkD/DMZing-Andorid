@@ -18,6 +18,7 @@ import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.GridItemDecoration
 import dmzing.workd.util.SharedPreference
+import dmzing.workd.view.ChatbotActivity
 import dmzing.workd.view.adapter.ReviewMapAdapter
 import kotlinx.android.synthetic.main.fragment_review.view.*
 import retrofit2.Call
@@ -49,6 +50,7 @@ class ReviewFragment : Fragment() {
 
         mView.review_walkd_button.setOnClickListener { v: View->
             //챗봇 버튼
+            startActivity(Intent(context, ChatbotActivity::class.java))
         }
         return mView
     }

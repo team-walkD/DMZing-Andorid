@@ -23,9 +23,11 @@ import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.SharedPreference
 import dmzing.workd.util.SpaceItemDecoration
+import dmzing.workd.view.ChatbotActivity
 import dmzing.workd.view.adapter.CourseListAdapter
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.android.synthetic.main.fragment_map.view.*
+import org.jetbrains.anko.support.v4.startActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -61,6 +63,10 @@ class MapFragment : Fragment() {
 
         var requestOptions=RequestOptions()
         requestOptions.placeholder(R.drawable.map_image)
+
+        fragmentView.map_walkd.setOnClickListener {
+            startActivity(Intent(context,ChatbotActivity::class.java))
+        }
 
 
 
