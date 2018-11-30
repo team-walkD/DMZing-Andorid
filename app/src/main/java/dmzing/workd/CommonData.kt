@@ -1,5 +1,7 @@
 package dmzing.workd
 
+import dmzing.workd.model.chat.ChatMessageData
+
 object CommonData {
     var user_id: String = ""
     var user_pw: String = ""
@@ -8,4 +10,5 @@ object CommonData {
     val JWT : String = "jwt"
     var coursedId : Int = 0
     var placeId : Int = 0
+    var common_list = ArrayList<ChatMessageData>()
 }
