@@ -12,6 +12,7 @@ import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.SharedPreference
 import dmzing.workd.util.Utils
+import dmzing.workd.view.ChatbotActivity
 import dmzing.workd.view.mypage.faq.FAQActivity
 import dmzing.workd.view.mypage.point.MypagePointActivity
 import dmzing.workd.view.mypage.setting.SettingActivity
@@ -33,6 +34,7 @@ class MypageFragment : Fragment(), View.OnClickListener {
             mypagePointBtn -> startActivity<MypagePointActivity>()
             mypageSettingBtn -> startActivity<SettingActivity>()
             mypageFnQBtn -> startActivity<FAQActivity>()
+            mypageWalkD -> startActivity<ChatbotActivity>()
         }
     }
 
@@ -42,6 +44,7 @@ class MypageFragment : Fragment(), View.OnClickListener {
         view.mypagePointBtn.setOnClickListener(this)
         view.mypageSettingBtn.setOnClickListener(this)
         view.mypageFnQBtn.setOnClickListener(this)
+        view.mypageWalkD.setOnClickListener(this)
         networkService = ApplicationController.instance.networkService
         SharedPreference.instance!!.load(context!!)
     }
