@@ -79,7 +79,7 @@ class CourseDetailActivity : AppCompatActivity() {
         Glide.with(this).load(courseDetailDto.imageUrl).apply(RequestOptions().centerCrop()).into(course_detail_mainimage)
         course_detail_subdescrip.text = courseDetailDto.subDescription
         course_detail_title.text = courseDetailDto.title
-        course_detail_title_explain.text = courseDetailDto.title+"란?"
+        course_detail_title_explain.text = courseDetailDto.title+"이란?"
         course_detail_maindescrip.text = courseDetailDto.mainDescription
         course_detail_level.text = courseDetailDto.level
         course_detail_estimatedTime.text = courseDetailDto.estimatedTime.toString()

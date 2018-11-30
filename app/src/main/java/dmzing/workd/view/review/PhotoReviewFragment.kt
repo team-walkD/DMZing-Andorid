@@ -23,6 +23,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.view.Display
 import android.support.v4.content.ContextCompat.getSystemService
+import android.support.v7.widget.RecyclerView
 import android.view.WindowManager
 import dmzing.workd.util.CourseType
 
@@ -55,6 +56,50 @@ class PhotoReviewFragment : Fragment() {
         mPhotoReviewItems = ArrayList()
 
         loadPhotoReviewList(mView,courseId)
+
+//        mView.photo_review_recycler.setOnScrollListener(object : RecyclerView.OnScrollListener(){
+//            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+//                if(!mView.photo_review_recycler.canScrollVertically(1)){
+//                    Log.d("MMMIINN","scrollbottom")
+//                    val oldSize = mPhotoReviewItems.size
+//
+//                    val getPhotoReviewList = networkService.getPhotoReviews(jwt,oldSize-1,CourseType.values().get(courseId-1).name!!)
+//
+//                    getPhotoReviewList.enqueue(object : Callback<ArrayList<PhotoReviewDto>>{
+//                        override fun onFailure(call: Call<ArrayList<PhotoReviewDto>>, t: Throwable) {
+//
+//                        }
+//
+//                        override fun onResponse(call: Call<ArrayList<PhotoReviewDto>>, response: Response<ArrayList<PhotoReviewDto>>) {
+//                            when(response.code()!!){
+//                                200->{
+//                                    mPhotoReviewItems.addAll(response.body()!!)
+//                                    mPhotoReviewAdpater = PhotoReviewListAdapter(mPhotoReviewItems,context!!)
+//
+//                                    mPhotoReviewAdpater.SetOnItemClickListener(object : PhotoReviewListAdapter.ItemClick{
+//                                        override fun onClick(view: View, position: Int) {
+//                                            var intent = Intent(context,PhotoDetailActivity::class.java)
+//                                            intent.putExtra("photo",response.body()!!.get(position).imageUrl)
+//                                            startActivity(intent)
+//                                        }
+//
+//                                    })
+//                                    mPhotoReviewAdpater.notifyItemRangeInserted(oldSize,response.body()!!.size)
+//                                }
+//                                401->{
+//
+//                                }
+//                                500->{
+//
+//                                }
+//                            }
+//                        }
+//
+//                    })
+//                }
+//            }
+//
+//        })
 
         return mView
     }
@@ -97,8 +142,8 @@ class PhotoReviewFragment : Fragment() {
 
                         Log.d("getPhotoReviewList",":"+response.code())
                         //Log.d("getPhotoReviewList",":"+response.body()!!.get(0).placeName)
-
-                        mPhotoReviewAdpater = PhotoReviewListAdapter(response.body()!!,context!!)
+                        mPhotoReviewItems = response.body()!!
+                        mPhotoReviewAdpater = PhotoReviewListAdapter(mPhotoReviewItems,context!!)
 
                         mPhotoReviewAdpater.SetOnItemClickListener(object : PhotoReviewListAdapter.ItemClick{
                             override fun onClick(view: View, position: Int) {

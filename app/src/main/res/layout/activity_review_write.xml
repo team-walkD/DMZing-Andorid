@@ -27,14 +27,21 @@
                     android:layout_height="match_parent"
                     android:background="#dddddd"/>
 
-                <ImageView
-                    android:id="@+id/review_write_close_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/x_white_btn"
+                <RelativeLayout
+                    android:layout_width="?attr/actionBarSize"
+                    android:layout_height="?attr/actionBarSize"
                     android:layout_gravity="right"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginRight="26dp"/>
+                    android:id="@+id/review_write_close_button">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/x_white_btn"
+                        android:layout_centerInParent="true"
+                        />
+                </RelativeLayout>
+
+
                 <EditText
                     android:id="@+id/review_write_title"
                     android:textSize="24sp"

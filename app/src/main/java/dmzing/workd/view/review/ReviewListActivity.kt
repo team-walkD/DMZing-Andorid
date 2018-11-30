@@ -40,7 +40,7 @@ class ReviewListActivity : AppCompatActivity() {
             //뒤로가기 버튼
             finish()
         }
-        review_list_write_button.setOnClickListener{
+        review_list_write_button.setOnClickListener {
             //리뷰 쓰기 버튼
             when(mTabLayout.selectedTabPosition){
                 0->{
@@ -54,7 +54,6 @@ class ReviewListActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
     fun settingDefault(){

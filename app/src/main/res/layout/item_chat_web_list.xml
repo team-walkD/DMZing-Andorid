@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/lastChatImage"
+                android:visibility="invisible"
+                android:src="@drawable/walk_d_profile_img"
+                android:layout_width="60dp"
+                android:layout_height="60dp"/>
+
+        <LinearLayout
+                android:layout_toRightOf="@+id/lastChatImage"
+                android:background="@drawable/border_last_chat_box"
+                android:layout_width="210dp"
+                android:layout_marginLeft="9dp"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/lastChatHashtagText"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="9dp"
+                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:includeFontPadding="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#1c3748"
+                    android:lineSpacingExtra="6sp"
+                    android:text="#맛집 #1번 지역"
+            />
+
+            <View android:layout_width="match_parent"
+                  android:layout_marginTop="13dp"
+                  android:background="#eaeaea"
+                  android:layout_height="1dp"/>
+
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="74dp">
+
+                <TextView
+                        android:id="@+id/chat_title_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#1c3748"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:includeFontPadding="false"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="6sp"
+                        android:text="OO 맛집"
+                />
+
+                <TextView
+                        android:id="@+id/chat_description_one"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/notosanscjkkr_regular"
+                        android:includeFontPadding="false"
+                        android:layout_below="@+id/chat_title_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:textColor="#1c3748"
+                        android:lineSpacingExtra="10sp"
+                        android:text="얼큰한 국물이 일품인"
+                />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/chat_image_one"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"/>
+
+            </RelativeLayout>
+
+            <View android:layout_width="match_parent"
+                  android:background="#eaeaea"
+                  android:layout_height="1dp"/>
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="74dp">
+
+                <TextView
+                        android:id="@+id/chat_title_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#1c3748"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:includeFontPadding="false"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="6sp"
+                        android:text="OO 맛집"
+                />
+
+                <TextView
+                        android:id="@+id/chat_description_two"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/notosanscjkkr_regular"
+                        android:includeFontPadding="false"
+                        android:layout_below="@+id/chat_title_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:textColor="#1c3748"
+                        android:lineSpacingExtra="10sp"
+                        android:text="얼큰한 국물이 일품인"
+                />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/chat_image_two"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"/>
+
+            </RelativeLayout>
+
+            <View android:layout_width="match_parent"
+                  android:background="#eaeaea"
+                  android:layout_height="1dp"/>
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="74dp">
+
+                <TextView
+                        android:id="@+id/chat_title_three"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#1c3748"
+                        android:fontFamily="@font/notosanscjkkr_bold"
+                        android:includeFontPadding="false"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="6sp"
+                        android:text="OO 맛집"
+                />
+
+                <TextView
+                        android:id="@+id/chat_description_three"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/notosanscjkkr_regular"
+                        android:includeFontPadding="false"
+                        android:layout_below="@+id/chat_title_three"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:textColor="#1c3748"
+                        android:lineSpacingExtra="10sp"
+                        android:text="얼큰한 국물이 일품인"
+                />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/chat_image_three"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"/>
+
+            </RelativeLayout>
+
+            <View android:layout_width="match_parent"
+                  android:background="#eaeaea"
+                  android:layout_height="1dp"/>
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
