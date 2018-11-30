@@ -20,6 +20,7 @@ import dmzing.workd.view.signup.SignUpOneActivity
 import dmzing.workd.view.signup.SignUpThreeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -105,10 +106,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                         finish()
                     }
                     403 -> {
-
+                        toast("정보가 정확하지 않습니다.")
                     }
                     500 -> {
-
+                        toast("정보가 정확하지 않습니다.")
                     }
 
                 }

@@ -50,7 +50,7 @@ class ChatTypeAdapter(var items: ArrayList<ChatMData>, var context: Context) :
         holder.chatText.text = items[position].description
         holder.chatButton.setOnClickListener {
             if (items[position].id == null) {
-                context!!.toast("getChatMInfo")
+                //context!!.toast("getChatMInfo")
                 when (items[position].groups) {
                     1 -> getChatMInfo(items[position].groups, items[position].description)
                     2 -> getChatMInfo(items[position].groups, items[position].description)
@@ -58,7 +58,7 @@ class ChatTypeAdapter(var items: ArrayList<ChatMData>, var context: Context) :
 
                 }
             } else {
-                context!!.toast("getChatSInfo")
+                //context!!.toast("getChatSInfo")
                 when (items[position].id) {
                     4 -> getChatSInfo(items[position].id!!, items[position].description, position)
                     5 -> getChatSInfo(items[position].id!!, items[position].description, position)

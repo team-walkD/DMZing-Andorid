@@ -1,10 +1,13 @@
 package dmzing.workd.view.chatbot
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -37,19 +40,32 @@ class ChatMessageAdapter(var items: ArrayList<ChatMessageData>, var context: Con
         } else if (holder is ChatMyViewHolder) {
             var myViewHolder: ChatMyViewHolder = holder
             myViewHolder.myMessage.text = items[position].message
-        }else if(holder is ChatLastViewHolder){
-            var lastViewHolder : ChatLastViewHolder = holder
+        } else if (holder is ChatLastViewHolder) {
+            var lastViewHolder: ChatLastViewHolder = holder
             lastViewHolder.lastChatDesOne.text = CommonData.last_list[0].description
             lastViewHolder.lastChatTitleOne.text = CommonData.last_list[0].title
             Glide.with(context).load(CommonData.last_list[0].img_url).into(lastViewHolder.lastChatImageOne)
+
+            lastViewHolder.webOneBtn.setOnClickListener {
+
+                context!!.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(CommonData.last_list[0].web_url)))
+            }
 
             lastViewHolder.lastChatDesTwo.text = CommonData.last_list[1].description
             lastViewHolder.lastChatTitleTwo.text = CommonData.last_list[1].title
             Glide.with(context).load(CommonData.last_list[1].img_url).into(lastViewHolder.lastChatImageTwo)
 
+            lastViewHolder.webTwoBtn.setOnClickListener {
+                context!!.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(CommonData.last_list[1].web_url)))
+            }
+
             lastViewHolder.lastChatDesThree.text = CommonData.last_list[2].description
             lastViewHolder.lastChatTitleThree.text = CommonData.last_list[2].title
             Glide.with(context).load(CommonData.last_list[2].img_url).into(lastViewHolder.lastChatImageThree)
+
+            lastViewHolder.webThreeBtn.setOnClickListener {
+                context!!.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(CommonData.last_list[2].web_url)))
+            }
 
 
             lastViewHolder.lastHashTag.text = CommonData.chat_type
@@ -70,12 +86,12 @@ class ChatMessageAdapter(var items: ArrayList<ChatMessageData>, var context: Con
             var walkdView =
                 LayoutInflater.from(parent.context).inflate(R.layout.item_chat_walk_d_message_list, parent, false)
             return ChatWalDViewHolder(walkdView)
-        } else if(viewType == MY_TYPE){
+        } else if (viewType == MY_TYPE) {
             var myView =
                 LayoutInflater.from(parent.context).inflate(R.layout.item_chat_my_message_list, parent, false)
             return ChatMyViewHolder(myView)
-        }else{
-            var lastView = LayoutInflater.from(parent.context).inflate(R.layout.item_chat_web_list,parent,false)
+        } else {
+            var lastView = LayoutInflater.from(parent.context).inflate(R.layout.item_chat_web_list, parent, false)
             return ChatLastViewHolder(lastView)
         }
     }
@@ -114,20 +130,24 @@ class ChatMessageAdapter(var items: ArrayList<ChatMessageData>, var context: Con
         var chatMessage: TextView = itemView.chatWalMessage
     }
 
-    inner class ChatLastViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var lastChatImageOne : de.hdodenhof.circleimageview.CircleImageView = itemView.chat_image_one
-        var lastChatImageTwo : de.hdodenhof.circleimageview.CircleImageView = itemView.chat_image_two
-        var lastChatImageThree : de.hdodenhof.circleimageview.CircleImageView = itemView.chat_image_three
+    inner class ChatLastViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var lastChatImageOne: de.hdodenhof.circleimageview.CircleImageView = itemView.chat_image_one
+        var lastChatImageTwo: de.hdodenhof.circleimageview.CircleImageView = itemView.chat_image_two
+        var lastChatImageThree: de.hdodenhof.circleimageview.CircleImageView = itemView.chat_image_three
 
-        var lastChatTitleOne : TextView = itemView.chat_title_one
-        var lastChatTitleTwo : TextView = itemView.chat_title_two
-        var lastChatTitleThree : TextView = itemView.chat_title_three
+        var lastChatTitleOne: TextView = itemView.chat_title_one
+        var lastChatTitleTwo: TextView = itemView.chat_title_two
+        var lastChatTitleThree: TextView = itemView.chat_title_three
 
-        var lastChatDesOne : TextView = itemView.chat_description_one
-        var lastChatDesTwo : TextView = itemView.chat_description_two
-        var lastChatDesThree : TextView = itemView.chat_description_three
+        var lastChatDesOne: TextView = itemView.chat_description_one
+        var lastChatDesTwo: TextView = itemView.chat_description_two
+        var lastChatDesThree: TextView = itemView.chat_description_three
 
-        var lastHashTag : TextView = itemView.lastChatHashtagText
+        var lastHashTag: TextView = itemView.lastChatHashtagText
+
+        var webOneBtn: RelativeLayout = itemView.webOne
+        var webTwoBtn: RelativeLayout = itemView.webTwo
+        var webThreeBtn: RelativeLayout = itemView.webThree
 
     }
 }

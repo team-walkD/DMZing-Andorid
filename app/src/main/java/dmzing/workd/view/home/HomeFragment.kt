@@ -68,7 +68,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     filterHistoryBtn.isSelected = false
                     filterNaturalBtn.isSelected = false
 
-                    putCoursePick(view!!, filterItems[0].id)
+                    putCoursePick(view!!, 1)
                 }else{
                     filterDMZingBtn.isSelected = false
                     filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
@@ -89,7 +89,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
 
 
-                    putCoursePick(view!!, filterItems[1].id)
+                    putCoursePick(view!!, 2)
                 }else{
                     filterDateBtn.isSelected = true
                     filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
@@ -112,7 +112,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
 
-                    putCoursePick(view!!, filterItems[2].id)
+                    putCoursePick(view!!, 3)
                 }else{
                     filterHistoryBtn.isSelected = true
                     filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
@@ -132,7 +132,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     filterDMZingBtn.isSelected = false
 
 
-                    putCoursePick(view!!, filterItems[3].id)
+                    putCoursePick(view!!, 4)
 
                 }else{
                     filterNaturalBtn.isSelected = true
@@ -155,6 +155,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     val MY_LOCATION_REQUEST_CODE = 100
     val MIN_DISTANCE_CHANGE_FOR_UPDATES: Long = 10
     val MIN_TIME_BW_UPDATES: Float = 1F
+    var filter_position : Int = 0
 
 
     override fun onAttach(context: Context?) {
@@ -363,6 +364,35 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     200 -> {
                         //settingFilterItems(view, response.body()!!.purchaseList)
                         filterItems = response.body()!!.purchaseList
+
+                        for(i in 0 .. filterItems.size-1){
+                            when(filterItems[i].id){
+                                1->{
+                                    if(filterItems[i].isPicked)
+                                        view.filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+
+                                    view.filterDMZingBtn.visibility = View.VISIBLE
+                                }
+                                2->{
+                                    if(filterItems[i].isPicked)
+                                        view.filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+
+                                    view.filterDateBtn.visibility = View.VISIBLE
+                                }
+                                3->{
+                                    if(filterItems[i].isPicked)
+                                        view.filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+
+                                    view.filterHistoryBtn.visibility = View.VISIBLE
+                                }
+                                4->{
+                                    if(filterItems[i].isPicked)
+                                        view.filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+
+                                    view.filterNaturalBtn.visibility = View.VISIBLE
+                                }
+                            }
+                        }
                       /*  for(i in 0..filterItems.size-1){
                             when(i){
                                 1->{

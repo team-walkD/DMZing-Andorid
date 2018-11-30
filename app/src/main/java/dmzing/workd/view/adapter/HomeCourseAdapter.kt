@@ -185,14 +185,14 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
             letterCourseViewHolder.letterButton.setOnClickListener {
                 when(letterFlag){
                     1->{
-                        context.toast("편지 보기 버튼!")
+                        //context.toast("편지 보기 버튼!")
                         var image : String = item_list.places[position-1].letterImageUrl!!
                         context!!.startActivity<HomeLetterActivity>("letter" to image)
                     }
                     2->{
-                        context.toast("편지 찾기 버튼!")
+                        //context.toast("편지 찾기 버튼!")
 
-                        postMission(CommonData.commonLatitude,CommonData.commonLongitude)
+                        //postMission(CommonData.commonLatitude,CommonData.commonLongitude)
                         postMission(location_list[idx].lat, location_list[idx].lng)
                         Log.v("557 lat", location_list[idx].lat.toString())
                         Log.v("557 lng", location_list[idx].lng.toString())
@@ -268,7 +268,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
 
 
                         if (tmp[1].sequence == 100 && tmp[1].letterImageUrl != null) {
-                            context.toast("그만 추가하시죠")
+                            //context.toast("그만 추가하시죠")
                             Log.v("1244 size:", item_list.places.size.toString())
                             common_position = item_list.places.size
                             footer_flag = tmp[1].sequence

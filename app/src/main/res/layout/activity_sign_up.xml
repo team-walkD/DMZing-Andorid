@@ -256,7 +256,7 @@
                     android:layout_marginHorizontal="36dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:textSize="16sp"
                     android:textColor="#1c3748"
                     android:lineSpacingExtra="8sp"
