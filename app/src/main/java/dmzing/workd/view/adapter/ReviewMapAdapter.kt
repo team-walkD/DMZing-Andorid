@@ -51,7 +51,7 @@ class ReviewMapAdapter(var reviewMapItems : ArrayList<ReviewCountDto>, var conte
         p0.mapCount.background = ShapeDrawable(OvalShape())
         p0.mapCount.background = oval
         if(reviewMapItems.get(p1).imageUrl == null){
-            p0.mapImage.setBackgroundResource(R.drawable.bmo)
+            //p0.mapImage.setBackgroundResource(R.drawable.bmo)
         } else {
             Glide.with(context).load(reviewMapItems.get(p1).imageUrl).apply(RequestOptions().centerCrop()).into(p0.mapImage)
         }
