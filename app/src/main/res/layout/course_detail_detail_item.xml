@@ -137,8 +137,7 @@
                     android:fontFamily="@font/notosanscjkkr_bold"
                     android:includeFontPadding="false"
                     android:text="XXX 맛집"
-                    android:ellipsize="marquee"
-                    android:marqueeRepeatLimit="marquee_forever"
+                    android:ellipsize="end"
                     android:singleLine="true"
                     android:layout_gravity="center_horizontal"
                     />
@@ -178,8 +177,7 @@
                     android:fontFamily="@font/notosanscjkkr_bold"
                     android:includeFontPadding="false"
                     android:text="XXX 맛집"
-                    android:ellipsize="marquee"
-                    android:marqueeRepeatLimit="marquee_forever"
+                    android:ellipsize="end"
                     android:singleLine="true"
                     android:layout_gravity="center_horizontal"
                     />
@@ -219,8 +217,7 @@
                     android:fontFamily="@font/notosanscjkkr_bold"
                     android:includeFontPadding="false"
                     android:text="XXX 맛집"
-                    android:ellipsize="marquee"
-                    android:marqueeRepeatLimit="marquee_forever"
+                    android:ellipsize="end"
                     android:singleLine="true"
                     android:layout_gravity="center_horizontal"
                     />

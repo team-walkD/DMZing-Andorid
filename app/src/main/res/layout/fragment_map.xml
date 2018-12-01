@@ -91,16 +91,18 @@
                 android:layout_height="256dp"
                 android:layout_gravity="center_horizontal"/>
 
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/map_recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="7dp">
+
+        </android.support.v7.widget.RecyclerView>
+
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/map_recycler"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp">
 
-    </android.support.v7.widget.RecyclerView>
 
 
 </RelativeLayout>
