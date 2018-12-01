@@ -45,7 +45,6 @@
 
             <LinearLayout
                     android:id="@+id/signUpOneTextLayout"
-                    android:layout_below="@+id/signUpOneXBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="36dp"
@@ -171,7 +170,7 @@
                     android:textSize="14sp"
                     android:textColor="#6da8c7"
                     android:lineSpacingExtra="6sp"
-                    android:text="유효한 이메일이 아닙니다."
+                    tools:text="유효한 이메일이 아닙니다."
             />
 
 
@@ -199,7 +198,7 @@
                     android:textSize="14sp"
                     android:textColor="#b2b2b2"
                     android:lineSpacingExtra="6sp"
-                    android:text="(특수문자,영문,숫자 포함)"
+                    tools:text="(특수문자,영문,숫자 포함)"
             />
 
             <EditText
@@ -229,7 +228,7 @@
                     android:textSize="14sp"
                     android:textColor="#6da8c7"
                     android:lineSpacingExtra="6sp"
-                    android:text="특수문자,영문,숫자를 포함해 주세요."
+                    tools:text="특수문자,영문,숫자를 포함해 주세요."
             />
 
 
@@ -277,7 +276,7 @@
                     android:textSize="14sp"
                     android:textColor="#6da8c7"
                     android:lineSpacingExtra="6sp"
-                    android:text="유효한 전화번호가 아닙니다."
+                    tools:text="유효한 전화번호가 아닙니다."
             />
 
             <RelativeLayout

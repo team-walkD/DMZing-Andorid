@@ -98,7 +98,7 @@
                 android:layout_height="1dp"
                 android:background="@color/viewColor"/>
 
-        <RelativeLayout
+<!--        <RelativeLayout
                 android:id="@+id/letterDetailBtn"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="17.5dp"
@@ -122,7 +122,7 @@
             />
 
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
     </LinearLayout>
 
