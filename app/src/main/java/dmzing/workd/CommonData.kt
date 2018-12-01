@@ -2,6 +2,7 @@ package dmzing.workd
 
 import dmzing.workd.model.chat.ChatMData
 import dmzing.workd.model.chat.ChatMessageData
+import dmzing.workd.model.home.HomeFilterData
 
 object CommonData {
     var user_id: String = ""
@@ -16,4 +17,5 @@ object CommonData {
     var chat_type : String = ""
     var commonLatitude : Double? = 0.0
     var commonLongitude : Double? = 0.0
+    var new_filter_items =  ArrayList<HomeFilterData>()
 }

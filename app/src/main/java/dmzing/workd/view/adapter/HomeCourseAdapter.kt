@@ -49,7 +49,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
     lateinit var homePostMission: HomePostMission
     private val TYPE_HEADER = 0
     private val TYPE_LETTER = 1
-    private val TYPE_FOOTER = item_list.places.size + 1
+    private val TYPE_FOOTER = 5
     private var count = 0
 
     companion object {
@@ -125,7 +125,8 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
     fun isPostionFooter(position: Int): Boolean {
         var num: Int = item_list.places.size
         Log.v("1212 : ", "position : ${position}, num : ${num}")
-        return position == item_list.places.size + 1
+        return position == 4
+        /*item_list.places.size + 1*/
     }
 
     override fun getItemCount(): Int {
@@ -192,8 +193,8 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
                     2->{
                         //context.toast("편지 찾기 버튼!")
 
-                        //postMission(CommonData.commonLatitude,CommonData.commonLongitude)
-                        postMission(location_list[idx].lat, location_list[idx].lng)
+                        postMission(CommonData.commonLatitude,CommonData.commonLongitude)
+                        //postMission(location_list[idx].lat, location_list[idx].lng)
                         Log.v("557 lat", location_list[idx].lat.toString())
                         Log.v("557 lng", location_list[idx].lng.toString())
                     }

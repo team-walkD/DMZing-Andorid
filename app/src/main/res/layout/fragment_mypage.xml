@@ -339,7 +339,7 @@
                         android:lineSpacingExtra="9sp"
                         android:fontFamily="@font/notosanscjkkr_bold"
                         android:includeFontPadding="false"
-                        android:text="FnQ"
+                        android:text="FAQ"
                 />
 
 

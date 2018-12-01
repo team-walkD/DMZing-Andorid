@@ -36,6 +36,7 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.ContextCompat.getSystemService
 import android.support.v4.content.PermissionChecker.checkSelfPermission
+import dmzing.workd.model.home.Places
 import dmzing.workd.view.ChatbotActivity
 import dmzing.workd.view.MainActivity
 import org.jetbrains.anko.startActivity
@@ -165,7 +166,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        getHomeMission(view!!)
+        getHomeMission2(view!!)
+
+
     }
 
   /*  override fun onPause() {
@@ -348,7 +351,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
     // 홈 편지 미션 통신
-    fun getHomeMission(view: View) {
+    fun getHomeMission2(view: View) {
         var homeResponse = networkService
             .getHomeMissions(SharedPreference.instance!!.getPrefStringData(CommonData.JWT)!!)
         homeResponse.enqueue(object : Callback<HomeCourseData> {
@@ -419,7 +422,95 @@ class HomeFragment : Fragment(), View.OnClickListener {
                                 }
                             }
                         }*/
-                        settingHomeItems(view, response.body()!!.pickCourse)
+                       //settingHomeItems(view, response.body()!!.pickCourse)
+                    }
+                }
+            }
+
+        })
+
+
+    }
+
+    fun getHomeMission(view: View) {
+        var homeResponse = networkService
+            .getHomeMissions(SharedPreference.instance!!.getPrefStringData(CommonData.JWT)!!)
+        homeResponse.enqueue(object : Callback<HomeCourseData> {
+            override fun onFailure(call: Call<HomeCourseData>, t: Throwable) {
+                Log.v("853 woo f:", t.message)
+            }
+
+            override fun onResponse(call: Call<HomeCourseData>, response: Response<HomeCourseData>) {
+                Log.v("853 woo r:", response.code().toString())
+                Log.v("853 woo r:", response.body().toString())
+                Log.v("853 woo size:", response.body()!!.purchaseList.size.toString())
+                when (response.code()!!) {
+                    200 -> {
+                        //settingFilterItems(view, response.body()!!.purchaseList)
+                        filterItems = response.body()!!.purchaseList
+
+                        for(i in 0 .. filterItems.size-1){
+                            when(filterItems[i].id){
+                                1->{
+                                    if(filterItems[i].isPicked)
+                                        view.filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+
+                                    view.filterDMZingBtn.visibility = View.VISIBLE
+                                }
+                                2->{
+                                    if(filterItems[i].isPicked)
+                                        view.filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+
+                                    view.filterDateBtn.visibility = View.VISIBLE
+                                }
+                                3->{
+                                    if(filterItems[i].isPicked)
+                                        view.filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+
+                                    view.filterHistoryBtn.visibility = View.VISIBLE
+                                }
+                                4->{
+                                    if(filterItems[i].isPicked)
+                                        view.filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+
+                                    view.filterNaturalBtn.visibility = View.VISIBLE
+                                }
+                            }
+                        }
+                        /*  for(i in 0..filterItems.size-1){
+                              when(i){
+                                  1->{
+                                      if(filterItems[i].isPicked)
+                                          view!!.filterDMZingBtn.visibility = View.VISIBLE
+                                  }
+                                  2->{
+                                      if(filterItems[i].isPicked)
+                                          view!!.filterDateBtn.visibility = View.VISIBLE
+                                      else
+                                          view!!.filterDateBtn.visibility = View.GONE
+                                  }
+                                  3->{
+                                      if(filterItems[i].isPicked)
+                                          view!!.filterHistoryBtn.visibility = View.VISIBLE
+                                      else
+                                          view!!.filterHistoryBtn.visibility = View.GONE
+                                  }
+                                  4->{
+                                      if(filterItems[i].isPicked)
+                                          view!!.filterNaturalBtn.visibility = View.VISIBLE
+                                      else
+                                          view!!.filterNaturalBtn.visibility = View.GONE
+                                  }
+                              }
+                          }*/
+                        var newpick = response.body()!!.pickCourse
+                        if(newpick.places.size == 4){
+//                             newpick.places.add(Places(1,"","",2,2,"",""
+//                                 ,"",0.0,0.0,"dd","dd","dd","dd","dd",PeriP))
+
+                            newpick.places.add(newpick.places.get(0))
+                            }
+                        settingHomeItems(view, newpick)
                     }
                 }
             }
