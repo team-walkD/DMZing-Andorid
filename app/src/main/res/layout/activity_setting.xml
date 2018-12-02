@@ -146,7 +146,7 @@
                         android:textColor="#1c3748"
                         android:lineSpacingExtra="8sp"
                         android:gravity="end"
-                        android:text="v 1.0"
+                        android:text="v 1.0.1"
                 />
 
             </RelativeLayout>
