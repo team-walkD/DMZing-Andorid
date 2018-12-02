@@ -57,7 +57,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
         var idx: Int = 0
         var common_position = 0
         var footer_flag: Int = 0
-        var letterFlag : Int = 0
+        var letterFlag: Int = 0
         var location_list = listOf<Test>(
             Test(37.8895234711, 126.7405308247)
             , Test(37.8513232698, 126.7905662159)
@@ -70,7 +70,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
     // 붙을 때 아이템이 추가된것을 알려줌.
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
-        notifyItemInserted(item_list.places.size+1)
+        notifyItemInserted(item_list.places.size + 1)
     }
 
 
@@ -89,14 +89,23 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
             letterView.setOnClickListener(onItemClick)
             return LetterCourseViewHolder(letterView)
         } else {
+
             var footerView = LayoutInflater.from(parent.context).inflate(R.layout.home_last_item_list, parent, false)
 
             if (footer_flag == 100) {
+                Log.v("1212 100: ", "footer call")
                 footerView.setOnClickListener(onItemClick)
                 footerView.visibility = View.VISIBLE
             } else {
+                Log.v("1212 else: ", "footer call")
                 footerView.setOnClickListener(onItemClick)
                 footerView.visibility = View.GONE
+            }
+
+            if (item_list.places.size == 4) {
+                Log.v("1212 size4: ", "footer call")
+                footerView.setOnClickListener(onItemClick)
+                footerView.visibility = View.VISIBLE
             }
             return FooterCourseViewHolder(footerView)
 
@@ -107,6 +116,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
         if (isPositionHeader(position))
             return TYPE_HEADER
         else if (isPostionFooter(position)) {
+            Log.v("1212 call: ", "footer call")
             return TYPE_FOOTER
         } else {
             return TYPE_LETTER
@@ -125,7 +135,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
     fun isPostionFooter(position: Int): Boolean {
         var num: Int = item_list.places.size
         Log.v("1212 : ", "position : ${position}, num : ${num}")
-        return position == 4
+        return position == 5
         /*item_list.places.size + 1*/
     }
 
@@ -140,8 +150,13 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
 
 
         } else {
-            Log.v("1252 else", footer_flag.toString())
-            return item_list.places.size + 1
+            if (CommonData.complete_flag == 4) {
+                Log.v("1252 else", footer_flag.toString())
+                return item_list.places.size + 2
+            } else {
+                Log.v("1252 else", footer_flag.toString())
+                return item_list.places.size + 1
+            }
             notifyDataSetChanged()
         }
         //notifyDataSetChanged()
@@ -162,7 +177,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
             CommonData.coursedId = item_list.id
             headerCourseViewHolder.courseParticipants.text = item_list.reviewCount.toString()
             headerCourseViewHolder.headerCourseButton.setOnClickListener {
-                getCourseDetail(item_list.id,SharedPreference.instance!!.getPrefStringData("jwt")!!)
+                getCourseDetail(item_list.id, SharedPreference.instance!!.getPrefStringData("jwt")!!)
             }
 
         } else if (holder is LetterCourseViewHolder) {
@@ -176,21 +191,21 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
                 .into(letterCourseViewHolder.letterImage)
             letterCourseViewHolder.letterHint.movementMethod = ScrollingMovementMethod.getInstance()
             letterCourseViewHolder.letterHint.text = item_list.places[position - 1].hint
-            if(item_list.places[position-1].letterImageUrl !=null){
+            if (item_list.places[position - 1].letterImageUrl != null) {
                 letterCourseViewHolder.letterDetailText.text = "편지 보기"
                 letterFlag = 1
-            }else{
+            } else {
                 letterCourseViewHolder.letterDetailText.text = "편지 찾기"
                 letterFlag = 2
             }
             letterCourseViewHolder.letterButton.setOnClickListener {
-                when(letterFlag){
-                    1->{
+                when (letterFlag) {
+                    1 -> {
                         //context.toast("편지 보기 버튼!")
-                        var image : String = item_list.places[position-1].letterImageUrl!!
+                        var image: String = item_list.places[position - 1].letterImageUrl!!
                         context!!.startActivity<HomeLetterActivity>("letter" to image)
                     }
-                    2->{
+                    2 -> {
                         //context.toast("편지 찾기 버튼!")
 
                         postMission(CommonData.commonLatitude,CommonData.commonLongitude)
@@ -199,8 +214,6 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
                         Log.v("557 lng", location_list[idx].lng.toString())
                     }
                 }
-
-
 
 
             }
@@ -274,7 +287,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
                             common_position = item_list.places.size
                             footer_flag = tmp[1].sequence
                             Log.v("1244 flag", footer_flag.toString())
-                            notifyItemInserted(item_list.places.size+1)
+                            notifyItemInserted(item_list.places.size + 1)
                             itemCount
                         } else {
                             index = position
@@ -291,12 +304,12 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
                             notifyItemInserted(position + 1)
 
 
-                            var dialog = HomeLetterFindDialog(context)
-                            dialog.setCanceledOnTouchOutside(true)
-                            dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                            dialog.show()
-
                         }
+                        var dialog = HomeLetterFindDialog(context)
+                        dialog.setCanceledOnTouchOutside(true)
+                        CommonData.complete_flag += 1
+                        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                        dialog.show()
 
 
                     }
@@ -332,7 +345,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
         var letterHint: TextView = itemView.findViewById(R.id.letterHint)
         var letterButton: RelativeLayout = itemView.findViewById(R.id.letterDetailBtn)
         var letterImage: ImageView = itemView.findViewById(R.id.letterImageItem)
-        var letterDetailText : TextView = itemView.letterDetailBtnText
+        var letterDetailText: TextView = itemView.letterDetailBtnText
     }
 
     inner class FooterCourseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

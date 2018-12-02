@@ -422,6 +422,17 @@ class HomeFragment : Fragment(), View.OnClickListener {
                                 }
                             }
                         }*/
+                 /*       var newpick = response.body()!!.pickCourse
+                        if(newpick.places.size == 4){
+//                             newpick.places.add(Places(1,"","",2,2,"",""
+//                                 ,"",0.0,0.0,"dd","dd","dd","dd","dd",PeriP))
+
+                            newpick.places.add(newpick.places.get(3))
+                        }*/
+
+                        if(response.body()!!.pickCourse.places.size == 4){
+                            CommonData.complete_flag = 4
+                        }
                        //settingHomeItems(view, response.body()!!.pickCourse)
                     }
                 }
@@ -444,6 +455,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 Log.v("853 woo r:", response.code().toString())
                 Log.v("853 woo r:", response.body().toString())
                 Log.v("853 woo size:", response.body()!!.purchaseList.size.toString())
+                Log.v("853 woo size2:", response.body()!!.pickCourse.places.size.toString())
                 when (response.code()!!) {
                     200 -> {
                         //settingFilterItems(view, response.body()!!.purchaseList)
@@ -503,14 +515,16 @@ class HomeFragment : Fragment(), View.OnClickListener {
                                   }
                               }
                           }*/
-                        var newpick = response.body()!!.pickCourse
+                 /*       var newpick = response.body()!!.pickCourse
                         if(newpick.places.size == 4){
 //                             newpick.places.add(Places(1,"","",2,2,"",""
 //                                 ,"",0.0,0.0,"dd","dd","dd","dd","dd",PeriP))
 
-                            newpick.places.add(newpick.places.get(0))
-                            }
-                        settingHomeItems(view, newpick)
+                            newpick.places.add(newpick.places.get(3))
+                            }*/
+
+                        settingHomeItems(view, response.body()!!.pickCourse)
+
                     }
                 }
             }
@@ -582,8 +596,16 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 Log.v("woo 731 r:", response.code().toString())
                 when (response!!.code()) {
                     200 -> {
+
+                /*        var newpick = response.body()!!
+                        if(newpick.places.size == 4){
+//                             newpick.places.add(Places(1,"","",2,2,"",""
+//                                 ,"",0.0,0.0,"dd","dd","dd","dd","dd",PeriP))
+
+                            newpick.places.add(newpick.places.get(3))
+                        }*/
                         settingHomeItems(view, response.body()!!)
-                        homeCourseAdapter.notifyDataSetChanged()
+
                     }
 
                 }
@@ -594,11 +616,15 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     fun settingHomeItems(view: View, items: PickCourse) {
         courseItems = items
+        if(courseItems.places.size == 4){
+            CommonData.complete_flag = 4
+        }
         view.courseList.setHasFixedSize(true)
         view.courseList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         homeCourseAdapter = HomeCourseAdapter(courseItems, context!!)
         homeCourseAdapter.setOnItemClick(this)
         view.courseList.adapter = homeCourseAdapter
+        homeCourseAdapter.notifyDataSetChanged()
     }
 
 

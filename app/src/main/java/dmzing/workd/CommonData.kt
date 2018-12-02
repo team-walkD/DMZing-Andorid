@@ -18,4 +18,5 @@ object CommonData {
     var commonLatitude : Double? = 0.0
     var commonLongitude : Double? = 0.0
     var new_filter_items =  ArrayList<HomeFilterData>()
+    var complete_flag : Int = 0
 }
