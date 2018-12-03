@@ -178,7 +178,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 //                        for(i in 0 until errorMessage.size){
 //                            Toast.makeText(this@SignUpActivity,errorMessage[i].message,Toast.LENGTH_SHORT).show()
 //                        }
-                        Log.d("wowowow",response.toString())
+                        toast("중복된 이메일입니다.")
                     }
                     401 -> {
 
