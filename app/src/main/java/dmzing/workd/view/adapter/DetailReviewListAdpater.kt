@@ -33,7 +33,7 @@ class DetailReviewListAdpater(var itemList : ArrayList<SimpleReviewDto>,var cont
 
     override fun onBindViewHolder(p0: DetailReviewListViewHolder, p1: Int) {
         if(itemList.get(p1).thumbnailUrl.equals("") || itemList.get(p1).thumbnailUrl == null){
-            p0.detailReviewImage.setBackgroundColor(Color.parseColor("#e3e3e3"))
+            p0.detailReviewImage.setBackgroundColor(Color.parseColor("#dddddd"))
         } else {
             Log.d("zxcv","zxcv")
             Glide.with(context).load(itemList.get(p1).thumbnailUrl).apply(RequestOptions().centerCrop()).into(p0.detailReviewImage)
@@ -64,7 +64,7 @@ class DetailReviewListAdpater(var itemList : ArrayList<SimpleReviewDto>,var cont
 
     fun timeStampToDate(timeStamp : Long) : String{
         var date : Date = Date(timeStamp)
-        var dateF : SimpleDateFormat = SimpleDateFormat("yyyy.mm.dd", Locale.getDefault())
+        var dateF : SimpleDateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
         return dateF.format(date)
     }
 

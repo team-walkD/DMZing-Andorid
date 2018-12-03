@@ -604,6 +604,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
                             newpick.places.add(newpick.places.get(3))
                         }*/
+                        if(response.body()!!.places.size== 4){
+                            CommonData.complete_flag = 4
+                        }
                         settingHomeItems(view, response.body()!!)
 
                     }
@@ -617,6 +620,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     fun settingHomeItems(view: View, items: PickCourse) {
         courseItems = items
         if(courseItems.places.size == 4){
+            Log.v("0627 size :", courseItems.places.size.toString())
             CommonData.complete_flag = 4
         }
         view.courseList.setHasFixedSize(true)

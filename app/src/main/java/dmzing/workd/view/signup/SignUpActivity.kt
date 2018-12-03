@@ -20,7 +20,13 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.telephony.PhoneNumberFormattingTextWatcher
 import android.telephony.PhoneNumberUtils
+import android.util.Patterns
+import android.widget.EditText
+import android.widget.Toast
+import dmzing.workd.base.BaseModel
 import java.util.*
+import java.util.regex.Pattern
+import kotlin.collections.ArrayList
 
 
 class SignUpActivity : AppCompatActivity(), View.OnClickListener {
@@ -36,8 +42,6 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 
 
                 signUpPhone.addTextChangedListener(PhoneNumberFormattingTextWatcher()) // 이렇게 리스너를 걸어주면*/
-
-
 
 
                 var phone = signUpPhone.text.toString()
@@ -64,10 +68,24 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                     })*/
                 var nickname = signUpNickname.text.toString()
                 if (email.length > 0 && pw.length > 0 && phone.length > 0 && nickname.length > 0) {
-                    postUserCreate(email, pw, phone, nickname)
+
+                    //유효성 검사
+                    if(android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                        if(Pattern.matches("^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-zA-Z]).{8,20}$",pw)){
+                            if(Pattern.matches("^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$", phone)){
+                                postUserCreate(email, pw, phone, nickname)
+                            } else {
+                                toast("유효한 전화번호가 아닙니다.")
+                            }
+                        } else {
+                            toast("유효한 비밀번호가 아닙니다.")
+                        }
+                    } else {
+                        toast("유효한 이메일이 아닙니다.")
+                    }
+
                 } else {
-                    //toast("정보를 정확히 입력해주세요.")
-                    toast(phone)
+                    toast("정보를 정확히 입력해주세요.")
                 }
             }
             signUpXBtn -> {
@@ -91,6 +109,46 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_sign_up)
         signUpPhone.addTextChangedListener(PhoneNumberFormattingTextWatcher())
         init()
+
+        //이메일 실시간 유효성 검사
+        signUpEmail.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(!android.util.Patterns.EMAIL_ADDRESS.matcher(s).matches()){
+                    emailCheckText.text = "유효한 이메일이 아닙니다."
+                } else {
+                    emailCheckText.text = "유효한 이메일 입니다."
+                }
+            }
+
+        })
+
+        //비밀번호 실시간 유효성 검사
+        signUpPw.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(!Pattern.matches("^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-zA-Z]).{8,20}$",s)){
+                    signUpPwTv.text = "특수문자,영문,숫자를 포함해 주세요."
+                } else {
+                    signUpPwTv.text = "유효한 비밀번호 입니다."
+                }
+            }
+
+        })
     }
 
     fun postUserCreate(userEmail: String, userPw: String, userPhone: String, userNickname: String) {
@@ -104,9 +162,12 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             override fun onResponse(call: Call<Any>, response: Response<Any>) {
-                Log.v("woo success : ", response!!.body().toString())
-                Log.v("woo success : ", response!!.message().toString())
-                Log.v("woo success : ", response!!.code().toString())
+                Log.v("woo success b: ", response!!.body().toString())
+                Log.v("woo success m: ", response!!.message().toString())
+                Log.v("woo success c: ", response!!.code().toString())
+                Log.v("1115 woo",response.message())
+                Log.v("1115 woo",response.errorBody().toString())
+
                 when (response!!.code()) {
                     201 -> {
                         SharedPreference.instance!!.setPrefData("jwt", response.headers().value(0))
@@ -114,6 +175,15 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                         Log.v("woo 1994 :", response.message().toString())
                         startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
                         finish()
+                    }
+                    400 -> {
+                        Log.v("400 woo",response.message())
+                        Log.v("400 woo",response.errorBody().toString())
+//                        var errorMessage = response.body()!! as ArrayList<BaseModel>
+//                        for(i in 0 until errorMessage.size){
+//                            Toast.makeText(this@SignUpActivity,errorMessage[i].message,Toast.LENGTH_SHORT).show()
+//                        }
+                        toast("중복된 이메일입니다.")
                     }
                     401 -> {
 

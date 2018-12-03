@@ -1,5 +1,6 @@
 package dmzing.workd.network
 
+import dmzing.workd.base.BaseModel
 import dmzing.workd.model.chat.ChatBTypeData
 import dmzing.workd.model.chat.ChatMData
 import dmzing.workd.model.chat.ChatSTypeData
