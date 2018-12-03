@@ -164,6 +164,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        Log.v("304 bind position:",position.toString())
         if (holder is HeaderCourseViewHolder) {
             var headerCourseViewHolder: HeaderCourseViewHolder = holder
 
@@ -182,16 +183,16 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
 
         } else if (holder is LetterCourseViewHolder) {
             var letterCourseViewHolder: LetterCourseViewHolder = holder
-            letterCourseViewHolder.letterTitle.text = item_list.places[position - 1].title
+            letterCourseViewHolder.letterTitle.text = item_list.places[position-1].title
             //letterCourseViewHolder.letterSubTitle.text = item_list.places[position-1].description
 
             // 플레이스 아이디 저장
-            CommonData.placeId = item_list.places[position - 1].id
-            Glide.with(context).load(item_list.places[position - 1].mainImageUrl)
+            CommonData.placeId = item_list.places[position-1].id
+            Glide.with(context).load(item_list.places[position-1].mainImageUrl)
                 .into(letterCourseViewHolder.letterImage)
             letterCourseViewHolder.letterHint.movementMethod = ScrollingMovementMethod.getInstance()
-            letterCourseViewHolder.letterHint.text = item_list.places[position - 1].hint
-            if (item_list.places[position - 1].letterImageUrl != null) {
+            letterCourseViewHolder.letterHint.text = item_list.places[position-1].hint
+            if (item_list.places[position-1].letterImageUrl != null) {
                 letterCourseViewHolder.letterDetailText.text = "편지 보기"
                 letterFlag = 1
             } else {
@@ -202,7 +203,7 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
                 when (letterFlag) {
                     1 -> {
                         //context.toast("편지 보기 버튼!")
-                        var image: String = item_list.places[position - 1].letterImageUrl!!
+                        var image: String = item_list.places[position-1].letterImageUrl!!
                         context!!.startActivity<HomeLetterActivity>("letter" to image)
                     }
                     2 -> {
