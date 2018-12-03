@@ -63,7 +63,7 @@
                             android:textSize="24sp"
                             android:textColor="#1c3748"
                             android:lineSpacingExtra="11sp"
-                            tools:text="DMZing"
+                            android:text="DMZing"
                             android:fontFamily="@font/notosanscjkkr_bold"
                             android:includeFontPadding="false"
                     />
@@ -74,7 +74,7 @@
                             android:textSize="24sp"
                             android:textColor="#1c3748"
                             android:lineSpacingExtra="11sp"
-                            tools:text="의"
+                            android:text="의"
                             android:fontFamily="@font/notosanscjkkr_regular"
                             android:includeFontPadding="false"
                     />
@@ -93,7 +93,7 @@
                             android:lineSpacingExtra="11sp"
                             android:fontFamily="@font/notosanscjkkr_bold"
                             android:includeFontPadding="false"
-                            tools:text="가족"
+                            android:text="가족"
                     />
 
                     <TextView
@@ -104,7 +104,7 @@
                             android:textSize="24sp"
                             android:textColor="#1c3748"
                             android:lineSpacingExtra="11sp"
-                            tools:text="이 되어주세요!"
+                            android:text="이 되어주세요!"
                     />
 
 
@@ -170,7 +170,7 @@
                     android:textSize="14sp"
                     android:textColor="#6da8c7"
                     android:lineSpacingExtra="6sp"
-                    tools:text="유효한 이메일이 아닙니다."
+                    android:text="유효한 이메일이 아닙니다."
             />
 
 
@@ -198,7 +198,7 @@
                     android:textSize="14sp"
                     android:textColor="#b2b2b2"
                     android:lineSpacingExtra="6sp"
-                    tools:text="(특수문자,영문,숫자 포함)"
+                    android:text="(특수문자,영문,숫자 포함)"
             />
 
             <EditText
@@ -228,7 +228,7 @@
                     android:textSize="14sp"
                     android:textColor="#6da8c7"
                     android:lineSpacingExtra="6sp"
-                    tools:text="특수문자,영문,숫자를 포함해 주세요."
+                    android:text="특수문자,영문,숫자를 포함해 주세요."
             />
 
 
