@@ -111,9 +111,9 @@ class ReviewActivity : AppCompatActivity() {
                     200->{
                         mReviewDto = response.body()!!
                         //썸네일
-                        if(mReviewDto.thumbnailUrl==""){
-                            //review_thumbnail.setBackgroundColor(Color.parseColor("#e3e3e3"))
-                            //review_thumbnail.setColorFilter(Color.parseColor("#7f000000"), PorterDuff.Mode.SRC_OVER)
+                        if(mReviewDto.thumbnailUrl.length == 0){
+                            review_thumbnail.setBackgroundColor(Color.parseColor("#dddddd"))
+                            review_thumbnail.setColorFilter(Color.parseColor("#7f000000"), PorterDuff.Mode.SRC_OVER)
                         } else {
                             Glide.with(this@ReviewActivity).load(mReviewDto.thumbnailUrl).apply(RequestOptions().centerCrop()).into(review_thumbnail)
                             review_thumbnail.setColorFilter(Color.parseColor("#7f000000"), PorterDuff.Mode.SRC_OVER)
@@ -151,7 +151,7 @@ class ReviewActivity : AppCompatActivity() {
     }
     fun timeStampToDate(timeStamp : Long) : String{
         var date : Date = Date(timeStamp)
-        var dateF : SimpleDateFormat = SimpleDateFormat("yyyy.mm.dd", Locale.getDefault())
+        var dateF : SimpleDateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
         return dateF.format(date)
     }
 }
