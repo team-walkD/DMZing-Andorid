@@ -162,9 +162,12 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             override fun onResponse(call: Call<Any>, response: Response<Any>) {
-                Log.v("woo success : ", response!!.body().toString())
-                Log.v("woo success : ", response!!.message().toString())
-                Log.v("woo success : ", response!!.code().toString())
+                Log.v("woo success b: ", response!!.body().toString())
+                Log.v("woo success m: ", response!!.message().toString())
+                Log.v("woo success c: ", response!!.code().toString())
+                Log.v("1115 woo",response.message())
+                Log.v("1115 woo",response.errorBody().toString())
+
                 when (response!!.code()) {
                     201 -> {
                         SharedPreference.instance!!.setPrefData("jwt", response.headers().value(0))
@@ -174,6 +177,8 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                         finish()
                     }
                     400 -> {
+                        Log.v("400 woo",response.message())
+                        Log.v("400 woo",response.errorBody().toString())
 //                        var errorMessage = response.body()!! as ArrayList<BaseModel>
 //                        for(i in 0 until errorMessage.size){
 //                            Toast.makeText(this@SignUpActivity,errorMessage[i].message,Toast.LENGTH_SHORT).show()

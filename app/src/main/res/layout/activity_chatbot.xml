@@ -46,7 +46,7 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+   <!-- <RelativeLayout
             android:id="@+id/chatTextLayout"
             android:layout_below="@+id/chatToolbar"
             android:layout_width="match_parent"
@@ -82,10 +82,10 @@
               android:layout_centerVertical="true"
               android:layout_marginLeft="6.5dp"
               android:background="@android:color/white"/>
-    </RelativeLayout>
+    </RelativeLayout>-->
 
     <android.support.v7.widget.RecyclerView
-            android:layout_below="@+id/chatTextLayout"
+            android:layout_below="@+id/chatToolbar"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="22dp"
             android:id="@+id/chatMessageRv"
