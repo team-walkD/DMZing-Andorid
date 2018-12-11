@@ -100,7 +100,7 @@ class ReviewWriteActivity : AppCompatActivity() {
 
                 val title = review_write_title.text.toString()
                 val courseId = intent.getIntExtra("courseId",0)
-                var dateFormat = SimpleDateFormat("yyyy.mm.dd")
+                var dateFormat = SimpleDateFormat("yyyy.MM.dd")
                 val startDate = dateFormat.parse(review_write_start_date.text.toString())
                 val endDate = dateFormat.parse(review_write_end_date.text.toString())
 
@@ -153,16 +153,16 @@ class ReviewWriteActivity : AppCompatActivity() {
                 START_DATE ->{
                     //review_write_start_date.text = year.toString()+"."+(month+1)+"."+dayOfMonth.toString()
                     var dateStr = year.toString()+"."+(month+1)+"."+dayOfMonth.toString()
-                    var before = SimpleDateFormat("yyyy.mm.dd").parse(dateStr)
-                    val after = SimpleDateFormat("yyyy.mm.dd").format(before)
+                    var before = SimpleDateFormat("yyyy.MM.dd").parse(dateStr)
+                    val after = SimpleDateFormat("yyyy.MM.dd").format(before)
                     review_write_start_date.text = after.toString()
                     checkDate()
                 }
                 END_DATE->{
                     var dateStr = year.toString()+"."+(month+1)+"."+dayOfMonth.toString()
-                    var before = SimpleDateFormat("yyyy.mm.dd").parse(dateStr)
+                    var before = SimpleDateFormat("yyyy.MM.dd").parse(dateStr)
                     Log.d("aaaaa",before.time.toString())
-                    val after = SimpleDateFormat("yyyy.mm.dd").format(before)
+                    val after = SimpleDateFormat("yyyy.MM.dd").format(before)
                     review_write_end_date.text = after
                     checkDate()
                 }
