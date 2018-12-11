@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 finish()*/
             }
             loginToSignBtn -> {
-                startActivity(Intent(this,SignUpActivity::class.java))
+                startActivity(Intent(this, SignUpActivity::class.java))
             }
         }
     }
@@ -42,16 +42,16 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     fun init() {
         loginBtn.setOnClickListener(this)
         loginToSignBtn.setOnClickListener(this)
-        networkService = ApplicationController.instance.networkService
         SharedPreference.instance!!.load(this)
     }
 
-    lateinit var networkService: NetworkService
-    lateinit var loginUser: LoginUser
-    companion object {
-        //var jwt : String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdHkiOiJVU0VSIiwiaXNzIjoiZG16aW5nIiwiZXhwIjoxNTUxNDUyNDQxLCJlbWFpbCI6ImV4YW1wbGVAZ21haWwuY29tIn0.FoOgDpTqPMgescMJB09-sC_Detc_dCMBmqqQoahl1Cw "
-        //var jwt : String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdHkiOiJVU0VSIiwiaXNzIjoiZG16aW5nIiwiZXhwIjoxNTUxNDQ2NDU0LCJlbWFpbCI6ImxlYWtAbGVhay5jb20ifQ.PdS0L1t2JesL3aMN5e-sbYv2aEyv_v3thwEOGxKdk6o"
+    private val networkService by lazy {
+        ApplicationController.instance.networkService
     }
+    private var overlapNetworking: String = ""
+    lateinit var loginUser: LoginUser
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -68,48 +68,57 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun postLogin() {
-        Log.v("1011 woo in:", "ㅇ?")
+
         loginUser = LoginUser(loginId.text.toString(), loginPw.text.toString())
-        Log.v("1011 woo in:", "${loginId.text.toString()}")
-        Log.v("1011 woo in:", "${loginPw.text.toString()}")
-        var loginResponse = networkService.postLogin(loginUser)
-        loginResponse.enqueue(object : Callback<Any> {
-            override fun onFailure(call: Call<Any>, t: Throwable) {
-                Log.v("1011 woo f:", t.message)
-            }
 
-            override fun onResponse(call: Call<Any>, response: Response<Any>) {
-                Log.v("1011 woo r:", response!!.body().toString())
-                Log.v("1011 woo r:", response!!.errorBody().toString())
-                Log.v("1011 woo r:", response!!.toString())
-                when (response!!.code()) {
-                    200 -> {
-                        Log.v("1011 woo s:", response!!.body().toString())
-                        Log.v("1011 woo s:", response!!.code().toString())
-                        Log.v("1011 woo s:", response!!.headers().toString())
+        if (overlapNetworking == "") {
 
+            overlapNetworking = "networking"
 
-                        /*FIXME
-                        * response의 header에 토큰이 담겨서 올 경우 header를 바로 사용할 수 없고,
-                        * header를 보고 그 안에서 jwt를 뽑아내야 한다.
-                        * 지금의 경우에는 0번째 인덱스에 jwt라는 키값이 있는 걸 확인했고
-                        * 그래서 0번째 인덱스의 value를 뽑아내어 jwt 값을 가지고 왔다.
-                        * */
-                        Log.v("1011 woo s:", response!!.headers().value(0))
-                        SharedPreference.instance!!.setPrefData("jwt",response!!.headers().value(0))
-                        startActivity<MainActivity>()
-                        finish()
-                    }
-                    403 -> {
-                        toast("정보가 정확하지 않습니다.")
-                    }
-                    500 -> {
-                        toast("정보가 정확하지 않습니다.")
-                    }
-
+            var loginResponse = networkService.postLogin(loginUser)
+            loginResponse.enqueue(object : Callback<Any> {
+                override fun onFailure(call: Call<Any>, t: Throwable) {
+                    Log.v("Error LoginActivity:", t.message)
+                    overlapNetworking = ""
                 }
-            }
 
-        })
+                override fun onResponse(call: Call<Any>, response: Response<Any>) {
+                    response?.let {
+                        when (it.code()) {
+                            200 -> {
+                                Log.v("1011 woo s:", response!!.body().toString())
+                                Log.v("1011 woo s:", response!!.code().toString())
+                                Log.v("1011 woo s:", response!!.headers().toString())
+
+
+                                /*FIXME
+                                * response의 header에 토큰이 담겨서 올 경우 header를 바로 사용할 수 없고,
+                                * header를 보고 그 안에서 jwt를 뽑아내야 한다.
+                                * 지금의 경우에는 0번째 인덱스에 jwt라는 키값이 있는 걸 확인했고
+                                * 그래서 0번째 인덱스의 value를 뽑아내어 jwt 값을 가지고 왔다.
+                                * */
+                                Log.v("1011 woo s:", response!!.headers().value(0))
+                                SharedPreference.instance!!.setPrefData("jwt", response!!.headers().value(0))
+                                startActivity<MainActivity>()
+                                finish()
+                            }
+                            403 -> {
+                                toast("정보가 정확하지 않습니다.")
+                            }
+                            500 -> {
+                                toast("정보가 정확하지 않습니다.")
+                            }
+                            else -> {
+                                toast("error!")
+                            }
+                        }
+                    }?.also {
+                        overlapNetworking = ""
+                    }
+                }
+
+            })
+        }
+
     }
 }
