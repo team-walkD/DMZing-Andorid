@@ -281,7 +281,6 @@ class HomeCourseAdapter(var item_list: PickCourse, private var context: Context)
 
 
 
-
                         if (tmp[1].sequence == 100 && tmp[1].letterImageUrl != null) {
                             //context.toast("그만 추가하시죠")
                             Log.v("1244 size:", item_list.places.size.toString())
