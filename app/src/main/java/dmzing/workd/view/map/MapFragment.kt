@@ -3,7 +3,6 @@ package dmzing.workd.view.map
 import android.content.Context
 import android.content.Intent
 import android.graphics.Point
-import android.net.LinkAddress
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -23,11 +22,10 @@ import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.SharedPreference
 import dmzing.workd.util.SpaceItemDecoration
-import dmzing.workd.view.ChatbotActivity
+import dmzing.workd.view.chatbot.ChatbotActivity
 import dmzing.workd.view.adapter.CourseListAdapter
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.android.synthetic.main.fragment_map.view.*
-import org.jetbrains.anko.support.v4.startActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -65,7 +63,7 @@ class MapFragment : Fragment() {
         requestOptions.placeholder(R.drawable.map_image)
 
         fragmentView.map_walkd.setOnClickListener {
-            startActivity(Intent(context,ChatbotActivity::class.java))
+            startActivity(Intent(context, ChatbotActivity::class.java))
         }
 
 
