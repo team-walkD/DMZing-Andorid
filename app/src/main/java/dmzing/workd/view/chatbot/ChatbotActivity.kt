@@ -1,4 +1,4 @@
-package dmzing.workd.view
+package dmzing.workd.view.chatbot
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -9,8 +9,6 @@ import dmzing.workd.R
 import dmzing.workd.model.chat.*
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
-import dmzing.workd.view.chatbot.ChatMessageAdapter
-import dmzing.workd.view.chatbot.ChatTypeAdapter
 import kotlinx.android.synthetic.main.activity_chatbot.*
 import retrofit2.Call
 import retrofit2.Callback

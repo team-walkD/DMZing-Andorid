@@ -23,19 +23,17 @@ class MainActivity : AppCompatActivity() {
 
     // 홈 화면에서 back 버튼 처리
     override fun onBackPressed() {
-        super.onBackPressed()
-
         if (System.currentTimeMillis() > backPressedTime + 2000) {
             backPressedTime = System.currentTimeMillis()
-            toast("\'뒤로가기\' 버튼을 한번 더 누르시면 종료됩니다.")
+            toast("\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.")
             return
-        }
-        if (System.currentTimeMillis() <= backPressedTime + 2000){
-            this.finish()
-        }
+        } else
+            super.onBackPressed()
+
 
     }
 
+    // custom 탭 구현
     fun settingTab() {
         mainViewPager.adapter = DmzingFragmentStatePagerAdapter(supportFragmentManager, 4)
         mainViewPager.offscreenPageLimit = 4
