@@ -11,8 +11,7 @@ import dmzing.workd.model.mypage.GetMypageInfomation
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.SharedPreference
-import dmzing.workd.util.Utils
-import dmzing.workd.view.ChatbotActivity
+import dmzing.workd.view.chatbot.ChatbotActivity
 import dmzing.workd.view.mypage.faq.FAQActivity
 import dmzing.workd.view.mypage.point.MypagePointActivity
 import dmzing.workd.view.mypage.setting.SettingActivity

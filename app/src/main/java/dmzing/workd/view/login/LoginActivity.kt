@@ -25,25 +25,11 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!) {
-            loginBtn -> {
-                postLogin()
-
-                // 임시 방편임.
-                /*SharedPreference.instance!!.setPrefData("jwt", jwt)
-                startActivity<MainActivity>()
-                finish()*/
-            }
-            loginToSignBtn -> {
-                startActivity(Intent(this, SignUpActivity::class.java))
-            }
+            loginBtn -> postLogin()
+            loginToSignBtn -> startActivity<SignUpActivity>()
         }
     }
 
-    fun init() {
-        loginBtn.setOnClickListener(this)
-        loginToSignBtn.setOnClickListener(this)
-        SharedPreference.instance!!.load(this)
-    }
 
     private val networkService by lazy {
         ApplicationController.instance.networkService
@@ -67,10 +53,18 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    fun init() {
+        loginBtn.setOnClickListener(this)
+        loginToSignBtn.setOnClickListener(this)
+        SharedPreference.instance!!.load(this)
+    }
+
+    // 로그인 통신
     fun postLogin() {
 
         loginUser = LoginUser(loginId.text.toString(), loginPw.text.toString())
 
+        // 중복 통신 막기 위한 방법
         if (overlapNetworking == "") {
 
             overlapNetworking = "networking"

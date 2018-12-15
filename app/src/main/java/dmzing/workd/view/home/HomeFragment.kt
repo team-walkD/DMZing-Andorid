@@ -1,6 +1,5 @@
 package dmzing.workd.view.home
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
@@ -26,23 +25,16 @@ import dmzing.workd.view.adapter.HomeCourseAdapter
 import dmzing.workd.view.adapter.HomeFilterAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.support.v4.content.ContextCompat.getSystemService
 import android.location.LocationManager
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import android.support.v4.content.ContextCompat.getSystemService
-import android.support.v4.content.PermissionChecker.checkSelfPermission
-import dmzing.workd.model.home.Places
-import dmzing.workd.view.ChatbotActivity
+import dmzing.workd.view.chatbot.ChatbotActivity
 import dmzing.workd.view.MainActivity
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
-import java.security.Permission
-import java.util.jar.Manifest
 
 
 /**

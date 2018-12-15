@@ -11,14 +11,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Toast
 import dmzing.workd.R
 import dmzing.workd.model.review.ReviewCountDto
 import dmzing.workd.network.ApplicationController
 import dmzing.workd.network.NetworkService
 import dmzing.workd.util.GridItemDecoration
 import dmzing.workd.util.SharedPreference
-import dmzing.workd.view.ChatbotActivity
+import dmzing.workd.view.chatbot.ChatbotActivity
 import dmzing.workd.view.adapter.ReviewMapAdapter
 import kotlinx.android.synthetic.main.fragment_review.view.*
 import retrofit2.Call
