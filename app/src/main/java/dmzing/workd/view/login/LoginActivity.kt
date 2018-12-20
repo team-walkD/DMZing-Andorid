@@ -80,10 +80,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     response?.let {
                         when (it.code()) {
                             200 -> {
-                                Log.v("1011 woo s:", response!!.body().toString())
-                                Log.v("1011 woo s:", response!!.code().toString())
-                                Log.v("1011 woo s:", response!!.headers().toString())
-
 
                                 /*FIXME
                                 * response의 header에 토큰이 담겨서 올 경우 header를 바로 사용할 수 없고,

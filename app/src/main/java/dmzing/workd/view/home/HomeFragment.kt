@@ -43,18 +43,21 @@ import org.jetbrains.anko.toast
 class HomeFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!) {
-         /*   v -> {
-                var index = courseList.getChildAdapterPosition(v!!)
-                toast("${index}")
-            }*/
+            /*   v -> {
+                   var index = courseList.getChildAdapterPosition(v!!)
+                   toast("${index}")
+               }*/
             v!!.filterDMZingBtn -> {
-                if (!filterDMZingBtn.isSelected){
+                if (!filterDMZingBtn.isSelected) {
 
                     filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
 
-                    filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                    filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                    filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterDateBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterHistoryBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterNaturalBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
 
                     filterDMZingBtn.isSelected = true
                     filterDateBtn.isSelected = false
@@ -62,14 +65,15 @@ class HomeFragment : Fragment(), View.OnClickListener {
                     filterNaturalBtn.isSelected = false
 
                     putCoursePick(view!!, 1)
-                }else{
+                } else {
                     filterDMZingBtn.isSelected = false
-                    filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterDMZingBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
                 }
 
             }
             v!!.filterDateBtn -> {
-                if (!filterDateBtn.isSelected){
+                if (!filterDateBtn.isSelected) {
                     filterDMZingBtn.isSelected = false
                     filterDateBtn.isSelected = true
                     filterHistoryBtn.isSelected = false
@@ -77,19 +81,23 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
                     filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
 
-                    filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                    filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                    filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterDMZingBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterHistoryBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterNaturalBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
 
 
                     putCoursePick(view!!, 2)
-                }else{
+                } else {
                     filterDateBtn.isSelected = true
-                    filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterDateBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
                 }
             }
             v!!.filterHistoryBtn -> {
-                if (!filterHistoryBtn.isSelected){
+                if (!filterHistoryBtn.isSelected) {
                     filterHistoryBtn.isSelected = true
                     filterDateBtn.isSelected = false
                     filterDMZingBtn.isSelected = false
@@ -97,27 +105,34 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
                     filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
 
-                    filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                    filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                    filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterDateBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterDMZingBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterNaturalBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
 
 
 
 
 
                     putCoursePick(view!!, 3)
-                }else{
+                } else {
                     filterHistoryBtn.isSelected = true
-                    filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterHistoryBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
                 }
             }
             v!!.filterNaturalBtn -> {
-                if (!filterNaturalBtn.isSelected){
+                if (!filterNaturalBtn.isSelected) {
                     filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
 
-                    filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                    filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
-                    filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterHistoryBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterDateBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterDMZingBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
 
                     filterNaturalBtn.isSelected = true
                     filterHistoryBtn.isSelected = false
@@ -127,12 +142,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
                     putCoursePick(view!!, 4)
 
-                }else{
+                } else {
                     filterNaturalBtn.isSelected = true
-                    filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
+                    filterNaturalBtn.background =
+                            ContextCompat.getDrawable(context!!, R.drawable.filter_opacity_background)
                 }
             }
-            v!!.chatbotBtn->{
+            v!!.chatbotBtn -> {
                 context!!.startActivity<ChatbotActivity>()
             }
         }
@@ -140,15 +156,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     lateinit var homeCourseAdapter: HomeCourseAdapter
     lateinit var courseItems: PickCourse
-
-    lateinit var homeFilterAdapter: HomeFilterAdapter
     lateinit var filterItems: ArrayList<HomeFilterData>
     lateinit var mainActivity: MainActivity
     lateinit var hView: View
+    private var ovelapNetworking: String = ""
     val MY_LOCATION_REQUEST_CODE = 100
-    val MIN_DISTANCE_CHANGE_FOR_UPDATES: Long = 10
-    val MIN_TIME_BW_UPDATES: Float = 1F
-    var filter_position : Int = 0
 
 
     override fun onAttach(context: Context?) {
@@ -158,17 +170,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        getHomeMission2(view!!)
-
+        getHomeMission(view!!, 2)
 
     }
 
-  /*  override fun onPause() {
-        super.onPause()
-        getHomeMission(view!!)
-    }*/
 
-    fun init(view : View) {
+    fun init(view: View) {
         view.filterDMZingBtn.setOnClickListener(this)
         view.filterDateBtn.setOnClickListener(this)
         view.filterHistoryBtn.setOnClickListener(this)
@@ -179,6 +186,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         view.filterDateBtn.isSelected = false
         view.filterHistoryBtn.isSelected = false
         view.filterNaturalBtn.isSelected = false
+
+        filterItems = ArrayList()
 
         networkService = ApplicationController.instance.networkService
         SharedPreference.instance!!.load(context!!)
@@ -191,12 +200,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         hView = view
         init(view)
 
-
-        getLocation()
+        //getLocation()
         requestLocationPermission()
-
-
-        filterItems = ArrayList()
 
 
         /*FIXME
@@ -204,13 +209,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
         * snapHelper라는 것을 사용하면 되고 코드는 아래의 두줄로 충분하다.
         * */
         var snapHelper: SnapHelper = PagerSnapHelper()
-        //var snapHelper2 : SnapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(view.courseList)
-        //snapHelper2.attachToRecyclerView(view.homeFilterRv)
 
-        //settingHomeRecyclerview(view)
-        //settingFilterRecyclerview(view)
-        getHomeMission(view)
+
+        getHomeMission(view, 1)
 
         return view
     }
@@ -244,20 +246,16 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 )
             }
         } else {
-            Log.v("859 lat", "ㅇㅇㅇㅇㅇ else")
+
             getLocation()
         }
     }
 
 
     fun getLocation() {
-        //context!!.toast("testing")
-        Log.v("859 lat", "ㅇㅇㅇㅇㅇ get")
-
-
         val locationManager = context!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-// Define a listener that responds to location updates
+        // Define a listener that responds to location updates
         val locationListener = object : LocationListener {
 
             override fun onLocationChanged(location: Location) {
@@ -283,7 +281,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
         }
 
-// Register the listener with the Location Manager to receive location updates
+        // Register the listener with the Location Manager to receive location updates
         try {
             Log.v("859 lat", "ㅇㅇㅇㅇㅇ try")
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0f, locationListener)
@@ -293,38 +291,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
             Log.v("859 lat", "ㅇㅇㅇㅇㅇ catch")
             context!!.toast("위치를 잡을 수 없습니다.")
         }
-        /*  val locationManager = context!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-          // gps
-          var isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-          // 와이파이.
-          var isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-
-          Log.v("855 woo",isGPSEnabled.toString())
-          Log.v("855 woo",isNetworkEnabled.toString())
-
-          var locationListener = object : LocationListener {
-              override fun onLocationChanged(location: Location?) {
-                  var lat : Double = location!!.latitude
-                  var lng : Double = location!!.longitude
-
-                  Log.v("859 lat",lat.toString())
-                  Log.v("859 lng",lng.toString())
-              }
-
-              override fun onStatusChanged(p0: String?, p1: Int, p2: Bundle?) {
-                  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-              }
-
-              override fun onProviderEnabled(p0: String?) {
-                  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-              }
-
-              override fun onProviderDisabled(p0: String?) {
-                  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-              }
-          }
-
-          locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,MIN_DISTANCE_CHANGE_FOR_UPDATES,MIN_TIME_BW_UPDATES,locationListener)*/
 
     }
 
@@ -341,187 +307,90 @@ class HomeFragment : Fragment(), View.OnClickListener {
         }
     }
 
-
-    // 홈 편지 미션 통신
-    fun getHomeMission2(view: View) {
+    fun getHomeMission(view: View, type: Int) {
         var homeResponse = networkService
             .getHomeMissions(SharedPreference.instance!!.getPrefStringData(CommonData.JWT)!!)
-        homeResponse.enqueue(object : Callback<HomeCourseData> {
-            override fun onFailure(call: Call<HomeCourseData>, t: Throwable) {
-                Log.v("853 woo f:", t.message)
-            }
 
-            override fun onResponse(call: Call<HomeCourseData>, response: Response<HomeCourseData>) {
-                Log.v("853 woo r:", response.code().toString())
-                Log.v("853 woo r:", response.body().toString())
-                Log.v("853 woo size:", response.body()!!.purchaseList.size.toString())
-                when (response.code()!!) {
-                    200 -> {
-                        //settingFilterItems(view, response.body()!!.purchaseList)
-                        filterItems = response.body()!!.purchaseList
 
-                        for(i in 0 .. filterItems.size-1){
-                            when(filterItems[i].id){
-                                1->{
-                                    if(filterItems[i].isPicked)
-                                        view.filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
+        if (ovelapNetworking == "") {
+            ovelapNetworking = "networking"
 
-                                    view.filterDMZingBtn.visibility = View.VISIBLE
+            homeResponse.enqueue(object : Callback<HomeCourseData> {
+                override fun onFailure(call: Call<HomeCourseData>, t: Throwable) {
+                    Log.v("Error Home WOO:", t.message)
+                    ovelapNetworking = "networking"
+                }
+
+                override fun onResponse(call: Call<HomeCourseData>, response: Response<HomeCourseData>) {
+                    Log.v("853 woo r:", response.code().toString())
+
+                    response?.let {
+                        when (it.code()) {
+                            200 -> {
+                                //settingFilterItems(view, response.body()!!.purchaseList)
+                                filterItems = response.body()!!.purchaseList
+
+                                for (i in 0..filterItems.size - 1) {
+                                    when (filterItems[i].id) {
+                                        1 -> {
+                                            if (filterItems[i].isPicked)
+                                                view.filterDMZingBtn.background =
+                                                        ContextCompat.getDrawable(
+                                                            context!!,
+                                                            R.drawable.filter_background
+                                                        )
+
+                                            view.filterDMZingBtn.visibility = View.VISIBLE
+                                        }
+                                        2 -> {
+                                            if (filterItems[i].isPicked)
+                                                view.filterDateBtn.background =
+                                                        ContextCompat.getDrawable(
+                                                            context!!,
+                                                            R.drawable.filter_background
+                                                        )
+
+                                            view.filterDateBtn.visibility = View.VISIBLE
+                                        }
+                                        3 -> {
+                                            if (filterItems[i].isPicked)
+                                                view.filterHistoryBtn.background =
+                                                        ContextCompat.getDrawable(
+                                                            context!!,
+                                                            R.drawable.filter_background
+                                                        )
+
+                                            view.filterHistoryBtn.visibility = View.VISIBLE
+                                        }
+                                        4 -> {
+                                            if (filterItems[i].isPicked)
+                                                view.filterNaturalBtn.background =
+                                                        ContextCompat.getDrawable(
+                                                            context!!,
+                                                            R.drawable.filter_background
+                                                        )
+
+                                            view.filterNaturalBtn.visibility = View.VISIBLE
+                                        }
+
+                                    }
                                 }
-                                2->{
-                                    if(filterItems[i].isPicked)
-                                        view.filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
 
-                                    view.filterDateBtn.visibility = View.VISIBLE
-                                }
-                                3->{
-                                    if(filterItems[i].isPicked)
-                                        view.filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
-
-                                    view.filterHistoryBtn.visibility = View.VISIBLE
-                                }
-                                4->{
-                                    if(filterItems[i].isPicked)
-                                        view.filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
-
-                                    view.filterNaturalBtn.visibility = View.VISIBLE
-                                }
                             }
-                        }
-                      /*  for(i in 0..filterItems.size-1){
-                            when(i){
-                                1->{
-                                    if(filterItems[i].isPicked)
-                                        view!!.filterDMZingBtn.visibility = View.VISIBLE
-                                }
-                                2->{
-                                    if(filterItems[i].isPicked)
-                                        view!!.filterDateBtn.visibility = View.VISIBLE
-                                    else
-                                        view!!.filterDateBtn.visibility = View.GONE
-                                }
-                                3->{
-                                    if(filterItems[i].isPicked)
-                                        view!!.filterHistoryBtn.visibility = View.VISIBLE
-                                    else
-                                        view!!.filterHistoryBtn.visibility = View.GONE
-                                }
-                                4->{
-                                    if(filterItems[i].isPicked)
-                                        view!!.filterNaturalBtn.visibility = View.VISIBLE
-                                    else
-                                        view!!.filterNaturalBtn.visibility = View.GONE
-                                }
+                            else -> {
+
                             }
-                        }*/
-                 /*       var newpick = response.body()!!.pickCourse
-                        if(newpick.places.size == 4){
-//                             newpick.places.add(Places(1,"","",2,2,"",""
-//                                 ,"",0.0,0.0,"dd","dd","dd","dd","dd",PeriP))
-
-                            newpick.places.add(newpick.places.get(3))
-                        }*/
-
-                        if(response.body()!!.pickCourse.places.size == 4){
-                            CommonData.complete_flag = 4
+                        }?.also {
+                            if (type == 1)
+                                settingHomeItems(view, response.body()!!.pickCourse)
+                            ovelapNetworking = ""
                         }
-                       //settingHomeItems(view, response.body()!!.pickCourse)
                     }
                 }
-            }
 
-        })
+            })
 
-
-    }
-
-    fun getHomeMission(view: View) {
-        var homeResponse = networkService
-            .getHomeMissions(SharedPreference.instance!!.getPrefStringData(CommonData.JWT)!!)
-        homeResponse.enqueue(object : Callback<HomeCourseData> {
-            override fun onFailure(call: Call<HomeCourseData>, t: Throwable) {
-                Log.v("853 woo f:", t.message)
-            }
-
-            override fun onResponse(call: Call<HomeCourseData>, response: Response<HomeCourseData>) {
-                Log.v("853 woo r:", response.code().toString())
-                Log.v("853 woo r:", response.body().toString())
-                Log.v("853 woo size:", response.body()!!.purchaseList.size.toString())
-                Log.v("853 woo size2:", response.body()!!.pickCourse.places.size.toString())
-                when (response.code()!!) {
-                    200 -> {
-                        //settingFilterItems(view, response.body()!!.purchaseList)
-                        filterItems = response.body()!!.purchaseList
-
-                        for(i in 0 .. filterItems.size-1){
-                            when(filterItems[i].id){
-                                1->{
-                                    if(filterItems[i].isPicked)
-                                        view.filterDMZingBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
-
-                                    view.filterDMZingBtn.visibility = View.VISIBLE
-                                }
-                                2->{
-                                    if(filterItems[i].isPicked)
-                                        view.filterDateBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
-
-                                    view.filterDateBtn.visibility = View.VISIBLE
-                                }
-                                3->{
-                                    if(filterItems[i].isPicked)
-                                        view.filterHistoryBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
-
-                                    view.filterHistoryBtn.visibility = View.VISIBLE
-                                }
-                                4->{
-                                    if(filterItems[i].isPicked)
-                                        view.filterNaturalBtn.background = ContextCompat.getDrawable(context!!, R.drawable.filter_background)
-
-                                    view.filterNaturalBtn.visibility = View.VISIBLE
-                                }
-                            }
-                        }
-                        /*  for(i in 0..filterItems.size-1){
-                              when(i){
-                                  1->{
-                                      if(filterItems[i].isPicked)
-                                          view!!.filterDMZingBtn.visibility = View.VISIBLE
-                                  }
-                                  2->{
-                                      if(filterItems[i].isPicked)
-                                          view!!.filterDateBtn.visibility = View.VISIBLE
-                                      else
-                                          view!!.filterDateBtn.visibility = View.GONE
-                                  }
-                                  3->{
-                                      if(filterItems[i].isPicked)
-                                          view!!.filterHistoryBtn.visibility = View.VISIBLE
-                                      else
-                                          view!!.filterHistoryBtn.visibility = View.GONE
-                                  }
-                                  4->{
-                                      if(filterItems[i].isPicked)
-                                          view!!.filterNaturalBtn.visibility = View.VISIBLE
-                                      else
-                                          view!!.filterNaturalBtn.visibility = View.GONE
-                                  }
-                              }
-                          }*/
-                 /*       var newpick = response.body()!!.pickCourse
-                        if(newpick.places.size == 4){
-//                             newpick.places.add(Places(1,"","",2,2,"",""
-//                                 ,"",0.0,0.0,"dd","dd","dd","dd","dd",PeriP))
-
-                            newpick.places.add(newpick.places.get(3))
-                            }*/
-
-                        settingHomeItems(view, response.body()!!.pickCourse)
-
-                    }
-                }
-            }
-
-        })
+        }
 
 
     }
@@ -573,45 +442,50 @@ class HomeFragment : Fragment(), View.OnClickListener {
     fun putCoursePick(view: View, cid: Int) {
         Log.v("woo 731 put:", "또잉")
         var coursePickResponse = networkService.putCoursePick(
-            SharedPreference.instance!!
-                .getPrefStringData("jwt")!!, cid
-        )
-        Log.v("woo 7311 put:", "또잉1")
+            SharedPreference.instance!!.getPrefStringData("jwt")!!, cid)
 
-        coursePickResponse.enqueue(object : Callback<PickCourse> {
-            override fun onFailure(call: Call<PickCourse>, t: Throwable) {
-                Log.v("woo 731 f:", t.message)
-            }
 
-            override fun onResponse(call: Call<PickCourse>, response: Response<PickCourse>) {
-                Log.v("woo 731 r:", response.message())
-                Log.v("woo 731 r:", response.code().toString())
-                when (response!!.code()) {
-                    200 -> {
+        if(ovelapNetworking == ""){
+            ovelapNetworking = "networking"
 
-                /*        var newpick = response.body()!!
-                        if(newpick.places.size == 4){
-//                             newpick.places.add(Places(1,"","",2,2,"",""
-//                                 ,"",0.0,0.0,"dd","dd","dd","dd","dd",PeriP))
+            coursePickResponse.enqueue(object : Callback<PickCourse> {
+                override fun onFailure(call: Call<PickCourse>, t: Throwable) {
+                    Log.v("woo 731 f:", t.message)
+                    ovelapNetworking = ""
+                }
 
-                            newpick.places.add(newpick.places.get(3))
-                        }*/
-                        if(response.body()!!.places.size== 4){
-                            CommonData.complete_flag = 4
+                override fun onResponse(call: Call<PickCourse>, response: Response<PickCourse>) {
+                    Log.v("woo 731 r:", response.message())
+                    Log.v("woo 731 r:", response.code().toString())
+
+                    response?.let {
+                        when (it.code()) {
+                            200 -> {
+                                if (response.body()!!.places.size == 4) {
+                                    CommonData.complete_flag = 4
+                                }
+                                settingHomeItems(view, response.body()!!)
+                            }
+                            else->{
+
+                            }
                         }
-                        settingHomeItems(view, response.body()!!)
-
+                    }?.also {
+                        ovelapNetworking = ""
                     }
 
                 }
-            }
 
-        })
+            })
+
+        }
+
     }
 
+    // 리사이클러뷰 아이템 세팅
     fun settingHomeItems(view: View, items: PickCourse) {
         courseItems = items
-        if(courseItems.places.size == 4){
+        if (courseItems.places.size == 4) {
             Log.v("0627 size :", courseItems.places.size.toString())
             CommonData.complete_flag = 4
         }
