@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (System.currentTimeMillis() > backPressedTime + 2000) {
             backPressedTime = System.currentTimeMillis()
-            toast("\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.")
+            toast("\'뒤로가기\' 를 한번 더 누르시면 종료됩니다.")
             return
         } else
             super.onBackPressed()
