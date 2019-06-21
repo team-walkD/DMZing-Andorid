@@ -1,7 +1,7 @@
 
 # 색다른 즐거움,새로운 DMZ를 DMZing하다
 
-**개발 기간 : 2018년 10월 21일 - ing**
+**개발 기간 : 2018년 11월 01일 ~ 2018년 12월 02일**
 
 ## [ About ]
 
@@ -35,7 +35,34 @@ DMZing의 주요 기능은 다음과 같습니다.
 - 챗봇
   위치별, 테마별, 나이별에 따른 DMZ 장소를 추천해줍니다.
 
-  
+## [ 워크 플로우 ]
+![](/image/dmzing_workflow_android-01.png)
+
+
+## [ Develop Environment ]
+- Android Studio
+- Language :  **Kotlin 1.3.0**, java
+- Optimization Device : Galaxy s9
+
+## [ Library ]
+
+1. Material design
+* 'com.android.support:design:28.0.0'
+
+2. Layout
+* 'org.jetbrains.anko:anko:0.10.5'
+* 'de.hdodenhof:circleimageview:2.2.0'
+* 'com.android.support:recyclerview-v7:28.0.0'
+* 'de.hdodenhof:circleimageview:2.2.0'
+
+3. HTTP REST API
+* 'com.squareup.retrofit2:retrofit:2.4.0'
+* 'com.squareup.retrofit2:converter-gson:2.1.0'
+* 'com.squareup.okhttp3:okhttp:3.4.2'
+* 'com.squareup.okhttp3:logging-interceptor:3.4.2'
+
+4. Image load
+* 'com.github.bumptech.glide:glide:4.8.0'
 
 ## [DMZing 서비스 정보]
 
@@ -90,32 +117,3 @@ DMZing의 주요 기능은 다음과 같습니다.
         
         ① 이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.
 
-
-
-## [ Develop Environment ]
-
-- Language :  **Kotlin 1.3.0**, java
-- Target SDK Version : 28
-- Minimum SDK Version : 19
-- Optimization Device : Galaxy s9
-
-## [ Library ]
-
-
-1. Material design
-* 'com.android.support:design:28.0.0'
-
-2. Layout
-* 'org.jetbrains.anko:anko:0.10.5'
-* 'de.hdodenhof:circleimageview:2.2.0'
-* 'com.android.support:recyclerview-v7:28.0.0'
-* 'de.hdodenhof:circleimageview:2.2.0'
-
-3. HTTP REST API
-* 'com.squareup.retrofit2:retrofit:2.4.0'
-* 'com.squareup.retrofit2:converter-gson:2.1.0'
-* 'com.squareup.okhttp3:okhttp:3.4.2'
-* 'com.squareup.okhttp3:logging-interceptor:3.4.2'
-
-4. Image load
-* 'com.github.bumptech.glide:glide:4.8.0'
