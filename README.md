@@ -38,9 +38,6 @@ DMZing의 주요 기능은 다음과 같습니다.
 - 챗봇
   위치별, 테마별, 나이별에 따른 DMZ 장소를 추천해줍니다.
 
- 
-
-
 ## [ Develop Environment ]
 
 - Language :  **Kotlin 1.3.0**, java
@@ -49,7 +46,6 @@ DMZing의 주요 기능은 다음과 같습니다.
 - Optimization Device : Galaxy s9
 
 ## [ Library ]
-
 
 1. Layout
 * [anko](https://github.com/Kotlin/anko)
